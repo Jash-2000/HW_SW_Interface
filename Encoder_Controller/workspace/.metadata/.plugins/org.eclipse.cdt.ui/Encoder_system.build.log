@@ -1,0 +1,6 @@
+02:00:42 **** Incremental Build of configuration Debug for project Encoder_system ****
+make all 
+Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
+
+02:00:42 Build Finished (took 273ms)
+

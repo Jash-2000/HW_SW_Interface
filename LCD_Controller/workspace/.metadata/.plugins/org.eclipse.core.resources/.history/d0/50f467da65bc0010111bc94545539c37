@@ -1,0 +1,128 @@
+/*****************************************************************************
+* bsp.c for Lab2A of ECE 153a at UCSB
+* Date of the Last Update:  October 27,2019
+*****************************************************************************/
+
+/**/
+#include "qpn_port.h"
+#include "bsp.h"
+#include "lab2a.h"
+#include "xintc.h"
+#include "xil_exception.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xgpio.h"
+#include "encoder.h"
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+/********* Bit mapping: JA[0]=A, JA[1]=B, JA[2]=Push *********/
+#define ENC_A(v)                   (((v)>>0) & 1u)
+#define ENC_B(v)                   (((v)>>1) & 1u)
+#define ENC_P(v)                   (((v)>>2) & 1u)
+
+#define BTN_GPIO_DEVICE_ID      XPAR_GPIO_2_DEVICE_ID
+#define BTN_GPIO_CHANNEL        1
+#define BTN_GPIO_IRQ_ID         XPAR_INTC_0_GPIO_2_VEC_ID
+
+#define ENC_GPIO_DEVICE_ID      XPAR_GPIO_0_DEVICE_ID
+#define ENC_GPIO_CHANNEL        1
+#define ENC_GPIO_IRQ_ID         XPAR_INTC_0_GPIO_0_VEC_ID
+/*** ------------------------------------------------ ***/
+
+static XGpio btnGpio;
+static XGpio encGpio;
+
+encoder_t enc;
+
+/*..........................................................................*/
+void BSP_init(void) {
+
+
+
+}
+/*..........................................................................*/
+void QF_onStartup(void) {                 /* entered with interrupts locked */
+	xil_printf("\n\rQF_onStartup\n"); // Comment out once you are in your complete program
+}
+
+
+void QF_onIdle(void) {        /* entered with interrupts locked */
+	xil_printf("\n\rQF_oniDLE\n"); // Comment out once you are in your complete program
+    QF_INT_UNLOCK();                       /* unlock interrupts */
+}
+
+/* Q_onAssert is called only when the program encounters an error*/
+/*..........................................................................*/
+void Q_onAssert(char const Q_ROM * const Q_ROM_VAR file, int line) {
+    (void)file;                                   /* name of the file that throws the error */
+    (void)line;                                   /* line of the code that throws the error */
+    QF_INT_LOCK();
+    printDebugLog();
+    for (;;) {
+    }
+}
+
+/******************************************************************************
+*
+* This is the interrupt handler routine for the GPIO for this example.
+*
+******************************************************************************/
+void GpioHandler(void *CallbackRef) {
+	    // Latch & clear interrupt
+	    u32 status = XGpio_InterruptGetStatus(&btnGpio);
+	    XGpio_InterruptClear(&btnGpio, status);
+	    int btns = XGpio_DiscreteRead(&btnGpio, 1);
+
+	    if (btns & 0x01){ buttonPressed = 1;}
+	    else if (btns & 0x02) {buttonPressed = 2;}
+	    else if (btns & 0x04) {buttonPressed = 3;}
+	    else if (btns & 0x08) {buttonPressed = 4;}
+	    QActive_postISR((QActive *)&AO_Lab2A, BUTTON); // Display Text
+}
+
+void TwistHandler(void *CallbackRef)
+{
+    (void)CallbackRef;
+    uint32_t v  = XGpio_DiscreteRead(&encGpio, ENC_GPIO_CHANNEL);
+    uint8_t ab  = (ENC_A(v) << 1) | ENC_B(v);
+    uint8_t p   = ENC_P(v);
+
+    encoder_quad_step(&enc, ab);      // debounce
+    encoder_push_update(&enc, p);     // sets push_rise/push_fall flags (raw)
+
+    // clear source (level-sensitive)
+    XGpio_InterruptClear(&encGpio, ENC_GPIO_CHANNEL);
+
+    if(enc.push_rise){
+    	enc.push_rise = false;
+        QActive_postISR((QActive *)&AO_Lab2A, ENCODER_CLICK); // Mute the system
+    }
+    if (enc.step_right){
+    	enc.step_right = false;
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_DOWN); // Decrease Volume
+    }
+    if (enc.step_left){
+    	enc.step_left  = false;
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_UP); // Increase Volume
+    }
+}
+
+void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
+{
+    timerTrigger = 100;
+}

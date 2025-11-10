@@ -1,0 +1,119 @@
+/******************************************************************************
+*
+* Copyright (C) 2008 - 2014 Xilinx, Inc.  All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* Use of the Software is limited solely to applications:
+* (a) running on a Xilinx device, or
+* (b) that interact with a Xilinx device through a bus or interconnect.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+* XILINX  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+* OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+* Except as contained in this notice, the name of the Xilinx shall not be used
+* in advertising or otherwise to promote the sale, use or other dealings in
+* this Software without prior written authorization from Xilinx.
+*
+******************************************************************************/
+
+#ifndef ENCODER_H
+#define ENCODER_H
+
+#include <stdint.h>
+#include <stdbool.h>
+
+typedef enum {
+    S0 = 0,
+    S1,
+    S2,
+    S3,
+	S4,
+	S5,
+	S6,
+	S7	// Error State
+} quad_state_t;
+
+typedef struct {
+    // quadrature
+    volatile quad_state_t qstate;
+    volatile uint8_t lastAB;          // A in bit1, B in bit0
+    volatile bool step_left;		// Output
+    volatile bool step_right;		// Output
+
+    volatile uint8_t last_push;
+    volatile bool    push_rise;
+    volatile bool    push_fall;
+} encoder_t;
+
+static inline void encoder_init(encoder_t *e, uint8_t ab, uint8_t p) {
+    e->qstate = (ab == 0x3) ? S0 : S7;
+    e->lastAB = ab;
+    e->step_left = e->step_right = false;
+    e->last_push = p;
+    e->push_rise = e->push_fall = false;
+}
+
+static inline void encoder_quad_step(encoder_t *e, uint8_t ab) {
+    if (ab == e->lastAB) return;
+    e->lastAB = ab;
+
+    switch (e->qstate) {
+    case S0:
+        if (ab == 0x1)      e->qstate = S3;
+        else if (ab == 0x2) e->qstate = S5;
+        break;
+    case S1:
+    	if (ab == 0x10 || ab == 0x0)      e->qstate = S1;
+    	else if (ab == 0x3) { e->qstate = S0; e->step_right = true; } // CW
+    	break;
+    case S2:
+    	if (a == 0x0)      e->qstate = S2;
+    	else if (ab == 0x3) { e->qstate = S0; e->step_left = true; } // CW
+        break;
+    case S3:
+        if (b == 0x1)      e->qstate = S3;
+        else if (ab == 0x0) e->qstate = S4;
+        break;
+    case S4:
+        if (a == 0x1)      e->qstate = S4;
+        else if (ab == 0x2) e->qstate = S1;
+        break;
+    case S5:
+        if (a == 0x1)      e->qstate = S5;
+        else if (ab == 0x0) e->qstate = S6;
+        break;
+    case S6:
+        if (b == 0x0)      e->qstate = S6;
+        else if (ab == 0x1) e->qstate = S2;
+        break;
+    case S7:
+        e->qstate = S0;
+        xil_printf("\r\nError in the hardware\r\n");
+        break;
+
+    }
+}
+
+static inline void encoder_push_update(encoder_t *e, uint8_t p) {
+    if (p != e->last_push) {
+        if (p) e->push_rise = true;
+        else   e->push_fall = true;
+        e->last_push = p;
+    }
+}
+
+#endif // ENCODER_H

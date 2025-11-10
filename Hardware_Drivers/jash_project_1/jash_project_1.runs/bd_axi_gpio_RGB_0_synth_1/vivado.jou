@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Oct 10 16:02:14 2025
+# Process ID: 159328
+# Current directory: /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_axi_gpio_RGB_0_synth_1
+# Command line: vivado -log bd_axi_gpio_RGB_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_axi_gpio_RGB_0.tcl
+# Log file: /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_axi_gpio_RGB_0_synth_1/bd_axi_gpio_RGB_0.vds
+# Journal file: /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_axi_gpio_RGB_0_synth_1/vivado.jou
+# Running On: eda4152-2, OS: Linux, CPU Frequency: 4234.463 MHz, CPU Physical cores: 8, Host memory: 16291 MB
+#-----------------------------------------------------------
+source bd_axi_gpio_RGB_0.tcl -notrace

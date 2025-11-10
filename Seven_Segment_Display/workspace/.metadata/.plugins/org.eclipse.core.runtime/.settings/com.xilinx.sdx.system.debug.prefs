@@ -1,0 +1,13 @@
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.bss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.data=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.rodata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.sbss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.sbss2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.sdata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.sdata2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:.text=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:heap=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:heap-size=4096
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:stack=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Seven_Segment_Display_Lab1B\:stack-size=4096
+eclipse.preferences.version=1

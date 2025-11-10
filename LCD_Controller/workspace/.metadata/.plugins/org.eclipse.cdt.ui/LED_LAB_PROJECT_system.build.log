@@ -1,0 +1,6 @@
+23:28:40 **** Incremental Build of configuration Debug for project LED_LAB_PROJECT_system ****
+make all 
+Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
+
+23:28:40 Build Finished (took 173ms)
+

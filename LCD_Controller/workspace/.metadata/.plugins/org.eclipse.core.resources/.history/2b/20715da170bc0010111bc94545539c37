@@ -1,0 +1,212 @@
+/*****************************************************************************
+* lab2a.c for Lab2A of ECE 153a at UCSB
+* Date of the Last Update:  October 23,2014
+*****************************************************************************/
+
+#define AO_LAB2A
+
+#include "qpn_port.h"
+#include "bsp.h"
+#include "lab2a.h"
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+static void drawScene(void);
+static void drawMode(void);
+static void calcVolume(int);
+static void drawVolume(void);
+
+typedef struct Lab2ATag  {               //Lab2A State machine
+	QActive super;
+}  Lab2A;
+
+/* Setup state machines */
+/**********************************************************************/
+static QState Lab2A_initial (Lab2A *me);
+static QState visible      (Lab2A *me);
+static QState not_visible  (Lab2A *me);
+
+
+Lab2A AO_Lab2A;
+
+int custom_tick = 0;
+int vlm_lvl = 0;
+int buttonPressed = 0;
+
+
+void Lab2A_ctor(void)  {
+	Lab2A *me = &AO_Lab2A;
+	QActive_ctor(&me->super, (QStateHandler)&Lab2A_initial);
+}
+
+
+QState Lab2A_initial(Lab2A *me) {
+	xil_printf("\n\rInitialization");
+    // LCD init + scene
+    initLCD();
+    drawScene();
+    return Q_TRAN(&not_visible);
+}
+
+QState not_visible(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				return Q_HANDLED();
+			}
+			case ENCODER_UP: {
+				calcVolume(1);
+				return Q_TRAN(&visible);
+			}
+			case ENCODER_DOWN: {
+				calcVolume(2);
+				return Q_TRAN(&visible);
+			}
+			case ENCODER_CLICK:  {
+				calcVolume(3);
+				return Q_TRAN(&visible);
+			}
+			case BUTTON:  {
+				drawMode();
+				return Q_TRAN(&visible);
+			}
+		}
+
+		return Q_SUPER(&QHsm_top);
+}
+
+
+/* Create Lab2A_on state and do any initialization code if needed */
+/******************************************************************/
+
+QState visible(Lab2A *me) {
+	switch (Q_SIG(me)) {
+		case Q_ENTRY_SIG: {
+			return Q_HANDLED();
+		}
+		case ENCODER_UP: {
+			calcVolume(1);
+			return Q_HANDLED();
+		}
+
+		case ENCODER_DOWN: {
+			calcVolume(2);
+			return Q_HANDLED();
+		}
+
+		case ENCODER_CLICK:  {
+			calcVolume(3);
+			return Q_HANDLED();
+		}
+
+		case CUSTOM_TIMEOUT: {
+			drawScene();
+			return Q_TRAN(&not_visible);
+		}
+		case BUTTON:  {
+			drawMode();
+			return Q_HANDLED();
+		}
+	}
+
+	return Q_SUPER(&QHsm_top);
+}
+
+static void drawScene(void)
+{
+    // Full-screen red background with thin orange borders
+    setColor(255, 165, 0);
+    fillRect(0, 0, 239, 319);
+    setColor(255, 0, 0);
+    fillRect(10, 10, 229, 309);
+
+    // Foreground: 40×40 tiles, alternating
+    const int TILE_H = 40, TILE_B = 40;
+    const int MARGIN = 10;
+    setColor(255, 165, 0); // orange
+
+    for (int yy = MARGIN; yy<= 319 ; yy += TILE_H) {
+        for (int xx = MARGIN; xx<= 239; xx += TILE_B) {
+            int parity = (((xx - MARGIN) / TILE_B) ^ ((yy - MARGIN) / TILE_H)) & 1;
+            fillIsoTri(xx, yy, TILE_B, TILE_H, parity ? 1 : 0);
+        }
+    }
+
+}
+
+static void calcVolume(int pratyush)
+{
+	if (pratyush == 1){
+		vlm_lvl+=1;
+	}else if (pratyush == 2 ){
+		vlm_lvl-=1;
+	}else if (pratyush == 3){
+	    // For Mode Printing
+	    setColor(255, 255, 255);
+	    fillRect(50, 150, 150, 200);
+        setFont(BigFont);
+        setColor(238, 64, 0);
+        lcdPrint("Mute", 80, 180);
+        vlm_lvl = 0;
+	}else{
+		xil_printf("Bhenchod Code Galat Hai");
+	}
+	drawVolume();
+}
+
+static void drawVolume(void)
+{
+	custom_tick = 0;
+
+	// For Volume Printing
+	setColor(0, 50, 100);
+	fillRect(30, 60, 200, 100);
+
+	setColor(0, 0, 0);
+	fillRect(40, 70, 40 + vlm_lvl, 90);
+
+
+}
+
+static void drawMode(void)
+{
+	custom_tick = 0;
+	switch(buttonPressed)
+	                {
+	                case 1:
+	                        setFont(BigFont);
+	                        setColor(238, 64, 0);
+	                        lcdPrint("Mode 1", 80, 180);
+	                        buttonPressed = 0;
+	                        break;
+	                case 2:
+	                        setFont(BigFont);
+	                        setColor(238, 64, 0);
+	                        lcdPrint("Mode 2", 80, 180);
+	                        buttonPressed = 0;
+	            break;
+	                case 3:
+	                        setFont(BigFont);
+	                        setColor(238, 64, 0);
+	                        lcdPrint("Mode 3", 80, 180);
+	                        buttonPressed = 0;
+	            break;
+	                case 4:
+	                        setFont(BigFont);
+	                        setColor(238, 64, 0);
+	                        lcdPrint("Mode 4", 80, 180);
+	                        buttonPressed = 0;
+	            break;
+	                default:
+	                        buttonPressed = 0;
+	                break;
+	        }
+}

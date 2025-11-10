@@ -1,0 +1,212 @@
+/*
+ * lcd_test.c: Lab 2B – static background + triangle pattern + buttons + timer reset
+ */
+
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+volatile int timerTrigger = 0;
+volatile int buttonPressed = 0;
+
+#define BTN_GPIO_DEVICE_ID      XPAR_GPIO_2_DEVICE_ID
+#define BTN_GPIO_CHANNEL        1
+#define BTN_GPIO_IRQ_ID         XPAR_INTC_0_GPIO_2_VEC_ID
+/*** ------------------------------------------------ ***/
+
+static XGpio btnGpio;
+
+void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
+{
+    timerTrigger = 100;
+}
+
+void ButtonsHandler(void *CallbackRef)
+{
+    // Latch & clear interrupt
+    u32 status = XGpio_InterruptGetStatus(&btnGpio);
+    XGpio_InterruptClear(&btnGpio, status);
+    int btns = XGpio_DiscreteRead(&btnGpio, 1);
+
+    if (btns & 0x01){ buttonPressed = 1;}
+    else if (btns & 0x02) {buttonPressed = 2;}
+    else if (btns & 0x04) {buttonPressed = 3;}
+    else if (btns & 0x08) {buttonPressed = 4;}
+
+}
+
+static void drawScene(void)
+{
+    // Full-screen red background with thin orange borders
+	setColor(255, 165, 0);
+    fillRect(0, 0, DISP_X_SIZE, DISP_Y_SIZE);
+    setColor(255, 0, 0);
+    fillRect(10, 10, DISP_X_SIZE-10, DISP_Y_SIZE-10);
+
+    // Foreground: 40×40 tiles, alternating
+    const int TILE_H = 40, TILE_B = 40;
+    const int MARGIN = 10;
+    setColor(255, 165, 0); // orange
+
+    for (int yy = MARGIN; yy<= DISP_Y_SIZE ; yy += TILE_H) {
+        for (int xx = MARGIN; xx<= DISP_X_SIZE; xx += TILE_B) {
+            int parity = (((xx - MARGIN) / TILE_B) ^ ((yy - MARGIN) / TILE_H)) & 1;
+            fillIsoTri(xx, yy, TILE_B, TILE_H, parity ? 1 : 0);
+        }
+    }
+
+    // For Mode Printing
+    setColor(0, 50, 100);
+    fillRect(40, 80, 160, 100);
+
+}
+
+int main()
+{
+    Xil_ICacheInvalidate(); Xil_ICacheEnable();
+    Xil_DCacheInvalidate(); Xil_DCacheEnable();
+
+    static XIntc   intc;
+    static XTmrCtr axiTimer;
+    static XGpio   dc;
+    static XSpi    spi;
+
+    XSpi_Config *spiConfig;
+    u32 status;
+    u32 controlReg;
+
+    int  sec = 0;
+    int  secTmp;
+    char secStr[4] = "000";
+    int s = 0;
+    int s_temp = 0;
+
+    print("---Entering main (CK)---\n\r");
+
+    // Timer init + ISR hookup
+    status = XTmrCtr_Initialize(&axiTimer, XPAR_AXI_TIMER_0_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize timer fail!\n"); return XST_FAILURE; }
+
+    status = XIntc_Initialize(&intc, XPAR_INTC_0_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize INTC fail!\n"); return XST_FAILURE; }
+
+    status = XIntc_Connect(&intc,
+        XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR,
+        (XInterruptHandler)XTmrCtr_InterruptHandler, (void *)&axiTimer);
+    if (status != XST_SUCCESS) { xil_printf("Connect timer IHR fail!\n"); return XST_FAILURE; }
+
+    // --- Buttons GPIO init (+ interrupt hookup)
+    status = XGpio_Initialize(&btnGpio, BTN_GPIO_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize button GPIO fail!\n"); return XST_FAILURE; }
+    XGpio_SetDataDirection(&btnGpio, BTN_GPIO_CHANNEL, 0xFFFFFFFF); // inputs
+
+    status = XIntc_Connect(&intc, BTN_GPIO_IRQ_ID, (XInterruptHandler)ButtonsHandler, (void *)&btnGpio);
+    if (status != XST_SUCCESS) { xil_printf("Connect button IHR fail!\n"); return XST_FAILURE; }
+
+    status = XIntc_Start(&intc, XIN_REAL_MODE);
+    if (status != XST_SUCCESS) { xil_printf("Start INTC fail!\n"); return XST_FAILURE; }
+
+    // Enable timer + button interrupts in the INTC and globally
+    XIntc_Enable(&intc, XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR);
+    XIntc_Enable(&intc, BTN_GPIO_IRQ_ID);
+    microblaze_enable_interrupts();
+
+    // Enable GPIO-level interrupts for the button block (edge or level as synthesized)
+    XGpio_InterruptGlobalEnable(&btnGpio);
+    XGpio_InterruptEnable(&btnGpio, 0xFFFF);
+
+    // Timer handler + options
+    XTmrCtr_SetHandler(&axiTimer, TimerCounterHandler, &axiTimer);
+    XTmrCtr_SetOptions(&axiTimer, 0, XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION);
+    XTmrCtr_SetResetValue(&axiTimer, 0, 0xFFFF0000);
+    XTmrCtr_Start(&axiTimer, 0);
+    xil_printf("Timer start!\n");
+
+    // SPI DC (data/command) GPIO (existing code)
+    status = XGpio_Initialize(&dc, XPAR_SPI_DC_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize GPIO dc fail!\n"); return XST_FAILURE; }
+    XGpio_SetDataDirection(&dc, 1, 0x0);
+
+    // SPI init (existing code)
+    spiConfig = XSpi_LookupConfig(XPAR_SPI_DEVICE_ID);
+    if (spiConfig == NULL)    { xil_printf("Can't find spi device!\n"); return XST_DEVICE_NOT_FOUND; }
+    status = XSpi_CfgInitialize(&spi, spiConfig, spiConfig->BaseAddress);
+    if (status != XST_SUCCESS){ xil_printf("Initialize spi fail!\n");   return XST_FAILURE; }
+    XSpi_Reset(&spi);
+    controlReg = XSpi_GetControlReg(&spi);
+    XSpi_SetControlReg(&spi,
+        (controlReg | XSP_CR_ENABLE_MASK | XSP_CR_MASTER_MODE_MASK) & (~XSP_CR_TRANS_INHIBIT_MASK));
+    XSpi_SetSlaveSelectReg(&spi, ~0x01);
+
+    // LCD init + scene
+    initLCD();                              // powers up panel and sets defaults & font :contentReference[oaicite:4]{index=4}
+    drawScene();
+
+
+    while (1)
+    {
+    	switch(buttonPressed)
+		{
+    		case 1:
+				setFont(BigFont);
+		        setColor(238, 64, 0);
+		        lcdPrint("Mode 1", 40, 80);
+		        s_temp = s;
+		        buttonPressed = 0;
+		        break;
+    		case 2:
+				setFont(BigFont);
+		        setColor(238, 64, 0);
+		        lcdPrint("Mode 2", 40, 80);
+		        s_temp = s;
+		        buttonPressed = 0;
+            break;
+    		case 3:
+				setFont(BigFont);
+		        setColor(238, 64, 0);
+		        lcdPrint("Mode 3", 40, 80);
+		        s_temp = s;
+		        buttonPressed = 0;
+            break;
+    		case 4:
+				setFont(BigFont);
+		        setColor(238, 64, 0);
+		        lcdPrint("Mode 4", 40, 80);
+		        s_temp = s;
+		        buttonPressed = 0;
+            break;
+    		default:
+    			buttonPressed = 0;
+    		break;
+        }
+
+        if (timerTrigger) {
+            s = sec++ % 1000;
+            secStr[0] = (char)('0' + (s / 100));
+            secStr[1] = (char)('0' + ((s / 10) % 10));
+            secStr[2] = (char)('0' + (s % 10));
+            if (s == s_temp +2) {
+                // For Mode Printing
+                setColor(0, 50, 100);
+                fillRect(40, 80, 160, 100);
+            }
+
+            // Seven-seg font for the counter
+            setFont(SevenSegNumFont);               // :contentReference[oaicite:5]{index=5}
+            setColor(238, 64, 0);                   // bright orange-red digits
+            setColorBg(255, 0, 0);                  // red background (so overdraw looks clean)
+            lcdPrint(secStr, 70, 190);
+            timerTrigger = 0;
+        }
+    }
+
+    return 0;
+}

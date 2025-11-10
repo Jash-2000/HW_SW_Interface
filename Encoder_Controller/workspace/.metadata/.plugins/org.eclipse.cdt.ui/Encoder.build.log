@@ -1,0 +1,36 @@
+02:00:41 **** Incremental Build of configuration Debug for project Encoder ****
+make all 
+Building file: ../src/LED_Blink_part6.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/LED_Blink_part6.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Lab_3/export/Lab_3/sw/Lab_3/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/LED_Blink_part6.d" -MT"src/LED_Blink_part6.o" -o "src/LED_Blink_part6.o" "../src/LED_Blink_part6.c"
+Finished building: ../src/LED_Blink_part6.c
+ 
+Building file: ../src/main.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Lab_3/export/Lab_3/sw/Lab_3/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building file: ../src/main_lab2.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main_lab2.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Lab_3/export/Lab_3/sw/Lab_3/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main_lab2.d" -MT"src/main_lab2.o" -o "src/main_lab2.o" "../src/main_lab2.c"
+Finished building: ../src/main_lab2.c
+ 
+Building file: ../src/platform.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Lab_3/export/Lab_3/sw/Lab_3/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: Encoder.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Lab_3/export/Lab_3/sw/Lab_3/standalone_domain/bsplib/lib -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -Wl,--gc-sections -o "Encoder.elf"  ./src/LED_Blink_part6.o ./src/main.o ./src/main_lab2.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Encoder.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Encoder.elf  |tee "Encoder.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  11040	    436	   8444	  19920	   4dd0	Encoder.elf
+Finished building: Encoder.elf.size
+ 
+
+02:00:42 Build Finished (took 576ms)
+

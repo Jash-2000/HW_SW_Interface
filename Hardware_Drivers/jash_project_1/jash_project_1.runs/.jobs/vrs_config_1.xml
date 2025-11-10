@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<Runs Version="1" Minor="0">
+	<Run Id="bd_axi_gpio_RGB_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_axi_gpio_RGB_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_axi_smc_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_axi_smc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_axi_timer_0_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_axi_timer_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_clk_wiz_1_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_clk_wiz_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_mdm_1_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_mdm_1_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_microblaze_0_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_microblaze_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_microblaze_0_axi_intc_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_microblaze_0_axi_intc_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_xbar_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_xbar_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_dlmb_bram_if_cntlr_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_dlmb_bram_if_cntlr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_dlmb_v10_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_dlmb_v10_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_ilmb_bram_if_cntlr_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_ilmb_bram_if_cntlr_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_ilmb_v10_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_ilmb_v10_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado" IsOrderedIPRun="true">
+		<Parent Id="bd_dlmb_v10_0_synth_1"/>
+	</Run>
+	<Run Id="bd_lmb_bram_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_lmb_bram_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_mig_7series_0_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_mig_7series_0_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_rst_clk_wiz_1_100M_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_rst_clk_wiz_1_100M_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="bd_rst_mig_7series_0_166M_0_synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_rst_mig_7series_0_166M_0_synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado"/>
+	<Run Id="synth_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1" FlowId="Vivado_Synthesis" FromStepId="vivado" ToStepId="vivado">
+		<Parent Id="bd_axi_gpio_RGB_0_synth_1"/>
+		<Parent Id="bd_axi_smc_0_synth_1"/>
+		<Parent Id="bd_axi_timer_0_0_synth_1"/>
+		<Parent Id="bd_clk_wiz_1_0_synth_1"/>
+		<Parent Id="bd_mdm_1_0_synth_1"/>
+		<Parent Id="bd_microblaze_0_0_synth_1"/>
+		<Parent Id="bd_microblaze_0_axi_intc_0_synth_1"/>
+		<Parent Id="bd_xbar_0_synth_1"/>
+		<Parent Id="bd_dlmb_bram_if_cntlr_0_synth_1"/>
+		<Parent Id="bd_dlmb_v10_0_synth_1"/>
+		<Parent Id="bd_ilmb_bram_if_cntlr_0_synth_1"/>
+		<Parent Id="bd_ilmb_v10_0_synth_1"/>
+		<Parent Id="bd_lmb_bram_0_synth_1"/>
+		<Parent Id="bd_mig_7series_0_0_synth_1"/>
+		<Parent Id="bd_rst_clk_wiz_1_100M_0_synth_1"/>
+		<Parent Id="bd_rst_mig_7series_0_166M_0_synth_1"/>
+	</Run>
+	<Run Id="impl_1" LaunchDir="/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/impl_1" FlowId="Vivado_Implementation" FromStepId="init_design" ToStepId="write_bitstream">
+		<Parent Id="synth_1"/>
+		<Parent Id="bd_axi_gpio_RGB_0_synth_1"/>
+		<Parent Id="bd_axi_smc_0_synth_1"/>
+		<Parent Id="bd_axi_timer_0_0_synth_1"/>
+		<Parent Id="bd_clk_wiz_1_0_synth_1"/>
+		<Parent Id="bd_mdm_1_0_synth_1"/>
+		<Parent Id="bd_microblaze_0_0_synth_1"/>
+		<Parent Id="bd_microblaze_0_axi_intc_0_synth_1"/>
+		<Parent Id="bd_xbar_0_synth_1"/>
+		<Parent Id="bd_dlmb_bram_if_cntlr_0_synth_1"/>
+		<Parent Id="bd_dlmb_v10_0_synth_1"/>
+		<Parent Id="bd_ilmb_bram_if_cntlr_0_synth_1"/>
+		<Parent Id="bd_ilmb_v10_0_synth_1"/>
+		<Parent Id="bd_lmb_bram_0_synth_1"/>
+		<Parent Id="bd_mig_7series_0_0_synth_1"/>
+		<Parent Id="bd_rst_clk_wiz_1_100M_0_synth_1"/>
+		<Parent Id="bd_rst_mig_7series_0_166M_0_synth_1"/>
+	</Run>
+	<Parameters>
+		<Parameter Name="runs.monitorLSFJobs" Val="true" Type="bool"/>
+		<Parameter Name="runs.enableClusterConf" Val="true" Type="bool"/>
+	</Parameters>
+</Runs>
+

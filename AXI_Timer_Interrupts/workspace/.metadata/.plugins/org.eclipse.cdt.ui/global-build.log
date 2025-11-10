@@ -1,0 +1,65 @@
+Nothing to build in platform 'Lab1'
+
+23:52:07 **** Incremental Build of configuration Debug for project Lab1_Draft1 ****
+make all 
+Building file: ../src/timing.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/timing.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_1/workspace/Lab1/export/Lab1/sw/Lab1/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/timing.d" -MT"src/timing.o" -o "src/timing.o" "../src/timing.c"
+In file included from ../src/extra.h:7,
+                 from ../src/timing.c:14:
+/home/jashshah/Desktop/Embedded_Lab/Lab_1/workspace/Lab1/export/Lab1/sw/Lab1/standalone_domain/bspinclude/include/xbasic_types.h:102:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+  102 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+/home/jashshah/Desktop/Embedded_Lab/Lab_1/workspace/Lab1/export/Lab1/sw/Lab1/standalone_domain/bspinclude/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+  103 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+../src/timing.c: In function 'main':
+../src/timing.c:76:14: warning: unused variable 'USB_string' [-Wunused-variable]
+   76 |         char USB_string;
+      |              ^~~~~~~~~~
+../src/timing.c:75:31: warning: variable 'Data' set but not used [-Wunused-but-set-variable]
+   75 |         volatile unsigned int Data;
+      |                               ^~~~
+../src/timing.c:74:51: warning: unused variable 'e_float' [-Wunused-variable]
+   74 |         float a_float, b_float, c_float, d_float, e_float;
+      |                                                   ^~~~~~~
+../src/timing.c:74:42: warning: variable 'd_float' set but not used [-Wunused-but-set-variable]
+   74 |         float a_float, b_float, c_float, d_float, e_float;
+      |                                          ^~~~~~~
+../src/timing.c:74:33: warning: variable 'c_float' set but not used [-Wunused-but-set-variable]
+   74 |         float a_float, b_float, c_float, d_float, e_float;
+      |                                 ^~~~~~~
+../src/timing.c:74:24: warning: variable 'b_float' set but not used [-Wunused-but-set-variable]
+   74 |         float a_float, b_float, c_float, d_float, e_float;
+      |                        ^~~~~~~
+../src/timing.c:74:15: warning: variable 'a_float' set but not used [-Wunused-but-set-variable]
+   74 |         float a_float, b_float, c_float, d_float, e_float;
+      |               ^~~~~~~
+../src/timing.c:73:27: warning: unused variable 'c_int' [-Wunused-variable]
+   73 |         int a_int, b_int, c_int;
+      |                           ^~~~~
+../src/timing.c:73:20: warning: variable 'b_int' set but not used [-Wunused-but-set-variable]
+   73 |         int a_int, b_int, c_int;
+      |                    ^~~~~
+../src/timing.c:73:13: warning: variable 'a_int' set but not used [-Wunused-but-set-variable]
+   73 |         int a_int, b_int, c_int;
+      |             ^~~~~
+../src/timing.c:70:20: warning: unused variable 'j' [-Wunused-variable]
+   70 |         int i = 0, j=0;
+      |                    ^
+Finished building: ../src/timing.c
+ 
+Building target: Lab1_Draft1.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/jashshah/Desktop/Embedded_Lab/Lab_1/workspace/Lab1/export/Lab1/sw/Lab1/standalone_domain/bsplib/lib -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -Wl,--gc-sections -o "Lab1_Draft1.elf"  ./src/extra.o ./src/platform.o ./src/timing.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Lab1_Draft1.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Lab1_Draft1.elf  |tee "Lab1_Draft1.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  17052	   1460	4201800	4220312	 406598	Lab1_Draft1.elf
+Finished building: Lab1_Draft1.elf.size
+ 
+23:52:09 **** Incremental Build of configuration Debug for project Lab1_Draft1_system ****
+make all 
+Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.

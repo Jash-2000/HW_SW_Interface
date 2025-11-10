@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="Encoder" location="/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Encoder" platform="/home/jashshah/Desktop/Embedded_Lab/Lab_3/workspace/Lab_3/export/Lab_3/Lab_3.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="Encoder_system" sysConfig="Lab_3" runtime="C/C++" cpu="standalone_domain" cpuInstance="microblaze_0" os="standalone" mssSignature="f259828fa0be8019f7dc6049cc6b6a68">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1304299776">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.1768292678" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

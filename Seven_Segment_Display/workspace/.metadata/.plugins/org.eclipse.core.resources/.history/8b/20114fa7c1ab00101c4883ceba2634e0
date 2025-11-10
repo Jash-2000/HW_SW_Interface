@@ -1,0 +1,58 @@
+#include <xparameters.h>
+#include "xil_io.h"
+#include "sevenSeg_new.h"
+
+
+static const int digit_segs[28] =  {
+		127 ^ 0b10111111,	//0
+		127 ^ 0b10000110,	//1
+		127 ^ 0b11011011,  //2
+		127 ^ 0b11001111,  //3
+		127 ^ 0b11100110,  //4
+		127 ^ 0b11101101,  //5
+		127 ^ 0b11111101,  //6
+		127 ^ 0b10000111,  //7
+		127 ^ 0b11111111,  //8
+		127 ^ 0b11101111,  //9
+
+		127 ^ 0b0111111,	//0.
+		127 ^ 0b0000110,	//1.
+		127 ^ 0b1011011,  //2.
+		127 ^ 0b1001111,  //3.
+		127 ^ 0b1100110,  //4.
+		127 ^ 0b1101101,  //5.
+		127 ^ 0b1111101,  //6.
+		127 ^ 0b0000111,  //7.
+		127 ^ 0b1111111,  //8.
+		127 ^ 0b1101111,  //9.
+
+		127 ^ 0b11110110,  //P  (index 20)
+		127 ^ 0b01010000,  //r  (21)
+		127 ^ 0b11111110,  //A  (22)
+		127 ^ 0b01111000,  //t  (23)
+		127 ^ 0b01111110,  //y  (24)
+		127 ^ 0b01111110,  //U  (25)
+		127 ^ 0b10111101,  //S  (26)
+		127 ^ 0b01111110   //H  (27)
+};
+
+
+void sevenseg_draw_digit (int position0, int position1, int value0, int value1)
+{
+	int segs0  = digit_segs[value0];
+	int segs1  = digit_segs[value1];
+	int pos0   = 0b1111 ^ (1 << position0);
+	int pos1   = 0b1111 ^ (1 << position1);
+
+	int combined_mask = segs0 | (segs1 << 8) | (pos0 << 16) | (pos1 << 20);
+
+	Xil_Out32(XPAR_SEVENSEG_URBANA_V1_0_0_BASEADDR, combined_mask | 65535); // Move Anodes, disable display
+   	Xil_Out32(XPAR_SEVENSEG_URBANA_V1_0_0_BASEADDR, combined_mask); 		// enable display
+}
+
+void sleep_ms_nanosleep(int milliseconds) {
+    struct timespec ts;
+    ts.tv_sec = milliseconds / 1000; // Seconds part
+    ts.tv_nsec = (milliseconds % 1000) * 1000000; // Nanoseconds part
+    nanosleep(&ts, NULL);
+}

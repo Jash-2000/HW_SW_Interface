@@ -1,0 +1,21 @@
+22:38:59 **** Incremental Build of configuration Debug for project Seven_Segment_Display_Lab1B ****
+make all 
+Building file: ../src/hellopratyush.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/hellopratyush.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_2/workspace/Pratyush_Display/export/Pratyush_Display/sw/Pratyush_Display/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/hellopratyush.d" -MT"src/hellopratyush.o" -o "src/hellopratyush.o" "../src/hellopratyush.c"
+Finished building: ../src/hellopratyush.c
+ 
+Building target: Seven_Segment_Display_Lab1B.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/jashshah/Desktop/Embedded_Lab/Lab_2/workspace/Pratyush_Display/export/Pratyush_Display/sw/Pratyush_Display/standalone_domain/bsplib/lib -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -Wl,--gc-sections -o "Seven_Segment_Display_Lab1B.elf"  ./src/hellopratyush.o ./src/platform.o ./src/sevenSeg_new.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: Seven_Segment_Display_Lab1B.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size Seven_Segment_Display_Lab1B.elf  |tee "Seven_Segment_Display_Lab1B.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  12384	    428	   8484	  21296	   5330	Seven_Segment_Display_Lab1B.elf
+Finished building: Seven_Segment_Display_Lab1B.elf.size
+ 
+
+22:39:00 Build Finished (took 950ms)
+

@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Fri Oct 10 16:05:01 2025
+# Process ID: 169446
+# Current directory: /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_ilmb_v10_0_synth_1
+# Command line: vivado -log bd_ilmb_v10_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_ilmb_v10_0.tcl
+# Log file: /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_ilmb_v10_0_synth_1/bd_ilmb_v10_0.vds
+# Journal file: /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/bd_ilmb_v10_0_synth_1/vivado.jou
+# Running On: eda4152-2, OS: Linux, CPU Frequency: 2900.000 MHz, CPU Physical cores: 8, Host memory: 16291 MB
+#-----------------------------------------------------------
+source bd_ilmb_v10_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 3082.387 ; gain = 2.016 ; free physical = 8528 ; free virtual = 63025
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP bd_ilmb_v10_0, cache-ID = 47dcc34f261c128b.
+INFO: [Common 17-206] Exiting Vivado at Fri Oct 10 16:05:25 2025...

@@ -1,0 +1,31 @@
+Nothing to build in platform 'LED_Lab'
+
+23:28:39 **** Incremental Build of configuration Debug for project LED_LAB_PROJECT ****
+make all 
+Building file: ../src/lab2a.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/lab2a.o" -I/home/jashshah/Desktop/Embedded_Lab/Lab_4/workspace/LED_Lab/export/LED_Lab/sw/LED_Lab/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/lab2a.d" -MT"src/lab2a.o" -o "src/lab2a.o" "../src/lab2a.c"
+In file included from ../src/qpn_port.h:38,
+                 from ../src/lab2a.c:8:
+/home/jashshah/Desktop/Embedded_Lab/Lab_4/workspace/LED_Lab/export/LED_Lab/sw/LED_Lab/standalone_domain/bspinclude/include/xbasic_types.h:102:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+  102 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+/home/jashshah/Desktop/Embedded_Lab/Lab_4/workspace/LED_Lab/export/LED_Lab/sw/LED_Lab/standalone_domain/bspinclude/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+  103 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+Finished building: ../src/lab2a.c
+ 
+Building target: LED_LAB_PROJECT.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L/home/jashshah/Desktop/Embedded_Lab/Lab_4/workspace/LED_Lab/export/LED_Lab/sw/LED_Lab/standalone_domain/bsplib/lib -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -Wl,--gc-sections -o "LED_LAB_PROJECT.elf"  ./src/bsp.o ./src/fonts.o ./src/lab2a.o ./src/lcd.o ./src/main.o ./src/qepn.o ./src/qfn.o ./src/qfn_init.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: LED_LAB_PROJECT.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size LED_LAB_PROJECT.elf  |tee "LED_LAB_PROJECT.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  24724	   4692	   3552	  32968	   80c8	LED_LAB_PROJECT.elf
+Finished building: LED_LAB_PROJECT.elf.size
+ 
+23:28:40 **** Incremental Build of configuration Debug for project LED_LAB_PROJECT_system ****
+make all 
+Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.

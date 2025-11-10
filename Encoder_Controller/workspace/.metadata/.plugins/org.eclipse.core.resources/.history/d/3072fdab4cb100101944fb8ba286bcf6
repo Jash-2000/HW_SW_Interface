@@ -1,0 +1,242 @@
+/******************************************************************************
+*
+* Copyright (C) 2009 - 2014 Xilinx, Inc.  All rights reserved.
+*
+* Permission is hereby granted, free of charge, to any person obtaining a copy
+* of this software and associated documentation files (the "Software"), to deal
+* in the Software without restriction, including without limitation the rights
+* to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+* copies of the Software, and to permit persons to whom the Software is
+* furnished to do so, subject to the following conditions:
+*
+* The above copyright notice and this permission notice shall be included in
+* all copies or substantial portions of the Software.
+*
+* Use of the Software is limited solely to applications:
+* (a) running on a Xilinx device, or
+* (b) that interact with a Xilinx device through a bus or interconnect.
+*
+* THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+* IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+* FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+* XILINX  BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+* WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF
+* OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+* SOFTWARE.
+*
+* Except as contained in this notice, the name of the Xilinx shall not be used
+* in advertising or otherwise to promote the sale, use or other dealings in
+* this Software without prior written authorization from Xilinx.
+*
+******************************************************************************/
+
+/**************************************************************
+ * Lab 2A – Rotary Encoder (NO debouncing)
+ * - XIntc + XTmrCtr (heartbeat only)
+ * - AXI GPIO: LEDs (out), Encoder (in, interrupt-enabled)
+ * - Quadrature FSM (no time-based filtering)
+ * - Push handled via raw rising-edge flag (toggle display immediately)
+ **************************************************************/
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xgpio.h"
+
+#include "encoder.h"
+
+/********* ====== FILL THESE FROM xparameters.h ====== *********/
+#define INTC_DEVICE_ID             XPAR_INTC_0_DEVICE_ID
+
+#define TMR_DEVICE_ID              XPAR_TMRCTR_0_DEVICE_ID
+#define TMR_VEC_ID                 XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR
+
+#define LED_GPIO_DEVICE_ID         XPAR_AXI_GPIO_LED_DEVICE_ID
+#define ENC_GPIO_DEVICE_ID         XPAR_ENCODER_DEVICE_ID
+#define ENC_GPIO_VEC_ID			   XPAR_MICROBLAZE_0_AXI_INTC_ENCODER_IP2INTC_IRPT_INTR
+/********* =========================================== *********/
+
+/********* Defaults *********/
+#define LED_GPIO_CH                1
+#define ENC_GPIO_CH                1
+#define NUM_USER_LEDS              16
+#define HEARTBEAT_MS               250
+#define TMR_CLOCK_HZ               100000000u
+#define MS_TICKS                   (TMR_CLOCK_HZ/1000u)
+
+/********* Bit mapping: JA[0]=A, JA[1]=B, JA[2]=Push *********/
+#define ENC_A(v)                   (((v)>>0) & 1u)
+#define ENC_B(v)                   (((v)>>1) & 1u)
+#define ENC_P(v)                   (((v)>>2) & 1u)
+
+/********* Globals *********/
+XIntc   g_intc;
+XTmrCtr g_tmr;
+XGpio   g_leds;
+XGpio   g_enc;
+
+volatile uint32_t g_ms = 0;
+static inline uint32_t ms_now(void){ return g_ms; }
+
+encoder_t enc;
+
+volatile uint8_t led_pos = 0;
+volatile uint8_t saved_pos = 0;
+volatile bool display_on = true;
+volatile bool hb_on = false;
+uint32_t hb_t0 = 0;
+
+/********* ISRs *********/
+static void isr_timer(void *cb)
+{
+    XTmrCtr T = (XTmrCtr)cb;
+    // Clear timer int by writing INT_OCCURED (works with XTmrCtr driver too)
+    XTmrCtr_Reset(T, 0);   // reload & clear
+    g_ms++;
+}
+
+static void isr_encoder(void *cb)
+{
+    (void)cb;
+    uint32_t v  = XGpio_DiscreteRead(&g_enc, ENC_GPIO_CH);
+    uint8_t ab  = (ENC_A(v) << 1) | ENC_B(v);
+    uint8_t p   = ENC_P(v);
+
+    encoder_quad_step(&enc, ab);      // no debounce
+    encoder_push_update(&enc, p);     // sets push_rise/push_fall flags (raw)
+
+    // clear source (level-sensitive)
+    XGpio_InterruptClear(&g_enc, XGPIO_IR_CH1_MASK);
+}
+
+/********* Init *********/
+static int init_timer(void)
+{
+    int s = XTmrCtr_Initialize(&g_tmr, TMR_DEVICE_ID);
+    if (s != XST_SUCCESS) return s;
+
+    XTmrCtr_SetOptions(&g_tmr, 0, XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION | XTC_DOWN_COUNT_OPTION);
+    uint32_t reset_value = 0xFFFFFFFFu - (MS_TICKS - 1u);
+    XTmrCtr_SetResetValue(&g_tmr, 0, reset_value);
+    return XST_SUCCESS;
+}
+
+static int init_gpios(void)
+{
+    int s = XGpio_Initialize(&g_leds, LED_GPIO_DEVICE_ID);
+    if (s != XST_SUCCESS) return s;
+    XGpio_SetDataDirection(&g_leds, LED_GPIO_CH, 0x00000000u);
+
+    s = XGpio_Initialize(&g_enc, ENC_GPIO_DEVICE_ID);
+    if (s != XST_SUCCESS) return s;
+    XGpio_SetDataDirection(&g_enc, ENC_GPIO_CH, 0xFFFFFFFFu);
+
+    // enable encoder GPIO interrupts
+    XGpio_InterruptDisable(&g_enc, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptClear(&g_enc,  XGPIO_IR_CH1_MASK);
+    XGpio_InterruptEnable(&g_enc,  XGPIO_IR_CH1_MASK);
+    XGpio_InterruptGlobalEnable(&g_enc);
+
+    // seed encoder states from current pins
+    uint32_t v = XGpio_DiscreteRead(&g_enc, ENC_GPIO_CH);
+    uint8_t ab = (ENC_A(v) << 1) | ENC_B(v);
+    uint8_t p  = ENC_P(v);
+    encoder_init(&enc, ab, p);
+
+    return XST_SUCCESS;
+}
+
+static int init_intc(void)
+{
+    int s = XIntc_Initialize(&g_intc, INTC_DEVICE_ID);
+    if (s != XST_SUCCESS) return s;
+
+    s = XIntc_Connect(&g_intc, TMR_VEC_ID, (XInterruptHandler)isr_timer, &g_tmr);
+    if (s != XST_SUCCESS) return s;
+
+    s = XIntc_Connect(&g_intc, ENC_GPIO_VEC_ID, (XInterruptHandler)isr_encoder, NULL);
+    if (s != XST_SUCCESS) return s;
+
+    s = XIntc_Start(&g_intc, XIN_REAL_MODE);
+    if (s != XST_SUCCESS) return s;
+
+    XIntc_Enable(&g_intc, TMR_VEC_ID);
+    XIntc_Enable(&g_intc, ENC_GPIO_VEC_ID);
+
+    Xil_ExceptionInit();
+    Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+                                 (Xil_ExceptionHandler)XIntc_InterruptHandler,
+                                 &g_intc);
+    Xil_ExceptionEnable();
+
+    XTmrCtr_Start(&g_tmr, 0);
+    return XST_SUCCESS;
+}
+
+/********* LED helpers *********/
+static void led_apply(void)
+{
+    uint32_t out = 0;
+    if (display_on) out = (1u << (led_pos % NUM_USER_LEDS));
+    else if (hb_on) out ^= 0x1u; // heartbeat on LED0 when display is off (optional)
+    XGpio_DiscreteWrite(&g_leds, LED_GPIO_CH, out);
+}
+static void led_left(void)
+{
+    if (!display_on) return;
+    led_pos = (uint8_t)((led_pos + 1) % NUM_USER_LEDS);
+}
+static void led_right(void)
+{
+    if (!display_on) return;
+    led_pos = (led_pos == 0) ? (NUM_USER_LEDS - 1) : (led_pos - 1);
+}
+static void display_off(void)
+{
+    if (!display_on) return;
+    saved_pos = led_pos;
+    display_on = false;
+}
+static void display_restore(void)
+{
+    if (display_on) return;
+    led_pos = saved_pos % NUM_USER_LEDS;
+    display_on = true;
+}
+
+/********* main *********/
+int main(void)
+{
+    xil_printf("\r\n[Lab2A] Rotary Encoder (no debounce)\r\n");
+
+    if (init_gpios() != XST_SUCCESS) { xil_printf("GPIO init failed\r\n"); return -1; }
+    if (init_timer() != XST_SUCCESS) { xil_printf("Timer init failed\r\n"); return -2; }
+    if (init_intc()  != XST_SUCCESS) { xil_printf("INTC init failed\r\n");  return -3; }
+
+    led_pos = 0; display_on = true; hb_t0 = ms_now(); led_apply();
+
+    xil_printf("[Lab2A] Twist: CW→Right, CCW→Left. Push toggles display (raw edge).\r\n");
+
+    while(1)
+    {
+        uint32_t now = ms_now();
+        if ((now - hb_t0) >= HEARTBEAT_MS) { hb_on = !hb_on; hb_t0 = now; }
+        if (enc.push_rise) {
+            enc.push_rise = false;
+            if (display_on) display_off();
+            else            display_restore();
+        }
+
+        // consume steps
+        if (enc.step_right) { enc.step_right = false; led_right(); }
+        if (enc.step_left)  { enc.step_left  = false; led_left();  }
+
+        led_apply();
+    }
+    return 0;
+}

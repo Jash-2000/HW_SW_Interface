@@ -1,0 +1,683 @@
+
+*** Running vivado
+    with args -log bd_wrapper.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source bd_wrapper.tcl
+
+
+****** Vivado v2022.1 (64-bit)
+  **** SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+  **** IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+source bd_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 3094.258 ; gain = 2.016 ; free physical = 5368 ; free virtual = 56029
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/jashshah/Desktop/Embedded_Lab/Lab_2/SevenSeg_Urbana_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/ece/Xilinx/Vivado/2022.1/data/ip'.
+Command: read_checkpoint -auto_incremental -incremental /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/utils_1/imports/synth_1/bd_wrapper.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/utils_1/imports/synth_1/bd_wrapper.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top bd_wrapper -part xc7s50csga324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s50'
+INFO: [Device 21-403] Loading part xc7s50csga324-1
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 672897
+WARNING: [Synth 8-9501] generate block is allowed only inside loop and conditional generate in SystemVerilog mode [/ece/Xilinx/Vivado/2022.1/data/ip/xpm/xpm_fifo/hdl/xpm_fifo.sv:4023]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 3098.430 ; gain = 0.000 ; free physical = 3471 ; free virtual = 54132
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'bd_wrapper' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/hdl/bd_wrapper.v:12]
+INFO: [Synth 8-6157] synthesizing module 'bd' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:12]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_gpio_0_5' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_5_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_gpio_0_5' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_5_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_SevenSeg_Urbana_v1_0_0_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_SevenSeg_Urbana_v1_0_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_SevenSeg_Urbana_v1_0_0_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_SevenSeg_Urbana_v1_0_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_gpio_RGB_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_RGB_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_gpio_RGB_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_RGB_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_gpio_0_3' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_3_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_gpio_0_3' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_3_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_gpio_0_2' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_2_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_gpio_0_2' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_2_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_gpio_0_4' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_4_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_gpio_0_4' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_4_stub.v:5]
+WARNING: [Synth 8-7071] port 'gpio_io_o' of module 'bd_axi_gpio_0_4' is unconnected for instance 'axi_gpio_switch' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:606]
+WARNING: [Synth 8-7071] port 'gpio_io_t' of module 'bd_axi_gpio_0_4' is unconnected for instance 'axi_gpio_switch' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:606]
+WARNING: [Synth 8-7023] instance 'axi_gpio_switch' of module 'bd_axi_gpio_0_4' has 22 connections declared, but only 20 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:606]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_smc_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_smc_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_smc_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_smc_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_timer_0_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_timer_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_timer_0_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_timer_0_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'generateout0' of module 'bd_axi_timer_0_0' is unconnected for instance 'axi_timer_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:712]
+WARNING: [Synth 8-7071] port 'generateout1' of module 'bd_axi_timer_0_0' is unconnected for instance 'axi_timer_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:712]
+WARNING: [Synth 8-7071] port 'pwm0' of module 'bd_axi_timer_0_0' is unconnected for instance 'axi_timer_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:712]
+WARNING: [Synth 8-7023] instance 'axi_timer_0' of module 'bd_axi_timer_0_0' has 26 connections declared, but only 23 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:712]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_timer_1_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_timer_1_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_timer_1_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_timer_1_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'generateout0' of module 'bd_axi_timer_1_0' is unconnected for instance 'axi_timer_1' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:736]
+WARNING: [Synth 8-7071] port 'generateout1' of module 'bd_axi_timer_1_0' is unconnected for instance 'axi_timer_1' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:736]
+WARNING: [Synth 8-7071] port 'pwm0' of module 'bd_axi_timer_1_0' is unconnected for instance 'axi_timer_1' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:736]
+WARNING: [Synth 8-7023] instance 'axi_timer_1' of module 'bd_axi_timer_1_0' has 26 connections declared, but only 23 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:736]
+INFO: [Synth 8-6157] synthesizing module 'bd_clk_wiz_0_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_clk_wiz_0_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_clk_wiz_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_clk_wiz_1_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_clk_wiz_1_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_clk_wiz_1_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_clk_wiz_1_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_mdm_1_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_mdm_1_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_mdm_1_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_mdm_1_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_microblaze_0_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_microblaze_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_microblaze_0_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_microblaze_0_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWID' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWADDR' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWLEN' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWSIZE' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWBURST' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWLOCK' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWCACHE' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWPROT' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWQOS' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_AWVALID' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_WDATA' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_WSTRB' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_WLAST' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_WVALID' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_BREADY' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_IC_ARID' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_DC_AWID' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7071] port 'M_AXI_DC_ARID' of module 'bd_microblaze_0_0' is unconnected for instance 'microblaze_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+WARNING: [Synth 8-7023] instance 'microblaze_0' of module 'bd_microblaze_0_0' has 126 connections declared, but only 108 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:803]
+INFO: [Synth 8-6157] synthesizing module 'bd_microblaze_0_axi_intc_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_microblaze_0_axi_intc_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_microblaze_0_axi_intc_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_microblaze_0_axi_intc_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_microblaze_0_axi_periph_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1347]
+INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_I4RTNM' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3147]
+INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_I4RTNM' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3147]
+INFO: [Synth 8-6157] synthesizing module 'm01_couplers_imp_1OREAA5' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3279]
+INFO: [Synth 8-6155] done synthesizing module 'm01_couplers_imp_1OREAA5' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3279]
+INFO: [Synth 8-6157] synthesizing module 'm02_couplers_imp_1C3VSE5' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3411]
+INFO: [Synth 8-6155] done synthesizing module 'm02_couplers_imp_1C3VSE5' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3411]
+INFO: [Synth 8-6157] synthesizing module 'm03_couplers_imp_F75N9U' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3543]
+INFO: [Synth 8-6155] done synthesizing module 'm03_couplers_imp_F75N9U' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3543]
+INFO: [Synth 8-6157] synthesizing module 'm04_couplers_imp_IEZVRX' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3675]
+INFO: [Synth 8-6155] done synthesizing module 'm04_couplers_imp_IEZVRX' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3675]
+INFO: [Synth 8-6157] synthesizing module 'm05_couplers_imp_1OHC0DU' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3807]
+INFO: [Synth 8-6155] done synthesizing module 'm05_couplers_imp_1OHC0DU' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3807]
+INFO: [Synth 8-6157] synthesizing module 'm06_couplers_imp_1CDYIGY' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3939]
+INFO: [Synth 8-6155] done synthesizing module 'm06_couplers_imp_1CDYIGY' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3939]
+INFO: [Synth 8-6157] synthesizing module 'm07_couplers_imp_EWXV1P' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4071]
+INFO: [Synth 8-6155] done synthesizing module 'm07_couplers_imp_EWXV1P' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4071]
+INFO: [Synth 8-6157] synthesizing module 'm08_couplers_imp_JSJIFW' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4217]
+INFO: [Synth 8-6155] done synthesizing module 'm08_couplers_imp_JSJIFW' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4217]
+INFO: [Synth 8-6157] synthesizing module 'm09_couplers_imp_1PAX0TV' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4349]
+INFO: [Synth 8-6155] done synthesizing module 'm09_couplers_imp_1PAX0TV' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4349]
+INFO: [Synth 8-6157] synthesizing module 'm10_couplers_imp_17IBFXJ' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4481]
+INFO: [Synth 8-6155] done synthesizing module 'm10_couplers_imp_17IBFXJ' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4481]
+INFO: [Synth 8-6157] synthesizing module 'm11_couplers_imp_222HHK' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4613]
+INFO: [Synth 8-6155] done synthesizing module 'm11_couplers_imp_222HHK' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4613]
+INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_1TLQHAM' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4979]
+INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_1TLQHAM' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4979]
+INFO: [Synth 8-6157] synthesizing module 'bd_xbar_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_xbar_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_xbar_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_xbar_0_stub.v:5]
+WARNING: [Synth 8-689] width (24) of port connection 'm_axi_arprot' does not match port width (36) of module 'bd_xbar_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3108]
+WARNING: [Synth 8-689] width (24) of port connection 'm_axi_awprot' does not match port width (36) of module 'bd_xbar_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:3112]
+INFO: [Synth 8-6155] done synthesizing module 'bd_microblaze_0_axi_periph_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1347]
+INFO: [Synth 8-6157] synthesizing module 'microblaze_0_local_memory_imp_1SYIHLX' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4745]
+INFO: [Synth 8-6157] synthesizing module 'bd_dlmb_bram_if_cntlr_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_dlmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_dlmb_bram_if_cntlr_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_dlmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_dlmb_v10_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_dlmb_v10_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_dlmb_v10_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_dlmb_v10_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'LMB_Rst' of module 'bd_dlmb_v10_0' is unconnected for instance 'dlmb_v10' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4891]
+WARNING: [Synth 8-7023] instance 'dlmb_v10' of module 'bd_dlmb_v10_0' has 25 connections declared, but only 24 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4891]
+INFO: [Synth 8-6157] synthesizing module 'bd_ilmb_bram_if_cntlr_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_ilmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_ilmb_bram_if_cntlr_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_ilmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'bd_ilmb_v10_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_ilmb_v10_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_ilmb_v10_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_ilmb_v10_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'LMB_Rst' of module 'bd_ilmb_v10_0' is unconnected for instance 'ilmb_v10' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4937]
+WARNING: [Synth 8-7023] instance 'ilmb_v10' of module 'bd_ilmb_v10_0' has 25 connections declared, but only 24 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4937]
+INFO: [Synth 8-6157] synthesizing module 'bd_lmb_bram_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_lmb_bram_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_lmb_bram_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_lmb_bram_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'rsta_busy' of module 'bd_lmb_bram_0' is unconnected for instance 'lmb_bram' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4962]
+WARNING: [Synth 8-7071] port 'rstb_busy' of module 'bd_lmb_bram_0' is unconnected for instance 'lmb_bram' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4962]
+WARNING: [Synth 8-7023] instance 'lmb_bram' of module 'bd_lmb_bram_0' has 16 connections declared, but only 14 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4962]
+INFO: [Synth 8-6155] done synthesizing module 'microblaze_0_local_memory_imp_1SYIHLX' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:4745]
+INFO: [Synth 8-6157] synthesizing module 'bd_microblaze_0_xlconcat_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_microblaze_0_xlconcat_0/synth/bd_microblaze_0_xlconcat_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'xlconcat_v2_1_4_xlconcat' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'xlconcat_v2_1_4_xlconcat' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ipshared/4b67/hdl/xlconcat_v2_1_vl_rfs.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'bd_microblaze_0_xlconcat_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_microblaze_0_xlconcat_0/synth/bd_microblaze_0_xlconcat_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'bd_mig_7series_0_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_mig_7series_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_mig_7series_0_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_mig_7series_0_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'app_sr_active' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7071] port 'app_ref_ack' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7071] port 'app_zq_ack' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7071] port 's_axi_bid' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7071] port 's_axi_rid' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7071] port 'init_calib_complete' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7071] port 'device_temp' of module 'bd_mig_7series_0_0' is unconnected for instance 'mig_7series_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+WARNING: [Synth 8-7023] instance 'mig_7series_0' of module 'bd_mig_7series_0_0' has 63 connections declared, but only 56 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1221]
+INFO: [Synth 8-6157] synthesizing module 'bd_rst_clk_wiz_1_100M_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_rst_clk_wiz_1_100M_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_rst_clk_wiz_1_100M_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_rst_clk_wiz_1_100M_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'bd_rst_clk_wiz_1_100M_0' is unconnected for instance 'rst_clk_wiz_1_100M' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1278]
+WARNING: [Synth 8-7023] instance 'rst_clk_wiz_1_100M' of module 'bd_rst_clk_wiz_1_100M_0' has 10 connections declared, but only 9 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1278]
+INFO: [Synth 8-6157] synthesizing module 'bd_rst_mig_7series_0_166M_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_rst_mig_7series_0_166M_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_rst_mig_7series_0_166M_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_rst_mig_7series_0_166M_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'bd_rst_mig_7series_0_166M_0' is unconnected for instance 'rst_mig_7series_0_166M' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1288]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'bd_rst_mig_7series_0_166M_0' is unconnected for instance 'rst_mig_7series_0_166M' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1288]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'bd_rst_mig_7series_0_166M_0' is unconnected for instance 'rst_mig_7series_0_166M' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1288]
+WARNING: [Synth 8-7023] instance 'rst_mig_7series_0_166M' of module 'bd_rst_mig_7series_0_166M_0' has 10 connections declared, but only 7 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1288]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_quad_spi_0_0' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_quad_spi_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_quad_spi_0_0' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_quad_spi_0_0_stub.v:5]
+WARNING: [Synth 8-7071] port 'io0_t' of module 'bd_axi_quad_spi_0_0' is unconnected for instance 'spi' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+WARNING: [Synth 8-7071] port 'io1_o' of module 'bd_axi_quad_spi_0_0' is unconnected for instance 'spi' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+WARNING: [Synth 8-7071] port 'io1_t' of module 'bd_axi_quad_spi_0_0' is unconnected for instance 'spi' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+WARNING: [Synth 8-7071] port 'sck_t' of module 'bd_axi_quad_spi_0_0' is unconnected for instance 'spi' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+WARNING: [Synth 8-7071] port 'ss_t' of module 'bd_axi_quad_spi_0_0' is unconnected for instance 'spi' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+WARNING: [Synth 8-7071] port 'ip2intc_irpt' of module 'bd_axi_quad_spi_0_0' is unconnected for instance 'spi' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+WARNING: [Synth 8-7023] instance 'spi' of module 'bd_axi_quad_spi_0_0' has 33 connections declared, but only 27 given [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:1296]
+INFO: [Synth 8-6157] synthesizing module 'bd_axi_gpio_0_6' [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_6_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd_axi_gpio_0_6' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/.Xil/Vivado-672534-eda4152-3/realtime/bd_axi_gpio_0_6_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'bd' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/synth/bd.v:12]
+INFO: [Synth 8-6155] done synthesizing module 'bd_wrapper' (0#1) [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/hdl/bd_wrapper.v:12]
+WARNING: [Synth 8-7129] Port In5[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In6[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In7[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In8[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In9[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In10[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In11[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In12[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In13[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In14[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In15[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In16[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In17[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In18[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In19[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In20[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In21[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In22[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In23[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In24[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In25[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In26[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In27[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In28[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In29[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In30[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In31[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In32[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In33[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In34[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In35[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In36[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In37[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In38[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In39[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In40[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In41[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In42[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In43[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In44[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In45[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In46[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In47[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In48[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In49[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In50[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In51[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In52[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In53[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In54[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In55[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In56[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In57[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In58[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In59[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In60[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In61[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In62[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In63[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In64[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In65[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In66[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In67[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In68[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In69[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In70[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In71[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In72[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In73[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In74[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In75[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In76[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In77[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In78[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In79[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In80[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In81[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In82[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In83[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In84[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In85[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In86[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In87[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In88[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In89[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In90[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In91[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In92[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In93[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In94[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In95[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In96[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In97[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In98[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In99[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In100[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In101[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In102[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In103[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+WARNING: [Synth 8-7129] Port In104[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3106.379 ; gain = 7.949 ; free physical = 4574 ; free virtual = 55236
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3121.223 ; gain = 22.793 ; free physical = 4572 ; free virtual = 55234
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 3121.223 ; gain = 22.793 ; free physical = 4572 ; free virtual = 55234
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3121.223 ; gain = 0.000 ; free physical = 4563 ; free virtual = 55225
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_RGB_0/bd_axi_gpio_RGB_0/bd_axi_gpio_RGB_0_in_context.xdc] for cell 'bd_i/axi_gpio_RGB'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_RGB_0/bd_axi_gpio_RGB_0/bd_axi_gpio_RGB_0_in_context.xdc] for cell 'bd_i/axi_gpio_RGB'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_smc_0/bd_axi_smc_0/bd_axi_smc_0_in_context.xdc] for cell 'bd_i/axi_smc'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_smc_0/bd_axi_smc_0/bd_axi_smc_0_in_context.xdc] for cell 'bd_i/axi_smc'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_timer_0_0/bd_axi_timer_0_0/bd_axi_timer_0_0_in_context.xdc] for cell 'bd_i/axi_timer_0'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_timer_0_0/bd_axi_timer_0_0/bd_axi_timer_0_0_in_context.xdc] for cell 'bd_i/axi_timer_0'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_1_0/bd_clk_wiz_1_0/bd_clk_wiz_1_0_in_context.xdc] for cell 'bd_i/clk_wiz_1'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_1_0/bd_clk_wiz_1_0/bd_clk_wiz_1_0_in_context.xdc] for cell 'bd_i/clk_wiz_1'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mdm_1_0/bd_mdm_1_0/bd_mdm_1_0_in_context.xdc] for cell 'bd_i/mdm_1'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mdm_1_0/bd_mdm_1_0/bd_mdm_1_0_in_context.xdc] for cell 'bd_i/mdm_1'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_microblaze_0_0/bd_microblaze_0_0/bd_microblaze_0_0_in_context.xdc] for cell 'bd_i/microblaze_0'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_microblaze_0_0/bd_microblaze_0_0/bd_microblaze_0_0_in_context.xdc] for cell 'bd_i/microblaze_0'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_microblaze_0_axi_intc_0/bd_microblaze_0_axi_intc_0/bd_microblaze_0_axi_intc_0_in_context.xdc] for cell 'bd_i/microblaze_0_axi_intc'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_microblaze_0_axi_intc_0/bd_microblaze_0_axi_intc_0/bd_microblaze_0_axi_intc_0_in_context.xdc] for cell 'bd_i/microblaze_0_axi_intc'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_xbar_0/bd_xbar_0/bd_xbar_0_in_context.xdc] for cell 'bd_i/microblaze_0_axi_periph/xbar'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_xbar_0/bd_xbar_0/bd_xbar_0_in_context.xdc] for cell 'bd_i/microblaze_0_axi_periph/xbar'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_dlmb_bram_if_cntlr_0/bd_dlmb_bram_if_cntlr_0/bd_dlmb_bram_if_cntlr_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/dlmb_bram_if_cntlr'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_dlmb_bram_if_cntlr_0/bd_dlmb_bram_if_cntlr_0/bd_dlmb_bram_if_cntlr_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/dlmb_bram_if_cntlr'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_dlmb_v10_0/bd_dlmb_v10_0/bd_dlmb_v10_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/dlmb_v10'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_dlmb_v10_0/bd_dlmb_v10_0/bd_dlmb_v10_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/dlmb_v10'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_ilmb_bram_if_cntlr_0/bd_ilmb_bram_if_cntlr_0/bd_ilmb_bram_if_cntlr_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/ilmb_bram_if_cntlr'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_ilmb_bram_if_cntlr_0/bd_ilmb_bram_if_cntlr_0/bd_ilmb_bram_if_cntlr_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/ilmb_bram_if_cntlr'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_ilmb_v10_0/bd_ilmb_v10_0/bd_dlmb_v10_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/ilmb_v10'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_ilmb_v10_0/bd_ilmb_v10_0/bd_dlmb_v10_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/ilmb_v10'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_lmb_bram_0/bd_lmb_bram_0/bd_lmb_bram_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/lmb_bram'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_lmb_bram_0/bd_lmb_bram_0/bd_lmb_bram_0_in_context.xdc] for cell 'bd_i/microblaze_0_local_memory/lmb_bram'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc] for cell 'bd_i/mig_7series_0'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc] for cell 'bd_i/mig_7series_0'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_rst_clk_wiz_1_100M_0/bd_rst_clk_wiz_1_100M_0/bd_rst_clk_wiz_1_100M_0_in_context.xdc] for cell 'bd_i/rst_clk_wiz_1_100M'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_rst_clk_wiz_1_100M_0/bd_rst_clk_wiz_1_100M_0/bd_rst_clk_wiz_1_100M_0_in_context.xdc] for cell 'bd_i/rst_clk_wiz_1_100M'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_rst_mig_7series_0_166M_0/bd_rst_mig_7series_0_166M_0/bd_rst_mig_7series_0_166M_0_in_context.xdc] for cell 'bd_i/rst_mig_7series_0_166M'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_rst_mig_7series_0_166M_0/bd_rst_mig_7series_0_166M_0/bd_rst_mig_7series_0_166M_0_in_context.xdc] for cell 'bd_i/rst_mig_7series_0_166M'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_timer_1_0/bd_axi_timer_1_0/bd_axi_timer_0_0_in_context.xdc] for cell 'bd_i/axi_timer_1'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_timer_1_0/bd_axi_timer_1_0/bd_axi_timer_0_0_in_context.xdc] for cell 'bd_i/axi_timer_1'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_2/bd_axi_gpio_0_2/bd_axi_gpio_0_2_in_context.xdc] for cell 'bd_i/axi_gpio_led'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_2/bd_axi_gpio_0_2/bd_axi_gpio_0_2_in_context.xdc] for cell 'bd_i/axi_gpio_led'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_3/bd_axi_gpio_0_3/bd_axi_gpio_0_3_in_context.xdc] for cell 'bd_i/axi_gpio_btn'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_3/bd_axi_gpio_0_3/bd_axi_gpio_0_3_in_context.xdc] for cell 'bd_i/axi_gpio_btn'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_SevenSeg_Urbana_v1_0_0_0/bd_SevenSeg_Urbana_v1_0_0_0/bd_SevenSeg_Urbana_v1_0_0_0_in_context.xdc] for cell 'bd_i/SevenSeg_Urbana_v1_0_0'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_SevenSeg_Urbana_v1_0_0_0/bd_SevenSeg_Urbana_v1_0_0_0/bd_SevenSeg_Urbana_v1_0_0_0_in_context.xdc] for cell 'bd_i/SevenSeg_Urbana_v1_0_0'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_4/bd_axi_gpio_0_4/bd_axi_gpio_0_4_in_context.xdc] for cell 'bd_i/axi_gpio_switch'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_4/bd_axi_gpio_0_4/bd_axi_gpio_0_4_in_context.xdc] for cell 'bd_i/axi_gpio_switch'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_5/bd_axi_gpio_0_5/bd_axi_gpio_0_5_in_context.xdc] for cell 'bd_i/Encoder'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_5/bd_axi_gpio_0_5/bd_axi_gpio_0_5_in_context.xdc] for cell 'bd_i/Encoder'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_6/bd_axi_gpio_0_6/bd_axi_gpio_0_6_in_context.xdc] for cell 'bd_i/spi_dc_RnM'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_gpio_0_6/bd_axi_gpio_0_6/bd_axi_gpio_0_6_in_context.xdc] for cell 'bd_i/spi_dc_RnM'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_0_0/bd_clk_wiz_0_0/bd_clk_wiz_0_0_in_context.xdc] for cell 'bd_i/clk_wiz_0'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_0_0/bd_clk_wiz_0_0/bd_clk_wiz_0_0_in_context.xdc] for cell 'bd_i/clk_wiz_0'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_quad_spi_0_0/bd_axi_quad_spi_0_0/bd_axi_quad_spi_0_0_in_context.xdc] for cell 'bd_i/spi'
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_axi_quad_spi_0_0/bd_axi_quad_spi_0_0/bd_axi_quad_spi_0_0_in_context.xdc] for cell 'bd_i/spi'
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/imports/lab_files_2025_urbana/urbana.xdc]
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/imports/lab_files_2025_urbana/urbana.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/imports/lab_files_2025_urbana/urbana.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/bd_wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/bd_wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/new/bd_wrapper.xdc]
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/new/bd_wrapper.xdc]
+Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3202.098 ; gain = 0.000 ; free physical = 4479 ; free virtual = 55141
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.03 . Memory (MB): peak = 3202.098 ; gain = 0.000 ; free physical = 4478 ; free virtual = 55140
+WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'bd_i/microblaze_0_local_memory/lmb_bram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
+INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
+INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4549 ; free virtual = 55211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s50csga324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4549 ; free virtual = 55211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property IO_BUFFER_TYPE = NONE for sys_clk_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_1_0/bd_clk_wiz_1_0/bd_clk_wiz_1_0_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_1_0/bd_clk_wiz_1_0/bd_clk_wiz_1_0_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for sys_clk_p. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_1_0/bd_clk_wiz_1_0/bd_clk_wiz_1_0_in_context.xdc, line 6).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for sys_clk_p. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_clk_wiz_1_0/bd_clk_wiz_1_0/bd_clk_wiz_1_0_in_context.xdc, line 7).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 2).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 3).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[10]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 4).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[10]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 5).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[11]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 6).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[11]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 7).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[12]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 8).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[12]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 9).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 10).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 11).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[2]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 12).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[2]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 13).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[3]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 14).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[3]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 15).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[4]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 16).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[4]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 17).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[5]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 18).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[5]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 19).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[6]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 20).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[6]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 21).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[7]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 22).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[7]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 23).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[8]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 24).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[8]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 25).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_addr[9]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 26).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_addr[9]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 27).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ba[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 28).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ba[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 29).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ba[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 30).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ba[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 31).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ba[2]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 32).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ba[2]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 33).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cas_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 34).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cas_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 35).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ck_n[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 37).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ck_p[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 39).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_cke[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 40).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_cke[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 41).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 42).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 43).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dm[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 44).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dm[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 45).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 46).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 47).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[10]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 48).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[10]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 49).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[11]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 50).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[11]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 51).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[12]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 52).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[12]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 53).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[13]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 54).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[13]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 55).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[14]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 56).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[14]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 57).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[15]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 58).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[15]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 59).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 60).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 61).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[2]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 62).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[2]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 63).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[3]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 64).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[3]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 65).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[4]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 66).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[4]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 67).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[5]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 68).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[5]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 69).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[6]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 70).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[6]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 71).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[7]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 72).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[7]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 73).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[8]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 74).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[8]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 75).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dq[9]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 76).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dq[9]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 77).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 78).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 79).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_n[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 80).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_n[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 81).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 82).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 83).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_dqs_p[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 84).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_dqs_p[1]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 85).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_odt[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 86).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_odt[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 87).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ras_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 88).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_ras_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 89).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_reset_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 90).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_reset_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 91).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_we_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 92).
+Applied set_property CLOCK_BUFFER_TYPE = NONE for ddr3_we_n. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.gen/sources_1/bd/bd/ip/bd_mig_7series_0_0/bd_mig_7series_0_0/bd_mig_7series_0_0_in_context.xdc, line 93).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_n[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/imports/lab_files_2025_urbana/urbana.xdc, line 191).
+Applied set_property IO_BUFFER_TYPE = NONE for ddr3_ck_p[0]. (constraint file  /home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.srcs/constrs_1/imports/lab_files_2025_urbana/urbana.xdc, line 192).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_gpio_RGB. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_smc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_timer_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/clk_wiz_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/mdm_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_axi_intc. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_axi_periph/xbar. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_axi_periph. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_local_memory/dlmb_bram_if_cntlr. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_local_memory/dlmb_v10. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_local_memory/ilmb_bram_if_cntlr. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_local_memory/ilmb_v10. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_local_memory/lmb_bram. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/microblaze_0_xlconcat. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/mig_7series_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/rst_clk_wiz_1_100M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/rst_mig_7series_0_166M. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_timer_1. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_gpio_led. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_gpio_btn. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/SevenSeg_Urbana_v1_0_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/axi_gpio_switch. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/Encoder. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/spi_dc_RnM. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/clk_wiz_0. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for bd_i/spi. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4549 ; free virtual = 55211
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4550 ; free virtual = 55213
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4533 ; free virtual = 55200
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4408 ; free virtual = 55076
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4408 ; free virtual = 55076
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:16 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4407 ; free virtual = 55075
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4406 ; free virtual = 55073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4406 ; free virtual = 55073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4405 ; free virtual = 55073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4405 ; free virtual = 55073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4405 ; free virtual = 55073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4405 ; free virtual = 55073
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+----------------------------+----------+
+|      |BlackBox name               |Instances |
++------+----------------------------+----------+
+|1     |bd_xbar_0                   |         1|
+|2     |bd_axi_gpio_0_5             |         1|
+|3     |bd_SevenSeg_Urbana_v1_0_0_0 |         1|
+|4     |bd_axi_gpio_RGB_0           |         1|
+|5     |bd_axi_gpio_0_3             |         1|
+|6     |bd_axi_gpio_0_2             |         1|
+|7     |bd_axi_gpio_0_4             |         1|
+|8     |bd_axi_smc_0                |         1|
+|9     |bd_axi_timer_0_0            |         1|
+|10    |bd_axi_timer_1_0            |         1|
+|11    |bd_clk_wiz_0_0              |         1|
+|12    |bd_clk_wiz_1_0              |         1|
+|13    |bd_mdm_1_0                  |         1|
+|14    |bd_microblaze_0_0           |         1|
+|15    |bd_microblaze_0_axi_intc_0  |         1|
+|16    |bd_mig_7series_0_0          |         1|
+|17    |bd_rst_clk_wiz_1_100M_0     |         1|
+|18    |bd_rst_mig_7series_0_166M_0 |         1|
+|19    |bd_axi_quad_spi_0_0         |         1|
+|20    |bd_axi_gpio_0_6             |         1|
+|21    |bd_dlmb_bram_if_cntlr_0     |         1|
+|22    |bd_dlmb_v10_0               |         1|
+|23    |bd_ilmb_bram_if_cntlr_0     |         1|
+|24    |bd_ilmb_v10_0               |         1|
+|25    |bd_lmb_bram_0               |         1|
++------+----------------------------+----------+
+
+Report Cell Usage: 
++------+--------------------------+------+
+|      |Cell                      |Count |
++------+--------------------------+------+
+|1     |bd_SevenSeg_Urbana_v1_0_0 |     1|
+|2     |bd_axi_gpio_0             |     5|
+|7     |bd_axi_gpio_RGB           |     1|
+|8     |bd_axi_quad_spi_0         |     1|
+|9     |bd_axi_smc                |     1|
+|10    |bd_axi_timer_0            |     1|
+|11    |bd_axi_timer_1            |     1|
+|12    |bd_clk_wiz_0              |     1|
+|13    |bd_clk_wiz_1              |     1|
+|14    |bd_dlmb_bram_if_cntlr     |     1|
+|15    |bd_dlmb_v10               |     1|
+|16    |bd_ilmb_bram_if_cntlr     |     1|
+|17    |bd_ilmb_v10               |     1|
+|18    |bd_lmb_bram               |     1|
+|19    |bd_mdm_1                  |     1|
+|20    |bd_microblaze_0           |     1|
+|21    |bd_microblaze_0_axi_intc  |     1|
+|22    |bd_mig_7series_0          |     1|
+|23    |bd_rst_clk_wiz_1_100M     |     1|
+|24    |bd_rst_mig_7series_0_166M |     1|
+|25    |bd_xbar                   |     1|
+|26    |IBUF                      |    23|
+|27    |OBUF                      |    51|
++------+--------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4405 ; free virtual = 55073
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 27 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 3202.098 ; gain = 22.793 ; free physical = 4457 ; free virtual = 55125
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:19 . Memory (MB): peak = 3202.098 ; gain = 103.668 ; free physical = 4559 ; free virtual = 55227
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 3202.098 ; gain = 0.000 ; free physical = 4552 ; free virtual = 55220
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3202.098 ; gain = 0.000 ; free physical = 4493 ; free virtual = 55161
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 8dd89469
+INFO: [Common 17-83] Releasing license: Synthesis
+111 Infos, 163 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 3202.098 ; gain = 107.840 ; free physical = 4696 ; free virtual = 55364
+INFO: [Common 17-1381] The checkpoint '/home/jashshah/Desktop/Embedded_Lab/Lab_0/jash_project_1/jash_project_1.runs/synth_1/bd_wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file bd_wrapper_utilization_synth.rpt -pb bd_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Thu Oct 30 21:01:45 2025...

@@ -1,0 +1,144 @@
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xtmrctr.h"
+#include "xintc.h"
+#include "xil_exception.h"
+#include "sleep.h"
+#include "sevenSeg_new.h"
+
+// ================== Hardware Device IDs ==================
+#define BUTTONS_DEVICE_ID   XPAR_AXI_GPIO_BTN_DEVICE_ID
+#define TIMER_DEVICE_ID     XPAR_TMRCTR_0_DEVICE_ID
+#define INTC_DEVICE_ID      XPAR_MICROBLAZE_0_AXI_INTC_DEVICE_ID
+
+#define TIMER_IRPT_ID       XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR
+#define BUTTON_IRPT_ID      XPAR_MICROBLAZE_0_AXI_INTC_AXI_GPIO_BTN_IP2INTC_IRPT_INTR
+
+// ================== Timing Parameters ==================
+#define TIMER_FREQ_HZ       10000      // 10000 Hz = 0.1 ms per tick
+#define REFRESH_DELAY_US    100    // 1 ms delay between digit pairs
+
+// ================== Global Variables ==================
+XGpio   GpioBtn;
+XTmrCtr Timer;
+XIntc   Intc;
+
+volatile int running   = 0;     // stopwatch running flag
+volatile int direction = 1;     // +1 = count up, -1 = count down
+volatile int counter   = 0;     // stopwatch counter in tenths of a second
+int digits[8]          = {0};   // 8 display digits
+
+// ================== Helper Functions ==================
+
+// Convert counter to 8 display digits (SSSS.ffff)
+void updateDigits() {
+    int t = counter;
+    if (t < 0) t = 0;
+
+    int secs = t / 10000;   // whole seconds
+    int frac = t % 10000;   //
+
+    digits[0] = secs % 10;
+    digits[1] = secs % 10; secs /= 10;
+    digits[2] = secs % 10; secs /= 10;
+    digits[3] = secs % 10; secs /= 10;
+    digits[7] = frac%10; frac/=10;
+    digits[6] = frac%10; frac/=10;
+    digits[5] = frac%10; frac/=10;
+    digits[4] = frac%10;
+
+}
+
+// ================== Interrupt Service Routines ==================
+
+// Timer interrupt: updates the stopwatch count every 0.1 s
+void TimerISR() {
+    if (running) {
+        counter += direction;
+        if (counter < 0) counter = 0;
+    }
+    XTmrCtr_Reset(&Timer, 0);
+    updateDigits();
+}
+
+// Button interrupt: handles 4 push-buttons
+void ButtonISR() {
+    int btns = XGpio_DiscreteRead(&GpioBtn, 1);
+
+    if (btns & 0x01){ counter = 0; xil_printf("\n Button 'Reset' ticked!\r\n");}        // Reset
+    else if (btns & 0x02) {running = 1; xil_printf("\n Button 'Start' ticked!\r\n");}   // Start
+    else if (btns & 0x04) {running = 0; xil_printf("\n Button 'Stop' ticked!\r\n");}   // Stop
+    else if (btns & 0x08) {direction != direction; xil_printf("\n Button 'Count Reversal' ticked!\r\n");} // Count reverse
+
+    usleep(10000); // debounce delay
+    XGpio_InterruptClear(&GpioBtn, 1);
+}
+
+// ================== Initialization ==================
+int initHardware() {
+	XStatus Status;
+
+    // Interrupt Controller Setup
+    Status = XIntc_Initialize(&Intc, INTC_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // GPIO Buttons
+    Status = XGpio_Initialize(&GpioBtn, BUTTONS_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+    XGpio_SetDataDirection(&GpioBtn, 1, 0xFF);
+    XGpio_InterruptEnable(&GpioBtn, 1);
+    XGpio_InterruptGlobalEnable(&GpioBtn);
+
+    // Timer Setup
+    Status = XTmrCtr_Initialize(&Timer, TIMER_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+    //XTmrCtr_SetHandler(&Timer, TimerISR, &Timer);
+    XTmrCtr_SetResetValue(&Timer, 0, TIMER_FREQ_HZ);
+    XTmrCtr_SetOptions(&Timer, 0,
+        XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION);
+    XTmrCtr_Start(&Timer, 0);
+
+    XIntc_Connect(&Intc, TIMER_IRPT_ID,
+        (XInterruptHandler)TimerISR, &Timer);
+    XIntc_Connect(&Intc, BUTTON_IRPT_ID,
+        (XInterruptHandler)ButtonISR, &GpioBtn);
+
+    XIntc_Start(&Intc, XIN_REAL_MODE);
+    XIntc_Enable(&Intc, TIMER_IRPT_ID);
+    XIntc_Enable(&Intc, BUTTON_IRPT_ID);
+
+    // MicroBlaze Interrupt Registration
+    Xil_ExceptionInit();
+    Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+        (Xil_ExceptionHandler)XIntc_InterruptHandler, &Intc);
+    Xil_ExceptionEnable();
+
+    microblaze_enable_interrupts();
+    xil_printf("Interrupts enabled!\r\n");
+
+    return XST_SUCCESS;
+}
+
+// ================== Main ==================
+int main() {
+    if (initHardware() != XST_SUCCESS)
+        return XST_FAILURE;
+
+    xil_printf("Hello Pratyush");
+    updateDigits();
+
+    while (1) {
+        // Refresh display — 2 digits at a time using your Urbana driver
+        sevenseg_draw_digit(0, 0, digits[0], digits[1]);
+        usleep(REFRESH_DELAY_US);
+
+        sevenseg_draw_digit(1, 1, digits[2], digits[3]);
+        usleep(REFRESH_DELAY_US);
+
+        sevenseg_draw_digit(2, 2, digits[4], digits[5]);
+        usleep(REFRESH_DELAY_US);
+
+        sevenseg_draw_digit(3, 3, digits[6], digits[7]);
+        usleep(REFRESH_DELAY_US);
+    }
+}

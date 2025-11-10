@@ -1,0 +1,13 @@
+com.xilinx.sdk.linkgen.prefs.Encoder\:.bss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.data=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.rodata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.sbss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.sbss2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.sdata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.sdata2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:.text=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:heap=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:heap-size=4096
+com.xilinx.sdk.linkgen.prefs.Encoder\:stack=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Encoder\:stack-size=4096
+eclipse.preferences.version=1

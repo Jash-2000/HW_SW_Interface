@@ -1,0 +1,58 @@
+/*
+ *timing.c: simple starter application for lab 1A and 1B
+ *
+ */
+
+#include <stdio.h>		// Used for printf()
+#include <stdlib.h>		// Used for rand()
+#include "xparameters.h"	// Contains hardware addresses and bit masks
+#include "xil_cache.h"		// Cache Drivers
+#include "xintc.h"		// Interrupt Drivers
+#include "xtmrctr.h"		// Timer Drivers
+#include "xtmrctr_l.h" 		// Low-level timer drivers
+#include "xil_printf.h" 	// Used for xil_printf()
+#include "extra.h" 		// Provides a source of bus contention
+#include "xgpio.h" 		// LED driver, used for General purpose I/i
+
+#define NUMBER_OF_TRIALS 1000
+
+
+/*
+ * The following are declared globally so they are zeroed and so they are
+ * easily accessible from a debugger
+ */
+XGpio Gpio; /* The Instance of the GPIO Driver used for LED 0 */
+
+int timer_main() {
+    // Caches enabled here -- Diasble if you want alternate measurements
+	Xil_ICacheInvalidate();
+	Xil_ICacheEnable();
+	Xil_DCacheInvalidate();
+	Xil_DCacheEnable();
+	print("---Entering main---\n\r");
+	int timer_val_before; //Used to store the timer value before executing the operation being timed
+
+	// Extra Method contains an interrupt routine which is set to go off at timed intervals
+	extra_method();
+
+	//TIMER RESET CODE
+	//Turn off the timer
+	XTmrCtr_SetControlStatusReg(XPAR_TMRCTR_0_BASEADDR, 1, 0);
+	//Put a zero in the load register
+	XTmrCtr_SetLoadReg(XPAR_TMRCTR_0_BASEADDR, 1, 0);
+	//Copy the load register into the counter register
+	XTmrCtr_SetControlStatusReg(XPAR_TMRCTR_0_BASEADDR, 1, XTC_CSR_LOAD_MASK);
+	//Enable (start) the timer
+	XTmrCtr_SetControlStatusReg(XPAR_TMRCTR_0_BASEADDR, 1,
+			XTC_CSR_ENABLE_TMR_MASK);
+	//END TIMER RESET CODE
+
+	//INITIALIZATION FOR AXI GPIO LED PORT
+	XGpio_Initialize(&Gpio, XPAR_AXI_GPIO_LED_DEVICE_ID);
+
+	//Store the timer value before executing the operation being timed
+	timer_val_before = XTmrCtr_GetTimerCounterReg(XPAR_TMRCTR_0_BASEADDR, 1);
+	int jash = XTmrCtr_GetTimerCounterReg(XPAR_TMRCTR_0_BASEADDR, 1) - timer_val_before; //Stores the time to execute the operation
+
+
+}

@@ -1,0 +1,238 @@
+/*
+ * main_LCD_testing_btn.c
+ * Adds Rotary Encoder push-switch as an interrupt that resets the timer.
+ */
+
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "xil_exception.h"
+#include "lcd.h"
+
+/* -------------------- Runtime flags -------------------- */
+volatile int timerTrigger   = 0;
+volatile int buttonPressed  = 0;   // board pushbuttons
+volatile int encPressed     = 0;   // encoder push-switch
+
+/* -------------------- Update these for YOUR design -------------------- */
+/* Buttons block (already present in your design) */
+#define BTN_GPIO_DEVICE_ID      XPAR_AXI_GPIO_BTN_DEVICE_ID
+#define BTN_GPIO_CHANNEL        1   /* or 2 if wired on CH2 */
+#define BTN_GPIO_IRQ_ID         XPAR_MICROBLAZE_0_AXI_INTC_AXI_GPIO_BTN_IP2INTC_IRPT_INTR
+
+/* Rotary encoder push-switch GPIO (NEW) */
+#define ENC_GPIO_DEVICE_ID      XPAR_ENCODER_DEVICE_ID
+#define ENC_GPIO_CHANNEL        1   /* change if you used CH2 for the encoder */
+#define ENC_GPIO_IRQ_ID         XPAR_MICROBLAZE_0_AXI_INTC_ENCODER_IP2INTC_IRPT_INTR
+
+/* Set to 1 if encoder push-switch is active-LOW, 0 if active-HIGH */
+#define ENC_ACTIVE_LOW          1
+/* --------------------------------------------------------------------- */
+
+static XGpio btnGpio;
+static XGpio encGpio;
+
+/* -------------------- ISRs -------------------- */
+void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
+{
+    (void)CallBackRef; (void)TmrCtrNumber;
+    timerTrigger = 1;
+}
+
+void ButtonsHandler(void *CallbackRef)
+{
+    XGpio *g = (XGpio *)CallbackRef;
+    u32 st = XGpio_InterruptGetStatus(g);
+    XGpio_InterruptClear(g, st);
+
+    if (st) {
+        /* any button press -> reset request */
+        buttonPressed = 1;
+    }
+}
+
+void EncoderHandler(void *CallbackRef)
+{
+    XGpio *g = (XGpio *)CallbackRef;
+    u32 st = XGpio_InterruptGetStatus(g);
+    XGpio_InterruptClear(g, st);
+
+    if (st) {
+        u32 val = XGpio_DiscreteRead(g, ENC_GPIO_CHANNEL);
+#if ENC_ACTIVE_LOW
+        val ^= 0xFFFFFFFFu;         /* invert if wired active-low */
+#endif
+        /* Treat LSB as the push-switch; change mask if you wired elsewhere */
+        if (val & 0x1)
+            encPressed = 1;
+    }
+}
+
+/* -------------------- UI drawing -------------------- */
+static void drawScene(void)
+{
+    /* Full-screen red background + thin orange border */
+    setColor(255, 0, 0);
+    fillRect(0, 0, DISP_X_SIZE, DISP_Y_SIZE);                             /* :contentReference[oaicite:2]{index=2} */
+
+    setColor(255, 165, 0);
+    fillRect(0, 0, DISP_X_SIZE, 1);
+    fillRect(0, DISP_Y_SIZE-1, DISP_X_SIZE, DISP_Y_SIZE);
+    fillRect(0, 0, 1, DISP_Y_SIZE);
+    fillRect(DISP_X_SIZE-1, 0, DISP_X_SIZE, DISP_Y_SIZE);
+
+    /* Keep your foreground triangles exactly as before (right/iso, your choice) */
+    const int TILE = 40, MARGIN = 2;
+    setColor(255, 165, 0);
+    for (int yy = MARGIN; yy + TILE <= DISP_Y_SIZE - MARGIN; yy += TILE) {
+        for (int xx = MARGIN; xx + TILE <= DISP_X_SIZE - MARGIN; xx += TILE) {
+            int parity = (((xx - MARGIN)/TILE) ^ ((yy - MARGIN)/TILE)) & 1;
+            if (parity == 0) fillRightTri(xx, yy, TILE, 0);
+            else             fillRightTri(xx, yy, TILE, 3);
+        }
+    }
+}
+
+/* -------------------- MAIN -------------------- */
+int main()
+{
+    Xil_ICacheInvalidate(); Xil_ICacheEnable();
+    Xil_DCacheInvalidate(); Xil_DCacheEnable();
+
+    static XIntc   intc;
+    static XTmrCtr axiTimer;
+    static XGpio   dc;
+    static XSpi    spi;
+
+    XSpi_Config *spiConfig;
+    u32 status;
+    u32 controlReg;
+
+    int  sec = 0;
+    char secStr[4] = "000";
+
+    xil_printf("---Entering main---\n\r");
+
+    /* -------- Timer + INTC base init -------- */
+    status = XTmrCtr_Initialize(&axiTimer, XPAR_AXI_TIMER_0_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize timer fail!\n"); return XST_FAILURE; }
+
+    status = XIntc_Initialize(&intc, XPAR_INTC_0_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize INTC fail!\n"); return XST_FAILURE; }
+
+    /* Register INTC with the exception table (important!) */
+    Xil_ExceptionInit();
+    Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+                                 (Xil_ExceptionHandler)XIntc_InterruptHandler, &intc);
+    Xil_ExceptionEnable();
+
+    /* Connect timer ISR */
+    status = XIntc_Connect(&intc,
+        XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR,
+        (XInterruptHandler)XTmrCtr_InterruptHandler, (void *)&axiTimer);
+    if (status != XST_SUCCESS) { xil_printf("Connect timer IHR fail!\n"); return XST_FAILURE; }
+
+    /* -------- Buttons GPIO + ISR (existing) -------- */
+    status = XGpio_Initialize(&btnGpio, BTN_GPIO_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Init button GPIO fail!\n"); return XST_FAILURE; }
+    XGpio_SetDataDirection(&btnGpio, BTN_GPIO_CHANNEL, 0xFFFFFFFF);
+
+    status = XIntc_Connect(&intc, BTN_GPIO_IRQ_ID,
+                           (XInterruptHandler)ButtonsHandler, (void *)&btnGpio);
+    if (status != XST_SUCCESS) { xil_printf("Connect button IHR fail!\n"); return XST_FAILURE; }
+
+    /* -------- Encoder GPIO + ISR (NEW) -------- */
+    status = XGpio_Initialize(&encGpio, ENC_GPIO_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Init encoder GPIO fail!\n"); return XST_FAILURE; }
+    XGpio_SetDataDirection(&encGpio, ENC_GPIO_CHANNEL, 0xFFFFFFFF);
+
+    status = XIntc_Connect(&intc, ENC_GPIO_IRQ_ID,
+                           (XInterruptHandler)EncoderHandler, (void *)&encGpio);
+    if (status != XST_SUCCESS) { xil_printf("Connect encoder IHR fail!\n"); return XST_FAILURE; }
+
+    /* -------- Start INTC + enable IRQ lines -------- */
+    status = XIntc_Start(&intc, XIN_REAL_MODE);
+    if (status != XST_SUCCESS) { xil_printf("Start INTC fail!\n"); return XST_FAILURE; }
+
+    XIntc_Enable(&intc, XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR);
+    XIntc_Enable(&intc, BTN_GPIO_IRQ_ID);
+    XIntc_Enable(&intc, ENC_GPIO_IRQ_ID);
+
+    /* Arm GPIO interrupt sources (buttons + encoder) */
+    XGpio_InterruptGlobalDisable(&btnGpio);
+    XGpio_InterruptDisable(&btnGpio, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptClear(&btnGpio, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptEnable(&btnGpio, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptGlobalEnable(&btnGpio);
+
+    XGpio_InterruptGlobalDisable(&encGpio);
+    XGpio_InterruptDisable(&encGpio, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptClear(&encGpio, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptEnable(&encGpio, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptGlobalEnable(&encGpio);
+
+    /* Finally, turn on CPU interrupts */
+    microblaze_enable_interrupts();
+
+    /* -------- Timer options -------- */
+    XTmrCtr_SetHandler(&axiTimer, TimerCounterHandler, &axiTimer);
+    XTmrCtr_SetOptions(&axiTimer, 0, XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION);
+    XTmrCtr_SetResetValue(&axiTimer, 0, 0xFFFF0000);
+    XTmrCtr_Start(&axiTimer, 0);
+    xil_printf("Timer start!\n");
+
+    /* -------- SPI + LCD init (unchanged) -------- */
+    status = XGpio_Initialize(&dc, XPAR_SPI_DC_DEVICE_ID);
+    if (status != XST_SUCCESS) { xil_printf("Initialize GPIO dc fail!\n"); return XST_FAILURE; }
+    XGpio_SetDataDirection(&dc, 1, 0x0);
+
+    spiConfig = XSpi_LookupConfig(XPAR_SPI_DEVICE_ID);
+    if (spiConfig == NULL)    { xil_printf("Can't find spi device!\n"); return XST_DEVICE_NOT_FOUND; }
+    status = XSpi_CfgInitialize(&spi, spiConfig, spiConfig->BaseAddress);
+    if (status != XST_SUCCESS){ xil_printf("Initialize spi fail!\n");   return XST_FAILURE; }
+    XSpi_Reset(&spi);
+    controlReg = XSpi_GetControlReg(&spi);
+    XSpi_SetControlReg(&spi,
+        (controlReg | XSP_CR_ENABLE_MASK | XSP_CR_MASTER_MODE_MASK) & (~XSP_CR_TRANS_INHIBIT_MASK));
+    XSpi_SetSlaveSelectReg(&spi, ~0x01);
+
+    initLCD();                     /* LCD power-up + default font /       / :contentReference[oaicite:3]{index=3} */
+    drawScene();
+
+    setFont(SevenSegNumFont);      /* large 7-seg digits /                 / :contentReference[oaicite:4]{index=4} */
+    setColor(238, 64, 0);
+    setColorBg(255, 0, 0);
+
+    const int DIGIT_X = 70, DIGIT_Y = 190;
+
+    /* -------- Main loop -------- */
+    for (;;) {
+        /* Encoder press OR board button => reset timer immediately */
+        if (encPressed || buttonPressed) {
+            sec = 0;
+            lcdPrint("000", DIGIT_X, DIGIT_Y);                             /* :contentReference[oaicite:5]{index=5} */
+            encPressed = 0;
+            buttonPressed = 0;
+        }
+
+        if (timerTrigger) {
+            int s = sec++ % 1000;
+            secStr[0] = '0' + (s / 100);
+            secStr[1] = '0' + ((s / 10) % 10);
+            secStr[2] = '0' + (s % 10);
+            lcdPrint(secStr, DIGIT_X, DIGIT_Y);
+            timerTrigger = 0;
+        }
+
+        /* Optional: add a tiny sleep/yield if you’d like */
+    }
+
+    return 0;
+}
