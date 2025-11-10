@@ -1,0 +1,42 @@
+timestamp=[2025-10-10 16:16:22], mode=WORKBENCH_START, duration=0:00:15.437, duration_ms=15437, data={}
+timestamp=[2025-10-10 16:16:23], mode=WORKBENCH_UI_INIT, duration=0:00:01.388, duration_ms=1388, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2025-10-10 16:16:25], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:02.463, duration_ms=2463, data={}
+timestamp=[2025-10-10 16:18:17], mode=PLATFORM_CREATION, duration=0:00:32.736, duration_ms=32736, data={platform_source=dsa, os=standalone, processor=microblaze, platform=null}
+timestamp=[2025-10-10 16:21:08], mode=APP_CREATION, duration=0:00:03.991, duration_ms=3991, data={name=Lab0, project_type=sdk, os=standalone, processor=microblaze_0, runtime=C/C++, platform=Pratyush, application_type=application}
+timestamp=[2025-10-10 16:27:28], mode=PLATFORM_GENERATION, duration=0:00:29.975, duration_ms=29975, data={name=Pratyush}
+timestamp=[2025-10-10 16:27:32], mode=BUILD, duration=0:00:01.459, duration_ms=1459, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 16:32:29], mode=BUILD, duration=0:00:00.326, duration_ms=326, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:39:54], mode=WORKBENCH_START, duration=0:00:03.858, duration_ms=3858, data={}
+timestamp=[2025-10-10 17:39:55], mode=WORKBENCH_UI_INIT, duration=0:00:00.420, duration_ms=420, data={editors_count=6, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Lab0,Lab0_system,Pratyush,RemoteSystemsTempFiles}
+timestamp=[2025-10-10 17:39:55], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.737, duration_ms=737, data={}
+timestamp=[2025-10-10 17:40:07], mode=BUILD, duration=0:00:00.630, duration_ms=630, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:44:27], mode=BUILD, duration=0:00:00.430, duration_ms=430, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:44:28], mode=BUILD, duration=0:00:00.435, duration_ms=435, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:52:17], mode=BUILD, duration=0:00:01.374, duration_ms=1374, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:52:18], mode=BUILD, duration=0:00:00.150, duration_ms=150, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:52:43], mode=BUILD, duration=0:00:00.227, duration_ms=227, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:52:44], mode=BUILD, duration=0:00:00.182, duration_ms=182, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:54:08], mode=BUILD, duration=0:00:00.365, duration_ms=365, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:54:08], mode=BUILD, duration=0:00:00.140, duration_ms=140, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:54:51], mode=BUILD, duration=0:00:00.244, duration_ms=244, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:54:51], mode=BUILD, duration=0:00:00.081, duration_ms=81, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:55:21], mode=BUILD, duration=0:00:00.520, duration_ms=520, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:55:22], mode=BUILD, duration=0:00:00.259, duration_ms=259, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:57:35], mode=BUILD, duration=0:00:00.481, duration_ms=481, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:57:36], mode=BUILD, duration=0:00:00.237, duration_ms=237, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:57:46], mode=BUILD, duration=0:00:00.625, duration_ms=625, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 17:57:46], mode=BUILD, duration=0:00:00.143, duration_ms=143, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 18:05:27], mode=WORKBENCH_START, duration=0:00:03.624, duration_ms=3624, data={}
+timestamp=[2025-10-10 18:05:27], mode=WORKBENCH_UI_INIT, duration=0:00:00.463, duration_ms=463, data={editors_count=4, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Lab0,Lab0_system,Pratyush,RemoteSystemsTempFiles}
+timestamp=[2025-10-10 18:05:27], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.532, duration_ms=532, data={}
+timestamp=[2025-10-10 18:05:36], mode=BUILD, duration=0:00:00.122, duration_ms=122, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 18:05:37], mode=BUILD, duration=0:00:00.093, duration_ms=93, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 18:06:35], mode=BUILD, duration=0:00:00.301, duration_ms=301, data={name=Lab0, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 18:06:35], mode=BUILD, duration=0:00:00.137, duration_ms=137, data={name=Lab0_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-10 18:08:22], mode=WORKBENCH_START, duration=0:00:03.662, duration_ms=3662, data={}
+timestamp=[2025-10-10 18:08:23], mode=WORKBENCH_UI_INIT, duration=0:00:00.422, duration_ms=422, data={editors_count=4, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Lab0,Lab0_system,Pratyush,RemoteSystemsTempFiles}
+timestamp=[2025-10-10 18:08:23], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.548, duration_ms=548, data={}
+timestamp=[2025-10-10 19:30:26], mode=WORKBENCH_START, duration=0:00:04.988, duration_ms=4988, data={}
+timestamp=[2025-10-10 19:30:27], mode=WORKBENCH_UI_INIT, duration=0:00:00.801, duration_ms=801, data={editors_count=5, platform_editors_count=1, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=Lab0,Lab0_system,Pratyush,RemoteSystemsTempFiles}
+timestamp=[2025-10-10 19:30:27], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.737, duration_ms=737, data={}
+timestamp=[2025-10-10 19:30:52], mode=BUILD, duration=0:00:00.257, duration_ms=257, data={name=Lab0, configuration=Debug, clean_build=false}
