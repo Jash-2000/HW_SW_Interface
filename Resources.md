@@ -1,3 +1,7 @@
  - https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10203014
  - https://www.youtube.com/watch?v=msXKWn24TN4
  - https://www.youtube.com/watch?v=EsJGuI7e_ZQ
+ - https://www.realdigital.org/doc/496fed57c6b275735fe24c85de5718c2
+ - https://docs.amdc.dev/getting-started/advanced-tutorials/fpga-ip-core/index.html
+ - https://www.instructables.com/Creating-Custom-Vivado-IP/
+ - https://www.youtube.com/results?search_query=writing+verilog+device+driver+blocks
