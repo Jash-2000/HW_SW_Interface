@@ -1,0 +1,8 @@
+Nothing to build in platform 'Mic_Usage'
+
+03:22:31 **** Incremental Build of configuration Debug for project Gym_Boys ****
+make all 
+make: Nothing to be done for 'all'.
+03:22:31 **** Incremental Build of configuration Debug for project Gym_Boys_system ****
+make all 
+Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.

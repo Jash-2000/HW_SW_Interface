@@ -1,0 +1,209 @@
+#include <stdio.h>
+#include "xil_cache.h"
+#include <mb_interface.h>
+
+#include "xparameters.h"
+#include <xil_types.h>
+#include <xil_assert.h>
+#include <xio.h>
+#include "xtmrctr.h"
+#include "fft.h"
+#include "note.h"
+#include "stream_grabber.h"
+
+// =========================
+// Config: 512 -> 128, pad to 256
+// =========================
+
+#define RAW_SAMPLES   512         // grab 512 samples per loop
+#define AVG_FACTOR    4           // 4-way averaging
+#define EFF_SAMPLES   (RAW_SAMPLES / AVG_FACTOR)   // 128
+
+#define NFFT          256         // zero-padded FFT length
+#define MFFT          8           // log2(256)
+
+#define CLOCK         100000000.0 // 100 MHz
+
+// =========================
+// Buffers
+// =========================
+
+static float q_raw[RAW_SAMPLES];  // raw samples from grabber
+static float q_fft[NFFT];         // averaged + padded real buffer
+static float w_fft[NFFT];         // imag buffer for FFT
+
+unsigned seqf, seql, seq_old = 0;
+
+// =========================
+// Grab RAW_SAMPLES from grabber
+// =========================
+
+void read_fsl_values(float *q, int n)
+{
+    int i;
+    unsigned int x;
+    const float scale = 3.3f / 67108864.0f; // 3.3V and 2^26 bits
+
+    stream_grabber_start();
+    stream_grabber_wait_enough_samples(RAW_SAMPLES);
+
+    seql = stream_grabber_read_seq_counter();
+    seqf = stream_grabber_read_seq_counter_latched();
+
+    for (i = 0; i < n; i++) {
+        x    = stream_grabber_read_sample(i);
+        q[i] = scale * (float)x;
+    }
+}
+
+// =========================
+// main
+// =========================
+
+int main()
+{
+    float sample_f_raw;   // ~48.8 kHz
+    float sample_f_eff;   // ~12.2 kHz after AVG_FACTOR=4
+    float frequency = 0.0f;
+    uint32_t Control;
+
+    // perf monitor
+    uint32_t loop_ticks, loop_us, max_loop_us = 0;
+    uint32_t loop_counter = 0;
+
+    int i;
+
+    // Enable caches
+    Xil_ICacheInvalidate();
+    Xil_ICacheEnable();
+    Xil_DCacheInvalidate();
+    Xil_DCacheEnable();
+
+    // Timer
+    XTmrCtr timer;
+    XTmrCtr_Initialize(&timer, XPAR_AXI_TIMER_0_DEVICE_ID);
+    Control = XTmrCtr_GetOptions(&timer, 0)
+              | XTC_CAPTURE_MODE_OPTION
+              | XTC_INT_MODE_OPTION;
+    XTmrCtr_SetOptions(&timer, 0, Control);
+
+    print("Hello World\n\r");
+
+    XTmrCtr_Start(&timer, 0);
+
+    // sampling rates
+    sample_f_raw = 100000000.0f / 2048.0f;
+    sample_f_eff = sample_f_raw / (float)AVG_FACTOR;  // fs / 4
+
+    while (1) {
+
+        uint32_t t_start = XTmrCtr_GetValue(&timer, 0);
+
+        // 1) Read 512 raw samples
+        read_fsl_values(q_raw, RAW_SAMPLES);
+        seq_old = seql;
+
+        // 2) Remove DC offset over 512 samples
+        float mean = 0.0f;
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            mean += q_raw[i];
+        }
+        mean /= (float)RAW_SAMPLES;
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            q_raw[i] -= mean;
+        }
+
+        // 3) 4-way averaging: 512 -> 128 then pad to 256
+        //    First 128 entries of q_fft are averaged samples
+        //    Remaining 128 entries are 0 for padding
+        for (i = 0; i < NFFT; i++) {
+            q_fft[i] = 0.0f;
+            w_fft[i] = 0.0f;
+        }
+
+        for (i = 0; i < EFF_SAMPLES; i++) {
+            int base = i * AVG_FACTOR; // 0,4,8,...
+            float acc = q_raw[base]
+                      + q_raw[base + 1]
+                      + q_raw[base + 2]
+                      + q_raw[base + 3];
+            q_fft[i] = acc;            // no divide; amplitude not important
+        }
+
+        // 4) Run 256-point FFT
+        (void)fft(q_fft, w_fft, NFFT, MFFT, sample_f_eff);
+        // After this, q_fft/w_fft hold complex spectrum
+
+        // 5) Find peak in magnitude^2, with parabolic interpolation for accuracy
+        {
+            int k;
+            int best_k = 1;
+            float best_mag = 0.0f;
+
+            // search between bins 1 and NFFT/2 - 2
+            // (avoid DC at 0 and Nyquist at NFFT/2)
+            int k_min = 1;
+            int k_max = (NFFT / 2) - 2;
+
+            for (k = k_min; k <= k_max; k++) {
+                float re = q_fft[k];
+                float im = w_fft[k];
+                float mag2 = re * re + im * im;
+                if (mag2 > best_mag) {
+                    best_mag = mag2;
+                    best_k = k;
+                }
+            }
+
+            // Parabolic interpolation around best_k
+            float re1 = q_fft[best_k - 1], im1 = w_fft[best_k - 1];
+            float re2 = q_fft[best_k],     im2 = w_fft[best_k];
+            float re3 = q_fft[best_k + 1], im3 = w_fft[best_k + 1];
+
+            float y1 = re1re1 + im1im1;
+            float y2 = re2re2 + im2im2;
+            float y3 = re3re3 + im3im3;
+
+            // Standard 3-point parabolic interpolation
+            // delta = 0.5 * (y1 - y3) / (y1 - 2*y2 + y3)
+            float denom = (y1 - 2.0f*y2 + y3);
+            float delta = 0.0f;
+            if (denom != 0.0f) {
+                delta = 0.5f * (y1 - y3) / denom;
+            }
+
+            // Estimated bin index = best_k + delta
+            float bin_est = (float)best_k + delta;
+
+            // Convert to frequency
+            float bin_spacing = sample_f_eff / (float)NFFT; // Hz per bin
+            frequency = bin_est * bin_spacing;
+        }
+
+        uint32_t t_end = XTmrCtr_GetValue(&timer, 0);
+
+        // perf timing
+        if (t_end >= t_start)
+            loop_ticks = t_end - t_start;
+        else
+            loop_ticks = (0xFFFFFFFFu - t_start) + t_end + 1u;
+
+        loop_us = (uint32_t)((loop_ticks * 1000000.0f) / CLOCK);
+        if (loop_us > max_loop_us)
+            max_loop_us = loop_us;
+
+        loop_counter++;
+
+        // VERY throttled printing so UART doesn't dominate
+        if ((loop_counter & 0x1F) == 0) {  // every 32nd loop
+            xil_printf("Loop latency: %u us (max: %u us)\r\n",
+                       (unsigned)loop_us, (unsigned)max_loop_us);
+            xil_printf("frequency: %d Hz\r\n", (int)(frequency + 0.5f));
+            findNote(frequency);
+        } else {
+            findNote(frequency);
+        }
+    }
+
+    return 0;
+}

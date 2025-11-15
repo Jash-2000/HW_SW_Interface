@@ -1,0 +1,1081 @@
+TRACE::2025-11-10.18:30:15::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:16::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:16::SCWPlatform::Do not have an existing db opened. 
+TRACE::2025-11-10.18:30:16::SCWPlatform::Opened new HwDB with name bd_wrapper_0
+TRACE::2025-11-10.18:30:16::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	""
+}
+TRACE::2025-11-10.18:30:16::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage"
+		}]
+}
+TRACE::2025-11-10.18:30:16::SCWPlatform::Boot application domains not present, creating them
+TRACE::2025-11-10.18:30:16::SCWPlatform::Pure FPGA device, no boot application will be created.
+TRACE::2025-11-10.18:30:16::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage"
+		}]
+}
+TRACE::2025-11-10.18:30:16::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:16::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:16::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:16::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:16::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:16::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:17::SCWDomain::checking for install qemu data   : 
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:17::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:17::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:17::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2025-11-10.18:30:17::SCWMssOS::No sw design opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::mss does not exists at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::Creating sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::Adding the swdes entry, created swdb /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss with des name /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::updating the scw layer changes to swdes at   /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::Writing mss at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:17::SCWMssOS::Completed writing the mss file at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp
+TRACE::2025-11-10.18:30:17::SCWMssOS::Picking up changes from newly written mss file into SCW Layer. 
+TRACE::2025-11-10.18:30:17::SCWMssOS::Updated the changes from newly written mss file into SCW Layer. 
+TRACE::2025-11-10.18:30:17::SCWMssOS::Completed writing the mss file at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp
+TRACE::2025-11-10.18:30:17::SCWMssOS::Forcing BSP Sources regeneration.
+TRACE::2025-11-10.18:30:25::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:25::SCWMssOS::Adding the swdes entry, mss present, able to open swdb /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss with des name system
+TRACE::2025-11-10.18:30:25::SCWMssOS::Writing the mss file completed /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:25::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:30:25::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:25::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:25::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:25::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:25::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:25::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:25::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:25::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:25::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:25::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:25::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:25::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:25::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:25::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:25::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:25::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:25::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:25::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:25::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:26::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:26::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+LOG::2025-11-10.18:30:26::SCWPlatform::Started generating the artifacts platform Mic_Usage
+TRACE::2025-11-10.18:30:26::SCWPlatform::Sanity checking of platform is completed
+LOG::2025-11-10.18:30:26::SCWPlatform::Started generating the artifacts for system configuration Mic_Usage
+LOG::2025-11-10.18:30:26::SCWSystem::Checking the domain standalone_domain
+LOG::2025-11-10.18:30:26::SCWSystem::Not a boot domain 
+LOG::2025-11-10.18:30:26::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2025-11-10.18:30:26::SCWDomain::Generating domain artifcats
+TRACE::2025-11-10.18:30:26::SCWMssOS::Generating standalone artifcats
+TRACE::2025-11-10.18:30:26::SCWMssOS:: Copying the user libraries. 
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:26::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:26::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::Completed writing the mss file at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp
+TRACE::2025-11-10.18:30:26::SCWMssOS::Mss edits present, copying mssfile into export location /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-11-10.18:30:26::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2025-11-10.18:30:26::SCWDomain::Skipping the build for domain :  standalone_domain
+TRACE::2025-11-10.18:30:26::SCWMssOS::skipping the bsp build ... 
+TRACE::2025-11-10.18:30:26::SCWMssOS::Copying to export directory.
+TRACE::2025-11-10.18:30:26::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2025-11-10.18:30:26::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2025-11-10.18:30:26::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2025-11-10.18:30:26::SCWSystem::Completed Processing the sysconfig Mic_Usage
+LOG::2025-11-10.18:30:26::SCWPlatform::Completed generating the artifacts for system configuration Mic_Usage
+TRACE::2025-11-10.18:30:26::SCWPlatform::Started preparing the platform 
+TRACE::2025-11-10.18:30:26::SCWSystem::Writing the bif file for system config Mic_Usage
+TRACE::2025-11-10.18:30:26::SCWSystem::dir created 
+TRACE::2025-11-10.18:30:26::SCWSystem::Writing the bif 
+TRACE::2025-11-10.18:30:26::SCWPlatform::Started writing the spfm file 
+TRACE::2025-11-10.18:30:26::SCWPlatform::Started writing the xpfm file 
+TRACE::2025-11-10.18:30:26::SCWPlatform::Completed generating the platform
+TRACE::2025-11-10.18:30:26::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-11-10.18:30:26::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-11-10.18:30:26::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:26::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:26::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:26::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:26::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:26::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:26::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:26::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:26::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:26::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2025-11-10.18:30:26::SCWPlatform::updated the xpfm file.
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-11-10.18:30:27::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-11-10.18:30:27::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone_domain",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-11-10.18:30:27::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-11-10.18:30:27::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:27::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on microblaze_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-11-10.18:30:27::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:27::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-11-10.18:30:27::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-11-10.18:30:27::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:27::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:27::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:27::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:28::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:28::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:28::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:28::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:28::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on microblaze_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+TRACE::2025-11-10.18:30:28::SCWPlatform::Clearing the existing platform
+TRACE::2025-11-10.18:30:28::SCWSystem::Clearing the existing sysconfig
+TRACE::2025-11-10.18:30:28::SCWMssOS::Removing the swdes entry for  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:28::SCWSystem::Clearing the domains completed.
+TRACE::2025-11-10.18:30:28::SCWPlatform::Clearing the opened hw db.
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform location is /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Removing the HwDB with name /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Do not have an existing db opened. 
+TRACE::2025-11-10.18:30:28::SCWPlatform::Opened new HwDB with name bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWReader::Active system found as  Mic_Usage
+TRACE::2025-11-10.18:30:28::SCWReader::Handling sysconfig Mic_Usage
+TRACE::2025-11-10.18:30:28::SCWDomain::checking for install qemu data   : 
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:30:28::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:28::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:28::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:29::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:29::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:30:29::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:30:29::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:29::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2025-11-10.18:30:29::SCWMssOS::No sw design opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::mss exists loading the mss file  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::Opened the sw design from mss  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::Adding the swdes entry /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss with des name system
+TRACE::2025-11-10.18:30:29::SCWMssOS::updating the scw layer about changes
+TRACE::2025-11-10.18:30:29::SCWMssOS::Opened the sw design.  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-11-10.18:30:29::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-11-10.18:30:29::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:30:29::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2025-11-10.18:30:29::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2025-11-10.18:30:29::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:30:29::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:30:29::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:30:29::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:30:29::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:30:29::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:30:29::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:30:29::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:30:29::SCWReader::No isolation master present  
+LOG::2025-11-10.18:33:23::SCWPlatform::Started generating the artifacts platform Mic_Usage
+TRACE::2025-11-10.18:33:23::SCWPlatform::Sanity checking of platform is completed
+LOG::2025-11-10.18:33:23::SCWPlatform::Started generating the artifacts for system configuration Mic_Usage
+LOG::2025-11-10.18:33:23::SCWSystem::Checking the domain standalone_domain
+LOG::2025-11-10.18:33:23::SCWSystem::Not a boot domain 
+LOG::2025-11-10.18:33:24::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2025-11-10.18:33:24::SCWDomain::Generating domain artifcats
+TRACE::2025-11-10.18:33:24::SCWMssOS::Generating standalone artifcats
+TRACE::2025-11-10.18:33:24::SCWMssOS:: Copying the user libraries. 
+TRACE::2025-11-10.18:33:24::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:24::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:24::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:24::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:33:24::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:24::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:33:24::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:33:24::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:33:24::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:33:24::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:24::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:24::SCWMssOS::Completed writing the mss file at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp
+TRACE::2025-11-10.18:33:24::SCWMssOS::Mss edits present, copying mssfile into export location /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:24::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-11-10.18:33:24::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2025-11-10.18:33:24::SCWDomain::Building the domain as part of full build :  standalone_domain
+TRACE::2025-11-10.18:33:24::SCWMssOS::doing bsp build ... 
+TRACE::2025-11-10.18:33:24::SCWMssOS::System Command Ran  cd  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp ; bash -c "make  " 
+TRACE::2025-11-10.18:33:24::SCWMssOS::make --no-print-directory seq_libs
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Finished building libraries sequentially.
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -j 26 --no-print-directory par_libs
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/standalone_v7_7/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/standalone_v7_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar
+TRACE::2025-11-10.18:33:24::SCWMssOS::" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA
+TRACE::2025-11-10.18:33:24::SCWMssOS::_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/intc_v3_14/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/intc_v3_14/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "CO
+TRACE::2025-11-10.18:33:24::SCWMssOS::MPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMP
+TRACE::2025-11-10.18:33:24::SCWMssOS::ILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/spi_v4_9/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/spi_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
+TRACE::2025-11-10.18:33:24::SCWMssOS::ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPIL
+TRACE::2025-11-10.18:33:24::SCWMssOS::ER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/uartlite_v3_7/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/bram_v4_7/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" 
+TRACE::2025-11-10.18:33:24::SCWMssOS::"COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_C
+TRACE::2025-11-10.18:33:24::SCWMssOS::OMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2025-11-10.18:33:24::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPI
+TRACE::2025-11-10.18:33:24::SCWMssOS::LER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/gpio_v4_9/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/tmrctr_v4_9/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2025-11-10.18:33:24::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPI
+TRACE::2025-11-10.18:33:24::SCWMssOS::LER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/tmrctr_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "C
+TRACE::2025-11-10.18:33:24::SCWMssOS::OMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COM
+TRACE::2025-11-10.18:33:24::SCWMssOS::PILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make include in microblaze_0/libsrc/cpu_v2_15/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_15/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2025-11-10.18:33:24::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPI
+TRACE::2025-11-10.18:33:24::SCWMssOS::LER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/standalone_v7_7/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/intc_v3_14/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/spi_v4_9/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/standalone_v7_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "
+TRACE::2025-11-10.18:33:24::SCWMssOS::COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_CO
+TRACE::2025-11-10.18:33:24::SCWMssOS::MPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/intc_v3_14/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPI
+TRACE::2025-11-10.18:33:24::SCWMssOS::LER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILE
+TRACE::2025-11-10.18:33:24::SCWMssOS::R_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/spi_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILE
+TRACE::2025-11-10.18:33:24::SCWMssOS::R_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER_
+TRACE::2025-11-10.18:33:24::SCWMssOS::FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/uartlite_v3_7/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "CO
+TRACE::2025-11-10.18:33:24::SCWMssOS::MPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMP
+TRACE::2025-11-10.18:33:24::SCWMssOS::ILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/bram_v4_7/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2025-11-10.18:33:24::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER
+TRACE::2025-11-10.18:33:24::SCWMssOS::_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/gpio_v4_9/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2025-11-10.18:33:24::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER
+TRACE::2025-11-10.18:33:24::SCWMssOS::_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::Running Make libs in microblaze_0/libsrc/tmrctr_v4_9/src
+
+TRACE::2025-11-10.18:33:24::SCWMssOS::make -C microblaze_0/libsrc/tmrctr_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
+TRACE::2025-11-10.18:33:24::SCWMssOS::ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPIL
+TRACE::2025-11-10.18:33:25::SCWMssOS::ER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:25::SCWMssOS::Running Make libs in microblaze_0/libsrc/cpu_v2_15/src
+
+TRACE::2025-11-10.18:33:25::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_15/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2025-11-10.18:33:25::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER
+TRACE::2025-11-10.18:33:25::SCWMssOS::_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-11-10.18:33:25::SCWMssOS::DEBUG NON_LTO_OBJECTS is ../../../lib/microblaze_interrupt_handler.o
+
+TRACE::2025-11-10.18:33:25::SCWMssOS::Finished building libraries parallelly.
+
+TRACE::2025-11-10.18:33:25::SCWMssOS::make --no-print-directory archive
+
+TRACE::2025-11-10.18:33:25::SCWMssOS::mb-ar -r  microblaze_0/lib/libxil.a microblaze_0/lib/xtmrctr_selftest.o microblaze_0/lib/microblaze_invalidate_icache_range.o m
+TRACE::2025-11-10.18:33:25::SCWMssOS::icroblaze_0/lib/xuartlite_intr.o microblaze_0/lib/xtmrctr_sinit.o microblaze_0/lib/xintc_l.o microblaze_0/lib/microblaze_enable
+TRACE::2025-11-10.18:33:25::SCWMssOS::_dcache.o microblaze_0/lib/xtmrctr_g.o microblaze_0/lib/xil_mem.o microblaze_0/lib/microblaze_enable_exceptions.o microblaze_0/
+TRACE::2025-11-10.18:33:25::SCWMssOS::lib/microblaze_interrupts_g.o microblaze_0/lib/xbram_g.o microblaze_0/lib/xil_testcache.o microblaze_0/lib/xintc_intr.o microbl
+TRACE::2025-11-10.18:33:25::SCWMssOS::aze_0/lib/xuartlite_selftest.o microblaze_0/lib/microblaze_selftest.o microblaze_0/lib/hw_exception_handler.o microblaze_0/lib/
+TRACE::2025-11-10.18:33:25::SCWMssOS::xuartlite_sinit.o microblaze_0/lib/xgpio_selftest.o microblaze_0/lib/microblaze_invalidate_cache_ext.o microblaze_0/lib/xuartli
+TRACE::2025-11-10.18:33:25::SCWMssOS::te_g.o microblaze_0/lib/microblaze_invalidate_dcache_range.o microblaze_0/lib/xgpio_intr.o microblaze_0/lib/xspi_options.o micr
+TRACE::2025-11-10.18:33:25::SCWMssOS::oblaze_0/lib/xintc_selftest.o microblaze_0/lib/xio.o microblaze_0/lib/xil_printf.o microblaze_0/lib/xil_sleepcommon.o microblaz
+TRACE::2025-11-10.18:33:25::SCWMssOS::e_0/lib/microblaze_exception_handler.o microblaze_0/lib/xintc_options.o microblaze_0/lib/xtmrctr.o microblaze_0/lib/xspi.o micr
+TRACE::2025-11-10.18:33:25::SCWMssOS::oblaze_0/lib/microblaze_flush_cache_ext_range.o microblaze_0/lib/xgpio_sinit.o microblaze_0/lib/microblaze_sleep.o microblaze_0
+TRACE::2025-11-10.18:33:25::SCWMssOS::/lib/xgpio_g.o microblaze_0/lib/microblaze_disable_icache.o microblaze_0/lib/xintc_g.o microblaze_0/lib/microblaze_interrupt_ha
+TRACE::2025-11-10.18:33:26::SCWMssOS::ndler.o microblaze_0/lib/xbram_selftest.o microblaze_0/lib/microblaze_disable_interrupts.o microblaze_0/lib/microblaze_invalida
+TRACE::2025-11-10.18:33:26::SCWMssOS::te_dcache.o microblaze_0/lib/pvr.o microblaze_0/lib/xinterrupt_wrap.o microblaze_0/lib/xbram_sinit.o microblaze_0/lib/inbyte.o 
+TRACE::2025-11-10.18:33:26::SCWMssOS::microblaze_0/lib/xil_util.o microblaze_0/lib/xil_cache.o microblaze_0/lib/xtmrctr_l.o microblaze_0/lib/xspi_selftest.o microbla
+TRACE::2025-11-10.18:33:26::SCWMssOS::ze_0/lib/xil_misc_psreset_api.o microblaze_0/lib/xspi_sinit.o microblaze_0/lib/microblaze_update_dcache.o microblaze_0/lib/micr
+TRACE::2025-11-10.18:33:26::SCWMssOS::oblaze_flush_cache_ext.o microblaze_0/lib/xspi_g.o microblaze_0/lib/microblaze_flush_dcache_range.o microblaze_0/lib/microblaze
+TRACE::2025-11-10.18:33:26::SCWMssOS::_enable_icache.o microblaze_0/lib/microblaze_disable_dcache.o microblaze_0/lib/_exit.o microblaze_0/lib/xtmrctr_options.o micro
+TRACE::2025-11-10.18:33:26::SCWMssOS::blaze_0/lib/print.o microblaze_0/lib/microblaze_disable_exceptions.o microblaze_0/lib/xuartlite.o microblaze_0/lib/xplatform_in
+TRACE::2025-11-10.18:33:26::SCWMssOS::fo.o microblaze_0/lib/outbyte.o microblaze_0/lib/fcntl.o microblaze_0/lib/microblaze_init_icache_range.o microblaze_0/lib/xil_t
+TRACE::2025-11-10.18:33:26::SCWMssOS::estio.o microblaze_0/lib/xbram_intr.o microblaze_0/lib/xtmrctr_stats.o microblaze_0/lib/xbram.o microblaze_0/lib/xintc.o microb
+TRACE::2025-11-10.18:33:26::SCWMssOS::laze_0/lib/xgpio_extra.o microblaze_0/lib/microblaze_enable_interrupts.o microblaze_0/lib/xspi_stats.o microblaze_0/lib/xil_ass
+TRACE::2025-11-10.18:33:26::SCWMssOS::ert.o microblaze_0/lib/xil_clocking.o microblaze_0/lib/microblaze_flush_dcache.o microblaze_0/lib/microblaze_update_icache.o mi
+TRACE::2025-11-10.18:33:26::SCWMssOS::croblaze_0/lib/xil_testmem.o microblaze_0/lib/xgpio.o microblaze_0/lib/xil_exception.o microblaze_0/lib/microblaze_scrub.o micr
+TRACE::2025-11-10.18:33:26::SCWMssOS::oblaze_0/lib/microblaze_invalidate_cache_ext_range.o microblaze_0/lib/xuartlite_stats.o microblaze_0/lib/xuartlite_l.o microbla
+TRACE::2025-11-10.18:33:26::SCWMssOS::ze_0/lib/errno.o microblaze_0/lib/microblaze_invalidate_icache.o microblaze_0/lib/microblaze_init_dcache_range.o microblaze_0/l
+TRACE::2025-11-10.18:33:26::SCWMssOS::ib/xtmrctr_intr.o
+
+TRACE::2025-11-10.18:33:26::SCWMssOS::Finished building libraries
+
+TRACE::2025-11-10.18:33:29::SCWMssOS::Copying to export directory.
+TRACE::2025-11-10.18:33:37::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2025-11-10.18:33:37::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2025-11-10.18:33:37::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2025-11-10.18:33:37::SCWSystem::Completed Processing the sysconfig Mic_Usage
+LOG::2025-11-10.18:33:37::SCWPlatform::Completed generating the artifacts for system configuration Mic_Usage
+TRACE::2025-11-10.18:33:37::SCWPlatform::Started preparing the platform 
+TRACE::2025-11-10.18:33:37::SCWSystem::Writing the bif file for system config Mic_Usage
+TRACE::2025-11-10.18:33:37::SCWSystem::dir created 
+TRACE::2025-11-10.18:33:37::SCWSystem::Writing the bif 
+TRACE::2025-11-10.18:33:37::SCWPlatform::Started writing the spfm file 
+TRACE::2025-11-10.18:33:37::SCWPlatform::Started writing the xpfm file 
+TRACE::2025-11-10.18:33:37::SCWPlatform::Completed generating the platform
+TRACE::2025-11-10.18:33:37::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:37::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-11-10.18:33:37::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-11-10.18:33:37::SCWMssOS::Commit changes completed.
+TRACE::2025-11-10.18:33:37::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:37::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:37::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:37::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:33:37::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:37::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:33:38::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:33:38::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:33:38::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:33:38::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:38::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:33:38::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:38::SCWWriter::formatted JSON is {
+	"platformName":	"Mic_Usage",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Mic_Usage",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/Lab_5/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Mic_Usage",
+	"systems":	[{
+			"systemName":	"Mic_Usage",
+			"systemDesc":	"Mic_Usage",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Mic_Usage",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on microblaze_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2025-11-10.18:33:38::SCWPlatform::updated the xpfm file.
+TRACE::2025-11-10.18:33:38::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:38::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:38::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:38::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw
+TRACE::2025-11-10.18:33:38::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/hw/bd_wrapper.xsa
+TRACE::2025-11-10.18:33:38::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-11-10.18:33:38::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_1
+TRACE::2025-11-10.18:33:38::SCWPlatform::Opened existing hwdb bd_wrapper_1
+TRACE::2025-11-10.18:33:38::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-11-10.18:33:38::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-11-10.18:33:38::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-11-10.18:33:38::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/microblaze_0/standalone_domain/bsp/system.mss

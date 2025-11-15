@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include "xil_cache.h"
+#include <mb_interface.h>
+
+#include "xparameters.h"
+#include <xil_types.h>
+#include <xil_assert.h>
+
+#include <xio.h>
+#include "xtmrctr.h"
+#include "fft.h"
+#include "note.h"
+#include "stream_grabber.h"
+
+// =====================================================
+// Configuration
+// =====================================================
+
+// We go back to 512-sample windows for low latency
+#define RAW_SAMPLES   512         // *** KEY *** capture 512 samples per loop
+#define AVG_FACTOR    4           // 4-way averaging
+#define EFF_SAMPLES   (RAW_SAMPLES / AVG_FACTOR)   // 128 effective samples
+
+// Zero-pad from 128 -> 256 samples for FFT
+#define NFFT          256         // *** KEY *** zero-padded FFT length
+#define MFFT          8           // log2(256)
+
+// Timer clock freq
+#define CLOCK         100000000.0 // 100 MHz
+
+// =====================================================
+// Buffers
+// =====================================================
+
+// Raw time-domain samples from grabber
+static float q_raw[RAW_SAMPLES];
+
+// Averaged time-domain samples
+static float q_eff[EFF_SAMPLES];
+
+// Zero-padded FFT buffers
+static float q_fft[NFFT];
+static float w_fft[NFFT];
+
+unsigned seqf, seql, seq_old = 0;
+
+// =====================================================
+// Read RAW_SAMPLES from stream grabber into q_raw[]
+// =====================================================
+
+void read_fsl_values(float *q, int n)
+{
+    int i;
+    unsigned int x;
+    const float scale = 3.3f / 67108864.0f; // 3.3V and 2^26 bit precision
+
+    stream_grabber_start();
+    stream_grabber_wait_enough_samples(RAW_SAMPLES);
+
+    seql = stream_grabber_read_seq_counter();
+    seqf = stream_grabber_read_seq_counter_latched();
+
+    for (i = 0; i < n; i++) {
+        x    = stream_grabber_read_sample(i);
+        q[i] = scale * (float)x;
+    }
+}
+
+// =====================================================
+// main()
+// =====================================================
+
+int main()
+{
+    float sample_f_raw;   // ~48.8 kHz
+    float sample_f_eff;   // after averaging, ~12.2 kHz
+    float frequency = 0.0f;
+    float pratyush_frequency = 0.0f;
+    uint32_t Control;
+
+    // Performance monitor variables
+    uint32_t loop_ticks, loop_us;
+    uint32_t max_loop_us = 0;
+    uint32_t loop_counter = 0;
+
+    int i;
+
+    // Enable caches
+    Xil_ICacheInvalidate();
+    Xil_ICacheEnable();
+    Xil_DCacheInvalidate();
+    Xil_DCacheEnable();
+
+    // Timer setup
+    XTmrCtr timer;
+    XTmrCtr_Initialize(&timer, XPAR_AXI_TIMER_0_DEVICE_ID);
+    Control = XTmrCtr_GetOptions(&timer, 0) |
+              XTC_CAPTURE_MODE_OPTION |
+              XTC_INT_MODE_OPTION;
+    XTmrCtr_SetOptions(&timer, 0, Control);
+
+    print("Maa Kaa Bhosda AAAGGGG\n\r");
+
+    XTmrCtr_Start(&timer, 0);
+
+    // Raw sampling frequency from mic block (same as original lab)
+    sample_f_raw = 100000000.0f / 2048.0f;         // ≈ 48.8 kHz
+    sample_f_eff = sample_f_raw / (float)AVG_FACTOR; // ≈ 12.2 kHz
+
+    while (1) {
+
+        // ------------------------
+        // Performance monitor: start
+        // ------------------------
+        uint32_t t_start = XTmrCtr_GetValue(&timer, 0);
+
+        // 1) Acquire 512 raw samples
+        read_fsl_values(q_raw, RAW_SAMPLES);
+        seq_old = seql;  // keep for debugging if needed
+
+        // 2) Remove DC offset over RAW_SAMPLES
+        float mean = 0.0f;
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            mean += q_raw[i];
+        }
+        mean /= (float)RAW_SAMPLES;
+
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            q_raw[i] -= mean;
+        }
+
+        // 3) 4-way averaging: 512 -> 128 effective samples
+        for (i = 0; i < EFF_SAMPLES; i++) {
+            int base = i * AVG_FACTOR; // 0,4,8,...
+            float acc = q_raw[base] +
+                        q_raw[base + 1] +
+                        q_raw[base + 2] +
+                        q_raw[base + 3];
+            q_eff[i] = acc;  // no divide by 4 (amplitude not important)
+        }
+
+        // 4) Zero-pad to NFFT = 256
+        for (i = 0; i < NFFT; i++) {
+            q_fft[i] = 0.0f;
+            w_fft[i] = 0.0f;
+        }
+        for (i = 0; i < EFF_SAMPLES; i++) {
+            q_fft[i] = q_eff[i];
+        }
+
+        // 5) Run 256-point FFT on zero-padded data
+        //    fft() returns peak frequency, but we can also
+        //    smooth magnitudes across frames.
+        frequency = fft(q_fft, w_fft, NFFT, MFFT, sample_f_eff);
+
+        // ------------------------
+        // Performance monitor: stop
+        // ------------------------
+        uint32_t t_end = XTmrCtr_GetValue(&timer, 0);
+
+        if (t_end >= t_start)
+            loop_ticks = t_end - t_start;
+        else
+            loop_ticks = (0xFFFFFFFFu - t_start) + t_end + 1u;
+
+        loop_us = (uint32_t)((loop_ticks * 1000000.0f) / CLOCK);
+        if (loop_us > max_loop_us) {
+            max_loop_us = loop_us;
+        }
+
+        loop_counter++;
+
+        // Print only occasionally to keep UART overhead small
+        if ((loop_counter & 0x0F) == 0) { // every 16nd loop
+            xil_printf("Loop latency: %u us (max: %u us)\r\n",
+                       (unsigned)loop_us, (unsigned)max_loop_us);
+            xil_printf("frequency: %d Hz\r\n", (int)((pratyush_frequency/0x0F) + 0.5f));
+            pratyush_frequency = 0;
+        } else {
+        	pratyush_frequency += frequency;
+        }
+    }
+
+    return 0;
+}

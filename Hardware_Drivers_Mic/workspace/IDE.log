@@ -1,0 +1,1640 @@
+18:17:32 DEBUG : Logs will be stored at '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/IDE.log'.
+18:17:36 INFO  : Launching XSCT server: xsct -n  -interactive /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/temp_xsdb_launch_script.tcl
+18:17:36 INFO  : Registering command handlers for Vitis TCF services
+18:17:37 INFO  : Platform repository initialization has completed.
+18:17:38 INFO  : XSCT server has started successfully.
+18:17:39 INFO  : plnx-install-location is set to ''
+18:17:39 INFO  : Successfully done setting XSCT server connection channel  
+18:17:39 INFO  : Successfully done query RDI_DATADIR 
+18:17:39 INFO  : Successfully done setting workspace for the tool. 
+18:30:26 INFO  : Result from executing command 'getProjects': Mic_Usage
+18:30:26 INFO  : Result from executing command 'getPlatforms': xilinx_vck190_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_vck190_base_202210_1/xilinx_vck190_base_202210_1.xpfm;xilinx_vck190_base_dfx_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_vck190_base_dfx_202210_1/xilinx_vck190_base_dfx_202210_1.xpfm;xilinx_vmk180_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_vmk180_base_202210_1/xilinx_vmk180_base_202210_1.xpfm;xilinx_zcu102_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_zcu102_base_202210_1/xilinx_zcu102_base_202210_1.xpfm;xilinx_zcu102_base_dfx_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_zcu102_base_dfx_202210_1/xilinx_zcu102_base_dfx_202210_1.xpfm;xilinx_zcu104_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_zcu104_base_202210_1/xilinx_zcu104_base_202210_1.xpfm
+18:33:01 INFO  : Successfully generated /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/src/lscript.ld.
+18:33:01 INFO  : Applying linker script to all configurations of project Gym_Boys.
+18:33:02 INFO  : Setting rebuild state to true for all configurations of project Gym_Boys.
+18:33:38 INFO  : Result from executing command 'getProjects': Mic_Usage
+18:33:38 INFO  : Result from executing command 'getPlatforms': Mic_Usage|/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/Mic_Usage.xpfm;xilinx_vck190_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_vck190_base_202210_1/xilinx_vck190_base_202210_1.xpfm;xilinx_vck190_base_dfx_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_vck190_base_dfx_202210_1/xilinx_vck190_base_dfx_202210_1.xpfm;xilinx_vmk180_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_vmk180_base_202210_1/xilinx_vmk180_base_202210_1.xpfm;xilinx_zcu102_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_zcu102_base_202210_1/xilinx_zcu102_base_202210_1.xpfm;xilinx_zcu102_base_dfx_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_zcu102_base_dfx_202210_1/xilinx_zcu102_base_dfx_202210_1.xpfm;xilinx_zcu104_base_202210_1|/ece/Xilinx/Vitis/2022.1/base_platforms/xilinx_zcu104_base_202210_1/xilinx_zcu104_base_202210_1.xpfm
+18:33:42 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:33:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:34:02 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:34:04 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+18:34:04 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+18:34:11 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:34:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:34:33 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+18:34:33 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+18:36:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:36:07 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+18:36:07 INFO  : 'jtag frequency' command is executed.
+18:36:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+18:36:09 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+18:36:09 INFO  : Context for processor 'microblaze_0' is selected.
+18:36:09 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+18:36:09 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+18:36:09 INFO  : Context for processor 'microblaze_0' is selected.
+18:36:09 INFO  : System reset is completed.
+18:36:12 INFO  : 'after 3000' command is executed.
+18:36:13 INFO  : Context for processor 'microblaze_0' is selected.
+18:36:13 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+18:36:13 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+18:36:13 INFO  : Context for processor 'microblaze_0' is selected.
+18:36:14 INFO  : 'con' command is executed.
+18:36:14 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+18:36:14 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_2_standalone.tcl'
+18:36:17 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:49:10 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:50:48 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:51:03 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:55:59 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:56:54 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+18:58:53 INFO  : Successfully generated /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/src/lscript.ld.
+18:58:53 INFO  : Applying linker script to all configurations of project Gym_Boys.
+18:58:53 INFO  : Setting rebuild state to true for all configurations of project Gym_Boys.
+18:58:58 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+19:00:42 INFO  : Successfully generated /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/src/lscript.ld.
+19:00:42 INFO  : Applying linker script to all configurations of project Gym_Boys.
+19:00:42 INFO  : Setting rebuild state to true for all configurations of project Gym_Boys.
+19:00:53 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+19:01:15 INFO  : Disconnected from the channel tcfchan#2.
+19:01:16 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:01:34 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+19:01:34 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+19:02:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:02:25 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+19:02:25 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+19:03:58 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+19:05:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:06:05 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+19:06:05 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+19:09:13 DEBUG : Logs will be stored at '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/IDE.log'.
+19:09:13 INFO  : Launching XSCT server: xsct -n  -interactive /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/temp_xsdb_launch_script.tcl
+19:09:14 INFO  : Registering command handlers for Vitis TCF services
+19:09:15 INFO  : Platform repository initialization has completed.
+19:09:15 INFO  : XSCT server has started successfully.
+19:09:15 INFO  : Successfully done setting XSCT server connection channel  
+19:09:17 INFO  : plnx-install-location is set to ''
+19:09:17 INFO  : Successfully done setting workspace for the tool. 
+19:09:17 INFO  : Successfully done query RDI_DATADIR 
+19:09:22 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+19:09:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:09:52 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+19:09:52 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+19:10:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:10:25 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+19:10:25 INFO  : 'jtag frequency' command is executed.
+19:10:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+19:10:27 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+19:10:27 INFO  : Context for processor 'microblaze_0' is selected.
+19:10:27 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+19:10:27 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+19:10:27 INFO  : Context for processor 'microblaze_0' is selected.
+19:10:28 INFO  : System reset is completed.
+19:10:31 INFO  : 'after 3000' command is executed.
+19:10:31 INFO  : Context for processor 'microblaze_0' is selected.
+19:10:36 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+19:10:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+19:10:36 INFO  : Context for processor 'microblaze_0' is selected.
+19:10:36 INFO  : 'con' command is executed.
+19:10:36 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+19:10:36 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_5_standalone.tcl'
+19:11:57 INFO  : Disconnected from the channel tcfchan#1.
+17:29:22 DEBUG : Logs will be stored at '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/IDE.log'.
+17:29:23 INFO  : Launching XSCT server: xsct -n  -interactive /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/temp_xsdb_launch_script.tcl
+17:29:25 INFO  : Registering command handlers for Vitis TCF services
+17:29:25 INFO  : XSCT server has started successfully.
+17:29:25 INFO  : plnx-install-location is set to ''
+17:29:25 INFO  : Successfully done setting XSCT server connection channel  
+17:29:25 INFO  : Platform repository initialization has completed.
+17:29:27 INFO  : Successfully done setting workspace for the tool. 
+17:29:27 INFO  : Successfully done query RDI_DATADIR 
+17:29:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:30:06 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+17:30:06 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+17:31:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:31:21 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+17:31:21 INFO  : 'jtag frequency' command is executed.
+17:31:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+17:31:25 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+17:31:25 INFO  : Context for processor 'microblaze_0' is selected.
+17:31:25 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+17:31:25 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+17:31:25 INFO  : Context for processor 'microblaze_0' is selected.
+17:31:25 INFO  : System reset is completed.
+17:31:28 INFO  : 'after 3000' command is executed.
+17:31:29 INFO  : Context for processor 'microblaze_0' is selected.
+17:31:33 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+17:31:33 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+17:31:33 INFO  : Context for processor 'microblaze_0' is selected.
+17:31:33 INFO  : 'con' command is executed.
+17:31:33 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+17:31:33 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_5_standalone.tcl'
+17:31:55 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+17:32:07 INFO  : Disconnected from the channel tcfchan#1.
+17:32:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:32:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+17:32:17 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+17:32:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:33:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+17:33:09 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+17:36:30 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:36:39 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+17:36:39 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+17:36:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:36:59 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+17:36:59 INFO  : 'jtag frequency' command is executed.
+17:37:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+17:37:27 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+17:37:27 INFO  : Context for processor 'microblaze_0' is selected.
+17:37:28 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+17:37:28 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+17:37:28 INFO  : Context for processor 'microblaze_0' is selected.
+17:37:28 INFO  : Processor reset is completed for 'microblaze_0'.
+17:37:28 INFO  : Context for processor 'microblaze_0' is selected.
+17:37:59 ERROR : Memory write error at 0x8000AE00. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+17:37:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+17:37:59 ERROR : Memory write error at 0x8000AE00. Cannot flush JTAG server queue. ftdi_transfer_data_done failed: usb bulk read failed
+17:38:30 INFO  : Inferring section assignments and sizes from elf file: /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+17:38:42 INFO  : Successfully generated /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/src/lscript.ld.
+17:38:42 INFO  : Applying linker script to all configurations of project Gym_Boys.
+17:38:42 INFO  : Setting rebuild state to true for all configurations of project Gym_Boys.
+17:38:52 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+17:39:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:39:16 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+17:39:16 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+17:39:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:39:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+17:39:36 ERROR : Could not find FPGA device on the board for connection 'Local'.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+17:48:12 DEBUG : Logs will be stored at '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/IDE.log'.
+17:48:16 INFO  : Launching XSCT server: xsct -n  -interactive /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/temp_xsdb_launch_script.tcl
+17:48:17 INFO  : Registering command handlers for Vitis TCF services
+17:48:18 INFO  : Platform repository initialization has completed.
+17:48:18 INFO  : XSCT server has started successfully.
+17:48:19 INFO  : plnx-install-location is set to ''
+17:48:19 INFO  : Successfully done setting XSCT server connection channel  
+17:48:19 INFO  : Successfully done query RDI_DATADIR 
+17:48:19 INFO  : Successfully done setting workspace for the tool. 
+17:49:03 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+17:49:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:49:41 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+17:49:41 INFO  : 'jtag frequency' command is executed.
+17:49:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+17:49:44 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+17:49:44 INFO  : Context for processor 'microblaze_0' is selected.
+17:49:44 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+17:49:45 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+17:49:45 INFO  : Context for processor 'microblaze_0' is selected.
+17:49:45 INFO  : System reset is completed.
+17:49:48 INFO  : 'after 3000' command is executed.
+17:49:48 INFO  : Context for processor 'microblaze_0' is selected.
+17:49:54 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+17:49:54 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+17:49:54 INFO  : Context for processor 'microblaze_0' is selected.
+17:49:55 INFO  : 'con' command is executed.
+17:49:55 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+17:49:55 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_7_standalone.tcl'
+22:18:43 DEBUG : Logs will be stored at '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/IDE.log'.
+22:18:43 INFO  : Launching XSCT server: xsct -n  -interactive /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/temp_xsdb_launch_script.tcl
+22:18:46 INFO  : Registering command handlers for Vitis TCF services
+22:18:46 INFO  : XSCT server has started successfully.
+22:18:46 INFO  : plnx-install-location is set to ''
+22:18:46 INFO  : Successfully done setting XSCT server connection channel  
+22:18:46 INFO  : Platform repository initialization has completed.
+22:18:48 INFO  : Successfully done setting workspace for the tool. 
+22:18:48 INFO  : Successfully done query RDI_DATADIR 
+00:37:06 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:37:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:37:28 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+00:37:28 INFO  : 'jtag frequency' command is executed.
+00:37:28 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+00:37:30 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+00:37:30 INFO  : Context for processor 'microblaze_0' is selected.
+00:37:30 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+00:37:30 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+00:37:30 INFO  : Context for processor 'microblaze_0' is selected.
+00:37:30 INFO  : Processor reset is completed for 'microblaze_0'.
+00:37:30 INFO  : Context for processor 'microblaze_0' is selected.
+00:37:30 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+00:37:30 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+00:37:31 INFO  : Context for processor 'microblaze_0' is selected.
+00:37:31 INFO  : 'con' command is executed.
+00:37:31 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+00:37:31 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+00:39:38 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:39:57 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:40:05 INFO  : Disconnected from the channel tcfchan#1.
+00:40:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:40:06 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+00:40:06 INFO  : 'jtag frequency' command is executed.
+00:40:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+00:40:07 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+00:40:07 INFO  : Context for processor 'microblaze_0' is selected.
+00:40:08 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+00:40:10 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+00:40:10 INFO  : Context for processor 'microblaze_0' is selected.
+00:40:10 INFO  : Processor reset is completed for 'microblaze_0'.
+00:40:10 INFO  : Context for processor 'microblaze_0' is selected.
+00:40:10 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+00:40:10 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+00:40:11 INFO  : Context for processor 'microblaze_0' is selected.
+00:40:11 INFO  : 'con' command is executed.
+00:40:11 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+00:40:11 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+00:45:15 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:45:19 INFO  : Disconnected from the channel tcfchan#2.
+00:45:19 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:45:19 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+00:45:19 INFO  : 'jtag frequency' command is executed.
+00:45:19 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+00:45:20 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+00:45:20 INFO  : Context for processor 'microblaze_0' is selected.
+00:45:21 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+00:45:21 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+00:45:21 INFO  : Context for processor 'microblaze_0' is selected.
+00:45:21 INFO  : Processor reset is completed for 'microblaze_0'.
+00:45:21 INFO  : Context for processor 'microblaze_0' is selected.
+00:45:21 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+00:45:21 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+00:45:21 INFO  : Context for processor 'microblaze_0' is selected.
+00:45:21 INFO  : 'con' command is executed.
+00:45:21 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+00:45:21 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+00:49:06 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:50:39 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:51:03 INFO  : Disconnected from the channel tcfchan#3.
+00:51:04 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:51:05 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+00:51:06 INFO  : 'jtag frequency' command is executed.
+00:51:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+00:51:07 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+00:51:07 INFO  : Context for processor 'microblaze_0' is selected.
+00:51:08 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+00:51:08 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+00:51:08 INFO  : Context for processor 'microblaze_0' is selected.
+00:51:08 INFO  : Processor reset is completed for 'microblaze_0'.
+00:51:08 INFO  : Context for processor 'microblaze_0' is selected.
+00:51:09 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+00:51:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+00:51:09 INFO  : Context for processor 'microblaze_0' is selected.
+00:51:09 INFO  : 'con' command is executed.
+00:51:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+00:51:09 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+00:52:53 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:53:14 INFO  : Disconnected from the channel tcfchan#4.
+00:53:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:53:17 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+00:53:17 INFO  : 'jtag frequency' command is executed.
+00:53:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+00:53:18 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+00:53:18 INFO  : Context for processor 'microblaze_0' is selected.
+00:53:19 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+00:53:19 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+00:53:19 INFO  : Context for processor 'microblaze_0' is selected.
+00:53:19 INFO  : Processor reset is completed for 'microblaze_0'.
+00:53:19 INFO  : Context for processor 'microblaze_0' is selected.
+00:53:19 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+00:53:19 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+00:53:19 INFO  : Context for processor 'microblaze_0' is selected.
+00:53:20 INFO  : 'con' command is executed.
+00:53:20 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+00:53:20 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+00:56:31 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+00:56:39 INFO  : Disconnected from the channel tcfchan#5.
+00:56:39 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:56:40 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+00:56:40 INFO  : 'jtag frequency' command is executed.
+00:56:40 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+00:56:41 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+00:56:41 INFO  : Context for processor 'microblaze_0' is selected.
+00:56:42 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+00:56:42 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+00:56:42 INFO  : Context for processor 'microblaze_0' is selected.
+00:56:42 INFO  : Processor reset is completed for 'microblaze_0'.
+00:56:42 INFO  : Context for processor 'microblaze_0' is selected.
+00:56:42 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+00:56:42 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+00:56:42 INFO  : Context for processor 'microblaze_0' is selected.
+00:56:42 INFO  : 'con' command is executed.
+00:56:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+00:56:43 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+00:56:57 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:05:02 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:05:06 INFO  : Disconnected from the channel tcfchan#6.
+01:05:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:05:07 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:05:07 INFO  : 'jtag frequency' command is executed.
+01:05:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:05:08 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:05:08 INFO  : Context for processor 'microblaze_0' is selected.
+01:05:09 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:05:09 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:05:09 INFO  : Context for processor 'microblaze_0' is selected.
+01:05:09 INFO  : Processor reset is completed for 'microblaze_0'.
+01:05:09 INFO  : Context for processor 'microblaze_0' is selected.
+01:05:09 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:05:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:05:09 INFO  : Context for processor 'microblaze_0' is selected.
+01:05:09 INFO  : 'con' command is executed.
+01:05:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:05:09 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:05:57 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:06:00 INFO  : Disconnected from the channel tcfchan#7.
+01:06:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:06:01 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:06:01 INFO  : 'jtag frequency' command is executed.
+01:06:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:06:02 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:06:02 INFO  : Context for processor 'microblaze_0' is selected.
+01:06:02 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:06:02 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:06:02 INFO  : Context for processor 'microblaze_0' is selected.
+01:06:02 INFO  : Processor reset is completed for 'microblaze_0'.
+01:06:02 INFO  : Context for processor 'microblaze_0' is selected.
+01:06:03 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:06:03 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:06:03 INFO  : Context for processor 'microblaze_0' is selected.
+01:06:03 INFO  : 'con' command is executed.
+01:06:03 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:06:03 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:06:13 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:07:29 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:07:45 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:07:50 INFO  : Disconnected from the channel tcfchan#8.
+01:07:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:07:51 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:07:51 INFO  : 'jtag frequency' command is executed.
+01:07:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:07:52 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:07:52 INFO  : Context for processor 'microblaze_0' is selected.
+01:07:53 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:07:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:07:53 INFO  : Context for processor 'microblaze_0' is selected.
+01:07:53 INFO  : Processor reset is completed for 'microblaze_0'.
+01:07:53 INFO  : Context for processor 'microblaze_0' is selected.
+01:07:53 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:07:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:07:53 INFO  : Context for processor 'microblaze_0' is selected.
+01:07:53 INFO  : 'con' command is executed.
+01:07:53 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:07:53 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:09:22 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:09:59 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:10:59 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:11:21 INFO  : Disconnected from the channel tcfchan#9.
+01:11:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:11:21 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:11:21 INFO  : 'jtag frequency' command is executed.
+01:11:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:11:22 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:11:23 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:24 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:11:24 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:11:24 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:24 INFO  : Processor reset is completed for 'microblaze_0'.
+01:11:24 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:24 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:11:24 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:11:24 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:24 INFO  : 'con' command is executed.
+01:11:24 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:11:24 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:11:36 INFO  : Disconnected from the channel tcfchan#10.
+01:11:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:11:37 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:11:37 INFO  : 'jtag frequency' command is executed.
+01:11:37 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:11:37 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:11:37 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:38 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:11:38 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:11:38 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:38 INFO  : Processor reset is completed for 'microblaze_0'.
+01:11:38 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:38 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:11:38 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:11:38 INFO  : Context for processor 'microblaze_0' is selected.
+01:11:38 INFO  : 'con' command is executed.
+01:11:38 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:11:38 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:12:01 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:12:04 INFO  : Disconnected from the channel tcfchan#11.
+01:12:04 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:12:05 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:12:05 INFO  : 'jtag frequency' command is executed.
+01:12:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:12:06 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:12:06 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:06 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:12:06 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:12:07 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:07 INFO  : Processor reset is completed for 'microblaze_0'.
+01:12:07 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:07 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:12:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:12:07 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:07 INFO  : 'con' command is executed.
+01:12:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:12:07 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:12:26 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:12:31 INFO  : Disconnected from the channel tcfchan#12.
+01:12:31 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:12:32 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:12:32 INFO  : 'jtag frequency' command is executed.
+01:12:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:12:33 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:12:33 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:34 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:12:34 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:12:34 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:34 INFO  : Processor reset is completed for 'microblaze_0'.
+01:12:34 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:34 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:12:34 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:12:34 INFO  : Context for processor 'microblaze_0' is selected.
+01:12:34 INFO  : 'con' command is executed.
+01:12:34 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:12:34 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:12:46 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:12:59 INFO  : Disconnected from the channel tcfchan#13.
+01:12:59 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:12:59 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:12:59 INFO  : 'jtag frequency' command is executed.
+01:13:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:13:00 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:13:00 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:01 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:13:01 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:13:01 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:01 INFO  : Processor reset is completed for 'microblaze_0'.
+01:13:01 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:01 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:13:01 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:13:01 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:01 INFO  : 'con' command is executed.
+01:13:01 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:13:01 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:13:04 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:13:08 INFO  : Disconnected from the channel tcfchan#14.
+01:13:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:13:09 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:13:09 INFO  : 'jtag frequency' command is executed.
+01:13:09 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:13:09 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:13:09 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:10 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:13:10 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:13:10 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:10 INFO  : Processor reset is completed for 'microblaze_0'.
+01:13:10 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:10 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:13:10 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:13:10 INFO  : Context for processor 'microblaze_0' is selected.
+01:13:10 INFO  : 'con' command is executed.
+01:13:10 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:13:10 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:14:41 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:14:47 INFO  : Disconnected from the channel tcfchan#15.
+01:14:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:14:48 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:14:48 INFO  : 'jtag frequency' command is executed.
+01:14:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:14:48 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:14:49 INFO  : Context for processor 'microblaze_0' is selected.
+01:14:50 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:14:50 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:14:50 INFO  : Context for processor 'microblaze_0' is selected.
+01:14:50 INFO  : Processor reset is completed for 'microblaze_0'.
+01:14:50 INFO  : Context for processor 'microblaze_0' is selected.
+01:14:51 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:14:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:14:51 INFO  : Context for processor 'microblaze_0' is selected.
+01:14:51 INFO  : 'con' command is executed.
+01:14:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:14:51 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:19:17 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:19:24 INFO  : Disconnected from the channel tcfchan#16.
+01:19:24 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:19:25 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:19:25 INFO  : 'jtag frequency' command is executed.
+01:19:25 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:19:26 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:19:26 INFO  : Context for processor 'microblaze_0' is selected.
+01:19:27 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:19:27 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:19:28 INFO  : Context for processor 'microblaze_0' is selected.
+01:19:28 INFO  : Processor reset is completed for 'microblaze_0'.
+01:19:28 INFO  : Context for processor 'microblaze_0' is selected.
+01:19:28 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:19:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:19:28 INFO  : Context for processor 'microblaze_0' is selected.
+01:19:29 INFO  : 'con' command is executed.
+01:19:29 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:19:29 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:20:08 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:20:23 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:21:41 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:21:50 INFO  : Disconnected from the channel tcfchan#17.
+01:21:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:21:51 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:21:51 INFO  : 'jtag frequency' command is executed.
+01:21:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:21:52 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:21:53 INFO  : Context for processor 'microblaze_0' is selected.
+01:21:54 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:21:54 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:21:54 INFO  : Context for processor 'microblaze_0' is selected.
+01:21:54 INFO  : Processor reset is completed for 'microblaze_0'.
+01:21:54 INFO  : Context for processor 'microblaze_0' is selected.
+01:21:54 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:21:54 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:21:55 INFO  : Context for processor 'microblaze_0' is selected.
+01:21:55 INFO  : 'con' command is executed.
+01:21:55 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:21:55 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:22:22 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:22:25 INFO  : Disconnected from the channel tcfchan#18.
+01:22:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:22:26 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:22:26 INFO  : 'jtag frequency' command is executed.
+01:22:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:22:27 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:22:27 INFO  : Context for processor 'microblaze_0' is selected.
+01:22:28 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:22:28 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:22:28 INFO  : Context for processor 'microblaze_0' is selected.
+01:22:28 INFO  : Processor reset is completed for 'microblaze_0'.
+01:22:28 INFO  : Context for processor 'microblaze_0' is selected.
+01:22:28 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:22:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:22:28 INFO  : Context for processor 'microblaze_0' is selected.
+01:22:28 INFO  : 'con' command is executed.
+01:22:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:22:28 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:28:52 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:28:58 INFO  : Disconnected from the channel tcfchan#19.
+01:28:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:28:58 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:28:58 INFO  : 'jtag frequency' command is executed.
+01:28:58 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:28:59 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:28:59 INFO  : Context for processor 'microblaze_0' is selected.
+01:29:00 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:29:00 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:29:00 INFO  : Context for processor 'microblaze_0' is selected.
+01:29:00 INFO  : Processor reset is completed for 'microblaze_0'.
+01:29:00 INFO  : Context for processor 'microblaze_0' is selected.
+01:29:00 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:29:00 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:29:00 INFO  : Context for processor 'microblaze_0' is selected.
+01:29:00 INFO  : 'con' command is executed.
+01:29:00 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:29:00 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:36:06 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:37:02 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:37:10 INFO  : Disconnected from the channel tcfchan#20.
+01:37:10 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:37:11 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:37:11 INFO  : 'jtag frequency' command is executed.
+01:37:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:37:12 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:37:12 INFO  : Context for processor 'microblaze_0' is selected.
+01:37:14 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:37:14 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:37:14 INFO  : Context for processor 'microblaze_0' is selected.
+01:37:15 INFO  : Processor reset is completed for 'microblaze_0'.
+01:37:15 INFO  : Context for processor 'microblaze_0' is selected.
+01:37:15 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:37:15 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:37:15 INFO  : Context for processor 'microblaze_0' is selected.
+01:37:16 INFO  : 'con' command is executed.
+01:37:16 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:37:16 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:38:46 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:38:54 INFO  : Disconnected from the channel tcfchan#21.
+01:38:54 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:38:56 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:38:56 INFO  : 'jtag frequency' command is executed.
+01:38:56 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:38:57 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:38:57 INFO  : Context for processor 'microblaze_0' is selected.
+01:38:58 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:38:58 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:38:59 INFO  : Context for processor 'microblaze_0' is selected.
+01:38:59 INFO  : Processor reset is completed for 'microblaze_0'.
+01:38:59 INFO  : Context for processor 'microblaze_0' is selected.
+01:38:59 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:38:59 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:38:59 INFO  : Context for processor 'microblaze_0' is selected.
+01:38:59 INFO  : 'con' command is executed.
+01:38:59 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:38:59 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:39:18 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:49:32 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:49:40 INFO  : Disconnected from the channel tcfchan#22.
+01:49:40 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:49:40 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:49:40 INFO  : 'jtag frequency' command is executed.
+01:49:41 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:49:41 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:49:41 INFO  : Context for processor 'microblaze_0' is selected.
+01:49:42 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:49:42 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:49:43 INFO  : Context for processor 'microblaze_0' is selected.
+01:49:43 INFO  : Processor reset is completed for 'microblaze_0'.
+01:49:43 INFO  : Context for processor 'microblaze_0' is selected.
+01:49:43 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:49:43 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:49:43 INFO  : Context for processor 'microblaze_0' is selected.
+01:49:43 INFO  : 'con' command is executed.
+01:49:43 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:49:43 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:53:08 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:53:32 INFO  : Disconnected from the channel tcfchan#23.
+01:53:32 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:53:33 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:53:33 INFO  : 'jtag frequency' command is executed.
+01:53:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:53:34 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:53:35 INFO  : Context for processor 'microblaze_0' is selected.
+01:53:36 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:53:36 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:53:37 INFO  : Context for processor 'microblaze_0' is selected.
+01:53:37 INFO  : Processor reset is completed for 'microblaze_0'.
+01:53:37 INFO  : Context for processor 'microblaze_0' is selected.
+01:53:37 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:53:37 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:53:37 INFO  : Context for processor 'microblaze_0' is selected.
+01:53:37 INFO  : 'con' command is executed.
+01:53:37 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:53:37 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:58:01 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:58:49 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+01:58:52 INFO  : Disconnected from the channel tcfchan#24.
+01:58:52 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+01:58:53 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+01:58:53 INFO  : 'jtag frequency' command is executed.
+01:58:53 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+01:58:53 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+01:58:53 INFO  : Context for processor 'microblaze_0' is selected.
+01:58:54 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+01:58:54 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+01:58:54 INFO  : Context for processor 'microblaze_0' is selected.
+01:58:54 INFO  : Processor reset is completed for 'microblaze_0'.
+01:58:55 INFO  : Context for processor 'microblaze_0' is selected.
+01:58:55 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+01:58:55 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+01:58:55 INFO  : Context for processor 'microblaze_0' is selected.
+01:58:55 INFO  : 'con' command is executed.
+01:58:55 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+01:58:55 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+01:59:26 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+02:00:00 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+02:00:11 INFO  : Disconnected from the channel tcfchan#25.
+02:00:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+02:00:11 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+02:00:11 INFO  : 'jtag frequency' command is executed.
+02:00:11 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+02:00:12 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+02:00:12 INFO  : Context for processor 'microblaze_0' is selected.
+02:00:13 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+02:00:13 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+02:00:13 INFO  : Context for processor 'microblaze_0' is selected.
+02:00:13 INFO  : Processor reset is completed for 'microblaze_0'.
+02:00:13 INFO  : Context for processor 'microblaze_0' is selected.
+02:00:13 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+02:00:13 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+02:00:13 INFO  : Context for processor 'microblaze_0' is selected.
+02:00:13 INFO  : 'con' command is executed.
+02:00:13 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+02:00:13 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+02:00:42 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+02:01:20 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:06:47 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:06:50 INFO  : Disconnected from the channel tcfchan#26.
+03:06:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:06:50 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:06:50 INFO  : 'jtag frequency' command is executed.
+03:06:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:06:51 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:06:51 INFO  : Context for processor 'microblaze_0' is selected.
+03:06:53 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:06:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:06:53 INFO  : Context for processor 'microblaze_0' is selected.
+03:06:53 INFO  : Processor reset is completed for 'microblaze_0'.
+03:06:53 INFO  : Context for processor 'microblaze_0' is selected.
+03:06:53 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:06:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:06:53 INFO  : Context for processor 'microblaze_0' is selected.
+03:06:53 INFO  : 'con' command is executed.
+03:06:53 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:06:53 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:07:11 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:08:16 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:08:45 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:09:26 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:10:14 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:11:03 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:11:16 INFO  : Disconnected from the channel tcfchan#27.
+03:11:16 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:11:17 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:11:17 INFO  : 'jtag frequency' command is executed.
+03:11:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:11:18 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:11:18 INFO  : Context for processor 'microblaze_0' is selected.
+03:11:19 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:11:19 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:11:19 INFO  : Context for processor 'microblaze_0' is selected.
+03:11:19 INFO  : Processor reset is completed for 'microblaze_0'.
+03:11:19 INFO  : Context for processor 'microblaze_0' is selected.
+03:11:20 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:11:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:11:20 INFO  : Context for processor 'microblaze_0' is selected.
+03:11:20 INFO  : 'con' command is executed.
+03:11:20 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:11:20 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:12:39 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:12:44 INFO  : Disconnected from the channel tcfchan#28.
+03:12:44 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:12:50 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:12:50 INFO  : 'jtag frequency' command is executed.
+03:12:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:12:51 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:12:51 INFO  : Context for processor 'microblaze_0' is selected.
+03:12:52 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:12:52 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:12:52 INFO  : Context for processor 'microblaze_0' is selected.
+03:12:52 INFO  : Processor reset is completed for 'microblaze_0'.
+03:12:52 INFO  : Context for processor 'microblaze_0' is selected.
+03:12:53 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:12:53 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:12:53 INFO  : Context for processor 'microblaze_0' is selected.
+03:12:53 INFO  : 'con' command is executed.
+03:12:53 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:12:53 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:13:35 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:13:53 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:13:57 INFO  : Disconnected from the channel tcfchan#29.
+03:13:57 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:13:57 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:13:57 INFO  : 'jtag frequency' command is executed.
+03:13:57 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:13:58 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:13:58 INFO  : Context for processor 'microblaze_0' is selected.
+03:13:59 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:13:59 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:13:59 INFO  : Context for processor 'microblaze_0' is selected.
+03:13:59 INFO  : Processor reset is completed for 'microblaze_0'.
+03:14:01 INFO  : Context for processor 'microblaze_0' is selected.
+03:14:01 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:14:01 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:14:01 INFO  : Context for processor 'microblaze_0' is selected.
+03:14:01 INFO  : 'con' command is executed.
+03:14:01 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:14:01 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:14:04 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:14:13 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:14:23 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:14:48 INFO  : Disconnected from the channel tcfchan#30.
+03:14:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:14:49 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:14:49 INFO  : 'jtag frequency' command is executed.
+03:14:49 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:14:49 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:14:49 INFO  : Context for processor 'microblaze_0' is selected.
+03:14:50 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:14:50 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:14:51 INFO  : Context for processor 'microblaze_0' is selected.
+03:14:51 INFO  : Processor reset is completed for 'microblaze_0'.
+03:14:51 INFO  : Context for processor 'microblaze_0' is selected.
+03:14:51 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:14:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:14:51 INFO  : Context for processor 'microblaze_0' is selected.
+03:14:51 INFO  : 'con' command is executed.
+03:14:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:14:51 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:15:42 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:15:47 INFO  : Disconnected from the channel tcfchan#31.
+03:15:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:15:47 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:15:47 INFO  : 'jtag frequency' command is executed.
+03:15:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:15:48 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:15:48 INFO  : Context for processor 'microblaze_0' is selected.
+03:15:49 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:15:49 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:15:49 INFO  : Context for processor 'microblaze_0' is selected.
+03:15:49 INFO  : Processor reset is completed for 'microblaze_0'.
+03:15:49 INFO  : Context for processor 'microblaze_0' is selected.
+03:15:49 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:15:49 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:15:49 INFO  : Context for processor 'microblaze_0' is selected.
+03:15:49 INFO  : 'con' command is executed.
+03:15:49 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:15:49 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:16:40 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:16:46 INFO  : Disconnected from the channel tcfchan#32.
+03:16:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:16:46 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:16:46 INFO  : 'jtag frequency' command is executed.
+03:16:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:16:47 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:16:47 INFO  : Context for processor 'microblaze_0' is selected.
+03:16:47 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:16:47 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:16:47 INFO  : Context for processor 'microblaze_0' is selected.
+03:16:48 INFO  : Processor reset is completed for 'microblaze_0'.
+03:16:48 INFO  : Context for processor 'microblaze_0' is selected.
+03:16:48 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:16:48 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:16:48 INFO  : Context for processor 'microblaze_0' is selected.
+03:16:48 INFO  : 'con' command is executed.
+03:16:48 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:16:48 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:17:48 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:18:03 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:18:59 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:19:17 INFO  : Disconnected from the channel tcfchan#33.
+03:19:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:19:18 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:19:18 INFO  : 'jtag frequency' command is executed.
+03:19:18 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:19:19 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:19:19 INFO  : Context for processor 'microblaze_0' is selected.
+03:19:20 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:19:20 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:19:20 INFO  : Context for processor 'microblaze_0' is selected.
+03:19:20 INFO  : Processor reset is completed for 'microblaze_0'.
+03:19:20 INFO  : Context for processor 'microblaze_0' is selected.
+03:19:20 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:19:20 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:19:21 INFO  : Context for processor 'microblaze_0' is selected.
+03:19:21 INFO  : 'con' command is executed.
+03:19:21 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:19:21 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:20:56 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...
+03:21:11 INFO  : Disconnected from the channel tcfchan#34.
+03:21:11 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+03:21:12 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+03:21:12 INFO  : 'jtag frequency' command is executed.
+03:21:12 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+03:21:13 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit"
+03:21:13 INFO  : Context for processor 'microblaze_0' is selected.
+03:21:13 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa'.
+03:21:13 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+03:21:14 INFO  : Context for processor 'microblaze_0' is selected.
+03:21:14 INFO  : Processor reset is completed for 'microblaze_0'.
+03:21:14 INFO  : Context for processor 'microblaze_0' is selected.
+03:21:14 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf' is downloaded to processor 'microblaze_0'.
+03:21:14 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Mic_Usage/export/Mic_Usage/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -processor
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys/Debug/Gym_Boys.elf
+----------------End of Script----------------
+
+03:21:14 INFO  : Context for processor 'microblaze_0' is selected.
+03:21:14 INFO  : 'con' command is executed.
+03:21:14 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+03:21:14 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/Lab_5/workspace/Gym_Boys_system/_ide/scripts/systemdebugger_gym_boys_system_standalone.tcl'
+03:22:30 INFO  : Checking for BSP changes to sync application flags for project 'Gym_Boys'...

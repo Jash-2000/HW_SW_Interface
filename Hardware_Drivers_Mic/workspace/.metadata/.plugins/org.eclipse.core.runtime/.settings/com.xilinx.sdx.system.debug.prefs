@@ -1,0 +1,13 @@
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.bss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.data=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.rodata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.sbss=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.sbss2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.sdata=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.sdata2=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:.text=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:heap=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:heap-size=4194304
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:stack=mig_7series_0_memaddr
+com.xilinx.sdk.linkgen.prefs.Gym_Boys\:stack-size=4194304
+eclipse.preferences.version=1

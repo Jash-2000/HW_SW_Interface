@@ -1,0 +1,274 @@
+/*
+ * main.c – improved performance, multi-4k averaging, zero-padding,
+ *          and performance monitoring
+ */
+
+#include <stdio.h>
+#include "xil_cache.h"
+#include <mb_interface.h>
+
+#include "xparameters.h"
+#include <xil_types.h>
+#include <xil_assert.h>
+
+#include <xio.h>
+#include "xtmrctr.h"
+#include "fft.h"
+#include "note.h"
+#include "stream_grabber.h"
+
+// =====================================================
+// Configuration
+// =====================================================
+
+// *** CHANGED ***: use full 4k window from grabber
+#define RAW_SAMPLES      4096            // 4k samples from hardware grabber
+
+// *** NEW ***: heavy averaging to get low effective sample rate (~3 kHz)
+// 100e6 / 2048 ≈ 48.8 kHz raw -> /16 ≈ 3.05 kHz effective
+#define AVG_FACTOR       16              // 16-way averaging
+#define EFF_SAMPLES      (RAW_SAMPLES / AVG_FACTOR)  // 4096 / 16 = 256
+
+// *** NEW ***: FFT size and parameters
+// EFF_SAMPLES = 256, pad to 512 for better bin grid and curve fitting
+#define NFFT             512             // must be <= 512 because fft.c uses static new_[512]
+#define MFFT             9               // log2(512)
+
+// Clock frequency (for latency measurement)
+#define CLOCK            100000000.0     // 100 MHz
+
+// =====================================================
+// Buffers
+// =====================================================
+
+// *** NEW ***: raw 4k sample buffer from grabber (time domain)
+static float q_raw[RAW_SAMPLES];
+
+// *** NEW ***: 256-sample averaged buffer (time domain)
+static float q_eff[EFF_SAMPLES];
+
+// *** NEW ***: 512-point FFT buffers (time domain → freq domain)
+static float q_fft[NFFT];
+static float w_fft[NFFT];
+
+// *** NEW ***: magnitude accumulator (for multi-window averaging)
+// Only first NFFT/2 bins are meaningful (0..Nyquist)
+static float avg_mag[NFFT/2];
+static int   avg_mag_initialized = 0;
+
+unsigned seqf, seql, seq_old = 0;
+
+// =====================================================
+// Helper: read RAW_SAMPLES from stream_grabber into q_raw
+// =====================================================
+
+// *** CHANGED ***: now reads 4096 samples, no int_buffer, direct float conversion
+void read_fsl_values(float *q, int n)
+{
+    int i;
+    unsigned int x;
+    const float scale = 3.3f / 67108864.0f; // 3.3V and 2^26 bit precision.
+
+    stream_grabber_start();
+    stream_grabber_wait_enough_samples(RAW_SAMPLES);  // wait for full 4k window
+
+    seql = stream_grabber_read_seq_counter();
+    seqf = stream_grabber_read_seq_counter_latched();
+
+    for (i = 0; i < n; i++) {
+        x    = stream_grabber_read_sample(i);
+        q[i] = scale * (float)x;  // store directly into q_raw
+    }
+}
+
+// =====================================================
+// main()
+// =====================================================
+
+int main()
+{
+    float sample_f_raw;     // raw sampling frequency (~48.8 kHz)
+    float sample_f_eff;     // effective sampling frequency after averaging (~3.05 kHz)
+    int   l;
+    uint32_t Control;
+    float frequency = 0.0f;
+
+    // *** NEW ***: performance monitor variables
+    uint32_t loop_ticks, loop_us;
+    uint32_t max_loop_us = 0;
+    uint32_t loop_counter = 0;
+
+    Xil_ICacheInvalidate();
+    Xil_ICacheEnable();
+    Xil_DCacheInvalidate();
+    Xil_DCacheEnable();
+
+    // set up timer (unchanged)
+    XTmrCtr timer;
+    XTmrCtr_Initialize(&timer, XPAR_AXI_TIMER_0_DEVICE_ID);
+    Control = XTmrCtr_GetOptions(&timer, 0)
+              | XTC_CAPTURE_MODE_OPTION
+              | XTC_INT_MODE_OPTION;
+    XTmrCtr_SetOptions(&timer, 0, Control);
+
+    print("Hello World\n\r");
+
+    XTmrCtr_Start(&timer, 0);
+
+    // compute raw sampling frequency once:
+    sample_f_raw = 100000000.0f / 2048.0f;    // ~48.8 kHz
+    sample_f_eff = sample_f_raw / (float)AVG_FACTOR;  // ~3.05 kHz
+
+    while (1) {
+
+        // ======================
+        // Performance Monitor: start
+        // ======================
+        uint32_t t_start = XTmrCtr_GetValue(&timer, 0);   // *** NEW ***
+
+        // 1) Read 4096 raw samples from grabber into q_raw[]
+        read_fsl_values(q_raw, RAW_SAMPLES);
+
+        // Optional: track sequence offsets (no printing to avoid latency)
+        seq_old = seql;
+
+        // 2) Remove DC offset over RAW_SAMPLES  *** NEW ***
+        float mean = 0.0f;
+        for (l = 0; l < RAW_SAMPLES; l++) {
+            mean += q_raw[l];
+        }
+        mean /= (float)RAW_SAMPLES;
+
+        for (l = 0; l < RAW_SAMPLES; l++) {
+            q_raw[l] -= mean;
+        }
+
+        // 3) 16-way averaging: 4096 raw → 256 effective samples  *** NEW ***
+        //    This reduces noise and produces an effective fs ≈ 3.05 kHz (< 3 kHz as handout suggests)
+        for (l = 0; l < EFF_SAMPLES; l++) {
+            int base = l * AVG_FACTOR;  // 0, 16, 32, ..., etc.
+            float acc = 0.0f;
+            int k;
+            for (k = 0; k < AVG_FACTOR; k++) {
+                acc += q_raw[base + k];
+            }
+            q_eff[l] = acc;          // NOTE: no division; amplitude scale not important for frequency
+        }
+
+        // 4) Zero-pad to NFFT=512  *** NEW ***
+        //    q_fft[0..255]   = averaged samples
+        //    q_fft[256..511] = 0
+        for (l = 0; l < NFFT; l++) {
+            q_fft[l] = 0.0f;
+            w_fft[l] = 0.0f;
+        }
+        for (l = 0; l < EFF_SAMPLES; l++) {
+            q_fft[l] = q_eff[l];
+        }
+
+        // 5) Run 512-point FFT on zero-padded, averaged data  *** CHANGED ***
+        //    We ignore its internal frequency estimate and use our own multi-window avg_mag instead.
+        (void)fft(q_fft, w_fft, NFFT, MFFT, sample_f_eff);
+
+        // 6) Multi-window magnitude accumulation (as per handout)  *** NEW ***
+        //    Compute magnitude^2 for each bin and exponentially smooth across windows.
+        {
+            const float alpha = 0.8f;  // smoothing factor (close to 1 → longer memory)
+            int i;
+            for (i = 0; i < (NFFT / 2); i++) {
+                float re = q_fft[i];
+                float im = w_fft[i];
+                float mag2 = re * re + im * im;
+
+                if (!avg_mag_initialized) {
+                    avg_mag[i] = mag2;
+                } else {
+                    avg_mag[i] = alpha * avg_mag[i] + (1.0f - alpha) * mag2;
+                }
+            }
+            avg_mag_initialized = 1;
+        }
+
+        // 7) Find peak bin using accumulated magnitudes  *** NEW ***
+        //    Skip bin 0 (DC) and avoid the last bin to allow parabolic fit.
+        int i;
+        int best_bin = 1;
+        float best_val = avg_mag[1];
+        for (i = 2; i < (NFFT / 2 - 1); i++) {
+            if (avg_mag[i] > best_val) {
+                best_val = avg_mag[i];
+                best_bin = i;
+            }
+        }
+
+        // Base bin spacing
+        float s = sample_f_eff / (float)NFFT;     // Hz per bin
+
+        // 8) Parabolic interpolation around the peak (three-point fit)  *** NEW ***
+        // Same idea as in fft.c, but using avg_mag[]
+        {
+            int p = best_bin;
+            float y1 = avg_mag[p - 1];
+            float y2 = avg_mag[p];
+            float y3 = avg_mag[p + 1];
+
+            // bin-center frequency of peak bin
+            float f_center = (float)p * s;
+
+            // compute fractional bin offset x0 in [0, 2]
+            float x0 = s + (2.0f * s * (y2 - y1)) / (2.0f * y2 - y1 - y3);
+            x0 = x0 / s - 1.0f;
+
+            if (x0 < 0.0f || x0 > 2.0f) {
+                // if fit is bad, fall back to bin center
+                frequency = f_center;
+            } else if (x0 <= 1.0f) {
+                frequency = f_center - (1.0f - x0) * s;
+            } else {
+                frequency = f_center + (x0 - 1.0f) * s;
+            }
+        }
+
+        // ======================
+        // Performance Monitor: stop & compute latency  *** NEW ***
+        // ======================
+        uint32_t t_end = XTmrCtr_GetValue(&timer, 0);
+
+        // handle wrap-around of 32-bit timer
+        if (t_end >= t_start) {
+            loop_ticks = t_end - t_start;
+        } else {
+            loop_ticks = (0xFFFFFFFFu - t_start) + t_end + 1u;
+        }
+
+        // ticks -> microseconds
+        loop_us = (uint32_t)((loop_ticks * 1000000.0f) / CLOCK);
+        if (loop_us > max_loop_us) {
+            max_loop_us = loop_us;
+        }
+
+        // Check latency constraint: must be below 25 ms (25000 us)
+        if (loop_us > 25000u) {
+            xil_printf("WARNING: Loop latency %u us exceeds 25 ms limit!\r\n",
+                       (unsigned)loop_us);
+        }
+
+        // ======================
+        // Output (throttled to reduce UART overhead)  *** CHANGED ***
+        // ======================
+        loop_counter++;
+
+        // Print less often to keep UART from dominating latency
+        if ((loop_counter & 0x0F) == 0) {  // every 16th loop
+            xil_printf("Loop latency: %u us (max: %u us)\r\n",
+                       (unsigned)loop_us, (unsigned)max_loop_us);
+            xil_printf("frequency: %d Hz\r\n", (int)(frequency + 0.5f));
+            findNote(frequency);
+        } else {
+            // still update note internally each loop
+            findNote(frequency);
+        }
+    }
+
+    return 0;
+}

@@ -1,0 +1,6 @@
+03:22:31 **** Incremental Build of configuration Debug for project Gym_Boys_system ****
+make all 
+Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
+
+03:22:32 Build Finished (took 470ms)
+
