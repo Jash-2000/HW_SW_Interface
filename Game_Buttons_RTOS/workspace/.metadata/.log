@@ -8295,3 +8295,502 @@ Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-12: Launc
 
 !ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.946
 !MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.213
+!MESSAGE XSCT Command: [disconnect tcfchan#21], Thread: Thread-2720
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.282
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.287
+!MESSAGE XSCT command with result: [disconnect tcfchan#21], Result: [null, ]. Thread: Thread-2720
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.292
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#22]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.295
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.308
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.311
+!MESSAGE XSCT Command: [version -server], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.314
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1.0]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.316
+!MESSAGE XSCT Command: [version], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.319
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 3524075 on 2022-04-13-17:42:45
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.322
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.329
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.331
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.344
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.347
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.352
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.355
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.368
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.370
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.377
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.379
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.392
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.395
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.416
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.420
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.434
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.437
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.445
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.448
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.461
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.465
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "RealDigital Boo 8874042404B4A" && level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.479
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "RealDigital Boo 8874042404B4A" && level == 0}], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.482
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.486
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.499
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.506
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.509
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.526
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.532
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.567
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:42.572
+!MESSAGE XSCT Command: [fpga -file /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.266
+!MESSAGE XSCT command with result: [fpga -file /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.285
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.300
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.304
+!MESSAGE XSCT Command: [loadhw -hw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa -regs], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.988
+!MESSAGE XSCT command with result: [loadhw -hw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa -regs], Result: [null, bd_wrapper_20]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.991
+!MESSAGE XSCT Command: [configparams mdm-detect-bscan-mask 2], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.995
+!MESSAGE XSCT command with result: [configparams mdm-detect-bscan-mask 2], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:43.998
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:44.010
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:44.013
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:44.019
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:44.021
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.029
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.032
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.057
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.060
+!MESSAGE XSCT Command: [dow /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.572
+!MESSAGE XSCT command with result: [dow /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.580
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.593
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.596
+!MESSAGE XSCT Command: [con], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:43:47.608
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:25.872
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:25.896
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:25.899
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:25.904
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:48:25.907
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:25.910
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:25.913
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:50.501
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:50.551
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:50.555
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:50.560
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:48:50.563
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:50.566
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:48:50.569
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-31: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2025-11-26 14:48:50.874
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:17.226
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:17.263
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:17.268
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:17.273
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:50:17.276
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:17.280
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:17.284
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:44.235
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-65: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:44.260
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-65: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:44.263
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-65: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:44.266
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-65: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:50:44.269
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:44.272
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-65: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:44.275
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-65: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.585
+!MESSAGE XSCT Command: [disconnect tcfchan#22], Thread: Thread-2882
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.590
+!MESSAGE XSCT command with result: [disconnect tcfchan#22], Result: [null, ]. Thread: Thread-2882
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.593
+!MESSAGE XSCT Command: [connect -url tcp:127.0.0.1:3121], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.598
+!MESSAGE XSCT command with result: [connect -url tcp:127.0.0.1:3121], Result: [null, tcfchan#23]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.602
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.611
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.615
+!MESSAGE XSCT Command: [version -server], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.618
+!MESSAGE XSCT command with result: [version -server], Result: [null, 2022.1.0]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.620
+!MESSAGE XSCT Command: [version], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.623
+!MESSAGE XSCT command with result: [version], Result: [null, xsct 2022.1.0
+SW Build 3524075 on 2022-04-13-17:42:45
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.626
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.632
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.635
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.648
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.651
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.656
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.659
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.698
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.701
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.708
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.711
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.726
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.729
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.736
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.739
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.752
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.755
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.760
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.763
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.775
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.777
+!MESSAGE XSCT Command: [jtag targets -set -filter {name =~ "RealDigital Boo 8874042404B4A" && level == 0}], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.792
+!MESSAGE XSCT command with result: [jtag targets -set -filter {name =~ "RealDigital Boo 8874042404B4A" && level == 0}], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.795
+!MESSAGE XSCT Command: [jtag frequency], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.797
+!MESSAGE XSCT command with result: [jtag frequency], Result: [null, 15000000]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.809
+!MESSAGE XSCT Command: [jtag targets -filter {level == 0}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.815
+!MESSAGE XSCT command with result: [jtag targets -filter {level == 0}], Result: [null,   1* RealDigital Boo 8874042404B4A]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.818
+!MESSAGE XSCT Command: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.839
+!MESSAGE XSCT command with result: [jtag targets -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==1}], Result: [null,      2  xc7s50 (idcode 0362f093 irlen 6 fpga)]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.858
+!MESSAGE XSCT Command: [targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.880
+!MESSAGE XSCT command with result: [targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:46.883
+!MESSAGE XSCT Command: [fpga -file /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit], Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:47.572
+!MESSAGE XSCT command with result: [fpga -file /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit], Result: [null, ]. Thread: ModalContext
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:47.597
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:47.613
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:47.617
+!MESSAGE XSCT Command: [loadhw -hw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa -regs], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.362
+!MESSAGE XSCT command with result: [loadhw -hw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa -regs], Result: [null, bd_wrapper_21]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.366
+!MESSAGE XSCT Command: [configparams mdm-detect-bscan-mask 2], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.369
+!MESSAGE XSCT command with result: [configparams mdm-detect-bscan-mask 2], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.372
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.384
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.386
+!MESSAGE XSCT Command: [rst -system], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.390
+!MESSAGE XSCT command with result: [rst -system], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:48.394
+!MESSAGE XSCT Command: [after 3000], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.400
+!MESSAGE XSCT command with result: [after 3000], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.403
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.416
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.419
+!MESSAGE XSCT Command: [dow /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.931
+!MESSAGE XSCT command with result: [dow /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.938
+!MESSAGE XSCT Command: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.951
+!MESSAGE XSCT command with result: [targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.954
+!MESSAGE XSCT Command: [con], Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:50:51.967
+!MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-57: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:52:20.521
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-60: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:52:20.541
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-60: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:52:20.545
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-60: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:52:20.549
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-60: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:52:20.552
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:52:20.555
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-60: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:52:20.559
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-60: Build Project

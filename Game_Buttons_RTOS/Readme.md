@@ -68,3 +68,10 @@ Note:
         - The LCD's screen should not refresh evidently i.e. the user should be able to see smooth transitions.
 
 
+The Design Block Diagram is as follows:
+![Design.png](Design.png)
+
+## Problems Faced
+
+- Seven Segment Display has jitter issue if the refresh time is less. Solving this(by refreseing more often) causes an issue due to clock starvation of the processor
+- Encoder is noisy and has lot of biuncing jitters

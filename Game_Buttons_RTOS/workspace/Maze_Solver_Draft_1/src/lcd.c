@@ -257,11 +257,15 @@ void drawScene(void)
     }
 
     // Now the Menu Text
-    setFont(SmallFont);
+    setFont(BigFont);
+    setColor(255, 255, 255);
+    lcdPrint("Hello Elliot", 20, 50);
+
+    setFont(BigFont);
     setColor(238, 64, 0);
-    lcdPrint("Press BTNs to Move", 50, 50);
-    lcdPrint("Twist to scroll Levels", 80, 150);
-    lcdPrint("Push to play/pause", 80, 200);
+    lcdPrint("BTNs-Move", 30, 150);
+    lcdPrint("TWIST-Scroll", 20, 175);
+    lcdPrint("CLICK-Play", 20, 200);
 
 }
 

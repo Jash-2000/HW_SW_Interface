@@ -1345,3 +1345,80 @@ con
 14:36:58 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
 14:37:39 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
 14:42:42 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
+14:43:42 INFO  : Disconnected from the channel tcfchan#21.
+14:43:42 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:43:42 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+14:43:42 INFO  : 'jtag frequency' command is executed.
+14:43:42 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+14:43:43 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit"
+14:43:43 INFO  : Context for processor 'microblaze_0' is selected.
+14:43:43 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa'.
+14:43:43 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:43:44 INFO  : Context for processor 'microblaze_0' is selected.
+14:43:44 INFO  : System reset is completed.
+14:43:47 INFO  : 'after 3000' command is executed.
+14:43:47 INFO  : Context for processor 'microblaze_0' is selected.
+14:43:47 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf' is downloaded to processor 'microblaze_0'.
+14:43:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf
+----------------End of Script----------------
+
+14:43:47 INFO  : Context for processor 'microblaze_0' is selected.
+14:43:47 INFO  : 'con' command is executed.
+14:43:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+14:43:47 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1_system/_ide/scripts/systemdebugger_maze_solver_draft_1_system_standalone.tcl'
+14:48:25 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
+14:48:50 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
+14:50:17 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
+14:50:44 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...
+14:50:46 INFO  : Disconnected from the channel tcfchan#22.
+14:50:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:50:46 INFO  : Jtag cable 'RealDigital Boo 8874042404B4A' is selected.
+14:50:46 INFO  : 'jtag frequency' command is executed.
+14:50:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+14:50:47 INFO  : Device configured successfully with "/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit"
+14:50:47 INFO  : Context for processor 'microblaze_0' is selected.
+14:50:48 INFO  : Hardware design and registers information is loaded from '/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa'.
+14:50:48 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:50:48 INFO  : Context for processor 'microblaze_0' is selected.
+14:50:48 INFO  : System reset is completed.
+14:50:51 INFO  : 'after 3000' command is executed.
+14:50:51 INFO  : Context for processor 'microblaze_0' is selected.
+14:50:51 INFO  : The application '/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf' is downloaded to processor 'microblaze_0'.
+14:50:51 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874042404B4A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/_ide/bitstream/bd_wrapper.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1/Debug/Maze_Solver_Draft_1.elf
+----------------End of Script----------------
+
+14:50:51 INFO  : Context for processor 'microblaze_0' is selected.
+14:50:51 INFO  : 'con' command is executed.
+14:50:51 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+14:50:51 INFO  : Launch script is exported to file '/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver_Draft_1_system/_ide/scripts/systemdebugger_maze_solver_draft_1_system_standalone.tcl'
+14:52:20 INFO  : Checking for BSP changes to sync application flags for project 'Maze_Solver_Draft_1'...

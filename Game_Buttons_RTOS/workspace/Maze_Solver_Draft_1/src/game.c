@@ -74,16 +74,16 @@ QState Level_Select(Lab2A *me) {
 				return Q_HANDLED();
 			}
 			case CUSTOM_TIMEOUT: {
+				clrScr();
 				showLevel(lvl_no);
 				return Q_HANDLED();
 			}
 			case ENCODER_TWIST:  {
 				if (encoder_twist == 0){
-
 				    setFont(SmallFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
-				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+				    lcdPrint(buf, 20, 50*(lvl_no + 1) - 40);
 
 					lvl_no += 1;
 					if(lvl_no == 6) lvl_no = 0;
@@ -91,13 +91,13 @@ QState Level_Select(Lab2A *me) {
 				    setFont(BigFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
-				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+				    lcdPrint(buf, 20, 50*(lvl_no + 1) - 40);
 
 				}else if(encoder_twist == 1){
 				    setFont(SmallFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
-				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+				    lcdPrint(buf, 20, 50*(lvl_no + 1) - 40);
 
 					if(lvl_no == 0) lvl_no = 5;
 					else lvl_no -= 1;
@@ -105,7 +105,7 @@ QState Level_Select(Lab2A *me) {
 				    setFont(BigFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
-				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+				    lcdPrint(buf, 20, 50*(lvl_no + 1) - 40);
 				}
 			}
 			case ENCODER_CLICK:  {
@@ -146,7 +146,7 @@ QState Running(Lab2A *me) {
 				} else if(buttonPressed == 3) {
 					rotateAntiClockwise();
 				} else if(buttonPressed == 4) {
-					rotateAntiClockwise();
+					rotateClockwise();
 				}
 
 				if (player.gridX == GRID_COLS && player.gridY == GRID_ROWS){
@@ -177,9 +177,10 @@ QState Result(Lab2A *me) {
 				custom_tick = 0;
 				setColor(238, 64, 0);
 				setFont(BigFont);
-			    lcdPrint("Game Time:", 20, 200);
+			    lcdPrint("Game Time(s):", 20, 200);
 			    setFont(SevenSegNumFont);
-			    lcdPrint(counter, 100, 200);
+			    snprintf(buf, sizeof(buf), "%d", counter/100);
+			    lcdPrint(buf, 80, 200);
 			}
 			case CUSTOM_TIMEOUT:{
 				counter = 0;

@@ -122,6 +122,7 @@ void EncoderHandler(void *CallbackRef)
 
     if(enc.push_rise){
     	enc.push_rise = false;
+    	xil_printf("Encoder Clicked");
     	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_CLICK);
     }
     if (enc.step_right){
@@ -139,8 +140,8 @@ void EncoderHandler(void *CallbackRef)
 
 void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
-	custom_tick += 1;	// Used to Reset the Text in 2 seconds
-	if(custom_tick == 4000){
+	custom_tick += 1;
+	if(custom_tick == 3000){	// Used to Reset the Text in 1.5 seconds
 		QActive_postISR((QActive *)&AO_Lab2A, CUSTOM_TIMEOUT);
 	}
     if (running) {
