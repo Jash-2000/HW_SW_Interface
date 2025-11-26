@@ -47,6 +47,7 @@ volatile int counter   = 0;     // stopwatch counter
 volatile int encoder_twist = 0;	// +1 for ACW and 0 for CW
 int lvl_no = 0;		// Flag to choose the level number
 int game_win = 0;	// Flag to see if the player won or not
+char buf[12];            // enough for "Level " + number
 
 void Lab2A_ctor(void)  {
 	Lab2A *me = &AO_Lab2A;
@@ -60,39 +61,55 @@ QState Lab2A_initial(Lab2A *me) {
     counter = 0;
     running = 0;
 	lvl_no = 0;
-	custom_tick = 0;
 	return Q_TRAN(&Level_Select);
 }
 
 QState Level_Select(Lab2A *me) {
 		switch (Q_SIG(me)) {
 			case Q_ENTRY_SIG: {
-				xil_printf("\nEntry phase for Level_Select Stage\n");
 				running = 0;
 				counter = 0;
 				game_win = 0;
+				custom_tick = 0;
 				return Q_HANDLED();
 			}
 			case CUSTOM_TIMEOUT: {
-				xil_printf("\nCustom Timeout observed within the Level_Select Stage\n");
-				initMaze(lvl_no);
 				showLevel(lvl_no);
 				return Q_HANDLED();
 			}
 			case ENCODER_TWIST:  {
-				xil_printf("\nEncoder Twist Observed within the Level_Select Stage\n");
 				if (encoder_twist == 0){
+
+				    setFont(SmallFont);
+				    setColor(238, 64, 0);
+				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
+				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+
 					lvl_no += 1;
 					if(lvl_no == 6) lvl_no = 0;
-					initMaze(lvl_no);
+
+				    setFont(BigFont);
+				    setColor(238, 64, 0);
+				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
+				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+
 				}else if(encoder_twist == 1){
+				    setFont(SmallFont);
+				    setColor(238, 64, 0);
+				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
+				    lcdPrint(buf, 20, 50*(lvl_no + 1));
+
 					if(lvl_no == 0) lvl_no = 5;
 					else lvl_no -= 1;
-					initMaze(lvl_no);
+
+				    setFont(BigFont);
+				    setColor(238, 64, 0);
+				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
+				    lcdPrint(buf, 20, 50*(lvl_no + 1));
 				}
 			}
 			case ENCODER_CLICK:  {
-				xil_printf("\nEncoder Click Observed within the Level_Select Stage\n");
+				initMaze(lvl_no);
 				return Q_TRAN(&Pause);
 			}
 		}
@@ -102,14 +119,12 @@ QState Level_Select(Lab2A *me) {
 QState Pause(Lab2A *me) {
 		switch (Q_SIG(me)) {
 			case Q_ENTRY_SIG: {
-				xil_printf("\nEntry phase for Pause Stage\n");
 				player.gridX = 0; // Start position.
 			    player.gridY = 0; // Start position.
 				drawPlayer();
 				return Q_HANDLED();
 			}
 			case ENCODER_CLICK:  {
-				xil_printf("\nEncoder Click Observed within the Pause Stage\n");
 				return Q_TRAN(&Running);
 			}
 		}
@@ -123,29 +138,32 @@ QState Running(Lab2A *me) {
 				running = 1;
 				return Q_HANDLED();
 			}
-			case ENCODER_TWIST: {
-				if(encoder_twist) {
+			case BUTTON: {
+				if(buttonPressed == 1) {
 					moveForward(lvl_no);
-				} else{
+				} else if(buttonPressed == 2) {
 					moveBackward(lvl_no);
+				} else if(buttonPressed == 3) {
+					rotateAntiClockwise();
+				} else if(buttonPressed == 4) {
+					rotateAntiClockwise();
 				}
+
 				if (player.gridX == GRID_COLS && player.gridY == GRID_ROWS){
 					game_win = 1;
+					setFont(BigFont);
+				    setColor(238, 64, 0);
+				    lcdPrint("You Win", 40, 100);
 					return Q_TRAN(&Result);
 				}else{
 					return Q_HANDLED();
 				}
 			}
-			case BUTTON: {
-				if(buttonPressed == 3) {
-					rotateClockwise();
-				} else if(buttonPressed == 4) {
-					rotateAntiClockwise();
-				}
-				return Q_HANDLED();
-			}
 			case ENCODER_CLICK:  {
 				game_win = 0;
+				setFont(BigFont);
+			    setColor(238, 64, 0);
+			    lcdPrint("You Loose", 35, 100);
 				return Q_TRAN(&Result);
 			}
 		}
@@ -157,16 +175,14 @@ QState Result(Lab2A *me) {
 			case Q_ENTRY_SIG: {
 				running = 0;
 				custom_tick = 0;
-			    setFont(BigFont);
-			    setColor(238, 64, 0);
-			    if (game_win){ lcdPrint("You Win", 80, 100); }
-			    else {lcdPrint("You Loose", 80, 1000); }
-			    lcdPrint("See your game time", 80, 100);
+				setColor(238, 64, 0);
+				setFont(BigFont);
+			    lcdPrint("Game Time:", 20, 200);
+			    setFont(SevenSegNumFont);
+			    lcdPrint(counter, 100, 200);
 			}
 			case CUSTOM_TIMEOUT:{
-				drawScene();
 				counter = 0;
-				custom_tick = 0;
 				return Q_TRAN(&Level_Select);
 			}
 		}

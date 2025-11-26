@@ -14,6 +14,19 @@ struct _current_font cfont;
 // Player instance
 Player player = {0, 0, DIR_UP};  // Start at top-left facing up
 
+char mazeGrid_dummy[GRID_ROWS][GRID_COLS] = {
+		    {0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 0, 0},
+			{0, 0, 1, 1, 1, 1, 0, 0},
+		    {0, 0, 1, 1, 1, 1, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0, 0}
+};
+
 // Maze layout: 0 = empty/path, 1 = wall
 char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 
@@ -89,17 +102,18 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 
   // ---------------- LEVEL 6 ----------------
     {
-      {0, 0, 0, 0, 0, 0, 1, 1},
-      {0, 1, 0, 1, 1, 0, 0, 1},
-      {0, 1, 0, 0, 0, 1, 1, 1},
+      {0, 1, 0, 0, 0, 0, 1, 0},
+      {0, 1, 1, 1, 1, 0, 0, 0},
+      {0, 0, 0, 0, 0, 1, 1, 0},
       {1, 1, 1, 1, 0, 0, 0, 1},
       {0, 0, 0, 1, 0, 1, 0, 0},
       {0, 1, 1, 0, 0, 1, 1, 0},
-      {0, 0, 1, 0, 1, 0, 0, 0},
-      {1, 0, 1, 0, 1, 1, 0, 1},
+      {0, 0, 0, 0, 0, 0, 0, 0},
+      {1, 0, 1, 0, 1, 1, 0, 0},
       {0, 0, 1, 0, 0, 0, 1, 0},
-      {0, 1, 1, 1, 0, 0, 0, 0}
+      {0, 1, 0, 1, 0, 0, 0, 0}
     }
+
 
 };
 
@@ -611,11 +625,37 @@ void initMaze(int lvl_no) {
 }
 
 void showLevel(int lvl_no){
-    char buf[12];            // enough for "Level " + number
-    setFont(BigFont);
-    setColor(238, 64, 0);
+	  for (int row = 0; row < GRID_ROWS; row++) {
+	    for (int col = 0; col < GRID_COLS; col++) {
+	      int x = GRID_START_X + col * CELL_SIZE;
+	      int y = GRID_START_Y + row * CELL_SIZE;
 
-    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
-    lcdPrint(buf, 50, 100);
-    lcdPrint("Goal-Bottom Right Corner", 10, 200);
+	      // Set color based on cell type
+	      if (mazeGrid_dummy[row][col] == 1) {
+	        // Wall - draw filled square in wall color
+	        setColor(255,0,0);  // Red for walls
+	      } else {
+	        // Path - draw filled square in path color
+	        setColor(34, 139, 34);  // Green for paths
+	      }
+
+	      // Draw filled square
+	      fillSquare(x, y, CELL_SIZE);
+
+	      // Draw outline for clarity
+	      setColor(0,0,0);  // Black outline
+	      drawSquareOutline(x, y, CELL_SIZE);
+	    }
+	  }
+
+	    setFont(BigFont);
+	    setColor(238, 64, 0);
+	    lcdPrint("Level 1", 20, 50);
+	    setFont(SmallFont);
+	    setColor(238, 64, 0);
+	    lcdPrint("Level 2", 20, 100);
+	    lcdPrint("Level 3", 20, 150);
+	    lcdPrint("Level 4", 20, 200);
+	    lcdPrint("Level 5", 20, 250);
+	    lcdPrint("Level 6", 20, 300);
 }

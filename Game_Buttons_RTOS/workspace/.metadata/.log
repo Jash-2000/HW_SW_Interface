@@ -8172,3 +8172,126 @@ Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.]. Thread: Worker-12: Launc
 
 !ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 12:10:37.538
 !MESSAGE XSCT command with result: [con], Result: [null, ]. Thread: Worker-12: Launching SystemDebugger_Maze_Solver_Draft_1_system
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:20:40.683
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-63: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:20:40.688
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-63: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:20:40.690
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-63: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:20:40.694
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-63: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:20:40.696
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:20:40.698
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-63: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:20:40.711
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-63: Build Project
+
+!ENTRY com.xilinx.sdx.core 1 0 2025-11-26 14:20:41.504
+!MESSAGE Build step failed, canceling full build chain.
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:22:05.667
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-62: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:22:05.688
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-62: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:22:05.691
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-62: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:22:05.697
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-62: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:22:05.699
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:22:05.732
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-62: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:22:05.735
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-62: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:36:58.688
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:36:58.693
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:36:58.695
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:36:58.700
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:36:58.702
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:36:58.705
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:36:58.708
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:37:39.614
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-59: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:37:39.620
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-59: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:37:39.623
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-59: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:37:39.627
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-59: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:37:39.630
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:37:39.633
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-59: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:37:39.665
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-59: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.901
+!MESSAGE XSCT Command: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.916
+!MESSAGE XSCT command with result: [ ::hsi::utils::set_current_hw_sw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ], Result: [null, ]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.920
+!MESSAGE XSCT Command: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.924
+!MESSAGE XSCT command with result: [::hsi::utils::get_hw_sw_details -json /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/hw/bd_wrapper.xsa /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, {"procname": "microblaze_0",
+"osname": "standalone",
+"osver": "7.7",
+}]. Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 1 0 2025-11-26 14:42:42.927
+!MESSAGE Generating MD5 hash for file: /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss ...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.942
+!MESSAGE XSCT Command: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Thread: Worker-52: Build Project
+
+!ENTRY com.xilinx.sdk.utils 0 0 2025-11-26 14:42:42.946
+!MESSAGE XSCT command with result: [::hsi::utils::closesw /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/system.mss], Result: [null, ]. Thread: Worker-52: Build Project

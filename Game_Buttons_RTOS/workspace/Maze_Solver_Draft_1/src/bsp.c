@@ -103,7 +103,7 @@ void ButtonsHandler(void *CallbackRef) {
 	    else if (btns & 0x02) {buttonPressed = 2;}
 	    else if (btns & 0x04) {buttonPressed = 3;}
 	    else if (btns & 0x08) {buttonPressed = 4;}
-	    QActive_postISR((QActive *)&AO_Lab2A, BUTTON); // Display Text
+	    QActive_postISR((QActive *)&AO_Lab2A, BUTTON);
 	    interrupt_arrived_flag = 1;
 }
 
@@ -127,12 +127,12 @@ void EncoderHandler(void *CallbackRef)
     if (enc.step_right){
     	enc.step_right = false;
     	encoder_twist = 0;
-    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST); // Move Down
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST);
     }
     if (enc.step_left){
     	enc.step_left  = false;
     	encoder_twist = 1;
-    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST); // Move Up
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST);
     }
     interrupt_arrived_flag = 1;
 }
@@ -140,9 +140,8 @@ void EncoderHandler(void *CallbackRef)
 void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
 	custom_tick += 1;	// Used to Reset the Text in 2 seconds
-	if(custom_tick == 2000){
+	if(custom_tick == 4000){
 		QActive_postISR((QActive *)&AO_Lab2A, CUSTOM_TIMEOUT);
-		xil_printf("Posted Custom Timeout");
 	}
     if (running) {
         counter += 1;
@@ -208,6 +207,10 @@ void BSP_init(void) {
         (controlReg | XSP_CR_ENABLE_MASK | XSP_CR_MASTER_MODE_MASK) & (~XSP_CR_TRANS_INHIBIT_MASK));
     XSpi_SetSlaveSelectReg(&spi, ~0x01);
 
+}
+
+void QF_onStartup(void){
+	//xil_printf("QF_onStartup");
 }
 
 void QF_onIdle(void) {        /* entered with interrupts locked */
