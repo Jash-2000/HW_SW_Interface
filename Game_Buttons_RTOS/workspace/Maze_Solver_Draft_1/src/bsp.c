@@ -67,6 +67,7 @@ static XGpio   dc;
 static XSpi    spi;
 
 int digits[8]          = {0};   // 8 display digits
+int interrupt_arrived_flag = 0;
 
 // ================== Helper Functions ==================
 
@@ -101,6 +102,7 @@ void ButtonsHandler(void *CallbackRef) {
 	    else if (btns & 0x04) {buttonPressed = 3;}
 	    else if (btns & 0x08) {buttonPressed = 4;}
 	    QActive_postISR((QActive *)&AO_Lab2A, BUTTON); // Display Text
+	    interrupt_arrived_flag = 1;
 }
 
 void EncoderHandler(void *CallbackRef)
@@ -130,19 +132,21 @@ void EncoderHandler(void *CallbackRef)
     	encoder_twist = 1;
     	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST); // Move Up
     }
+    interrupt_arrived_flag = 1;
 }
 
 void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
-	xil_printf("Timer is Ticking");
 	custom_tick += 1;	// Used to Reset the Text in 2 seconds
-	if(custom_tick == 10){
+	if(custom_tick == 2000){
 		QActive_postISR((QActive *)&AO_Lab2A, CUSTOM_TIMEOUT);
+		xil_printf("Posted Custom Timeout");
 	}
     if (running) {
         counter += 1;
     }
     updateDigits();
+    interrupt_arrived_flag = 1;
 }
 
 void BSP_init(void) {
@@ -212,8 +216,8 @@ void QF_onStartup(void) {                 /* entered with interrupts locked */
 
 void QF_onIdle(void) {        /* entered with interrupts locked */
     QF_INT_UNLOCK();                       /* unlock interrupts */
-
-   while (1) {
+    interrupt_arrived_flag = 0;
+   do{
             // Refresh display — 2 digits at a time using your Urbana driver
             sevenseg_draw_digit(0, 0, digits[0], digits[4]);
             usleep(REFRESH_DELAY_US);
@@ -226,7 +230,7 @@ void QF_onIdle(void) {        /* entered with interrupts locked */
 
             sevenseg_draw_digit(3, 3, digits[3], digits[7]);
             usleep(REFRESH_DELAY_US);
-        }
+        } while (interrupt_arrived_flag == 0);
 
 }
 

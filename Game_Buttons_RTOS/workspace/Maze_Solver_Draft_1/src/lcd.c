@@ -17,7 +17,7 @@ Player player = {0, 0, DIR_UP};  // Start at top-left facing up
 // Maze layout: 0 = empty/path, 1 = wall
 char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 
-  // ---------------- LEVEL 0 ----------------
+  // ---------------- LEVEL 1 ----------------
   {
     {0, 1, 0, 0, 1, 0, 0, 0},
     {0, 1, 0, 1, 1, 0, 1, 0},
@@ -31,7 +31,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 1, 1, 0, 1, 0, 1, 0}
   },
 
-  // ---------------- LEVEL 1 ----------------
+  // ---------------- LEVEL 2 ----------------
   {
     {0, 0, 1, 0, 0, 1, 0, 0},
     {1, 0, 1, 0, 1, 0, 1, 0},
@@ -45,7 +45,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {1, 0, 0, 0, 1, 0, 0, 0}
   },
 
-  // ---------------- LEVEL 2 ----------------
+  // ---------------- LEVEL 3 ----------------
   {
     {0, 1, 0, 1, 0, 0, 1, 0},
     {0, 1, 0, 1, 1, 0, 0, 0},
@@ -59,7 +59,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 1, 0, 0, 1, 0, 0, 0}
   },
 
-  // ---------------- LEVEL 3 ----------------
+  // ---------------- LEVEL 4 ----------------
   {
     {0, 0, 0, 1, 0, 1, 0, 0},
     {1, 1, 0, 1, 0, 0, 0, 1},
@@ -73,7 +73,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {1, 0, 1, 0, 0, 1, 0, 0}
   },
 
-  // ---------------- LEVEL 4 ----------------
+  // ---------------- LEVEL 5 ----------------
   {
     {0, 1, 0, 0, 0, 0, 1, 0},
     {0, 1, 0, 1, 1, 0, 0, 0},
@@ -85,7 +85,21 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {1, 0, 1, 0, 1, 1, 0, 1},
     {0, 0, 1, 0, 0, 0, 1, 0},
     {0, 1, 0, 1, 0, 0, 0, 0}
-  }
+  },
+
+  // ---------------- LEVEL 6 ----------------
+    {
+      {0, 0, 0, 0, 0, 0, 1, 1},
+      {0, 1, 0, 1, 1, 0, 0, 1},
+      {0, 1, 0, 0, 0, 1, 1, 1},
+      {1, 1, 1, 1, 0, 0, 0, 1},
+      {0, 0, 0, 1, 0, 1, 0, 0},
+      {0, 1, 1, 0, 0, 1, 1, 0},
+      {0, 0, 1, 0, 1, 0, 0, 0},
+      {1, 0, 1, 0, 1, 1, 0, 1},
+      {0, 0, 1, 0, 0, 0, 1, 0},
+      {0, 1, 1, 1, 0, 0, 0, 0}
+    }
 
 };
 
@@ -231,11 +245,10 @@ void drawScene(void)
     // Now the Menu Text
     setFont(SmallFont);
     setColor(238, 64, 0);
-    lcdPrint("Press BTN0 to Change the Levels", 80, 50);
-    lcdPrint("Press BTN1 to Select the Levels", 80, 150);
-    lcdPrint("Press BTN2 to Turn CW", 80, 200);
-    lcdPrint("Press BTN3 to Turn ACW", 80, 250);
-    lcdPrint("Press the Encoder Click to Start/Stop the game", 80, 300);
+    lcdPrint("Press BTNs to Move", 50, 50);
+    lcdPrint("Twist to scroll Levels", 80, 150);
+    lcdPrint("Push to play/pause", 80, 200);
+
 }
 
 
@@ -603,6 +616,6 @@ void showLevel(int lvl_no){
     setColor(238, 64, 0);
 
     snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
-    lcdPrint(buf, 80, 100);
-    lcdPrint("Goal-Bottom Right Corner", 80, 200);
+    lcdPrint(buf, 50, 100);
+    lcdPrint("Goal-Bottom Right Corner", 10, 200);
 }

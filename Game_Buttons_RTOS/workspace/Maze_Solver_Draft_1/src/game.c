@@ -55,40 +55,45 @@ void Lab2A_ctor(void)  {
 
 
 QState Lab2A_initial(Lab2A *me) {
-	//xil_printf("\n\rInitialization");
     initLCD();
     drawScene();
     counter = 0;
     running = 0;
 	lvl_no = 0;
-    return Q_TRAN(&Level_Select);
+	custom_tick = 0;
+	return Q_TRAN(&Level_Select);
 }
 
 QState Level_Select(Lab2A *me) {
 		switch (Q_SIG(me)) {
 			case Q_ENTRY_SIG: {
-				custom_tick = 0;
+				xil_printf("\nEntry phase for Level_Select Stage\n");
 				running = 0;
 				counter = 0;
 				game_win = 0;
 				return Q_HANDLED();
 			}
 			case CUSTOM_TIMEOUT: {
+				xil_printf("\nCustom Timeout observed within the Level_Select Stage\n");
 				initMaze(lvl_no);
 				showLevel(lvl_no);
 				return Q_HANDLED();
 			}
-			case BUTTON:  {
-				if (buttonPressed == 1){
-					// Change the Levels to the User
+			case ENCODER_TWIST:  {
+				xil_printf("\nEncoder Twist Observed within the Level_Select Stage\n");
+				if (encoder_twist == 0){
 					lvl_no += 1;
-					if(lvl_no == 5) lvl_no = 0;
+					if(lvl_no == 6) lvl_no = 0;
 					initMaze(lvl_no);
-					showLevel(lvl_no);
-				}else if(buttonPressed == 2){
+				}else if(encoder_twist == 1){
+					if(lvl_no == 0) lvl_no = 5;
+					else lvl_no -= 1;
 					initMaze(lvl_no);
-					return Q_TRAN(&Pause);
 				}
+			}
+			case ENCODER_CLICK:  {
+				xil_printf("\nEncoder Click Observed within the Level_Select Stage\n");
+				return Q_TRAN(&Pause);
 			}
 		}
 		return Q_SUPER(&QHsm_top);
@@ -97,12 +102,14 @@ QState Level_Select(Lab2A *me) {
 QState Pause(Lab2A *me) {
 		switch (Q_SIG(me)) {
 			case Q_ENTRY_SIG: {
+				xil_printf("\nEntry phase for Pause Stage\n");
 				player.gridX = 0; // Start position.
 			    player.gridY = 0; // Start position.
 				drawPlayer();
 				return Q_HANDLED();
 			}
 			case ENCODER_CLICK:  {
+				xil_printf("\nEncoder Click Observed within the Pause Stage\n");
 				return Q_TRAN(&Running);
 			}
 		}
@@ -159,6 +166,7 @@ QState Result(Lab2A *me) {
 			case CUSTOM_TIMEOUT:{
 				drawScene();
 				counter = 0;
+				custom_tick = 0;
 				return Q_TRAN(&Level_Select);
 			}
 		}

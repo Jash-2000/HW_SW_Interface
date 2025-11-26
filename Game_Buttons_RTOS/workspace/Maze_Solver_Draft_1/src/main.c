@@ -1,6 +1,6 @@
 /*****************************************************************************
-* main.c for Lab2A of ECE 153a at UCSB
-* Date of the Last Update:  November 1,2020
+Created by: Jash Shah
+Date of the Last Update:  December 1,2025
 *****************************************************************************/
 
 #include "qpn_port.h"                                       /* QP-nano port */

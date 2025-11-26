@@ -1,6 +1,6 @@
-03:04:06 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1_system ****
+12:10:27 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1_system ****
 make all 
 Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
 
-03:04:06 Build Finished (took 63ms)
+12:10:27 Build Finished (took 121ms)
 
