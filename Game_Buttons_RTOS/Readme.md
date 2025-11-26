@@ -73,5 +73,5 @@ The Design Block Diagram is as follows:
 
 ## Problems Faced
 
-- Seven Segment Display has jitter issue if the refresh time is less. Solving this(by refreseing more often) causes an issue due to clock starvation of the processor
-- Encoder is noisy and has lot of biuncing jitters
+- Seven Segment Display shows jitters if the refresh time is less, this is because Seven Segment Display is an active element needing constant refreshes. I solving this(by refreseing more often), thus, causes an issue due to clock starvation of the processor
+- Encoder is noisy and has lot of bouncing jitters
