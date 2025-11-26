@@ -1,43 +1,45 @@
 # Real Time Game Controller using Audio Processing Hardware Accelarator
 
-This Project involves using a Micrblaze Urbana FPGA Board to generate a hardware accelarator that processes the Analog microphone input, applies FFT and other audio processing techniques and does a wake-word detection, finally producing an interrupt to the controller. Finally, the software runs a game that can be played on the interfaced LCD TFT display.
+This Project involves using a Micrblaze Urbana FPGA Board to generate a game that can be played on the interfaced LCD TFT display. The display is a very simple TFT LCD screen with SPI communication protocol, restricting any parallel updates for the graphics. The available code is pure bare-metal and thus can be ported to other platforms as well (change your BSP_Settings file). The verilog implementation and interfacing for all the peripherals has been compiled in "bd_wrapper.xsa" file and can be reused if using the same set of hardware. 
 
 ## Game Outline
 Grid: an M×N orthogonal grid of square cells. Some cells are obstacles (walls), one is the start cell, one is goal cell.
-Player: occupies the center of one cell and has one of 4 discrete orientations (N, E, S, W).
-Actions (atomic turn):
-Rotate left/right in place (changes orientation only).
-Move forward OR backward: when chosen, the player translates (forward = in direction of orientation; backward = opposite) and keeps moving until it is about to enter an obstacle or leaves grid — then stops in the last free cell before that obstacle (i.e., slide-to-wall). Movement is atomic: user triggers it and it executes until stop.
 
-Win: reach the goal cell (any orientation) after a move/rotation.
+Player: occupies the center of one cell and has one of 4 discrete orientations (N, E, S, W).
+
+Actions (atomic turn): Rotate left/right in place (changes orientation only).
+					   Move forward OR backward: when chosen, the player translates (forward = in direction of orientation; backward = opposite) and keeps moving until it is about to enter an obstacle or leaves grid — then stops in the last free cell before that obstacle (i.e., slide-to-wall). Note: Movement is atomic: user triggers it and it executes until stop.
+
+Win: Reach the goal cell (any orientation) after a move/rotation.
 
 Constraints: collisions disallowed; cannot stop mid-way during slide.
 
 ## Game Design Rules for the Software
-The game is desinged using QP-Nano's real time software processing. Its Hierarchy is as follows:
+The game is desinged using QP-Nano's real time OS processing framework. Its Hierarchy is as follows:
 
 	-Init_State(As QP Nano Start Running)
 		- Set the "counter" and "running" flags to 0.
-		- Display the initial screen(triangle pattern) in the background
-		- Show the menu text("Press BTN0 to Change the Levels\n Press BTN1 to Select the Levels\n Press BTN2 to Turn CW\n Press BTN3 to Turn ACW\n Press the Encoder Click to Start/Stop the game") for user and wait for input.
+		- Display the initial screen(fancy triangle pattern) in the background
+		- Show the menu text("Turn the encoder for scrolling levels\n Press the Encoder Button to start/stop the game\n Use 4 push buttons to move N,W,S,E") for user and wait for any input to be made.
 		
 	-Level_Select_State(Enter from Init_State if any user input is seen || Enter from Result_State if "Timeout")
 		- Display Level 1 of the game
-		- Show the text "Level_i" in center.
-		- Change to show different levels if "btn0" is pressed and update the text.
+		- Change to show different levels if "Enc_Twist" is observed and update the text.
 
-	-Pause_State(Enter from Level_Select_State if "btn1" is pressed)
+	-Pause_State(Enter from Level_Select_State if "Enc_Click" is pressed)
 		- Set the stage to play the game and display the player position and destination grid box.
 
 	-Running State(Enter from Pause_State if "Enc_Click" is pressed)
 		- Start the timer on seven segment display.
 		- Update the Board position on basis of what is being pressed.
-		- On BTN2 -- Turn AWC
-		- On BTN3 -- Turn CW
-		- On Encoder TWIST -- Move Accordingly.
+		- On BTN0 -- Move North
+		- On BTN1 -- Move West
+		- On BTN2 -- Move South
+		- On BTN3 -- Move East
 
 	-Result_State(Enter from Running_State is "Enc_Click" is pressed || Enter from the Running_State if "GAME_OVER" is triggered)
 		- Display the current counter value and show the win/loose status
+		- Display the Level you player
 		- Set the "counter" and "running" flags to 0.
 
 	-Idle_State
@@ -46,6 +48,7 @@ The game is desinged using QP-Nano's real time software processing. Its Hierarch
 
 
 
+---
 
 On Bootup: 
         - The LCD display should showcase a fancy pattern in the background using 2 colours (anything like a repeating triangles)
