@@ -2,8 +2,6 @@
 Author: Jash Shah
 Date Created: 25 November 2025
 Last Moditified: 25 November 2025
-
-This file is used to initiate
 *****************************************************************************/
 
 #include "qpn_port.h"
@@ -210,10 +208,15 @@ void BSP_init(void) {
 
 }
 
+/*..........................................................................*/
+void QF_onStartup(void) {                 /* entered with interrupts locked */
+	xil_printf("\n\rQF_onStartup\n"); // Comment out once you are in your complete program
+}
+
+
 void QF_onIdle(void) {        /* entered with interrupts locked */
     QF_INT_UNLOCK();                       /* unlock interrupts */
     interrupt_arrived_flag = 0;
-    // A Do While Loop is required as the timer is to be updated only when no interrupts are seen otherwise the timer takes up all the clock cycle.
    do{
             // Refresh display — 2 digits at a time using your Urbana driver
             sevenseg_draw_digit(0, 0, digits[0], digits[4]);

@@ -9,6 +9,7 @@ void printDebugLog(void);
 
 #define BSP_showState(prio_, state_) ((void)0)
 
+
 #endif                                                             /* bsp_h */
 
 

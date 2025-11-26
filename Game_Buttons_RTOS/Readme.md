@@ -44,8 +44,7 @@ The game is desinged using QP-Nano's real time OS processing framework. Its Hier
 
 	-Idle_State
 		- Clear Interrupts
-		- Update digits on the seven segment display.
-
+		- Update digits on the seven segment display(Make sure that it is non-blocking).
 
 
 ---
