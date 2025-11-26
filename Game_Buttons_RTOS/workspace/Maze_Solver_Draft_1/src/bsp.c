@@ -118,16 +118,7 @@ void EncoderHandler(void *CallbackRef)
 
     if(enc.push_rise){
     	enc.push_rise = false;
-    	if(running){
-    		running = 0;
-    		counter = 0;
-    		updateDigits();
-    		QActive_postISR((QActive *)&AO_Lab2A, GAME_PAUSE); // Reset the game
-    	}else{
-    		running = 1;
-    		QActive_postISR((QActive *)&AO_Lab2A, ENCODER_CLICK); // Start the game
-    	}
-
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_CLICK);
     }
     if (enc.step_right){
     	enc.step_right = false;
@@ -143,8 +134,9 @@ void EncoderHandler(void *CallbackRef)
 
 void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
+	xil_printf("Timer is Ticking");
 	custom_tick += 1;	// Used to Reset the Text in 2 seconds
-	if(custom_tick == 4000){
+	if(custom_tick == 10){
 		QActive_postISR((QActive *)&AO_Lab2A, CUSTOM_TIMEOUT);
 	}
     if (running) {

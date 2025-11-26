@@ -1,47 +1,5 @@
 /*
- * lcd.c
- *
- *  Created on: Oct 21, 2015
- *      Author: atlantis
- */
-
-/*
- UTFT.cpp - Multi-Platform library support for Color TFT LCD Boards
- Copyright (C)2015 Rinky-Dink Electronics, Henning Karlsen. All right reserved
-
- This library is the continuation of my ITDB02_Graph, ITDB02_Graph16
- and RGB_GLCD libraries for Arduino and chipKit. As the number of
- supported display modules and controllers started to increase I felt
- it was time to make a single, universal library as it will be much
- easier to maintain in the future.
-
- Basic functionality of this library was origianlly based on the
- demo-code provided by ITead studio (for the ITDB02 modules) and
- NKC Electronics (for the RGB GLCD module/shield).
-
- This library supports a number of 8bit, 16bit and serial graphic
- displays, and will work with both Arduino, chipKit boards and select
- TI LaunchPads. For a full list of tested display modules and controllers,
- see the document UTFT_Supported_display_modules_&_controllers.pdf.
-
- When using 8bit and 16bit display modules there are some
- requirements you must adhere to. These requirements can be found
- in the document UTFT_Requirements.pdf.
- There are no special requirements when using serial displays.
-
- You can find the latest version of the library at
- http://www.RinkyDinkElectronics.com/
-
- This library is free software; you can redistribute it and/or
- modify it under the terms of the CC BY-NC-SA 3.0 license.
- Please see the included documents for further information.
-
- Commercial use of this library requires you to buy a license that
- will allow commercial use. This includes using the library,
- modified or not, as a tool to sell products.
-
- The license applies to all part of the library including the
- examples and tools supplied with the library.
+Created by: Jash Shah
  */
 
 #include "lcd.h"
@@ -52,6 +10,84 @@ int fcl;
 int bch;
 int bcl;
 struct _current_font cfont;
+
+// Player instance
+Player player = {0, 0, DIR_UP};  // Start at top-left facing up
+
+// Maze layout: 0 = empty/path, 1 = wall
+char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
+
+  // ---------------- LEVEL 0 ----------------
+  {
+    {0, 1, 0, 0, 1, 0, 0, 0},
+    {0, 1, 0, 1, 1, 0, 1, 0},
+    {0, 0, 0, 0, 0, 0, 1, 0},
+    {1, 1, 0, 1, 0, 1, 1, 0},
+    {0, 0, 0, 1, 0, 0, 0, 0},
+    {0, 1, 1, 1, 0, 1, 0, 1},
+    {0, 0, 0, 0, 0, 1, 0, 0},
+    {1, 0, 1, 0, 1, 1, 0, 1},
+    {0, 0, 1, 0, 0, 0, 0, 0},
+    {0, 1, 1, 0, 1, 0, 1, 0}
+  },
+
+  // ---------------- LEVEL 1 ----------------
+  {
+    {0, 0, 1, 0, 0, 1, 0, 0},
+    {1, 0, 1, 0, 1, 0, 1, 0},
+    {0, 0, 0, 0, 0, 0, 1, 0},
+    {0, 1, 1, 1, 0, 1, 0, 1},
+    {0, 0, 0, 1, 0, 0, 0, 0},
+    {1, 1, 0, 1, 1, 1, 0, 0},
+    {0, 0, 0, 0, 0, 1, 1, 0},
+    {0, 1, 0, 1, 0, 1, 0, 1},
+    {0, 0, 1, 0, 0, 0, 1, 0},
+    {1, 0, 0, 0, 1, 0, 0, 0}
+  },
+
+  // ---------------- LEVEL 2 ----------------
+  {
+    {0, 1, 0, 1, 0, 0, 1, 0},
+    {0, 1, 0, 1, 1, 0, 0, 0},
+    {0, 0, 0, 0, 1, 1, 0, 1},
+    {1, 1, 0, 1, 0, 0, 0, 0},
+    {0, 0, 1, 1, 0, 1, 0, 1},
+    {0, 1, 0, 0, 0, 1, 1, 0},
+    {0, 0, 0, 1, 0, 0, 0, 1},
+    {1, 0, 1, 0, 1, 0, 0, 0},
+    {0, 0, 1, 0, 0, 1, 1, 0},
+    {0, 1, 0, 0, 1, 0, 0, 0}
+  },
+
+  // ---------------- LEVEL 3 ----------------
+  {
+    {0, 0, 0, 1, 0, 1, 0, 0},
+    {1, 1, 0, 1, 0, 0, 0, 1},
+    {0, 0, 0, 0, 1, 1, 0, 0},
+    {0, 1, 1, 0, 0, 1, 1, 0},
+    {0, 0, 1, 0, 0, 0, 1, 0},
+    {1, 0, 0, 1, 1, 0, 0, 1},
+    {0, 0, 1, 0, 0, 0, 1, 0},
+    {0, 1, 0, 0, 1, 1, 0, 0},
+    {0, 0, 0, 1, 0, 0, 0, 1},
+    {1, 0, 1, 0, 0, 1, 0, 0}
+  },
+
+  // ---------------- LEVEL 4 ----------------
+  {
+    {0, 1, 0, 0, 0, 0, 1, 0},
+    {0, 1, 0, 1, 1, 0, 0, 0},
+    {0, 0, 0, 0, 0, 1, 1, 0},
+    {1, 1, 1, 1, 0, 0, 0, 1},
+    {0, 0, 0, 1, 0, 1, 0, 0},
+    {0, 1, 1, 0, 0, 1, 1, 0},
+    {0, 0, 0, 0, 1, 0, 0, 0},
+    {1, 0, 1, 0, 1, 1, 0, 1},
+    {0, 0, 1, 0, 0, 0, 1, 0},
+    {0, 1, 0, 1, 0, 0, 0, 0}
+  }
+
+};
 
 // Write command to LCD controller
 void LCD_Write_COM(char VL) {
@@ -172,6 +208,37 @@ void setXY(int x1, int y1, int x2, int y2) {
 	LCD_Write_COM(0x2C);
 }
 
+void drawScene(void)
+{
+    // Full-screen red background with thin orange borders
+    setColor(255, 165, 0);
+    fillRect(0, 0, 239, 319);
+    setColor(255, 0, 0);
+    fillRect(10, 10, 229, 309);
+
+    // Foreground: 40×40 tiles, alternating
+    const int TILE_H = 40, TILE_B = 40;
+    const int MARGIN = 10;
+    setColor(255, 165, 0); // orange
+
+    for (int yy = MARGIN; yy<= 319 ; yy += TILE_H) {
+        for (int xx = MARGIN; xx<= 239; xx += TILE_B) {
+            int parity = (((xx - MARGIN) / TILE_B) ^ ((yy - MARGIN) / TILE_H)) & 1;
+            fillIsoTri(xx, yy, TILE_B, TILE_H, parity ? 1 : 0);
+        }
+    }
+
+    // Now the Menu Text
+    setFont(SmallFont);
+    setColor(238, 64, 0);
+    lcdPrint("Press BTN0 to Change the Levels", 80, 50);
+    lcdPrint("Press BTN1 to Select the Levels", 80, 150);
+    lcdPrint("Press BTN2 to Turn CW", 80, 200);
+    lcdPrint("Press BTN3 to Turn ACW", 80, 250);
+    lcdPrint("Press the Encoder Click to Start/Stop the game", 80, 300);
+}
+
+
 // Remove boundry
 void clrXY(void) {
 	setXY(0, 0, DISP_X_SIZE, DISP_Y_SIZE);
@@ -198,6 +265,27 @@ void clrScr(void) {
 
 	fillRect(0, 0, DISP_X_SIZE, DISP_Y_SIZE);
 }
+
+// Draw vertical line
+void drawVLine(int x, int y, int l) {
+    int i;
+
+    if (l < 0) {
+        l = -l;
+        y -= l;
+    }
+
+    // Set the drawing area from (x, y) to (x, y + l)
+    setXY(x, y, x, y + l);
+
+    for (i = 0; i < l + 1; i++) {
+        LCD_Write_DATA(fch);
+        LCD_Write_DATA(fcl);
+    }
+
+    clrXY();
+}
+
 
 // Draw horizontal line
 void drawHLine(int x, int y, int l) {
@@ -277,51 +365,244 @@ void lcdPrint(char *st, int x, int y) {
 		printChar(*st++, x + cfont.x_size * i++, y);
 }
 
-void fillIsoTri(int x, int y, int base, int height, int up)
-{
-    if (base <= 0 || height <= 0) return;
+void fillIsoTri(int x, int y, int base, int height, int up) {
+  if (base <= 0 || height <= 0) return;
 
-    // horizontal center of the base
-    int cx = x + base / 2;
+  int cx = x + base / 2;
 
-    if (up) {
-        // scan from top (apex) to base
-        for (int r = 0; r < height; r++) {
-            // half-width grows linearly from 0 at apex to base/2 at bottom
-            // half = (r * base) / (2*height)  → avoid float
-            int half = (r * base) / (2 * height);
-            int yy   = y + r;
-            int xL   = cx - half;
-            int xR   = cx + half - 1;
-            if (xL <= xR) drawHLine(xL, yy, xR - xL + 1);
-        }
-    } else {
-        // scan from base (top) to apex (bottom)
-        for (int r = 0; r < height; r++) {
-            int half = ((height - 1 - r) * base) / (2 * height);
-            int yy   = y + r;
-            int xL   = cx - half;
-            int xR   = cx + half - 1;
-            if (xL <= xR) drawHLine(xL, yy, xR - xL + 1);
-        }
+  if (up) {
+    for (int r = 0; r < height; r++) {
+      int half = (r * base) / (2 * height);
+      int yy = y + r;
+      int xL = cx - half;
+      int xR = cx + half - 1;
+      if (xL <= xR) drawHLine(xL, yy, xR - xL + 1);
     }
+  } else {
+    for (int r = 0; r < height; r++) {
+      int half = ((height - 1 - r) * base) / (2 * height);
+      int yy = y + r;
+      int xL = cx - half;
+      int xR = cx + half - 1;
+      if (xL <= xR) drawHLine(xL, yy, xR - xL + 1);
+    }
+  }
 }
 
-void draw_level_1(){
+void fillIsoTriLeft(int x, int y, int base, int height) {
+  if (base <= 0 || height <= 0) return;
+
+  int cy = y + height / 2;
+
+  // Scan from left (apex) to right (base)
+  for (int c = 0; c < base; c++) {
+    int half = (c * height) / (2 * base);
+    int xx = x + c;
+    int yT = cy - half;
+    int yB = cy + half - 1;
+    if (yT <= yB) drawVLine(xx, yT, yB - yT + 1);
+  }
 }
 
-void draw_level_2(){
+// Fill triangle pointing right (apex on right)
+void fillIsoTriRight(int x, int y, int base, int height) {
+  if (base <= 0 || height <= 0) return;
+
+  int cy = y + height / 2;
+
+  // Scan from right (apex) to left (base)
+  for (int c = 0; c < base; c++) {
+    int half = ((base - 1 - c) * height) / (2 * base);
+    int xx = x + c;
+    int yT = cy - half;
+    int yB = cy + half - 1;
+    if (yT <= yB) drawVLine(xx, yT, yB - yT + 1);
+  }
 }
 
-void draw_level_3(){
+void fillSquare(int x, int y, int size) {
+  for (int i = 0; i < size; i++) {
+    drawHLine(x, y + i, size);
+  }
 }
 
-void draw_level_4(){
+
+// Draw square outline
+void drawSquareOutline(int x, int y, int size) {
+  drawHLine(x, y, size);                    // Top
+  drawHLine(x, y + size - 1, size);         // Bottom
+  drawVLine(x, y, size);                    // Left
+  drawVLine(x + size - 1, y, size);         // Right
 }
 
-void move_player(){
+void drawPlayerTriangle(int x, int y, int size) {
+  switch (player.direction) {
+    case DIR_UP:
+      // Triangle pointing up (apex at top)
+      fillIsoTri(x, y, size, size, 1);
+      break;
+    case DIR_DOWN:
+      // Triangle pointing down (apex at bottom)
+      fillIsoTri(x, y, size, size, 0);
+      break;
+    case DIR_LEFT:
+      // Triangle pointing left (apex on left)
+      fillIsoTriLeft(x, y, size, size);
+      break;
+    case DIR_RIGHT:
+      // Triangle pointing right (apex on right)
+      fillIsoTriRight(x, y, size, size);
+      break;
+  }
 }
 
-void set_player_goal(){
+// Draw only the player as a triangle
+void drawPlayer(void) {
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+
+  setColor(65, 105, 225);  // ROyal Blue for player
+  drawPlayerTriangle(x, y, CELL_SIZE);
+
+  setColor(255, 255, 255);  // White outline for visibility
+  drawSquareOutline(x, y, CELL_SIZE);
 }
 
+// Change player direction to UP
+void setPlayerDirectionUp(void) {
+  // Clear old player
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(34, 139, 34);  // Green path color
+  fillSquare(x, y, CELL_SIZE);
+  setColor(0,0,0);  // Black outline
+  drawSquareOutline(x, y, CELL_SIZE);
+
+  // Update direction and redraw
+  player.direction = DIR_UP;
+  drawPlayer();
+}
+
+// Change player direction to DOWN
+void setPlayerDirectionDown(void) {
+  // Clear old player
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(34, 139, 34);  // Green path color
+  fillSquare(x, y, CELL_SIZE);
+  setColor(0,0,0);  // Black outline
+  drawSquareOutline(x, y, CELL_SIZE);
+
+  // Update direction and redraw
+  player.direction = DIR_DOWN;
+  drawPlayer();
+}
+
+// Change player direction to LEFT
+void setPlayerDirectionLeft(void) {
+  // Clear old player
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(34, 139, 34);  // Green path color
+  fillSquare(x, y, CELL_SIZE);
+  setColor(0,0,0);  // Black outline
+  drawSquareOutline(x, y, CELL_SIZE);
+
+  // Update direction and redraw
+  player.direction = DIR_LEFT;
+  drawPlayer();
+}
+
+// Change player direction to RIGHT
+void setPlayerDirectionRight(void) {
+  // Clear old player
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(34, 139, 34);  // Green path color
+  fillSquare(x, y, CELL_SIZE);
+  setColor(0,0,0);  // Black outline
+  drawSquareOutline(x, y, CELL_SIZE);
+
+  // Update direction and redraw
+  player.direction = DIR_RIGHT;
+  drawPlayer();
+}
+
+// Draw the entire maze grid background
+void drawMazeBackground(int lvl_no) {
+  for (int row = 0; row < GRID_ROWS; row++) {
+    for (int col = 0; col < GRID_COLS; col++) {
+      int x = GRID_START_X + col * CELL_SIZE;
+      int y = GRID_START_Y + row * CELL_SIZE;
+
+      // Set color based on cell type
+      if (mazeGrid[lvl_no][row][col] == 1) {
+        // Wall - draw filled square in wall color
+        setColor(255,0,0);  // Red for walls
+      } else {
+        // Path - draw filled square in path color
+        setColor(34, 139, 34);  // Green for paths
+      }
+
+      // Draw filled square
+      fillSquare(x, y, CELL_SIZE);
+
+      // Draw outline for clarity
+      setColor(0,0,0);  // Black outline
+      drawSquareOutline(x, y, CELL_SIZE);
+    }
+  }
+}
+
+// Update player position (call this when player moves)
+void updatePlayerPosition(int lvl_no, int newGridX, int newGridY) {
+  // Check bounds
+  if (newGridX < 0 || newGridX >= GRID_COLS ||
+      newGridY < 0 || newGridY >= GRID_ROWS) {
+    return;  // Out of bounds
+  }
+
+  // Check if destination is not a wall
+  if (mazeGrid[lvl_no][newGridY][newGridX] == 1) {
+    return;  // Can't move into wall
+  }
+
+  // Clear old position - redraw as path
+  int oldX = GRID_START_X + player.gridX * CELL_SIZE;
+  int oldY = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(34, 139, 34);  // Green path color
+  fillSquare(oldX, oldY, CELL_SIZE);
+  setColor(0,0,0);  // Black outline
+  drawSquareOutline(oldX, oldY, CELL_SIZE);
+
+  // Update position
+  player.gridX = newGridX;
+  player.gridY = newGridY;
+
+  // Draw player at new position
+  drawPlayer();
+}
+
+// Initialize the maze (call once at startup)
+void initMaze(int lvl_no) {
+  // Clear screen
+	clrScr();
+
+  // Set initial player position and direction
+  player.gridX = 0;
+  player.gridY = 0;
+  player.direction = DIR_UP;  // Start facing up
+
+  // Draw the complete maze
+  drawMazeBackground(lvl_no);
+}
+
+void showLevel(int lvl_no){
+    char buf[12];            // enough for "Level " + number
+    setFont(BigFont);
+    setColor(238, 64, 0);
+
+    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
+    lcdPrint(buf, 80, 100);
+    lcdPrint("Goal-Bottom Right Corner", 80, 200);
+}

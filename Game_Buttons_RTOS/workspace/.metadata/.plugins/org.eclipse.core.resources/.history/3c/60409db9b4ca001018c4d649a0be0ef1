@@ -1,0 +1,304 @@
+/*****************************************************************************
+Created by: Jash Shah
+Date Created: 25 Nov, 2025
+Last Modified: 26 Nov, 2025
+*****************************************************************************/
+
+#define AO_LAB2A
+
+#include "qpn_port.h"
+#include "bsp.h"
+#include "game.h"
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+void rotateClockwise();
+void rotateAntiClockwise();
+void moveForward(int lvl_no);
+void moveBackward(int lvl_no);
+
+typedef struct Lab2ATag  {               //Lab2A State machine
+	QActive super;
+}  Lab2A;
+
+/* Setup state machines */
+/**********************************************************************/
+static QState Lab2A_initial (Lab2A *me);
+static QState Level_Select      (Lab2A *me);
+static QState Pause  (Lab2A *me);
+static QState Running  (Lab2A *me);
+static QState Result  (Lab2A *me);
+
+Lab2A AO_Lab2A;
+
+volatile int custom_tick = 0;
+volatile int buttonPressed = 0;
+volatile int running   = 0;     // stopwatch running flag
+volatile int counter   = 0;     // stopwatch counter
+volatile int encoder_twist = 0;	// +1 for ACW and 0 for CW
+int lvl_no = 0;		// Flag to choose the level number
+int game_win = 0;	// Flag to see if the player won or not
+
+void Lab2A_ctor(void)  {
+	Lab2A *me = &AO_Lab2A;
+	QActive_ctor(&me->super, (QStateHandler)&Lab2A_initial);
+}
+
+
+QState Lab2A_initial(Lab2A *me) {
+	//xil_printf("\n\rInitialization");
+    initLCD();
+    drawScene();
+    counter = 0;
+    running = 0;
+    showMenu();
+	lvl_no = 0;
+    return Q_TRAN(&Level_Select);
+}
+
+QState Level_Select(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				custom_tick = 0;
+				running = 0;
+				counter = 0;
+				game_win = 0;
+				return Q_HANDLED();
+			}
+			case CUSTOM_TIMEOUT: {
+				initMaze(lvl_no);
+				showLevel(lvl_no);
+				return Q_HANDLED();
+			}
+			case BUTTON:  {
+				if (buttonPressed == 1){
+					// Change the Levels to the User
+					lvl_no += 1;
+					if(lvl_no == 5) lvl_no = 0;
+					initMaze(lvl_no);
+					showLevel(lvl_no);
+				}else if(buttonPressed == 2){
+					initMaze(lvl_no);
+					return Q_TRAN(&Pause);
+				}
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+QState Pause(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				player.gridX = 0; // Start position.
+			    player.gridY = 0; // Start position.
+				drawPlayer();
+				return Q_HANDLED();
+			}
+			case ENCODER_CLICK:  {
+				return Q_TRAN(&Running);
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+QState Running(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				counter = 0;
+				running = 1;
+				return Q_HANDLED();
+			}
+			case ENCODER_TWIST: {
+				if(encoder_twist) {
+					moveForward(lvl_no);
+				} else{
+					moveBackward(lvl_no);
+				}
+				if (player.gridX == GRID_COLS && player.gridY == GRID_ROWS){
+					game_win = 1;
+					return Q_TRAN(&Result);
+				}else{
+					return Q_HANDLED();
+				}
+			}
+			case BUTTON: {
+				if(buttonPressed == 3) {
+					rotateClockwise();
+				} else if(buttonPressed == 4) {
+					rotateAntiClockwise();
+				}
+				return Q_HANDLED();
+			}
+			case ENCODER_CLICK:  {
+				game_win = 0;
+				return Q_TRAN(&Result);
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+QState Result(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				running = 0;
+				custom_tick = 0;
+			    setFont(BigFont);
+			    setColor(238, 64, 0);
+			    if (game_win){ lcdPrint("You Win", 80, 100); }
+			    else {lcdPrint("You Loose", 80, 1000); }
+			    lcdPrint("See your game time", 80, 100);
+			}
+			case CUSTOM_TIMEOUT:{
+				drawScene();
+				counter = 0;
+				return Q_TRAN(&Level_Select);
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+// Game Player Logic Rules
+void rotateClockwise(void) {
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(34, 139, 34);  // Lime Green path color
+  fillSquare(x, y, CELL_SIZE);
+  setColor(0x0000);  // Black outline
+  drawSquareOutline(x, y, CELL_SIZE);
+
+  // Rotate: UP -> RIGHT -> DOWN -> LEFT -> UP
+  switch (player.direction) {
+    case DIR_UP:
+      player.direction = DIR_RIGHT;
+      break;
+    case DIR_RIGHT:
+      player.direction = DIR_DOWN;
+      break;
+    case DIR_DOWN:
+      player.direction = DIR_LEFT;
+      break;
+    case DIR_LEFT:
+      player.direction = DIR_UP;
+      break;
+  }
+
+  drawPlayer();
+}
+
+void rotateAntiClockwise(void) {
+  // Clear old player
+  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  int y = GRID_START_Y + player.gridY * CELL_SIZE;
+  setColor(0x07E0);  // Green path color
+  fillSquare(x, y, CELL_SIZE);
+  setColor(0x0000);  // Black outline
+  drawSquareOutline(x, y, CELL_SIZE);
+
+  // Rotate: UP -> LEFT -> DOWN -> RIGHT -> UP
+  switch (player.direction) {
+    case DIR_UP:
+      player.direction = DIR_LEFT;
+      break;
+    case DIR_LEFT:
+      player.direction = DIR_DOWN;
+      break;
+    case DIR_DOWN:
+      player.direction = DIR_RIGHT;
+      break;
+    case DIR_RIGHT:
+      player.direction = DIR_UP;
+      break;
+  }
+
+  drawPlayer();
+}
+
+void moveForward(int lvl_no) {
+  int nextX, nextY;
+
+  while (1) {
+    // Calculate next position based on direction
+    nextX = player.gridX;
+    nextY = player.gridY;
+
+    switch (player.direction) {
+      case DIR_UP:
+        nextY--;
+        break;
+      case DIR_DOWN:
+        nextY++;
+        break;
+      case DIR_LEFT:
+        nextX--;
+        break;
+      case DIR_RIGHT:
+        nextX++;
+        break;
+    }
+
+    // Check if next position is valid
+    if (nextX < 0 || nextX >= GRID_COLS ||
+        nextY < 0 || nextY >= GRID_ROWS) {
+      break;  // Hit boundary
+    }
+
+    // Check if next position is a wall
+    if (mazeGrid[lvl_no][nextY][nextX] == 1) {
+      break;  // Hit wall
+    }
+
+    // Move to next position
+    updatePlayerPosition(nextX, nextY);
+    //delay(100);  // Uncomment if you want to see movement animation
+  }
+}
+
+// Move player backward until hitting obstacle
+void moveBackward(int lvl_no) {
+  int nextX, nextY;
+
+  while (1) {
+    // Calculate next position (opposite of current direction)
+    nextX = player.gridX;
+    nextY = player.gridY;
+
+    switch (player.direction) {
+      case DIR_UP:
+        nextY++;  // Move down when facing up
+        break;
+      case DIR_DOWN:
+        nextY--;  // Move up when facing down
+        break;
+      case DIR_LEFT:
+        nextX++;  // Move right when facing left
+        break;
+      case DIR_RIGHT:
+        nextX--;  // Move left when facing right
+        break;
+    }
+
+    // Check if next position is valid
+    if (nextX < 0 || nextX >= GRID_COLS ||
+        nextY < 0 || nextY >= GRID_ROWS) {
+      break;  // Hit boundary
+    }
+
+    // Check if next position is a wall
+    if (mazeGrid[lvl_no][nextY][nextX] == 1) {
+      break;  // Hit wall
+    }
+
+    // Move to next position
+    updatePlayerPosition(nextX, nextY);
+    //delay(100);  // Uncomment if you want to see movement animation
+  }
+}

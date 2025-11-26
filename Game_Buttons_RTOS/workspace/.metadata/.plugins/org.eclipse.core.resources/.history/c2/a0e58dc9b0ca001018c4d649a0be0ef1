@@ -1,0 +1,132 @@
+/*****************************************************************************
+Created by: Jash Shah
+Date Created: 25 Nov, 2025
+Last Modified: 26 Nov, 2025
+*****************************************************************************/
+
+#define AO_LAB2A
+
+#include "qpn_port.h"
+#include "bsp.h"
+#include "game.h"
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+typedef struct Lab2ATag  {               //Lab2A State machine
+	QActive super;
+}  Lab2A;
+
+/* Setup state machines */
+/**********************************************************************/
+static QState Lab2A_initial (Lab2A *me);
+static QState Level_Select      (Lab2A *me);
+static QState Pause  (Lab2A *me);
+static QState Running  (Lab2A *me);
+static QState Result  (Lab2A *me);
+
+Lab2A AO_Lab2A;
+
+volatile int custom_tick = 0;
+volatile int buttonPressed = 0;
+volatile int running   = 0;     // stopwatch running flag
+volatile int counter   = 0;     // stopwatch counter
+volatile int encoder_twist = 0;	// +1 for ACW and 0 for CW
+int lvl_no = 0;		// Flag to choose the level number
+int game_win = 0;	// Flag to see if the player won or not
+
+void Lab2A_ctor(void)  {
+	Lab2A *me = &AO_Lab2A;
+	QActive_ctor(&me->super, (QStateHandler)&Lab2A_initial);
+}
+
+
+QState Lab2A_initial(Lab2A *me) {
+	//xil_printf("\n\rInitialization");
+    initLCD();
+    drawScene();
+    counter = 0;
+    running = 0;
+    showMenu();
+	lvl_no = 0;
+    return Q_TRAN(&Level_Select);
+}
+
+QState Level_Select(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				custom_tick = 0;
+				running = 0;
+				counter = 0;
+				game_win = 0;
+				return Q_HANDLED();
+			}
+			case CUSTOM_TIMEOUT: {
+				initMaze(lvl_no);
+				showLevel(lvl_no);
+				return Q_HANDLED();
+			}
+			case BUTTON:  {
+				if (buttonPressed == 1){
+					// Change the Levels to the User
+					lvl_no += 1;
+					if(lvl_no == 5) lvl_no = 0;
+					initMaze(lvl_no);
+					showLevel(lvl_no);
+				}else if(buttonPressed == 2){
+					initMaze(lvl_no);
+					return Q_TRAN(&Pause);
+				}
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+QState Pause(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				player.gridX = 0; // Start position.
+			    player.gridY = 0; // Start position.
+				drawPlayer();
+				return Q_HANDLED();
+			}
+			case ENCODER_CLICK:  {
+				return Q_TRAN(&Running);
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+QState Running(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				counter = 0;
+				running = 1;
+				return Q_HANDLED();
+			}
+			case ENCODER_CLICK:  {
+				return Q_TRAN(&Result);
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}
+
+QState Result(Lab2A *me) {
+		switch (Q_SIG(me)) {
+			case Q_ENTRY_SIG: {
+				running = 0;
+				drawScene();
+				counter = 0;
+				return Q_HANDLED();
+			}
+		}
+		return Q_SUPER(&QHsm_top);
+}

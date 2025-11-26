@@ -22,6 +22,31 @@
 #define DISP_X_SIZE     239
 #define DISP_Y_SIZE     319
 
+// Maze grid configuration
+#define CELL_SIZE 15    // Size of each square cell
+#define GRID_COLS DISP_X_SIZE/CELL_SIZE      // Number of columns
+#define GRID_ROWS DISP_Y_SIZE/CELL_SIZE     // Number of rows
+#define GRID_START_X 0   // Starting X position
+#define GRID_START_Y 0   // Starting Y position
+#define NUM_LEVELS 5
+
+// Player direction constants
+#define DIR_UP 0
+#define DIR_DOWN 1
+#define DIR_LEFT 2
+#define DIR_RIGHT 3
+
+// Player position structure
+typedef struct {
+  int gridX;        // Column position (0 to GRID_COLS-1)
+  int gridY;        // Row position (0 to GRID_ROWS-1)
+  int direction;    // Current facing direction
+} Player;
+
+// External declarations
+extern Player player;
+extern char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS];
+
 struct _current_font
 {
     u8* font;
@@ -55,18 +80,27 @@ void clrXY(void);
 void clrScr(void);
 
 void drawHLine(int x, int y, int l);
+void drawVLine(int x, int y, int l);
 void fillRect(int x1, int y1, int x2, int y2);
 
 void setFont(u8* font);
 void printChar(u8 c, int x, int y);
 void lcdPrint(char *st, int x, int y);
 void fillIsoTri(int x, int y, int base, int height, int up);
-
-void draw_level_1();
-void draw_level_2();
-void draw_level_3();
-void draw_level_4();
-void move_player();
-void set_player_goal();
+void fillIsoTriLeft(int x, int y, int base, int height);
+void fillIsoTriRight(int x, int y, int base, int height);
+void fillSquare(int x, int y, int size);
+void drawSquareOutline(int x, int y, int size);
+void drawPlayerTriangle(int x, int y, int size);
+void drawPlayer(void);
+void drawMazeBackground(int lvl_no);
+void updatePlayerPosition(int lvl_no, int newGridX, int newGridY);
+void setPlayerDirectionUp(void);
+void setPlayerDirectionDown(void);
+void setPlayerDirectionLeft(void);
+void setPlayerDirectionRight(void);
+void initMaze(int lvl_no);
+void drawScene(void);
+void showLevel(int lvl_no);
 
 #endif /* LCD_H_ */

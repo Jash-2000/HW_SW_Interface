@@ -8,17 +8,21 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
-			<item value="Handl"/>
-			<item value="XPAR_MICROBLAZE_0_AXI_INTC_DEVICE_ID"/>
-			<item value="OnId"/>
-			<item value="custom"/>
-			<item value="SEVEN"/>
-			<item value="Seven"/>
-			<item value="LCD_DEVICE_ID"/>
-			<item value="LCD"/>
-			<item value="TMR"/>
-			<item value="*lcd*"/>
-			<item value="lcd"/>
+			<item value="QF_onStartup"/>
+			<item value="BTN0"/>
+			<item value="clrScr"/>
+			<item value="clr"/>
+			<item value="updatePlayerPosition"/>
+			<item value="drawHLine"/>
+			<item value="drawVLine"/>
+			<item value="drawMazeBackground"/>
+			<item value="drawSquareOutline"/>
+			<item value="setC"/>
+			<item value="set"/>
+			<item value="drawSc"/>
+			<item value="draw"/>
+			<item value="initMa"/>
+			<item value="encoder"/>
 		</list>
 		<list key="replacehistory">
 		</list>

@@ -2,20 +2,22 @@
 #define game_h
 
 enum Lab2ASignals {
-	ENCODER_TWIST = Q_USER_SIG,	// Used to move the player forward
-	ENCODER_CLICK,				// Used to start the game.
-	BUTTON,						// Used to select the modes of the game.
-	CUSTOM_TIMEOUT,				// Clear Text
-	GAME_PAUSE					// Used to stop and reset the game
+	ENCODER_TWIST = Q_USER_SIG,	// Used to register the Encoder Rotation Effect
+	ENCODER_CLICK,				// Used to register the Encoder Click Effect
+	BUTTON,						// Used to register the Buttons Press Effect
+	CUSTOM_TIMEOUT,				// Used to register the Custom Timeout of 2secs
+	GAME_OVER					// Used to register that the game ended
 };
 
 extern struct Lab2ATag AO_Lab2A;
 
-extern volatile int custom_tick;
-extern volatile int buttonPressed;
-extern volatile int running;
-extern volatile int counter;
-extern volatile int encoder_twist;
+extern volatile int custom_tick;	// Used for custom timeout of 2 seconds
+extern volatile int buttonPressed;	// Used to register which button was pressed
+extern volatile int running;		// Flag used to register if the game status
+extern volatile int counter;		// Used to display the counter on the seven segment display
+extern volatile int encoder_twist;	// Used to register which direction the encoder twisted
+extern int lvl_no;
+extern int game_win;
 
 void Lab2A_ctor(void);
 void GpioHandler(void *CallbackRef);
