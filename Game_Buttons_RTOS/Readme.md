@@ -1,4 +1,4 @@
-# Real Time Game Controller using Audio Processing Hardware Accelarator
+# Real Time Game Controller on Low Memory FPGA
 
 This Project involves using a Micrblaze Urbana FPGA Board to generate a game that can be played on the interfaced LCD TFT display. The display is a very simple TFT LCD screen with SPI communication protocol, restricting any parallel updates for the graphics. The available code is pure bare-metal and thus can be ported to other platforms as well (change your BSP_Settings file). The verilog implementation and interfacing for all the peripherals has been compiled in "bd_wrapper.xsa" file and can be reused if using the same set of hardware. 
 
