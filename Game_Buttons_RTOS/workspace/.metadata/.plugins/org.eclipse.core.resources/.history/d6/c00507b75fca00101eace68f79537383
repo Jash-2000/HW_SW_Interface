@@ -1,0 +1,22 @@
+#ifndef game_h
+#define game_h
+
+enum Lab2ASignals {
+	ENCODER_UP = Q_USER_SIG,	// Used to move the player forward
+	ENCODER_DOWN,				// Used to move the player backwards
+	ENCODER_CLICK,				// Used to start the game.
+	BUTTON,						// Used to select the modes of the game.
+	CUSTOM_TIMEOUT,
+	GAME_PAUSE,					// Stopped and Reset the Game
+};
+
+extern struct Lab2ATag AO_Lab2A;
+
+extern int custom_tick;
+extern int buttonPressed;
+
+void Lab2A_ctor(void);
+void GpioHandler(void *CallbackRef);
+void TwistHandler(void *CallbackRef);
+
+#endif  

@@ -1,0 +1,19 @@
+============================== Phase 1 -- Interface LCD, Btns, Encoder, Seven Segment Display for basic functionality =====================
+
+On Bootup: 
+	- The LCD display should showcase a fancy pattern in the background using 2 colours (anything like a repeating triangles)
+	- Initiate the peripherals and set them up in interrupt mode "no polling".
+	- The Seven Segment Display should print 0000 as the time.
+	- Nothing happens on pressing any button till the encoder button is not pressed.
+
+System Start:
+	- Once the Roratry encoder's push button is pressed, the system starts running. The push button is basically a toggle switch.
+	- The LCD screen prints what peripheral was accessed (4 push btns or rotary encoder's movements).
+	- The prints disappear after 2 seconds or if anything else is printed (whatever comes first).
+	- The timer starts running and is diplayed on seven segment display as well (this should be running in milisecond scale).
+	- The printing stops as soon as the rotary encoder's button toggles and kills the system (now print the time system was up).
+
+Note:
+	- Real time processing involving interrupt based controls
+	- The timer is running in milisecond precesion and should take up good amount of processnig power.
+	- The LCD's screen should not refresh evidently i.e. the user should be able to see smooth transitions.

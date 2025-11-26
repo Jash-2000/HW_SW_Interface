@@ -1,0 +1,461 @@
+/******************************************************************************
+ * Microblaze Urbana Board - Interrupt-Driven Embedded System
+ * Features: LCD with fancy pattern, Rotary encoder, Push buttons,
+ *           Seven segment display, High-precision timer
+ ******************************************************************************/
+
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xintc.h"
+#include "xil_exception.h"
+#include "xtmrctr.h"
+#include "xil_printf.h"
+#include <stdbool.h>
+#include <string.h>
+
+/******************************************************************************
+ * CONFIGURATION PARAMETERS
+ ******************************************************************************/
+#define INTC_DEVICE_ID          XPAR_INTC_0_DEVICE_ID
+#define TMR_DEVICE_ID
+#define TMR_INTERRUPT_ID
+
+#define BTN_DEVICE_ID           XPAR_GPIO_2_DEVICE_ID
+#define BTN_INTERRUPT_ID
+#define BTN_CHANNEL             1
+
+#define ROTARY_DEVICE_ID        XPAR_ENCODER_DEVICE_ID
+#define ROTARY_INTERRUPT_ID		XPAR_MICROBLAZE_0_AXI_INTC_ENCODER_IP2INTC_IRPT_INTR
+#define ROTARY_CHANNEL          1
+
+#define LCD_DEVICE_ID
+#define SEG_DEVICE_ID
+
+// LCD Configuration
+#define LCD_WIDTH               128
+#define LCD_HEIGHT              64
+#define LCD_BUFFER_SIZE         (LCD_WIDTH * LCD_HEIGHT / 8)
+
+// Colors for pattern (2-bit color encoding)
+#define COLOR_BLACK             0x00
+#define COLOR_BLUE              0x01
+#define COLOR_ORANGE            0x02
+#define COLOR_WHITE             0x03
+
+// Timer configuration for millisecond precision
+#define TMR_LOAD_VALUE          0  // Count up from 0
+#define CLOCK_FREQ_MHZ          100 // 100 MHz clock
+#define COUNTS_PER_MS           (CLOCK_FREQ_MHZ * 1000)
+
+// Message display timeout
+#define MSG_TIMEOUT_MS          2000
+
+/******************************************************************************
+ * GLOBAL VARIABLES
+ ******************************************************************************/
+XIntc InterruptController;
+XTmrCtr TimerCounter;
+XGpio GpioBtn, GpioRotary, GpioLcd, GpioSeg;
+
+volatile bool system_running = false;
+volatile bool system_started = false;
+volatile u32 system_start_time = 0;
+volatile u32 elapsed_time_ms = 0;
+volatile u32 message_timer = 0;
+volatile bool message_active = false;
+
+u8 lcd_buffer[LCD_BUFFER_SIZE];
+u8 lcd_back_buffer[LCD_BUFFER_SIZE];
+char current_message[32] = "";
+
+// Rotary encoder state
+volatile int rotary_position = 0;
+volatile u8 last_rotary_state = 0;
+
+// Seven segment display patterns (0-9, then hex A-F)
+const u8 seg_patterns[16] = {
+    0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07,
+    0x7F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71
+};
+
+/******************************************************************************
+ * LCD FUNCTIONS
+ ******************************************************************************/
+
+// Set a pixel in the back buffer
+void lcd_set_pixel(int x, int y, u8 color) {
+    if (x < 0 || x >= LCD_WIDTH || y < 0 || y >= LCD_HEIGHT) return;
+
+    int byte_index = (y / 8) * LCD_WIDTH + x;
+    int bit_index = y % 8;
+
+    // Clear the 2-bit color at this position and set new color
+    // This assumes 2-bit color depth
+    u8 mask = ~(0x03 << (bit_index % 4) * 2);
+    lcd_back_buffer[byte_index] = (lcd_back_buffer[byte_index] & mask) |
+                                   (color << ((bit_index % 4) * 2));
+}
+
+// Draw fancy triangle pattern on LCD
+void lcd_draw_fancy_pattern() {
+    memset(lcd_back_buffer, 0, LCD_BUFFER_SIZE);
+
+    int triangle_size = 16;
+
+    // Create a repeating triangle pattern
+    for (int y = 0; y < LCD_HEIGHT; y++) {
+        for (int x = 0; x < LCD_WIDTH; x++) {
+            int tx = x % triangle_size;
+            int ty = y % triangle_size;
+
+            // Create alternating triangle pattern
+            bool in_triangle = (tx + ty < triangle_size);
+            bool alt_row = ((y / triangle_size) % 2) == 0;
+            bool alt_col = ((x / triangle_size) % 2) == 0;
+
+            u8 color;
+            if (in_triangle) {
+                color = (alt_row ^ alt_col) ? COLOR_BLUE : COLOR_ORANGE;
+            } else {
+                color = (alt_row ^ alt_col) ? COLOR_ORANGE : COLOR_BLUE;
+            }
+
+            lcd_set_pixel(x, y, color);
+        }
+    }
+}
+
+// Draw text on LCD (simplified - you'd need proper font implementation)
+void lcd_draw_text(int x, int y, const char* text, u8 color) {
+    // Simple 5x7 font rendering - implement based on your LCD driver
+    // For now, just clear a rectangle where text would be
+    for (int dy = 0; dy < 8; dy++) {
+        for (int dx = 0; dx < strlen(text) * 6; dx++) {
+            lcd_set_pixel(x + dx, y + dy, color);
+        }
+    }
+}
+
+// Update LCD display (only if changed - for smooth transitions)
+void lcd_update_display() {
+    // Compare back buffer with front buffer and only update changed regions
+    bool changed = false;
+    for (int i = 0; i < LCD_BUFFER_SIZE; i++) {
+        if (lcd_buffer[i] != lcd_back_buffer[i]) {
+            changed = true;
+            break;
+        }
+    }
+
+    if (changed) {
+        memcpy(lcd_buffer, lcd_back_buffer, LCD_BUFFER_SIZE);
+        // Send buffer to LCD hardware via GPIO
+        // Implementation depends on your specific LCD interface
+        XGpio_DiscreteWrite(&GpioLcd, 1, (u32)lcd_buffer);
+    }
+}
+
+// Clear message area and restore pattern
+void lcd_clear_message() {
+    // Redraw pattern in message area (top portion)
+    for (int y = 0; y < 16; y++) {
+        for (int x = 0; x < LCD_WIDTH; x++) {
+            int tx = x % 16;
+            int ty = y % 16;
+            bool in_triangle = (tx + ty < 16);
+            bool alt_row = ((y / 16) % 2) == 0;
+            bool alt_col = ((x / 16) % 2) == 0;
+            u8 color = in_triangle ?
+                      ((alt_row ^ alt_col) ? COLOR_BLUE : COLOR_ORANGE) :
+                      ((alt_row ^ alt_col) ? COLOR_ORANGE : COLOR_BLUE);
+            lcd_set_pixel(x, y, color);
+        }
+    }
+    message_active = false;
+}
+
+// Display message on LCD
+void lcd_display_message(const char* msg) {
+    strncpy(current_message, msg, sizeof(current_message) - 1);
+    lcd_clear_message(); // Clear old message
+    lcd_draw_text(5, 5, msg, COLOR_WHITE);
+    lcd_update_display();
+    message_timer = elapsed_time_ms;
+    message_active = true;
+}
+
+/******************************************************************************
+ * SEVEN SEGMENT DISPLAY FUNCTIONS
+ ******************************************************************************/
+
+void seg_display_time(u32 time_ms) {
+    // Display time in format: MM:SS (using 4 digits)
+    u32 seconds = time_ms / 1000;
+    u32 minutes = seconds / 60;
+    seconds = seconds % 60;
+
+    u8 digit[4];
+    digit[0] = (minutes / 10) % 10;
+    digit[1] = minutes % 10;
+    digit[2] = (seconds / 10) % 10;
+    digit[3] = seconds % 10;
+
+    // Combine all 4 digits into output value
+    u32 output = (seg_patterns[digit[0]] << 24) |
+                 (seg_patterns[digit[1]] << 16) |
+                 (0x80 << 16) | // Colon dot
+                 (seg_patterns[digit[2]] << 8) |
+                 seg_patterns[digit[3]];
+
+    XGpio_DiscreteWrite(&GpioSeg, 1, output);
+}
+
+/******************************************************************************
+ * INTERRUPT HANDLERS
+ ******************************************************************************/
+
+// Timer interrupt handler - runs every millisecond
+void timer_interrupt_handler(void *CallbackRef) {
+    XTmrCtr *TmrCtrPtr = (XTmrCtr *)CallbackRef;
+
+    if (XTmrCtr_IsExpired(TmrCtrPtr, 0)) {
+        elapsed_time_ms++;
+
+        if (system_running) {
+            // Update seven segment display
+            seg_display_time(elapsed_time_ms - system_start_time);
+
+            // Check message timeout
+            if (message_active &&
+                (elapsed_time_ms - message_timer >= MSG_TIMEOUT_MS)) {
+                lcd_clear_message();
+                lcd_update_display();
+            }
+        }
+    }
+}
+
+// Push button interrupt handler
+void button_interrupt_handler(void *CallbackRef) {
+    XGpio *GpioPtr = (XGpio *)CallbackRef;
+
+    // Read which button was pressed
+    u32 btn_state = XGpio_DiscreteRead(GpioPtr, BTN_CHANNEL);
+
+    if (system_running) {
+        // Identify which button and display message
+        if (btn_state & 0x01) lcd_display_message("Button 1 Pressed");
+        else if (btn_state & 0x02) lcd_display_message("Button 2 Pressed");
+        else if (btn_state & 0x04) lcd_display_message("Button 3 Pressed");
+        else if (btn_state & 0x08) lcd_display_message("Button 4 Pressed");
+    }
+
+    // Clear interrupt
+    XGpio_InterruptClear(GpioPtr, XGPIO_IR_CH1_MASK);
+}
+
+// Rotary encoder interrupt handler
+void rotary_interrupt_handler(void *CallbackRef) {
+    XGpio *GpioPtr = (XGpio *)CallbackRef;
+
+    u32 rotary_state = XGpio_DiscreteRead(GpioPtr, ROTARY_CHANNEL);
+
+    // Check push button (bit 2)
+    bool btn_pressed = (rotary_state & 0x04) != 0;
+    static bool last_btn_state = false;
+
+    // Detect button press edge
+    if (btn_pressed && !last_btn_state) {
+        if (!system_started) {
+            // First press - start system
+            system_running = true;
+            system_started = true;
+            system_start_time = elapsed_time_ms;
+            lcd_display_message("System Started!");
+        } else {
+            // Second press - stop system
+            system_running = false;
+            u32 total_time = elapsed_time_ms - system_start_time;
+            char msg[32];
+            sprintf(msg, "Uptime: %lu.%03lu s",
+                    total_time / 1000, total_time % 1000);
+            lcd_display_message(msg);
+        }
+    }
+    last_btn_state = btn_pressed;
+
+    // Decode rotary encoder (quadrature encoding)
+    if (system_running) {
+        u8 rotary_ab = rotary_state & 0x03;
+
+        // Simple quadrature decode
+        if (rotary_ab != last_rotary_state) {
+            if ((last_rotary_state == 0x00 && rotary_ab == 0x01) ||
+                (last_rotary_state == 0x01 && rotary_ab == 0x03) ||
+                (last_rotary_state == 0x03 && rotary_ab == 0x02) ||
+                (last_rotary_state == 0x02 && rotary_ab == 0x00)) {
+                rotary_position++;
+                lcd_display_message("Rotary: Clockwise");
+            } else {
+                rotary_position--;
+                lcd_display_message("Rotary: Counter-CW");
+            }
+            last_rotary_state = rotary_ab;
+        }
+    }
+
+    // Clear interrupt
+    XGpio_InterruptClear(GpioPtr, XGPIO_IR_CH1_MASK);
+}
+
+/******************************************************************************
+ * INITIALIZATION FUNCTIONS
+ ******************************************************************************/
+
+int setup_interrupts() {
+    int Status;
+
+    // Initialize interrupt controller
+    Status = XIntc_Initialize(&InterruptController, INTC_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // Connect timer interrupt
+    Status = XIntc_Connect(&InterruptController, TMR_INTERRUPT_ID,
+                          (XInterruptHandler)timer_interrupt_handler,
+                          &TimerCounter);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // Connect button interrupt
+    Status = XIntc_Connect(&InterruptController, BTN_INTERRUPT_ID,
+                          (XInterruptHandler)button_interrupt_handler,
+                          &GpioBtn);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // Connect rotary encoder interrupt
+    Status = XIntc_Connect(&InterruptController, ROTARY_INTERRUPT_ID,
+                          (XInterruptHandler)rotary_interrupt_handler,
+                          &GpioRotary);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // Start interrupt controller
+    Status = XIntc_Start(&InterruptController, XIN_REAL_MODE);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // Enable interrupts
+    XIntc_Enable(&InterruptController, TMR_INTERRUPT_ID);
+    XIntc_Enable(&InterruptController, BTN_INTERRUPT_ID);
+    XIntc_Enable(&InterruptController, ROTARY_INTERRUPT_ID);
+
+    // Initialize exception handling
+    Xil_ExceptionInit();
+    Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT,
+                                 (Xil_ExceptionHandler)XIntc_InterruptHandler,
+                                 &InterruptController);
+    Xil_ExceptionEnable();
+
+    return XST_SUCCESS;
+}
+
+int setup_timer() {
+    int Status;
+
+    // Initialize timer
+    Status = XTmrCtr_Initialize(&TimerCounter, TMR_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+
+    // Set timer handler and mode
+    XTmrCtr_SetHandler(&TimerCounter, timer_interrupt_handler, &TimerCounter);
+    XTmrCtr_SetOptions(&TimerCounter, 0,
+                       XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION);
+
+    // Set reset value for 1ms interrupts
+    XTmrCtr_SetResetValue(&TimerCounter, 0, COUNTS_PER_MS);
+
+    // Start timer
+    XTmrCtr_Start(&TimerCounter, 0);
+
+    return XST_SUCCESS;
+}
+
+int setup_gpio() {
+    int Status;
+
+    // Initialize buttons
+    Status = XGpio_Initialize(&GpioBtn, BTN_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+    XGpio_SetDataDirection(&GpioBtn, BTN_CHANNEL, 0xFFFFFFFF); // Input
+    XGpio_InterruptEnable(&GpioBtn, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptGlobalEnable(&GpioBtn);
+
+    // Initialize rotary encoder
+    Status = XGpio_Initialize(&GpioRotary, ROTARY_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+    XGpio_SetDataDirection(&GpioRotary, ROTARY_CHANNEL, 0xFFFFFFFF); // Input
+    XGpio_InterruptEnable(&GpioRotary, XGPIO_IR_CH1_MASK);
+    XGpio_InterruptGlobalEnable(&GpioRotary);
+
+    // Initialize LCD
+    Status = XGpio_Initialize(&GpioLcd, LCD_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+    XGpio_SetDataDirection(&GpioLcd, 1, 0x00000000); // Output
+
+    // Initialize Seven Segment
+    Status = XGpio_Initialize(&GpioSeg, SEG_DEVICE_ID);
+    if (Status != XST_SUCCESS) return XST_FAILURE;
+    XGpio_SetDataDirection(&GpioSeg, 1, 0x00000000); // Output
+
+    return XST_SUCCESS;
+}
+
+/******************************************************************************
+ * MAIN FUNCTION
+ ******************************************************************************/
+
+int main(void) {
+    int Status;
+
+    xil_printf("\r\n*** Microblaze Interrupt-Driven System ***\r\n");
+
+    // Initialize GPIO peripherals
+    xil_printf("Initializing GPIO...\r\n");
+    Status = setup_gpio();
+    if (Status != XST_SUCCESS) {
+        xil_printf("GPIO initialization failed!\r\n");
+        return XST_FAILURE;
+    }
+
+    // Setup interrupts
+    xil_printf("Setting up interrupts...\r\n");
+    Status = setup_interrupts();
+    if (Status != XST_SUCCESS) {
+        xil_printf("Interrupt setup failed!\r\n");
+        return XST_FAILURE;
+    }
+
+    // Setup timer
+    xil_printf("Setting up timer...\r\n");
+    Status = setup_timer();
+    if (Status != XST_SUCCESS) {
+        xil_printf("Timer setup failed!\r\n");
+        return XST_FAILURE;
+    }
+
+    // Draw fancy pattern on LCD
+    xil_printf("Drawing fancy pattern on LCD...\r\n");
+    lcd_draw_fancy_pattern();
+    lcd_update_display();
+
+    // Initialize seven segment display
+    seg_display_time(0);
+
+    xil_printf("System ready! Press rotary encoder button to start.\r\n");
+
+    // Main loop - everything handled by interrupts
+    while (1) {
+        // System is interrupt-driven, minimal main loop processing
+        // Could add power-saving mode here
+        asm("nop");
+    }
+
+    return 0;
+}
