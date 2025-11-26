@@ -1,6 +1,8 @@
-/*
+/*****************************************************************************
 Created by: Jash Shah
- */
+Date Created: 25 Nov, 2025
+Last Modified: 26 Nov, 2025
+*****************************************************************************/
 
 #include "lcd.h"
 
@@ -41,7 +43,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 0, 0, 0, 1, 0, 0},
     {1, 0, 1, 0, 1, 1, 0, 1},
     {0, 0, 1, 0, 0, 0, 0, 0},
-    {0, 1, 1, 0, 1, 0, 1, 0}
+    {0, 1, 1, 0, 1, 0, 1, 2}
   },
 
   // ---------------- LEVEL 2 ----------------
@@ -55,7 +57,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 0, 0, 0, 1, 1, 0},
     {0, 1, 0, 1, 0, 1, 0, 1},
     {0, 0, 1, 0, 0, 0, 1, 0},
-    {1, 0, 0, 0, 1, 0, 0, 0}
+    {1, 0, 0, 0, 1, 0, 0, 2}
   },
 
   // ---------------- LEVEL 3 ----------------
@@ -69,7 +71,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 0, 1, 0, 0, 0, 1},
     {1, 0, 1, 0, 1, 0, 0, 0},
     {0, 0, 1, 0, 0, 1, 1, 0},
-    {0, 1, 0, 0, 1, 0, 0, 0}
+    {0, 1, 0, 0, 1, 0, 0, 2}
   },
 
   // ---------------- LEVEL 4 ----------------
@@ -83,7 +85,7 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 1, 0, 0, 0, 1, 0},
     {0, 1, 0, 0, 1, 1, 0, 0},
     {0, 0, 0, 1, 0, 0, 0, 1},
-    {1, 0, 1, 0, 0, 1, 0, 0}
+    {1, 0, 1, 0, 0, 1, 0, 2}
   },
 
   // ---------------- LEVEL 5 ----------------
@@ -97,23 +99,22 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 0, 0, 1, 0, 0, 0},
     {1, 0, 1, 0, 1, 1, 0, 1},
     {0, 0, 1, 0, 0, 0, 1, 0},
-    {0, 1, 0, 1, 0, 0, 0, 0}
+    {0, 1, 0, 1, 0, 0, 0, 2}
   },
 
   // ---------------- LEVEL 6 ----------------
-    {
-      {0, 1, 0, 0, 0, 0, 1, 0},
-      {0, 1, 1, 1, 1, 0, 0, 0},
-      {0, 0, 0, 0, 0, 1, 1, 0},
-      {1, 1, 1, 1, 0, 0, 0, 1},
-      {0, 0, 0, 1, 0, 1, 0, 0},
-      {0, 1, 1, 0, 0, 1, 1, 0},
-      {0, 0, 0, 0, 0, 0, 0, 0},
-      {1, 0, 1, 0, 1, 1, 0, 0},
-      {0, 0, 1, 0, 0, 0, 1, 0},
-      {0, 1, 0, 1, 0, 0, 0, 0}
-    }
-
+  {
+    {0, 0, 0, 1, 0, 0, 1, 0},
+    {0, 1, 1, 0, 0, 1, 0, 0},
+    {0, 0, 1, 1, 0, 0, 1, 0},
+    {1, 0, 0, 0, 1, 1, 0, 1},
+    {0, 1, 0, 0, 1, 0, 0, 0},
+    {1, 1, 0, 1, 0, 0, 1, 0},
+    {0, 0, 0, 1, 0, 1, 0, 0},
+    {1, 0, 1, 0, 1, 0, 1, 1},
+    {0, 0, 1, 0, 0, 1, 0, 0},
+    {1, 1, 0, 1, 0, 0, 0, 2}
+  }
 
 };
 
@@ -263,14 +264,12 @@ void drawScene(void)
 
     setFont(BigFont);
     setColor(238, 64, 0);
-    lcdPrint("BTNs-Move", 30, 150);
+    lcdPrint("BTN-Move", 30, 150);
     lcdPrint("TWIST-Scroll", 20, 175);
     lcdPrint("CLICK-Play", 20, 200);
 
 }
 
-
-// Remove boundry
 void clrXY(void) {
 	setXY(0, 0, DISP_X_SIZE, DISP_Y_SIZE);
 }
@@ -570,9 +569,11 @@ void drawMazeBackground(int lvl_no) {
       if (mazeGrid[lvl_no][row][col] == 1) {
         // Wall - draw filled square in wall color
         setColor(255,0,0);  // Red for walls
-      } else {
+      } else if(mazeGrid[lvl_no][row][col] == 0){
         // Path - draw filled square in path color
         setColor(34, 139, 34);  // Green for paths
+      } else {
+    	  //setColor(255, 204, 0);  // Yellow for Destinations
       }
 
       // Draw filled square
@@ -628,7 +629,7 @@ void initMaze(int lvl_no) {
   drawMazeBackground(lvl_no);
 }
 
-void showLevel(int lvl_no){
+void showLevel(void){
 	  for (int row = 0; row < GRID_ROWS; row++) {
 	    for (int col = 0; col < GRID_COLS; col++) {
 	      int x = GRID_START_X + col * CELL_SIZE;
@@ -652,14 +653,24 @@ void showLevel(int lvl_no){
 	    }
 	  }
 
+	    setColor(0, 0, 0);
+	    fillRect(20, 10, 135, 30);
 	    setFont(BigFont);
 	    setColor(238, 64, 0);
-	    lcdPrint("Level 1", 20, 50);
+	    lcdPrint("Level 1", 20, 10);
+
+	    setColor(0, 0, 0);
+	    fillRect(20, 60, 135, 80);
+	    fillRect(20, 110, 135, 130);
+	    fillRect(20, 160, 135, 180);
+	    fillRect(20, 210, 135, 230);
+	    fillRect(20, 260, 135, 280);
+
 	    setFont(SmallFont);
 	    setColor(238, 64, 0);
-	    lcdPrint("Level 2", 20, 100);
-	    lcdPrint("Level 3", 20, 150);
-	    lcdPrint("Level 4", 20, 200);
-	    lcdPrint("Level 5", 20, 250);
-	    lcdPrint("Level 6", 20, 300);
+	    lcdPrint("Level 2", 20, 60);
+	    lcdPrint("Level 3", 20, 110);
+	    lcdPrint("Level 4", 20, 160);
+	    lcdPrint("Level 5", 20, 210);
+	    lcdPrint("Level 6", 20, 260);
 }

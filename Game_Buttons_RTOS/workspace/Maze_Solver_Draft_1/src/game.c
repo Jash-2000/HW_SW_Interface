@@ -75,11 +75,13 @@ QState Level_Select(Lab2A *me) {
 			}
 			case CUSTOM_TIMEOUT: {
 				clrScr();
-				showLevel(lvl_no);
+				showLevel();
 				return Q_HANDLED();
 			}
 			case ENCODER_TWIST:  {
 				if (encoder_twist == 0){
+				    setColor(0, 0, 0);
+				    fillRect(20, 50*(lvl_no + 1) - 40, 135, 50*(lvl_no + 1) - 20);
 				    setFont(SmallFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
@@ -88,12 +90,16 @@ QState Level_Select(Lab2A *me) {
 					lvl_no += 1;
 					if(lvl_no == 6) lvl_no = 0;
 
+					setColor(0, 0, 0);
+				    fillRect(20, 50*(lvl_no + 1) - 40, 135, 50*(lvl_no + 1) - 20);
 				    setFont(BigFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
 				    lcdPrint(buf, 20, 50*(lvl_no + 1) - 40);
 
 				}else if(encoder_twist == 1){
+				    setColor(0, 0, 0);
+				    fillRect(20, 50*(lvl_no + 1) - 40, 135, 50*(lvl_no + 1) - 20);
 				    setFont(SmallFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
@@ -102,11 +108,14 @@ QState Level_Select(Lab2A *me) {
 					if(lvl_no == 0) lvl_no = 5;
 					else lvl_no -= 1;
 
+				    setColor(0, 0, 0);
+				    fillRect(20, 50*(lvl_no + 1) - 40, 135, 50*(lvl_no + 1) - 20);
 				    setFont(BigFont);
 				    setColor(238, 64, 0);
 				    snprintf(buf, sizeof(buf), "Level %d", lvl_no + 1);
 				    lcdPrint(buf, 20, 50*(lvl_no + 1) - 40);
 				}
+				return Q_HANDLED();
 			}
 			case ENCODER_CLICK:  {
 				initMaze(lvl_no);
@@ -149,11 +158,11 @@ QState Running(Lab2A *me) {
 					rotateClockwise();
 				}
 
-				if (player.gridX == GRID_COLS && player.gridY == GRID_ROWS){
+				if (player.gridX == GRID_COLS-1 && player.gridY == GRID_ROWS-1){
 					game_win = 1;
 					setFont(BigFont);
 				    setColor(238, 64, 0);
-				    lcdPrint("You Win", 40, 100);
+				    lcdPrint("R U Pratyush?", 10, 100);
 					return Q_TRAN(&Result);
 				}else{
 					return Q_HANDLED();
@@ -163,7 +172,7 @@ QState Running(Lab2A *me) {
 				game_win = 0;
 				setFont(BigFont);
 			    setColor(238, 64, 0);
-			    lcdPrint("You Loose", 35, 100);
+			    lcdPrint("MKB AAAG", 40, 100);
 				return Q_TRAN(&Result);
 			}
 		}
@@ -177,10 +186,10 @@ QState Result(Lab2A *me) {
 				custom_tick = 0;
 				setColor(238, 64, 0);
 				setFont(BigFont);
-			    lcdPrint("Game Time(s):", 20, 200);
+			    lcdPrint("Game Time(s):", 20, 150);
 			    setFont(SevenSegNumFont);
-			    snprintf(buf, sizeof(buf), "%d", counter/100);
-			    lcdPrint(buf, 80, 200);
+			    snprintf(buf, sizeof(buf), "%d", counter/1000);
+			    lcdPrint(buf, 80, 175);
 			}
 			case CUSTOM_TIMEOUT:{
 				counter = 0;
@@ -282,7 +291,7 @@ void moveForward(int lvl_no) {
 
     // Move to next position
     updatePlayerPosition(lvl_no, nextX, nextY);
-    //delay(100);  // Uncomment if you want to see movement animation
+    //usleep(100000);  // Animation
   }
 }
 
@@ -323,6 +332,6 @@ void moveBackward(int lvl_no) {
 
     // Move to next position
     updatePlayerPosition(lvl_no, nextX, nextY);
-    //delay(100);  // Uncomment if you want to see movement animation
+    //usleep(100000);  // Animation
   }
 }

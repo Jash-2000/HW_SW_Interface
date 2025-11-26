@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="Rect"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
+			<item value="rect"/>
+			<item value="rectangle"/>
+			<item value="Inside"/>
+			<item value="show"/>
+			<item value="Idle"/>
+			<item value="Level_Select"/>
+			<item value="init"/>
+			<item value="drawGrid"/>
+			<item value="grid"/>
+			<item value="clrS"/>
+			<item value="clr"/>
+			<item value="showLevel"/>
+			<item value="Goal"/>
 			<item value="QF_onStartup"/>
 			<item value="BTN0"/>
-			<item value="clrScr"/>
-			<item value="clr"/>
-			<item value="updatePlayerPosition"/>
-			<item value="drawHLine"/>
-			<item value="drawVLine"/>
-			<item value="drawMazeBackground"/>
-			<item value="drawSquareOutline"/>
-			<item value="setC"/>
-			<item value="set"/>
-			<item value="drawSc"/>
-			<item value="draw"/>
-			<item value="initMa"/>
-			<item value="encoder"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="853"/>
-		<item key="DIALOG_Y_ORIGIN" value="165"/>
+		<item key="DIALOG_X_ORIGIN" value="1168"/>
+		<item key="DIALOG_Y_ORIGIN" value="225"/>
 		<item key="DIALOG_WIDTH" value="345"/>
 		<item key="DIALOG_HEIGHT" value="458"/>
 		<item key="DIALOG_FONT_NAME" value="1|Cantarell|11.0|0|GTK|1|"/>

@@ -122,7 +122,6 @@ void EncoderHandler(void *CallbackRef)
 
     if(enc.push_rise){
     	enc.push_rise = false;
-    	xil_printf("Encoder Clicked");
     	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_CLICK);
     }
     if (enc.step_right){

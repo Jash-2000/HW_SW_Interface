@@ -28,7 +28,7 @@
 #define GRID_ROWS 10     // Number of rows
 #define GRID_START_X 0   // Starting X position
 #define GRID_START_Y 0   // Starting Y position
-#define NUM_LEVELS 5
+#define NUM_LEVELS 6
 
 // Player direction constants
 #define DIR_UP 0
@@ -101,6 +101,6 @@ void setPlayerDirectionLeft(void);
 void setPlayerDirectionRight(void);
 void initMaze(int lvl_no);
 void drawScene(void);
-void showLevel(int lvl_no);
+void showLevel(void);
 
 #endif /* LCD_H_ */
