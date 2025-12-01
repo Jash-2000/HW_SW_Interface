@@ -94,22 +94,29 @@ void updateDigits() {
 
 
 void ButtonsHandler(void *CallbackRef) {
-	    // Latch & clear interrupt
+	    interrupt_arrived_flag = 1;
+		// Latch & clear interrupt
 	    u32 status = XGpio_InterruptGetStatus(&btnGpio);
 	    XGpio_InterruptClear(&btnGpio, status);
 	    int btns = XGpio_DiscreteRead(&btnGpio, 1);
+		usleep(100);                  // Debouncing delay
+		int btns_temp = XGpio_DiscreteRead(&btnGpio, 1);
 
-	    if (btns & 0x01){ buttonPressed = 1;}
-	    else if (btns & 0x02) {buttonPressed = 2;}
-	    else if (btns & 0x04) {buttonPressed = 3;}
-	    else if (btns & 0x08) {buttonPressed = 4;}
-	    QActive_postISR((QActive *)&AO_Lab2A, BUTTON);
-	    interrupt_arrived_flag = 1;
+		if (btns == btns_temp){
+			// The following buttons have a decreasing priority. Hence, pressing 1 while keeping 3 pressed will implement both 1's and 3's functions
+		    // But the reverse is not true. Hence I have kept the order of functions as 1,2 -- moving and 3,4 -- rotating.
+		    if (btns & 0x01){ buttonPressed = 1;}
+		    else if (btns & 0x02) {buttonPressed = 2;}
+		    else if (btns & 0x04) {buttonPressed = 3;}
+		    else if (btns & 0x08) {buttonPressed = 4;}
+		    QActive_postISR((QActive *)&AO_Lab2A, BUTTON);
+		}
 }
 
 void EncoderHandler(void *CallbackRef)
 {
-    (void)CallbackRef;
+    interrupt_arrived_flag = 1;
+	(void)CallbackRef;
     uint32_t v  = XGpio_DiscreteRead(&encGpio, ENC_GPIO_CHANNEL);
     uint8_t ab  = (ENC_A(v) << 1) | ENC_B(v);
     uint8_t p   = ENC_P(v);
@@ -134,11 +141,12 @@ void EncoderHandler(void *CallbackRef)
     	encoder_twist = 1;
     	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST);
     }
-    interrupt_arrived_flag = 1;
+
 }
 
 void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
+	interrupt_arrived_flag = 1;
 	custom_tick += 1;
 	if(custom_tick == 3000){	// Used to Reset the Text in 1.5 seconds
 		QActive_postISR((QActive *)&AO_Lab2A, CUSTOM_TIMEOUT);
@@ -147,7 +155,6 @@ void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
         counter += 1;
     }
     updateDigits();
-    interrupt_arrived_flag = 1;
 }
 
 void BSP_init(void) {
@@ -243,3 +250,4 @@ void Q_onAssert(char const Q_ROM * const Q_ROM_VAR file, int line) {
     for (;;) {
     }
 }
+
