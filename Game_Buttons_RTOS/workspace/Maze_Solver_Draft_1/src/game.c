@@ -162,7 +162,8 @@ QState Running(Lab2A *me) {
 					game_win = 1;
 					setFont(BigFont);
 				    setColor(238, 64, 0);
-				    lcdPrint("R U Pratyush?", 10, 100);
+				    lcdPrint("You Win", 40, 100);
+					//lcdPrint("R U Pratyush?", 10, 100);
 					return Q_TRAN(&Result);
 				}else{
 					return Q_HANDLED();
@@ -172,7 +173,8 @@ QState Running(Lab2A *me) {
 				game_win = 0;
 				setFont(BigFont);
 			    setColor(238, 64, 0);
-			    lcdPrint("MKB AAAG", 40, 100);
+			    lcdPrint("You Loose", 30, 100);
+				//lcdPrint("MKB AAAG", 40, 100);
 				return Q_TRAN(&Result);
 			}
 		}
@@ -201,7 +203,8 @@ QState Result(Lab2A *me) {
 
 // Game Player Logic Rules
 void rotateClockwise(void) {
-  int x = GRID_START_X + player.gridX * CELL_SIZE;
+  // Save Current Positions
+  int x = GRID_START_X + player.gridX * CELL_SIZE;	
   int y = GRID_START_Y + player.gridY * CELL_SIZE;
   setColor(34, 139, 34);  // Lime Green path color
   fillSquare(x, y, CELL_SIZE);
@@ -291,7 +294,7 @@ void moveForward(int lvl_no) {
 
     // Move to next position
     updatePlayerPosition(lvl_no, nextX, nextY);
-    //usleep(100000);  // Animation
+    usleep(100000);  // Animation
   }
 }
 
@@ -332,6 +335,6 @@ void moveBackward(int lvl_no) {
 
     // Move to next position
     updatePlayerPosition(lvl_no, nextX, nextY);
-    //usleep(100000);  // Animation
+    usleep(100000);  // Animation
   }
 }
