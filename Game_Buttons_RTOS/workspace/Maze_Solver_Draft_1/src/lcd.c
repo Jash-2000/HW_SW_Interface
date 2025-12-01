@@ -14,7 +14,7 @@ int bcl;
 struct _current_font cfont;
 
 // Player instance
-Player player = {0, 0, DIR_UP};  // Start at top-left facing up
+Player player = {0, 0, DIR_DOWN};  // Start at top-left facing down
 
 char mazeGrid_dummy[GRID_ROWS][GRID_COLS] = {
 		    {2, 2, 2, 2, 2, 2, 2, 2},
@@ -491,7 +491,7 @@ void drawPlayer(void) {
   int x = GRID_START_X + player.gridX * CELL_SIZE;
   int y = GRID_START_Y + player.gridY * CELL_SIZE;
 
-  setColor(65, 105, 225);  // ROyal Blue for player
+  setColor(65, 105, 225);  // Royal Blue for player
   drawPlayerTriangle(x, y, CELL_SIZE);
 
   setColor(255, 255, 255);  // White outline for visibility
