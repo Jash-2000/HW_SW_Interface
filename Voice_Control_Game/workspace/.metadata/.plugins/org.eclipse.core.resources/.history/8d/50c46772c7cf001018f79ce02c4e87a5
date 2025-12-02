@@ -1,0 +1,163 @@
+#include <stdio.h>
+#include "xil_cache.h"
+#include <mb_interface.h>
+#include "xparameters.h"
+#include <xil_types.h>
+#include <xil_assert.h>
+#include <xio.h>
+#include "xtmrctr.h"
+#include "fft.h"
+#include "stream_grabber.h"
+#include "wake_word.h"
+
+#define SAMPLES 512
+#define M 10 // 2^10=1024
+#define CLOCK 100000000.0
+
+// Training mode switch: set to 1 to capture wake-word template
+#define TRAINING_MODE 0
+#define TRAINING_FRAMES 8
+
+int int_buffer[SAMPLES];
+static float q[SAMPLES];
+static float w[SAMPLES];
+static float magnitudes[SAMPLES];
+unsigned seqf, seql, seq_old=0;
+
+void read_fsl_values(float* q, int n) {
+   int i;
+   unsigned int x;
+   stream_grabber_start();
+   stream_grabber_wait_enough_samples(SAMPLES);
+   seql = stream_grabber_read_seq_counter();
+   seqf = stream_grabber_read_seq_counter_latched();
+   for(i = 0; i < n; i++) {
+      int_buffer[i] = stream_grabber_read_sample(i);
+      x = int_buffer[i];
+      q[i] = 3.3*x/67108864.0; // 3.3V and 2^26 bit precision.
+   }
+}
+
+void training_mode_capture() {
+    MelFrame training_frames[TRAINING_FRAMES];
+    int frame_count = 0;
+    int l;
+    float sample_f = 100*1000*1000/2048.0;
+
+    xil_printf("\n=== WAKE WORD TRAINING MODE ===\n");
+    xil_printf("Speak your wake word now...\n");
+    xil_printf("Capturing %d frames...\n\n", TRAINING_FRAMES);
+
+    while(frame_count < TRAINING_FRAMES) {
+        read_fsl_values(q, SAMPLES);
+
+        // Zero imaginary array
+        for(l=0; l<SAMPLES; l++)
+            w[l]=0;
+
+        // Compute FFT magnitudes
+        fft_magnitude(q, w, SAMPLES, M, magnitudes);
+
+        // Extract mel features
+        extract_mel_features(magnitudes, SAMPLES, sample_f, &training_frames[frame_count]);
+
+        xil_printf("Frame %d captured\n", frame_count + 1);
+        frame_count++;
+
+        // Small delay between frames (~50ms worth of processing)
+    }
+
+    // Train the wake word detector
+    wake_word_train(training_frames, TRAINING_FRAMES);
+    xil_printf("\n=== TRAINING COMPLETE ===\n");
+    xil_printf("Wake word template stored.\n");
+    xil_printf("Switch TRAINING_MODE to 0 and recompile for detection.\n\n");
+}
+
+int main() {
+   float sample_f;
+   int l;
+   int ticks;
+   uint32_t Control;
+   MelFrame current_frame;
+   int detection_result;
+   static int cooldown = 0; // Prevent multiple detections
+
+   Xil_ICacheInvalidate();
+   Xil_ICacheEnable();
+   Xil_DCacheInvalidate();
+   Xil_DCacheEnable();
+
+   // Set up timer
+   XTmrCtr timer;
+   XTmrCtr_Initialize(&timer, XPAR_AXI_TIMER_0_DEVICE_ID);
+   Control = XTmrCtr_GetOptions(&timer, 0) | XTC_CAPTURE_MODE_OPTION | XTC_INT_MODE_OPTION;
+   XTmrCtr_SetOptions(&timer, 0, Control);
+
+   print("Wake Word Detection System\n\r");
+
+   // Initialize wake word detection
+   wake_word_init();
+
+   XTmrCtr_Start(&timer, 0);
+
+   sample_f = 100*1000*1000/2048.0;
+
+#if TRAINING_MODE
+   // Training mode: capture wake word template
+   training_mode_capture();
+   while(1); // Stop after training
+#else
+   // Detection mode
+   xil_printf("Listening for wake word...\n\n");
+
+   while(1) {
+      // Read audio samples
+      read_fsl_values(q, SAMPLES);
+
+      ticks=XTmrCtr_GetValue(&timer, 0);
+
+      // Zero imaginary array
+      for(l=0; l<SAMPLES; l++)
+         w[l]=0;
+
+      // Compute FFT magnitudes
+      fft_magnitude(q, w, SAMPLES, M, magnitudes);
+
+      // Extract mel-frequency features
+      extract_mel_features(magnitudes, SAMPLES, sample_f, &current_frame);
+
+      // Cooldown handling
+      if (cooldown > 0) {
+          cooldown--;
+      } else {
+          // Perform wake word detection
+          detection_result = wake_word_detect(&current_frame);
+
+          if (detection_result) {
+              // WAKE WORD DETECTED!
+              xil_printf("\n");
+              xil_printf("********************************\n");
+              xil_printf("*** WAKE WORD DETECTED! ***\n");
+              xil_printf("********************************\n");
+              xil_printf("Time: %d ticks\n", ticks);
+              xil_printf("\n");
+
+              // Set cooldown to prevent immediate re-detection (about 1 second)
+              cooldown = 20;
+
+              // >>> INSERT YOUR ACTION HERE <<<
+
+          }
+      }
+
+      static int status_counter = 0;
+      if (++status_counter >= 50) {
+          xil_printf("Listening... (Time: %d)\r", ticks);
+          status_counter = 0;
+      }
+   }
+#endif
+
+   return 0;
+}

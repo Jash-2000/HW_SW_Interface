@@ -1,0 +1,173 @@
+#include "wake_word.h"
+#include <math.h>
+
+// Stored wake-word template (trained reference)
+static MelFrame wake_word_template[FRAME_WINDOW];
+static int template_trained = 0;
+
+// Circular buffer for incoming frames
+static MelFrame frame_buffer[FRAME_WINDOW];
+static int buffer_index = 0;
+static int frames_collected = 0;
+
+// Mel filterbank boundaries (16 bins for frequencies 0-8kHz)
+static const int mel_boundaries[NUM_MEL_BINS + 1] = {
+    0, 2, 4, 7, 11, 16, 22, 30, 40, 52, 67, 85, 107, 134, 168, 210, 256
+};
+
+void wake_word_init(void) {
+    int i, j;
+    buffer_index = 0;
+    frames_collected = 0;
+    
+    // Clear frame buffer
+    for (i = 0; i < FRAME_WINDOW; i++) {
+        for (j = 0; j < NUM_MEL_BINS; j++) {
+            frame_buffer[i].features[j] = 0.0f;
+        }
+    }
+}
+
+void extract_mel_features(float* fft_mag, int n, float sample_f, MelFrame* frame) {
+    int i, j, k;
+    float sum;
+    float max_val = 0.0f;
+    
+    // Extract energy in each mel bin
+    for (i = 0; i < NUM_MEL_BINS; i++) {
+        sum = 0.0f;
+        for (j = mel_boundaries[i]; j < mel_boundaries[i + 1] && j < n/2; j++) {
+            sum += fft_mag[j];
+        }
+        frame->features[i] = sum / (mel_boundaries[i + 1] - mel_boundaries[i]);
+        if (frame->features[i] > max_val) {
+            max_val = frame->features[i];
+        }
+    }
+    
+    // Normalize features
+    if (max_val > 0.0001f) {
+        for (i = 0; i < NUM_MEL_BINS; i++) {
+            frame->features[i] /= max_val;
+        }
+    }
+    
+    // Apply log compression (simulates human hearing)
+    for (i = 0; i < NUM_MEL_BINS; i++) {
+        if (frame->features[i] > 0.0001f) {
+            // Simple log approximation: log10(x) ≈ (x-1)/x for normalization
+            frame->features[i] = (frame->features[i] + 0.01f);
+        } else {
+            frame->features[i] = 0.01f;
+        }
+    }
+}
+
+float calculate_similarity(float* vec1, float* vec2, int size) {
+    float dot_product = 0.0f;
+    float norm1 = 0.0f;
+    float norm2 = 0.0f;
+    int i;
+    
+    for (i = 0; i < size; i++) {
+        dot_product += vec1[i] * vec2[i];
+        norm1 += vec1[i] * vec1[i];
+        norm2 += vec2[i] * vec2[i];
+    }
+    
+    // Avoid division by zero
+    if (norm1 < 0.0001f || norm2 < 0.0001f) {
+        return 0.0f;
+    }
+    
+    // Cosine similarity
+    return dot_product / (sqrtf(norm1) * sqrtf(norm2));
+}
+
+void wake_word_train(MelFrame* frames, int num_frames) {
+    int i, j;
+    
+    if (num_frames != FRAME_WINDOW) {
+        return; // Invalid training data
+    }
+    
+    // Store the template
+    for (i = 0; i < FRAME_WINDOW; i++) {
+        for (j = 0; j < NUM_MEL_BINS; j++) {
+            wake_word_template[i].features[j] = frames[i].features[j];
+        }
+    }
+    
+    template_trained = 1;
+}
+
+void wake_word_print_template(void) {
+    int i, j;
+    xil_printf("\n// Copy this into wake_word.c as HARDCODED_TEMPLATE:\n");
+    xil_printf("static const float HARDCODED_TEMPLATE[%d][%d] = {\n", FRAME_WINDOW, NUM_MEL_BINS);
+
+    for (i = 0; i < FRAME_WINDOW; i++) {
+        xil_printf("    {");
+        for (j = 0; j < NUM_MEL_BINS; j++) {
+            xil_printf("%.6ff", wake_word_template[i].features[j]);
+            if (j < NUM_MEL_BINS - 1) {
+                xil_printf(", ");
+            }
+        }
+        xil_printf("}");
+        if (i < FRAME_WINDOW - 1) {
+            xil_printf(",\n");
+        } else {
+            xil_printf("\n");
+        }
+    }
+    xil_printf("};\n\n");
+}
+
+void wake_word_load_hardcoded_template(void) {
+    // This will be implemented after you paste your hardcoded template
+    // For now, it does nothing
+    // After training, you'll paste the printed array here
+}
+
+int wake_word_detect(MelFrame* new_frame) {
+    int i, j;
+    float frame_similarities[FRAME_WINDOW];
+    float avg_similarity = 0.0f;
+    
+    // Add new frame to circular buffer
+    for (i = 0; i < NUM_MEL_BINS; i++) {
+        frame_buffer[buffer_index].features[i] = new_frame->features[i];
+    }
+    
+    buffer_index = (buffer_index + 1) % FRAME_WINDOW;
+    
+    if (frames_collected < FRAME_WINDOW) {
+        frames_collected++;
+        return 0; // Not enough frames yet
+    }
+    
+    if (!template_trained) {
+        return 0; // No template to compare against
+    }
+    
+    // Compare each frame in buffer with corresponding template frame
+    for (i = 0; i < FRAME_WINDOW; i++) {
+        int buf_idx = (buffer_index + i) % FRAME_WINDOW;
+        frame_similarities[i] = calculate_similarity(
+            frame_buffer[buf_idx].features,
+            wake_word_template[i].features,
+            NUM_MEL_BINS
+        );
+        avg_similarity += frame_similarities[i];
+    }
+    
+    avg_similarity /= FRAME_WINDOW;
+    
+    // Detection: average similarity exceeds threshold
+    if (avg_similarity > DETECTION_THRESHOLD) {
+        return 1; // Wake word detected!
+    }
+    
+    return 0;
+}

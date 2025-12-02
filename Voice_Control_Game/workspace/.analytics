@@ -1,0 +1,22 @@
+timestamp=[2025-12-02 13:28:17], mode=WORKBENCH_START, duration=0:00:02.975, duration_ms=2975, data={}
+timestamp=[2025-12-02 13:28:18], mode=WORKBENCH_UI_INIT, duration=0:00:00.210, duration_ms=210, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2025-12-02 13:28:18], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.471, duration_ms=471, data={}
+timestamp=[2025-12-02 13:31:32], mode=PLATFORM_CREATION, duration=0:00:10.651, duration_ms=10651, data={platform_source=dsa, os=standalone, processor=microblaze, platform=null}
+timestamp=[2025-12-02 13:32:05], mode=APP_CREATION, duration=0:00:01.921, duration_ms=1921, data={name=Voice_Game_Software, project_type=sdk, os=standalone, processor=microblaze_0, runtime=C/C++, platform=Final_Project, application_type=application}
+timestamp=[2025-12-02 13:32:41], mode=PLATFORM_GENERATION, duration=0:00:14.469, duration_ms=14469, data={name=Final_Project}
+timestamp=[2025-12-02 13:32:42], mode=BUILD, duration=0:00:00.702, duration_ms=702, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:32:51], mode=BUILD, duration=0:00:00.129, duration_ms=129, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:32:51], mode=BUILD, duration=0:00:00.082, duration_ms=82, data={name=Voice_Game_Software_system, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:00], mode=BUILD, duration=0:00:00.205, duration_ms=205, data={name=Voice_Game_Software, configuration=Debug, clean_build=true}
+timestamp=[2025-12-02 13:34:00], mode=BUILD, duration=0:00:00.687, duration_ms=687, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:01], mode=BUILD, duration=0:00:00.090, duration_ms=90, data={name=Voice_Game_Software_system, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:20], mode=BUILD, duration=0:00:00.331, duration_ms=331, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:20], mode=BUILD, duration=0:00:00.080, duration_ms=80, data={name=Voice_Game_Software_system, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:38], mode=BUILD, duration=0:00:00.192, duration_ms=192, data={name=Voice_Game_Software, configuration=Debug, clean_build=true}
+timestamp=[2025-12-02 13:34:38], mode=BUILD, duration=0:00:00.237, duration_ms=237, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:52], mode=BUILD, duration=0:00:00.384, duration_ms=384, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:34:52], mode=BUILD, duration=0:00:00.131, duration_ms=131, data={name=Voice_Game_Software_system, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:36:06], mode=BUILD, duration=0:00:00.150, duration_ms=150, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:36:06], mode=BUILD, duration=0:00:00.085, duration_ms=85, data={name=Voice_Game_Software_system, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:47:14], mode=BUILD, duration=0:00:00.605, duration_ms=605, data={name=Voice_Game_Software, configuration=Debug, clean_build=false}
+timestamp=[2025-12-02 13:47:14], mode=BUILD, duration=0:00:00.083, duration_ms=83, data={name=Voice_Game_Software_system, configuration=Debug, clean_build=false}
