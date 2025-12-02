@@ -48,6 +48,7 @@ volatile int encoder_twist = 0;	// +1 for ACW and 0 for CW
 int lvl_no = 0;		// Flag to choose the level number
 int game_win = 0;	// Flag to see if the player won or not
 char buf[12];            // enough for "Level " + number
+int trials = 0;
 
 void Lab2A_ctor(void)  {
 	Lab2A *me = &AO_Lab2A;
@@ -148,17 +149,85 @@ QState Running(Lab2A *me) {
 				return Q_HANDLED();
 			}
 			case BUTTON: {
-				if(buttonPressed == 1) {
+				if(buttonPressed == 1)	// Move North
+				{
+					trials = (DIR_UP - player.direction)%4;
+				    // Make sure the difference is in the range 0 to 3
+				    if (trials < 0) {
+				    	trials += 4;
+				    }
+				    if(trials<2){
+						for(int i=0;i<trials;i++){
+							rotateClockwise();
+						}
+
+				    }else{
+						for(int i=0;i<(4-trials);i++){
+							rotateAntiClockwise();
+						}
+
+				    }
 					moveForward(lvl_no);
-				} else if(buttonPressed == 2) {
-					moveBackward(lvl_no);
-				} else if(buttonPressed == 3) {
-					rotateAntiClockwise();
-				} else if(buttonPressed == 4) {
-					rotateClockwise();
+				} else if(buttonPressed == 2)	// Move East
+				{
+					trials = (DIR_RIGHT - player.direction)%4;
+				    // Make sure the difference is in the range 0 to 3
+				    if (trials < 0) {
+				    	trials += 4;
+				    }
+				    if(trials<2){
+						for(int i=0;i<trials;i++){
+							rotateClockwise();
+						}
+
+				    }else{
+						for(int i=0;i<(4-trials);i++){
+							rotateAntiClockwise();
+						}
+
+				    }
+					moveForward(lvl_no);
+				} else if(buttonPressed == 3) // Move South
+				{
+					trials = (DIR_DOWN - player.direction)%4;
+				    // Make sure the difference is in the range 0 to 3
+				    if (trials < 0) {
+				    	trials += 4;
+				    }
+				    if(trials<2){
+						for(int i=0;i<trials;i++){
+							rotateClockwise();
+						}
+
+				    }else{
+						for(int i=0;i<(4-trials);i++){
+							rotateAntiClockwise();
+						}
+
+				    }
+					moveForward(lvl_no);
+				} else if(buttonPressed == 4) // Move West
+				{
+					trials = (DIR_LEFT - player.direction)%4;
+				    // Make sure the difference is in the range 0 to 3
+				    if (trials < 0) {
+				    	trials += 4;
+				    }
+				    if(trials<2){
+						for(int i=0;i<trials;i++){
+							rotateClockwise();
+						}
+
+				    }else{
+						for(int i=0;i<(4-trials);i++){
+							rotateAntiClockwise();
+						}
+
+				    }
+					moveForward(lvl_no);
 				}
 
-				if (player.gridX == GRID_COLS-1 && player.gridY == GRID_ROWS-1){
+				if (player.gridX == GRID_COLS-1 && player.gridY == GRID_ROWS-2){
 					game_win = 1;
 					setFont(BigFont);
 				    setColor(238, 64, 0);
@@ -278,47 +347,6 @@ void moveForward(int lvl_no) {
         break;
       case DIR_RIGHT:
         nextX++;
-        break;
-    }
-
-    // Check if next position is valid
-    if (nextX < 0 || nextX >= GRID_COLS ||
-        nextY < 0 || nextY >= GRID_ROWS) {
-      break;  // Hit boundary
-    }
-
-    // Check if next position is a wall
-    if (mazeGrid[lvl_no][nextY][nextX] == 1) {
-      break;  // Hit wall
-    }
-
-    // Move to next position
-    updatePlayerPosition(lvl_no, nextX, nextY);
-    usleep(100000);  // Animation
-  }
-}
-
-// Move player backward until hitting obstacle
-void moveBackward(int lvl_no) {
-  int nextX, nextY;
-
-  while (1) {
-    // Calculate next position (opposite of current direction)
-    nextX = player.gridX;
-    nextY = player.gridY;
-
-    switch (player.direction) {
-      case DIR_UP:
-        nextY++;  // Move down when facing up
-        break;
-      case DIR_DOWN:
-        nextY--;  // Move up when facing down
-        break;
-      case DIR_LEFT:
-        nextX++;  // Move right when facing left
-        break;
-      case DIR_RIGHT:
-        nextX--;  // Move left when facing right
         break;
     }
 

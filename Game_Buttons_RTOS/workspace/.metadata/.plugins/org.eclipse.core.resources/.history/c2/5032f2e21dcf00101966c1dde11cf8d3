@@ -1,0 +1,257 @@
+/*****************************************************************************
+Author: Jash Shah
+Date Created: 25 November 2025
+Last Moditified: 25 November 2025
+
+This file is used to initiate
+*****************************************************************************/
+
+#include "qpn_port.h"
+#include "bsp.h"
+#include "game.h"
+
+#include "sleep.h"
+#include "sevenSeg_new.h"
+
+#include "xintc.h"
+#include "xil_exception.h"
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "xil_cache.h"
+
+#include "xtmrctr.h"
+#include "xtime_l.h"
+#include "xtmrctr_l.h"
+
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+
+#include "encoder.h"
+#include "lcd.h"
+
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+
+/********* Bit mapping: JA[0]=A, JA[1]=B, JA[2]=Push *********/
+#define ENC_A(v)                   (((v)>>0) & 1u)
+#define ENC_B(v)                   (((v)>>1) & 1u)
+#define ENC_P(v)                   (((v)>>2) & 1u)
+encoder_t enc;
+
+/********* Defining the Interrupt Controller *********/
+#define INTC_DEVICE_ID      XPAR_MICROBLAZE_0_AXI_INTC_DEVICE_ID
+
+// Push Buttons on the Board
+#define BTN_GPIO_DEVICE_ID      XPAR_GPIO_2_DEVICE_ID
+#define BTN_GPIO_CHANNEL        1
+#define BTN_GPIO_IRQ_ID         XPAR_INTC_0_GPIO_2_VEC_ID
+
+// Encoder Peripheral PMOD
+#define ENC_GPIO_DEVICE_ID      XPAR_GPIO_0_DEVICE_ID
+#define ENC_GPIO_CHANNEL        1
+#define ENC_GPIO_IRQ_ID         XPAR_INTC_0_GPIO_0_VEC_ID
+
+// On Board Timer Device
+#define TIMER_DEVICE_ID     XPAR_TMRCTR_0_DEVICE_ID
+#define TIMER_IRPT_ID       XPAR_MICROBLAZE_0_AXI_INTC_AXI_TIMER_0_INTERRUPT_INTR
+
+// ================== Timing Parameters ==================
+#define REFRESH_DELAY_US    1    // 0.01 ms delay between digit pairs
+#define RESET_VALUE 100000
+
+// ================== Global Variables for Peripherals ==================
+static XGpio btnGpio;
+static XGpio encGpio;
+static XTmrCtr axiTimer;
+static XIntc   intc;
+static XGpio   dc;
+static XSpi    spi;
+static u32 lastPressTime = 0;
+static XTime currentTime, lastPressTime;
+
+int digits[8]          = {0};   // 8 display digits
+int interrupt_arrived_flag = 0;
+
+// ================== Helper Functions ==================
+
+// Convert counter to 8 display digits (SSSS.ffff)
+void updateDigits() {
+    int t = counter;
+    if (t < 0) t = 0;
+
+    int secs = t / 1000;   // whole seconds
+    int frac = t % 1000;   //
+
+    digits[3] = secs % 10; secs /= 10;
+    digits[2] = secs % 10; secs /= 10;
+    digits[1] = secs % 10; secs /= 10;
+    digits[0] = secs % 10;
+
+    digits[7] = 0; //frac%10; frac/=10;
+    digits[6] = frac%10; frac/=10;
+    digits[5] = frac%10; frac/=10;
+    digits[4] = frac%10;
+}
+
+
+void ButtonsHandler(void *CallbackRef) {
+	interrupt_arrived_flag = 1;
+    u32 status = XGpio_InterruptGetStatus(&btnGpio);
+    // Latch & clear interrupt
+    XGpio_InterruptClear(&btnGpio, status);
+
+    XTime_GetTime(&currentTime);
+    int btns = XGpio_DiscreteRead(&btnGpio, 1);
+    if (currentTime - lastPressTime > DEBOUNCE_THRESHOLD) {
+        lastPressTime = currentTime;
+        xil_printf("MKB AAAG\n");
+        if (btns & 0x01) { buttonPressed = 1; }
+        else if (btns & 0x02) { buttonPressed = 2; }
+        else if (btns & 0x04) { buttonPressed = 3; }
+        else if (btns & 0x08) { buttonPressed = 4; }
+
+        QActive_postISR((QActive *)&AO_Lab2A, BUTTON);
+    }
+}
+void EncoderHandler(void *CallbackRef)
+{
+    interrupt_arrived_flag = 1;
+	(void)CallbackRef;
+    uint32_t v  = XGpio_DiscreteRead(&encGpio, ENC_GPIO_CHANNEL);
+    uint8_t ab  = (ENC_A(v) << 1) | ENC_B(v);
+    uint8_t p   = ENC_P(v);
+
+    encoder_quad_step(&enc, ab);      // debounce
+    encoder_push_update(&enc, p);     // sets push_rise/push_fall flags (raw)
+
+    // clear source (level-sensitive)
+    XGpio_InterruptClear(&encGpio, ENC_GPIO_CHANNEL);
+
+    if(enc.push_rise){
+    	enc.push_rise = false;
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_CLICK);
+    }
+    if (enc.step_right){
+    	enc.step_right = false;
+    	encoder_twist = 0;
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST);
+    }
+    if (enc.step_left){
+    	enc.step_left  = false;
+    	encoder_twist = 1;
+    	QActive_postISR((QActive *)&AO_Lab2A, ENCODER_TWIST);
+    }
+
+}
+
+void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
+{
+	interrupt_arrived_flag = 1;
+	custom_tick += 1;
+	if(custom_tick == 3000){	// Used to Reset the Text in 1.5 seconds
+		QActive_postISR((QActive *)&AO_Lab2A, CUSTOM_TIMEOUT);
+	}
+    if (running) {
+        counter += 1;
+    }
+    updateDigits();
+}
+
+void BSP_init(void) {
+    u32 controlReg;
+    XSpi_Config *spiConfig; // Pointer to Configuration data
+
+    // Initialization Phase to setup the interrupts
+    XIntc_Initialize(&intc, INTC_DEVICE_ID);
+    XTmrCtr_Initialize(&axiTimer, TIMER_DEVICE_ID);
+    XGpio_Initialize(&btnGpio, BTN_GPIO_DEVICE_ID);
+    XGpio_Initialize(&encGpio, ENC_GPIO_DEVICE_ID);
+
+    // Connect Phase to connect the peripherals to Int Controller bus
+    XIntc_Connect(&intc, TIMER_IRPT_ID, (XInterruptHandler)XTmrCtr_InterruptHandler, (void *)&axiTimer);
+    XTmrCtr_SetHandler(&axiTimer, TimerCounterHandler, &axiTimer);
+    XIntc_Connect(&intc, BTN_GPIO_IRQ_ID, (XInterruptHandler)ButtonsHandler, (void *)&btnGpio);
+    XIntc_Connect(&intc, ENC_GPIO_IRQ_ID, (XInterruptHandler)EncoderHandler, (void *)&encGpio);
+
+    // Start and Enable Phase
+    XIntc_Start(&intc, XIN_REAL_MODE);
+    XIntc_Enable(&intc, TIMER_IRPT_ID);
+    XIntc_Enable(&intc, BTN_GPIO_IRQ_ID);
+    XIntc_Enable(&intc, ENC_GPIO_IRQ_ID);
+
+    // Configuration Phase for all the Peripherals
+    	// BTNS Config
+    XGpio_SetDataDirection(&btnGpio, BTN_GPIO_CHANNEL, 0xFFFFFFFF); // inputs
+    XGpio_InterruptGlobalEnable(&btnGpio);
+    XGpio_InterruptEnable(&btnGpio, 0xFFFF);
+
+    	// Encoder Config
+    XGpio_SetDataDirection(&encGpio, ENC_GPIO_CHANNEL, 0xFFFFFFFF); // inputs
+    XGpio_InterruptDisable(&encGpio, ENC_GPIO_CHANNEL);
+    XGpio_InterruptClear(&encGpio,  ENC_GPIO_CHANNEL);
+    XGpio_InterruptEnable(&encGpio,  ENC_GPIO_CHANNEL);
+    XGpio_InterruptGlobalEnable(&encGpio);
+
+       // Timer Config
+    XTmrCtr_SetOptions(&axiTimer, 0, XTC_INT_MODE_OPTION | XTC_AUTO_RELOAD_OPTION);
+    XTmrCtr_SetResetValue(&axiTimer, 0,0xFFFFFFFF - RESET_VALUE);
+    XTmrCtr_Start(&axiTimer, 0);
+
+    // MicroBlaze Interrupt Registration
+    Xil_ExceptionInit();
+    Xil_ExceptionRegisterHandler(XIL_EXCEPTION_ID_INT, (Xil_ExceptionHandler)XIntc_InterruptHandler, &intc);
+    Xil_ExceptionEnable();
+    microblaze_enable_interrupts();
+
+    // SPI DC Setup for LCD Screen
+    XGpio_Initialize(&dc, XPAR_SPI_DC_DEVICE_ID);
+    XGpio_SetDataDirection(&dc, 1, 0x0);
+    spiConfig = XSpi_LookupConfig(XPAR_SPI_DEVICE_ID);
+    XSpi_CfgInitialize(&spi, spiConfig, spiConfig->BaseAddress);
+    XSpi_Reset(&spi);
+    controlReg = XSpi_GetControlReg(&spi);
+    XSpi_SetControlReg(&spi,
+        (controlReg | XSP_CR_ENABLE_MASK | XSP_CR_MASTER_MODE_MASK) & (~XSP_CR_TRANS_INHIBIT_MASK));
+    XSpi_SetSlaveSelectReg(&spi, ~0x01);
+
+    XTime_GetTime(&currentTime);
+    XTime_GetTime(&lastPressTime);
+}
+
+void QF_onStartup(void){
+	//xil_printf("QF_onStartup");
+}
+
+void QF_onIdle(void) {        /* entered with interrupts locked */
+    QF_INT_UNLOCK();                       /* unlock interrupts */
+    interrupt_arrived_flag = 0;
+    // A Do While Loop is required as the timer is to be updated only when no interrupts are seen otherwise the timer takes up all the clock cycle.
+   do{
+            // Refresh display — 2 digits at a time using your Urbana driver
+            sevenseg_draw_digit(0, 0, digits[0], digits[4]);
+            usleep(REFRESH_DELAY_US);
+
+            sevenseg_draw_digit(1, 1, digits[1], digits[5]);
+            usleep(REFRESH_DELAY_US);
+
+            sevenseg_draw_digit(2, 2, digits[2], digits[6]);
+            usleep(REFRESH_DELAY_US);
+
+            sevenseg_draw_digit(3, 3, digits[3], digits[7]);
+            usleep(REFRESH_DELAY_US);
+        } while (interrupt_arrived_flag == 0);
+
+}
+
+/* Q_onAssert is called only when the program encounters an error*/
+void Q_onAssert(char const Q_ROM * const Q_ROM_VAR file, int line) {
+    (void)file;                                   /* name of the file that throws the error */
+    (void)line;                                   /* line of the code that throws the error */
+    QF_INT_LOCK();
+    printDebugLog();
+    for (;;) {
+    }
+}
+

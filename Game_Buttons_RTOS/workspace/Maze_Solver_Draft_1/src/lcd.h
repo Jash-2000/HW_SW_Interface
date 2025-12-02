@@ -25,16 +25,16 @@
 // Maze grid configuration
 #define CELL_SIZE 30    // Size of each square cell
 #define GRID_COLS 8      // Number of columns
-#define GRID_ROWS 10     // Number of rows
+#define GRID_ROWS 11     // Number of rows
 #define GRID_START_X 0   // Starting X position
 #define GRID_START_Y 0   // Starting Y position
 #define NUM_LEVELS 6
 
 // Player direction constants
-#define DIR_UP 0
+#define DIR_UP 3
 #define DIR_DOWN 1
 #define DIR_LEFT 2
-#define DIR_RIGHT 3
+#define DIR_RIGHT 0
 
 // Player position structure
 typedef struct {

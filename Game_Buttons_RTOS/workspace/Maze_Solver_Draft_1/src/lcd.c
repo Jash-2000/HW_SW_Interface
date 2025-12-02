@@ -26,6 +26,7 @@ char mazeGrid_dummy[GRID_ROWS][GRID_COLS] = {
 		    {2, 0, 0, 0, 0, 0, 0, 2},
 			{2, 0, 0, 0, 0, 0, 0, 2},
 			{2, 0, 0, 0, 0, 0, 0, 2},
+			{2, 2, 2, 2, 2, 2, 2, 2},
 			{2, 2, 2, 2, 2, 2, 2, 2}
 };
 
@@ -43,7 +44,8 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 0, 0, 1, 1, 0, 1},
     {1, 0, 1, 0, 1, 1, 0, 1},
     {0, 0, 1, 0, 0, 0, 0, 0},
-    {0, 1, 1, 0, 1, 0, 1, 2}
+    {0, 1, 1, 0, 1, 0, 1, 2},
+	{1, 1, 1, 1, 1, 1, 1, 1}
   },
 
   // ---------------- LEVEL 2 ----------------
@@ -57,7 +59,8 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 	  {0, 0, 0, 0, 0, 0, 1, 1},
 	  {0, 1, 1, 1, 1, 1, 1, 1},
 	  {0, 0, 0, 0, 0, 0, 0, 0},
-	  {1, 1, 1, 1, 1, 1, 1, 2}
+	  {1, 1, 1, 1, 1, 1, 1, 2},
+		{1, 1, 1, 1, 1, 1, 1, 1}
   },
 
   // ---------------- LEVEL 3 ----------------
@@ -71,7 +74,8 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 	  {0, 0, 0, 0, 0, 1, 1, 0},
 	  {1, 1, 1, 1, 0, 0, 1, 0},
 	  {0, 0, 0, 1, 0, 1, 0, 0},
-	  {0, 1, 0, 0, 0, 0, 1, 2}
+	  {0, 1, 0, 0, 0, 0, 1, 2},
+		{1, 1, 1, 1, 1, 1, 1, 1}
 },
 
   // ---------------- LEVEL 4 ----------------
@@ -85,7 +89,8 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 	  {1, 1, 1, 0, 0, 0, 1, 1},
 	  {0, 0, 0, 1, 1, 0, 0, 0},
 	  {0, 1, 0, 0, 1, 1, 1, 0},
-	  {0, 0, 0, 1, 0, 0, 1, 2}
+	  {0, 0, 0, 1, 0, 0, 1, 2},
+		{1, 1, 1, 1, 1, 1, 1, 1}
   },
 
   // ---------------- LEVEL 5 ----------------
@@ -99,7 +104,8 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
     {0, 0, 0, 0, 1, 0, 0, 0},
     {1, 0, 1, 0, 1, 1, 0, 1},
     {0, 0, 1, 0, 0, 0, 1, 0},
-    {0, 1, 0, 1, 0, 0, 0, 2}
+    {0, 1, 0, 1, 0, 0, 0, 2},
+	{1, 1, 1, 1, 1, 1, 1, 1}
   },
 
   // ---------------- LEVEL 6 ----------------
@@ -113,7 +119,8 @@ char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = {
 	  {1, 1, 0, 0, 0, 0, 0, 1},
 	  {0, 0, 0, 1, 1, 1, 0, 1},
 	  {1, 1, 0, 0, 0, 0, 0, 0},
-	  {0, 0, 0, 1, 1, 1, 1, 2}
+	  {0, 0, 0, 1, 1, 1, 1, 2},
+		{1, 1, 1, 1, 1, 1, 1, 1}
   }
 
 };
@@ -263,7 +270,7 @@ void drawScene(void)
     lcdPrint("Hello Elliot", 20, 50);
 
     setFont(BigFont);
-    setColor(238, 64, 0);
+    setColor(255, 255, 255);
     lcdPrint("BTN-Move", 30, 150);
     lcdPrint("TWIST-Scroll", 20, 175);
     lcdPrint("CLICK-Play", 20, 200);
@@ -573,7 +580,8 @@ void drawMazeBackground(int lvl_no) {
         // Path - draw filled square in path color
         setColor(34, 139, 34);  // Green for paths
       } else {
-    	  //setColor(255, 204, 0);  // Yellow for Destinations
+    	// Yellow for Destinations
+    	setColor(255, 204, 0);
       }
 
       // Draw filled square
@@ -639,9 +647,12 @@ void showLevel(void){
 	      if (mazeGrid_dummy[row][col] == 1) {
 	        // Wall - draw filled square in wall color
 	        setColor(255,0,0);  // Red for walls
-	      } else {
+	      } else if(mazeGrid_dummy[row][col] == 0){
 	        // Path - draw filled square in path color
 	        setColor(34, 139, 34);  // Green for paths
+	      } else {
+	    	// Yellow for Destinations
+	    	setColor(255, 204, 0);
 	      }
 
 	      // Draw filled square
