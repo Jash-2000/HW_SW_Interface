@@ -50,8 +50,8 @@
 #define CLOCK 100000000.0 //clock speed
 
 int int_buffer[SAMPLES];
-static float q[SAMPLES];
-static float w[SAMPLES];
+static float q[SAMPLES];   // Real Part of the time-base signal (input to fft block)
+static float w[SAMPLES];   // Imaginary Part of the time-base signal (input to the fft block)
 
 unsigned seqf, seql, seq_old=0;
 
