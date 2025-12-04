@@ -1,0 +1,270 @@
+/*****************************************************************************
+ * Rocket League Soccer - game.c
+ * State machine implementation for soccer game
+ *****************************************************************************/
+
+#define AO_LAB2A
+#include "qpn_port.h"
+#include "bsp.h"
+#include "game.h"
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+typedef struct Lab2ATag {
+    QActive super;
+} Lab2A;
+
+/* State machine states */
+static QState Lab2A_initial(Lab2A *me);
+static QState Menu(Lab2A *me);
+static QState Playing(Lab2A *me);
+static QState Goal(Lab2A *me);
+static QState GameOver(Lab2A *me);
+
+Lab2A AO_Lab2A;
+
+/* Game control variables */
+volatile int buttonPressed = 0;    // Which button: 1=Up, 2=Right, 3=Down, 4=Left
+volatile int encoder_twist = 0;    // 0=CW, 1=ACW
+volatile int encoder_click = 0;    // Click detection
+volatile int game_timer = 0;       // Game timer in milliseconds
+volatile int running = 0;          // Game running flag
+volatile int goal_delay = 0;       // Delay after goal scored
+
+int counter = 0;
+int custom_tick = 0;
+
+#define GAME_TIME_LIMIT 180000     // 3 minutes in milliseconds
+#define GOAL_DISPLAY_TIME 2000     // 2 seconds to show goal message
+#define WINNING_SCORE 5            // First to 5 goals wins
+
+void Lab2A_ctor(void) {
+    Lab2A *me = &AO_Lab2A;
+    QActive_ctor(&me->super, (QStateHandler)&Lab2A_initial);
+}
+
+QState Lab2A_initial(Lab2A *me) {
+    initLCD();
+    drawStartScreen();
+    return Q_TRAN(&Menu);
+}
+
+QState Menu(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: {
+            drawStartScreen();
+            running = 0;
+            game_timer = 0;
+            return Q_HANDLED();
+        }
+
+        case ENCODER_CLICK: {
+            initGame();
+            return Q_TRAN(&Playing);
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}
+
+QState Playing(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: {
+            running = 1;
+            game_timer = 0;
+            counter = 0;
+            custom_tick = 0;
+
+            // Draw initial game state
+            clrScr();
+            drawField();
+            drawGoals();
+            drawWalls();
+            drawBall();
+            drawPlayer();
+            drawScore();
+
+            return Q_HANDLED();
+        }
+
+        case CUSTOM_TIMEOUT: {
+            if (!running) return Q_HANDLED();
+            custom_tick = 0;
+            // Erase old positions
+            setColor(34, 139, 34); // Field green
+            fillCircle((int)ball.x, (int)ball.y, BALL_RADIUS + 1);
+
+            int oldPlayerX = (int)player.x;
+            int oldPlayerY = (int)player.y;
+
+            // Handle encoder twist (rotation)
+            if (encoder_twist == 1) {
+                rotatePlayerClockwise();
+                encoder_twist = -1; // Reset
+            } else if (encoder_twist == 0) {
+                rotatePlayerAntiClockwise();
+                encoder_twist = -1; // Reset
+            }
+
+            // Handle button presses (speed control)
+            static int button_held = 0;
+            if (buttonPressed == 1) {  // Fast forward
+                player.speed = PLAYER_SPEED_FAST;
+                button_held = 1;
+            } else if (buttonPressed == 4) {  // Slow
+                player.speed = PLAYER_SPEED_SLOW;
+                button_held = 1;
+            } else if (buttonPressed == 0 && button_held) {
+                player.speed = PLAYER_SPEED_NORMAL;
+                button_held = 0;
+            }
+
+            // Update player position (continuous forward movement)
+            updatePlayer();
+
+            // Erase old player position (draw larger area to ensure clean erase)
+            setColor(34, 139, 34);
+            fillRect(oldPlayerX - PLAYER_SIZE - 2, oldPlayerY - PLAYER_SIZE - 2,
+                    oldPlayerX + PLAYER_SIZE + 2, oldPlayerY + PLAYER_SIZE + 2);
+
+            // Check collisions
+            checkBallPlayerCollision();
+
+            // Update ball physics
+            updateBall();
+
+            // Redraw walls (in case ball covered them)
+            drawWalls();
+
+            // Draw updated positions
+            drawBall();
+            drawPlayer();
+
+            // Check for goal
+            int goal_scored = checkGoalScored();
+            if (goal_scored > 0) {
+                return Q_TRAN(&Goal);
+            }
+
+            // Check for game over conditions
+            game_timer += 50; // Assuming 50ms tick
+            if (game_timer >= GAME_TIME_LIMIT) {
+                return Q_TRAN(&GameOver);
+            }
+
+            if (score_top >= WINNING_SCORE || score_bottom >= WINNING_SCORE) {
+                return Q_TRAN(&GameOver);
+            }
+
+            return Q_HANDLED();
+        }
+
+        case ENCODER_CLICK: {
+            return Q_TRAN(&Menu);
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}
+
+QState Goal(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: {
+            running = 0;
+            goal_delay = 0;
+            custom_tick = 0;
+
+            // Display goal message
+            setColor(255, 255, 0);
+            setFont(BigFont);
+
+            if (score_top > score_bottom) {
+                lcdPrint("GOAL!", 80, 140);
+                lcdPrint("Top Scores!", 40, 170);
+            } else {
+                lcdPrint("GOAL!", 80, 140);
+                lcdPrint("Bottom Scores!", 25, 170);
+            }
+
+            // Update score display
+            drawScore();
+
+            return Q_HANDLED();
+        }
+
+        case CUSTOM_TIMEOUT: {
+            goal_delay += 50; // Assuming 50ms tick
+            custom_tick = 0;
+            if (goal_delay >= GOAL_DISPLAY_TIME) {
+                // Check if game should end
+                if (score_top >= WINNING_SCORE || score_bottom >= WINNING_SCORE) {
+                    return Q_TRAN(&GameOver);
+                }
+
+                // Reset for next round
+                resetBall();
+                player.x = 120;
+                player.y = 250;
+                player.angle = -PI / 2.0f;  // Point up
+                player.speed = PLAYER_SPEED_NORMAL;
+
+                return Q_TRAN(&Playing);
+            }
+
+            return Q_HANDLED();
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}
+
+QState GameOver(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: {
+            running = 0;
+
+            // Display game over screen
+            setColor(0, 0, 0);
+            fillRect(30, 100, 210, 220);
+
+            setColor(255, 255, 255);
+            setFont(BigFont);
+            lcdPrint("GAME OVER!", 45, 110);
+
+            char buf[32];
+            setFont(SmallFont);
+
+            if (score_top > score_bottom) {
+                lcdPrint("TOP WINS!", 65, 145);
+            } else if (score_bottom > score_top) {
+                lcdPrint("BOTTOM WINS!", 55, 145);
+            } else {
+                lcdPrint("TIE GAME!", 65, 145);
+            }
+
+            snprintf(buf, sizeof(buf), "Final: %d - %d", score_top, score_bottom);
+            lcdPrint(buf, 55, 170);
+
+            snprintf(buf, sizeof(buf), "Time: %d sec", game_timer / 1000);
+            lcdPrint(buf, 55, 190);
+
+            lcdPrint("Click to restart", 35, 210);
+
+            return Q_HANDLED();
+        }
+
+        case ENCODER_CLICK: {
+            // Reset scores and return to menu
+            score_top = 0;
+            score_bottom = 0;
+            return Q_TRAN(&Menu);
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}

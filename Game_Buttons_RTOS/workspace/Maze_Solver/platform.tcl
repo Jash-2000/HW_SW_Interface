@@ -20,3 +20,5 @@ platform active {Maze_Solver}
 platform generate -domains 
 platform active {Maze_Solver}
 platform generate -domains 
+platform generate
+platform generate

@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="DIR"/>
+		<item key="selection" value="custom_tick"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
+			<item value="custom_tick"/>
+			<item value="sleep"/>
+			<item value="swap"/>
+			<item value="SPI_DC"/>
+			<item value="drawEnemy"/>
+			<item value="enemy"/>
+			<item value="player"/>
+			<item value="/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace"/>
 			<item value="DIR"/>
 			<item value="Maze"/>
 			<item value="level"/>
@@ -15,21 +23,13 @@
 			<item value="rect"/>
 			<item value="rectangle"/>
 			<item value="Inside"/>
-			<item value="show"/>
-			<item value="Idle"/>
-			<item value="Level_Select"/>
-			<item value="init"/>
-			<item value="drawGrid"/>
-			<item value="grid"/>
-			<item value="clrS"/>
-			<item value="clr"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1168"/>
-		<item key="DIALOG_Y_ORIGIN" value="225"/>
+		<item key="DIALOG_X_ORIGIN" value="905"/>
+		<item key="DIALOG_Y_ORIGIN" value="307"/>
 		<item key="DIALOG_WIDTH" value="345"/>
 		<item key="DIALOG_HEIGHT" value="458"/>
 		<item key="DIALOG_FONT_NAME" value="1|Cantarell|11.0|0|GTK|1|"/>

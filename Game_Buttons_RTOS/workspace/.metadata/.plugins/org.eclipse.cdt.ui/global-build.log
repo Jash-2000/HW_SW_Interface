@@ -1,7 +1,26 @@
 Nothing to build in platform 'Maze_Solver'
 
-18:38:20 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1 ****
+00:28:12 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1 ****
 make all 
+make: Warning: File 'src/game.d' has modification time 69 s in the future
+Building file: ../src/bsp.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/bsp.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/bsp.d" -MT"src/bsp.o" -o "src/bsp.o" "../src/bsp.c"
+In file included from ../src/qpn_port.h:38,
+                 from ../src/bsp.c:9:
+/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include/xbasic_types.h:102:2: warning: #warning The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert. [-Wcpp]
+  102 | #warning  The xbasics_type.h file is deprecated and users should use xil_types.h and xil_assert.
+      |  ^~~~~~~
+/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
+  103 | #warning  Please refer the Standalone BSP UG647 for further details
+      |  ^~~~~~~
+Finished building: ../src/bsp.c
+ 
+Building file: ../src/fonts.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fonts.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fonts.d" -MT"src/fonts.o" -o "src/fonts.o" "../src/fonts.c"
+Finished building: ../src/fonts.c
+ 
 Building file: ../src/game.c
 Invoking: MicroBlaze gcc compiler
 mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/game.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/game.d" -MT"src/game.o" -o "src/game.o" "../src/game.c"
@@ -13,11 +32,36 @@ In file included from ../src/qpn_port.h:38,
 /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include/xbasic_types.h:103:2: warning: #warning Please refer the Standalone BSP UG647 for further details [-Wcpp]
   103 | #warning  Please refer the Standalone BSP UG647 for further details
       |  ^~~~~~~
-../src/game.c: In function 'Running':
-../src/game.c:162:57: warning: implicit declaration of function 'usleep' [-Wimplicit-function-declaration]
-  162 |                                                         usleep(10000);  // Animation
-      |                                                         ^~~~~~
 Finished building: ../src/game.c
+ 
+Building file: ../src/lcd.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/lcd.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/export/Maze_Solver/sw/Maze_Solver/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/lcd.d" -MT"src/lcd.o" -o "src/lcd.o" "../src/lcd.c"
+../src/lcd.c: In function 'checkCollision':
+../src/lcd.c:360:13: warning: unused variable 'shipRight' [-Wunused-variable]
+  360 |         int shipRight = ship.x + SHIP_SIZE/2;
+      |             ^~~~~~~~~
+../src/lcd.c:359:13: warning: unused variable 'shipLeft' [-Wunused-variable]
+  359 |         int shipLeft = ship.x - SHIP_SIZE/2;
+      |             ^~~~~~~~
+../src/lcd.c: In function 'drawGameOver':
+../src/lcd.c:404:9: warning: implicit declaration of function 'snprintf' [-Wimplicit-function-declaration]
+  404 |         snprintf(buf, sizeof(buf), "%d", distance);
+      |         ^~~~~~~~
+../src/lcd.c:8:1: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+    7 | #include "lcd.h"
+  +++ |+#include <stdio.h>
+    8 | 
+../src/lcd.c:404:9: warning: incompatible implicit declaration of built-in function 'snprintf' [-Wbuiltin-declaration-mismatch]
+  404 |         snprintf(buf, sizeof(buf), "%d", distance);
+      |         ^~~~~~~~
+../src/lcd.c:404:9: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+../src/lcd.c: In function 'drawHUD':
+../src/lcd.c:419:9: warning: incompatible implicit declaration of built-in function 'snprintf' [-Wbuiltin-declaration-mismatch]
+  419 |         snprintf(buf, sizeof(buf), "Dist: %d", distance);
+      |         ^~~~~~~~
+../src/lcd.c:419:9: note: include '<stdio.h>' or provide a declaration of 'snprintf'
+Finished building: ../src/lcd.c
  
 Building target: Maze_Solver_Draft_1.elf
 Invoking: MicroBlaze gcc linker
@@ -27,9 +71,10 @@ Finished building target: Maze_Solver_Draft_1.elf
 Invoking: MicroBlaze Print Size
 mb-size Maze_Solver_Draft_1.elf  |tee "Maze_Solver_Draft_1.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  97932	   8732	8389216	8495880	 81a308	Maze_Solver_Draft_1.elf
+  93580	   6116	8389440	8489136	 8188b0	Maze_Solver_Draft_1.elf
 Finished building: Maze_Solver_Draft_1.elf.size
+make: warning:  Clock skew detected.  Your build may be incomplete.
  
-18:38:21 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1_system ****
+00:28:13 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1_system ****
 make all 
 Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
