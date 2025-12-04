@@ -1,0 +1,63 @@
+#ifndef WAKE_WORD_H
+#define WAKE_WORD_H
+
+// =====================================================
+// Ultra-lightweight wake-word detection
+// Optimized for minimal memory and latency
+// =====================================================
+
+// Instead of 16 mel bins, use only 8 critical frequency bands
+// This reduces memory and computation significantly
+#define NUM_BANDS 8
+
+// We use only 100 frames (2100ms)
+// Shorter detection window = lower latency
+#define NUM_FRAMES 100
+
+// Feature vector: 8 bands per frame
+typedef struct {
+    float bands[NUM_BANDS];
+} FeatureFrame;
+
+// Circular buffer for temporal matching
+typedef struct {
+    FeatureFrame frames[NUM_FRAMES];
+    int write_index;
+    int frames_filled;
+} FeatureBuffer;
+
+// Wake-word template (stored reference)
+typedef struct {
+    FeatureFrame template[NUM_FRAMES];
+    int is_trained;
+} WakeWordTemplate;
+
+// =====================================================
+// Public API
+// =====================================================
+
+// Initialize the wake-word system
+void wake_word_init(void);
+
+// Extract features from FFT magnitude spectrum
+// mag_spectrum: FFT magnitudes (n/2 values)
+// n: FFT size (e.g., 256)
+// Returns: pointer to extracted feature frame (internal storage)
+FeatureFrame* wake_word_extract_features(const float *mag_spectrum, int n);
+
+// Add a new feature frame and check for detection
+// Returns: 1 if wake-word detected, 0 otherwise
+int wake_word_detect(FeatureFrame *frame);
+
+// Train the wake-word (store template)
+void wake_word_train_start(void);
+void wake_word_train_add_frame(FeatureFrame *frame);
+int wake_word_train_finish(void); // Returns 1 if successful
+
+// Print the current template for hardcoding
+void wake_word_print_template(void);
+
+// Load hardcoded template
+void wake_word_load_template(const float template_data[NUM_FRAMES][NUM_BANDS]);
+
+#endif // WAKE_WORD_H

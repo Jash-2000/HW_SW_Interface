@@ -1,0 +1,152 @@
+#include "wake_word.h"
+#include <math.h>
+#include <stdio.h>
+#include "xil_printf.h"
+
+// =====================================================
+// Memory-optimized frequency bands (8 bands)
+// Covers 0-6kHz with effective sample rate of ~12.2 kHz
+// =====================================================
+// Band ranges (bin indices for 256-point FFT, effective fs=12.2kHz):
+// Each bin = 12200/256 ≈ 47.7 Hz
+static const int band_start[NUM_BANDS] = {2, 6, 12, 21, 31, 46, 67, 94};
+static const int band_end[NUM_BANDS]   = {6, 12, 21, 31, 46, 67, 94, 125};
+
+// =====================================================
+// Global state - MINIMAL memory footprint
+// =====================================================
+static WakeWordTemplate g_template;
+static FeatureVector g_current_feature; // reused buffer for extraction
+
+#define DETECTION_THRESHOLD 0.72f  // Similarity threshold
+
+// =====================================================
+// Implementation
+// =====================================================
+
+void wake_word_init(void)
+{
+    g_template.is_trained = 0;
+    
+    // Clear template
+    for (int j = 0; j < NUM_BANDS; j++) {
+        g_template.template.bands[j] = 0.0f;
+    }
+}
+
+FeatureVector* wake_word_extract_features(const float *mag_spectrum, int n)
+{
+    // Extract energy in each frequency band
+    for (int b = 0; b < NUM_BANDS; b++) {
+        float energy = 0.0f;
+        int count = 0;
+
+        for (int k = band_start[b]; k < band_end[b] && k < n/2; k++) {
+            energy += mag_spectrum[k];
+            count++;
+        }
+
+        if (count > 0) {
+            g_current_feature.bands[b] = energy / (float)count;
+        } else {
+            g_current_feature.bands[b] = 0.0f;
+        }
+    }
+    
+    // Normalize features to [0, 1]
+    float max_energy = 0.0f;
+    for (int b = 0; b < NUM_BANDS; b++) {
+        if (g_current_feature.bands[b] > max_energy) {
+            max_energy = g_current_feature.bands[b];
+        }
+    }
+    
+    if (max_energy > 0.001f) {
+        for (int b = 0; b < NUM_BANDS; b++) {
+            g_current_feature.bands[b] /= max_energy;
+        }
+    }
+
+    return &g_current_feature;
+}
+
+int wake_word_compare(FeatureVector *features)
+{
+    if (!g_template.is_trained) {
+        return 0; // No template to compare
+    }
+    
+    // Compute cosine similarity
+    float dot = 0.0f;
+    float norm_features = 0.0f;
+    float norm_template = 0.0f;
+    
+    for (int b = 0; b < NUM_BANDS; b++) {
+        float v1 = features->bands[b];
+        float v2 = g_template.template.bands[b];
+        dot += v1 * v2;
+        norm_features += v1 * v1;
+        norm_template += v2 * v2;
+    }
+    
+    if (norm_features < 0.0001f || norm_template < 0.0001f) {
+        return 0;
+    }
+    
+    float similarity = dot / (sqrtf(norm_features) * sqrtf(norm_template));
+    
+    // Detection
+    return (similarity >= DETECTION_THRESHOLD) ? 1 : 0;
+}
+
+// =====================================================
+// Training
+// =====================================================
+
+void wake_word_train(FeatureVector *features)
+{
+    // Simply store this feature vector as the template
+    for (int b = 0; b < NUM_BANDS; b++) {
+        g_template.template.bands[b] = features->bands[b];
+    }
+    g_template.is_trained = 1;
+}
+
+// =====================================================
+// Template persistence
+// =====================================================
+
+void wake_word_print_template(void)
+{
+    if (!g_template.is_trained) {
+        xil_printf("No template trained yet!\n\r");
+        return;
+    }
+    
+    xil_printf("\n\r// Paste this into your code:\n\r");
+    xil_printf("static const float TEMPLATE_DATA[%d] = {\n\r    ", NUM_BANDS);
+    
+    for (int b = 0; b < NUM_BANDS; b++) {
+        // Print with 6 decimal places
+        int whole = (int)g_template.template.bands[b];
+        int frac = (int)((g_template.template.bands[b] - whole) * 1000000.0f);
+        if (frac < 0) frac = -frac;
+
+        xil_printf("%d.%06d", whole, frac);
+        if (b < NUM_BANDS - 1) {
+            xil_printf(", ");
+        }
+    }
+
+    xil_printf("\n\r};\n\r");
+    xil_printf("// Then call: wake_word_load_template(TEMPLATE_DATA);\n\r\n\r");
+}
+
+void wake_word_load_template(const float template_data[NUM_BANDS])
+{
+    for (int b = 0; b < NUM_BANDS; b++) {
+        g_template.template.bands[b] = template_data[b];
+    }
+    g_template.is_trained = 1;
+    xil_printf("Template loaded successfully.\n\r");
+}

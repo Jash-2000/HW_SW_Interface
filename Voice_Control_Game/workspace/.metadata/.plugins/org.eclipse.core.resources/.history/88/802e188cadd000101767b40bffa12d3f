@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="Voice_Game_Software" location="/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Voice_Game_Software" platform="/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/export/Final_Project/Final_Project.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="Voice_Game_Software_system" sysConfig="Final_Project" runtime="C/C++" cpu="standalone_domain" cpuInstance="microblaze_0" os="standalone" mssSignature="afd395ff5dda2bd386e88fe854b2355b">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.1632570">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.1118783956" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>

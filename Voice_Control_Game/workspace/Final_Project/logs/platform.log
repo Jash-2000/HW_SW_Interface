@@ -1079,3 +1079,344 @@ TRACE::2025-12-02.13:32:37::SCWMssOS::Checking the sw design at  /home/jashshah/
 TRACE::2025-12-02.13:32:37::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss|system||
 
 TRACE::2025-12-02.13:32:37::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:20::SCWPlatform::Do not have an existing db opened. 
+TRACE::2025-12-03.15:38:20::SCWPlatform::Opened new HwDB with name bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWReader::Active system found as  Final_Project
+TRACE::2025-12-03.15:38:20::SCWReader::Handling sysconfig Final_Project
+TRACE::2025-12-03.15:38:20::SCWDomain::checking for install qemu data   : 
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:20::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:20::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2025-12-03.15:38:20::SCWMssOS::No sw design opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWMssOS::mss exists loading the mss file  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWMssOS::Opened the sw design from mss  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWMssOS::Adding the swdes entry /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss with des name system
+TRACE::2025-12-03.15:38:20::SCWMssOS::updating the scw layer about changes
+TRACE::2025-12-03.15:38:20::SCWMssOS::Opened the sw design.  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:20::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-12-03.15:38:20::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-12-03.15:38:20::SCWMssOS::Commit changes completed.
+TRACE::2025-12-03.15:38:20::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2025-12-03.15:38:20::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2025-12-03.15:38:20::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:20::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:20::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:21::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:21::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:21::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:21::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:21::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:21::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-03.15:38:21::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:21::SCWReader::No isolation master present  
+LOG::2025-12-03.15:38:21::SCWPlatform::Started generating the artifacts platform Final_Project
+TRACE::2025-12-03.15:38:21::SCWPlatform::Sanity checking of platform is completed
+LOG::2025-12-03.15:38:22::SCWPlatform::Started generating the artifacts for system configuration Final_Project
+LOG::2025-12-03.15:38:22::SCWSystem::Checking the domain standalone_domain
+LOG::2025-12-03.15:38:22::SCWSystem::Not a boot domain 
+LOG::2025-12-03.15:38:22::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2025-12-03.15:38:22::SCWDomain::Generating domain artifcats
+TRACE::2025-12-03.15:38:22::SCWMssOS::Generating standalone artifcats
+TRACE::2025-12-03.15:38:22::SCWMssOS:: Copying the user libraries. 
+TRACE::2025-12-03.15:38:22::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:22::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:22::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:22::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:22::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:22::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:22::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:22::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:22::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:22::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:22::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:22::SCWMssOS::Completed writing the mss file at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp
+TRACE::2025-12-03.15:38:22::SCWMssOS::Mss edits present, copying mssfile into export location /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:22::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-12-03.15:38:22::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2025-12-03.15:38:22::SCWDomain::Building the domain :  standalone_domain
+TRACE::2025-12-03.15:38:22::SCWMssOS::doing bsp build ... 
+TRACE::2025-12-03.15:38:22::SCWMssOS::System Command Ran  cd  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp ; bash -c "make  " 
+TRACE::2025-12-03.15:38:22::SCWMssOS::make --no-print-directory seq_libs
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Finished building libraries sequentially.
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -j 26 --no-print-directory par_libs
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/standalone_v7_7/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/standalone_v7_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar
+TRACE::2025-12-03.15:38:22::SCWMssOS::" "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA
+TRACE::2025-12-03.15:38:22::SCWMssOS::_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/intc_v3_14/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/intc_v3_14/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "CO
+TRACE::2025-12-03.15:38:22::SCWMssOS::MPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMP
+TRACE::2025-12-03.15:38:22::SCWMssOS::ILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/spi_v4_9/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/spi_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
+TRACE::2025-12-03.15:38:22::SCWMssOS::ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPIL
+TRACE::2025-12-03.15:38:22::SCWMssOS::ER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/uartlite_v3_7/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" 
+TRACE::2025-12-03.15:38:22::SCWMssOS::"COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_C
+TRACE::2025-12-03.15:38:22::SCWMssOS::OMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/bram_v4_7/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_7/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2025-12-03.15:38:22::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPI
+TRACE::2025-12-03.15:38:22::SCWMssOS::LER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/gpio_v4_9/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2025-12-03.15:38:22::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPI
+TRACE::2025-12-03.15:38:22::SCWMssOS::LER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/tmrctr_v4_9/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::Running Make include in microblaze_0/libsrc/cpu_v2_15/src
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/tmrctr_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "C
+TRACE::2025-12-03.15:38:22::SCWMssOS::OMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COM
+TRACE::2025-12-03.15:38:22::SCWMssOS::PILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:22::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_15/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COM
+TRACE::2025-12-03.15:38:22::SCWMssOS::PILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPI
+TRACE::2025-12-03.15:38:22::SCWMssOS::LER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/standalone_v7_7/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/intc_v3_14/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/spi_v4_9/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/standalone_v7_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "
+TRACE::2025-12-03.15:38:23::SCWMssOS::COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_CO
+TRACE::2025-12-03.15:38:23::SCWMssOS::MPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/uartlite_v3_7/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/intc_v3_14/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPI
+TRACE::2025-12-03.15:38:23::SCWMssOS::LER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILE
+TRACE::2025-12-03.15:38:23::SCWMssOS::R_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/bram_v4_7/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/spi_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPILE
+TRACE::2025-12-03.15:38:23::SCWMssOS::R_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER_
+TRACE::2025-12-03.15:38:23::SCWMssOS::FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/gpio_v4_9/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/uartlite_v3_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "CO
+TRACE::2025-12-03.15:38:23::SCWMssOS::MPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMP
+TRACE::2025-12-03.15:38:23::SCWMssOS::ILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/bram_v4_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2025-12-03.15:38:23::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER
+TRACE::2025-12-03.15:38:23::SCWMssOS::_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/gpio_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2025-12-03.15:38:23::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER
+TRACE::2025-12-03.15:38:23::SCWMssOS::_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/tmrctr_v4_9/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/tmrctr_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
+TRACE::2025-12-03.15:38:23::SCWMssOS::ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPIL
+TRACE::2025-12-03.15:38:23::SCWMssOS::ER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::Running Make libs in microblaze_0/libsrc/cpu_v2_15/src
+
+TRACE::2025-12-03.15:38:23::SCWMssOS::make -C microblaze_0/libsrc/cpu_v2_15/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
+TRACE::2025-12-03.15:38:23::SCWMssOS::ER_FLAGS=  -O2 -c -mcpu=v11.0 -mhard-float -mlittle-endian -mno-xl-soft-div -mno-xl-soft-mul -mxl-barrel-shift" "EXTRA_COMPILER
+TRACE::2025-12-03.15:38:23::SCWMssOS::_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+TRACE::2025-12-03.15:38:24::SCWMssOS::DEBUG NON_LTO_OBJECTS is ../../../lib/microblaze_interrupt_handler.o
+
+TRACE::2025-12-03.15:38:24::SCWMssOS::Finished building libraries parallelly.
+
+TRACE::2025-12-03.15:38:24::SCWMssOS::make --no-print-directory archive
+
+TRACE::2025-12-03.15:38:24::SCWMssOS::mb-ar -r  microblaze_0/lib/libxil.a microblaze_0/lib/xtmrctr_selftest.o microblaze_0/lib/microblaze_invalidate_icache_range.o m
+TRACE::2025-12-03.15:38:24::SCWMssOS::icroblaze_0/lib/xuartlite_intr.o microblaze_0/lib/xtmrctr_sinit.o microblaze_0/lib/xintc_l.o microblaze_0/lib/microblaze_enable
+TRACE::2025-12-03.15:38:24::SCWMssOS::_dcache.o microblaze_0/lib/xtmrctr_g.o microblaze_0/lib/xil_mem.o microblaze_0/lib/microblaze_enable_exceptions.o microblaze_0/
+TRACE::2025-12-03.15:38:24::SCWMssOS::lib/microblaze_interrupts_g.o microblaze_0/lib/xbram_g.o microblaze_0/lib/xil_testcache.o microblaze_0/lib/xintc_intr.o microbl
+TRACE::2025-12-03.15:38:24::SCWMssOS::aze_0/lib/xuartlite_selftest.o microblaze_0/lib/microblaze_selftest.o microblaze_0/lib/hw_exception_handler.o microblaze_0/lib/
+TRACE::2025-12-03.15:38:24::SCWMssOS::xuartlite_sinit.o microblaze_0/lib/xgpio_selftest.o microblaze_0/lib/microblaze_invalidate_cache_ext.o microblaze_0/lib/xuartli
+TRACE::2025-12-03.15:38:24::SCWMssOS::te_g.o microblaze_0/lib/microblaze_invalidate_dcache_range.o microblaze_0/lib/xgpio_intr.o microblaze_0/lib/xspi_options.o micr
+TRACE::2025-12-03.15:38:24::SCWMssOS::oblaze_0/lib/xintc_selftest.o microblaze_0/lib/xio.o microblaze_0/lib/xil_printf.o microblaze_0/lib/xil_sleepcommon.o microblaz
+TRACE::2025-12-03.15:38:24::SCWMssOS::e_0/lib/microblaze_exception_handler.o microblaze_0/lib/xintc_options.o microblaze_0/lib/xtmrctr.o microblaze_0/lib/xspi.o micr
+TRACE::2025-12-03.15:38:24::SCWMssOS::oblaze_0/lib/microblaze_flush_cache_ext_range.o microblaze_0/lib/xgpio_sinit.o microblaze_0/lib/microblaze_sleep.o microblaze_0
+TRACE::2025-12-03.15:38:24::SCWMssOS::/lib/xgpio_g.o microblaze_0/lib/microblaze_disable_icache.o microblaze_0/lib/xintc_g.o microblaze_0/lib/microblaze_interrupt_ha
+TRACE::2025-12-03.15:38:24::SCWMssOS::ndler.o microblaze_0/lib/xbram_selftest.o microblaze_0/lib/microblaze_disable_interrupts.o microblaze_0/lib/microblaze_invalida
+TRACE::2025-12-03.15:38:24::SCWMssOS::te_dcache.o microblaze_0/lib/pvr.o microblaze_0/lib/xinterrupt_wrap.o microblaze_0/lib/xbram_sinit.o microblaze_0/lib/inbyte.o 
+TRACE::2025-12-03.15:38:24::SCWMssOS::microblaze_0/lib/xil_util.o microblaze_0/lib/xil_cache.o microblaze_0/lib/xtmrctr_l.o microblaze_0/lib/xspi_selftest.o microbla
+TRACE::2025-12-03.15:38:24::SCWMssOS::ze_0/lib/xil_misc_psreset_api.o microblaze_0/lib/xspi_sinit.o microblaze_0/lib/microblaze_update_dcache.o microblaze_0/lib/micr
+TRACE::2025-12-03.15:38:24::SCWMssOS::oblaze_flush_cache_ext.o microblaze_0/lib/xspi_g.o microblaze_0/lib/microblaze_flush_dcache_range.o microblaze_0/lib/microblaze
+TRACE::2025-12-03.15:38:24::SCWMssOS::_enable_icache.o microblaze_0/lib/microblaze_disable_dcache.o microblaze_0/lib/_exit.o microblaze_0/lib/xtmrctr_options.o micro
+TRACE::2025-12-03.15:38:24::SCWMssOS::blaze_0/lib/print.o microblaze_0/lib/microblaze_disable_exceptions.o microblaze_0/lib/xuartlite.o microblaze_0/lib/xplatform_in
+TRACE::2025-12-03.15:38:24::SCWMssOS::fo.o microblaze_0/lib/outbyte.o microblaze_0/lib/fcntl.o microblaze_0/lib/microblaze_init_icache_range.o microblaze_0/lib/xil_t
+TRACE::2025-12-03.15:38:24::SCWMssOS::estio.o microblaze_0/lib/xbram_intr.o microblaze_0/lib/xtmrctr_stats.o microblaze_0/lib/xbram.o microblaze_0/lib/xintc.o microb
+TRACE::2025-12-03.15:38:24::SCWMssOS::laze_0/lib/xgpio_extra.o microblaze_0/lib/microblaze_enable_interrupts.o microblaze_0/lib/xspi_stats.o microblaze_0/lib/xil_ass
+TRACE::2025-12-03.15:38:24::SCWMssOS::ert.o microblaze_0/lib/xil_clocking.o microblaze_0/lib/microblaze_flush_dcache.o microblaze_0/lib/microblaze_update_icache.o mi
+TRACE::2025-12-03.15:38:24::SCWMssOS::croblaze_0/lib/xil_testmem.o microblaze_0/lib/xgpio.o microblaze_0/lib/xil_exception.o microblaze_0/lib/microblaze_scrub.o micr
+TRACE::2025-12-03.15:38:24::SCWMssOS::oblaze_0/lib/microblaze_invalidate_cache_ext_range.o microblaze_0/lib/xuartlite_stats.o microblaze_0/lib/xuartlite_l.o microbla
+TRACE::2025-12-03.15:38:24::SCWMssOS::ze_0/lib/errno.o microblaze_0/lib/microblaze_invalidate_icache.o microblaze_0/lib/microblaze_init_dcache_range.o microblaze_0/l
+TRACE::2025-12-03.15:38:24::SCWMssOS::ib/xtmrctr_intr.o
+
+TRACE::2025-12-03.15:38:24::SCWMssOS::Finished building libraries
+
+TRACE::2025-12-03.15:38:27::SCWMssOS::Copying to export directory.
+TRACE::2025-12-03.15:38:31::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2025-12-03.15:38:31::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2025-12-03.15:38:31::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2025-12-03.15:38:31::SCWSystem::Completed Processing the sysconfig Final_Project
+LOG::2025-12-03.15:38:31::SCWPlatform::Completed generating the artifacts for system configuration Final_Project
+TRACE::2025-12-03.15:38:31::SCWPlatform::Started preparing the platform 
+TRACE::2025-12-03.15:38:31::SCWSystem::Writing the bif file for system config Final_Project
+TRACE::2025-12-03.15:38:31::SCWSystem::dir created 
+TRACE::2025-12-03.15:38:31::SCWSystem::Writing the bif 
+TRACE::2025-12-03.15:38:31::SCWPlatform::Started writing the spfm file 
+TRACE::2025-12-03.15:38:31::SCWPlatform::Started writing the xpfm file 
+TRACE::2025-12-03.15:38:31::SCWPlatform::Completed generating the platform
+TRACE::2025-12-03.15:38:31::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:31::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-12-03.15:38:31::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-12-03.15:38:31::SCWMssOS::Commit changes completed.
+TRACE::2025-12-03.15:38:31::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:31::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:31::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:31::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:31::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:31::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:31::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-03.15:38:31::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:31::SCWWriter::formatted JSON is {
+	"platformName":	"Final_Project",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Final_Project",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Final_Project",
+	"systems":	[{
+			"systemName":	"Final_Project",
+			"systemDesc":	"Final_Project",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Final_Project",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on microblaze_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2025-12-03.15:38:31::SCWPlatform::updated the xpfm file.
+TRACE::2025-12-03.15:38:31::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw
+TRACE::2025-12-03.15:38:31::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/hw/bd_wrapper.xsa
+TRACE::2025-12-03.15:38:31::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-03.15:38:31::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper
+TRACE::2025-12-03.15:38:31::SCWPlatform::Opened existing hwdb bd_wrapper
+TRACE::2025-12-03.15:38:31::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-03.15:38:31::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-03.15:38:31::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-03.15:38:31::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/microblaze_0/standalone_domain/bsp/system.mss

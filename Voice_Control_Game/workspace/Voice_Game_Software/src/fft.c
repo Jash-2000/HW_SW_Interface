@@ -1,113 +1,145 @@
+// Cooley Tukey FFT Radix 2
+// Trig is used only once per N loops.
+// Frequency estimation is built in -- 3 point parabola.
 #include "fft.h"
-#include "complex.h"
-#include "trig.h"
+#include <math.h>
 
-static float new_[1024];
-static float new_im[1024];
+#define MAX_N 512   // enough for n = 256 or 512
 
-void fft_magnitude(float* q, float* w, int n, int m, float* magnitudes) {
-	int a,b,r,d,e,c;
-	int k;
-	a=n/2;
-	b=1;
-	int i,j;
-	float real=0,imagine=0;
+// In-place radix-2 FFT with precomputed twiddles
+static int   twiddle_n = 0;
+static float twiddle_cos[MAX_N / 2];
+static float twiddle_sin[MAX_N / 2];
 
-	// Ordering algorithm
-	for(i=0; i<(m-1); i++){
-		d=0;
-		for (j=0; j<b; j++){
-			for (c=0; c<a; c++){	
-				e=c+d;
-				new_[e]=q[(c*2)+d];
-				new_im[e]=w[(c*2)+d];
-				new_[e+a]=q[2*c+1+d];
-				new_im[e+a]=w[2*c+1+d];
-			}
-			d+=(n/b);
-		}		
-		for (r=0; r<n;r++){
-			q[r]=new_[r];
-			w[r]=new_im[r];
-		}
-		b*=2;
-		a=n/(2*b);
-	}
-
-	b=1;
-	k=0;
-	for (j=0; j<m; j++){	
-		//MATH
-		for(i=0; i<n; i+=2){
-			if (i%(n/b)==0 && i!=0)
-				k++;
-			real=mult_real(q[i+1], w[i+1], cosine(-PI*k/b), sine(-PI*k/b));	
-			imagine=mult_im(q[i+1], w[i+1], cosine(-PI*k/b), sine(-PI*k/b));
-			new_[i]=q[i]+real;
-			new_im[i]=w[i]+imagine;
-			new_[i+1]=q[i]-real;
-			new_im[i+1]=w[i]-imagine;
-		}
-		for (i=0; i<n; i++){
-			q[i]=new_[i];
-			w[i]=new_im[i];
-		}
-		//REORDER
-		for (i=0; i<n/2; i++){
-			new_[i]=q[2*i];
-			new_[i+(n/2)]=q[2*i+1];
-			new_im[i]=w[2*i];
-			new_im[i+(n/2)]=w[2*i+1];
-		}
-		for (i=0; i<n; i++){
-			q[i]=new_[i];
-			w[i]=new_im[i];
-		}
-		b*=2;
-		k=0;		
-	}
-
-	// Calculate magnitudes
-	for(i=0; i<n; i++) {
-		magnitudes[i] = q[i]*q[i] + w[i]*w[i];
-	}
+static void init_twiddles(int n)
+{
+    if (twiddle_n == n)
+        return; // already initialized
+    // precompute W_N^k = exp(-j 2πk / n) for k = 0..n/2-1
+    for (int k = 0; k < n/2; ++k) {
+        float angle = -2.0f * (float)M_PI * (float)k / (float)n;
+        twiddle_cos[k] = cosf(angle);
+        twiddle_sin[k] = sinf(angle);
+    }
+    twiddle_n = n;
 }
 
-float fft(float* q, float* w, int n, int m, float sample_f) {
-	int place, i;
-	float max;
-	float magnitudes[1024];
+static void fft_transform(float q[], float w[], int n)
+{
+    // Bit-reversal permutation
+    int j = 0;
+    for (int i = 0; i < n; ++i) {
+        if (i < j) {
+            float tmp_r = q[i];
+            float tmp_i = w[i];
+            q[i] = q[j];
+            w[i] = w[j];
+            w[j] = tmp_i;
+            q[j] = tmp_r;
+        }
+        int m = n >> 1;
+        while (m >= 1 && j >= m) {
+            j -= m;
+            m >>= 1;
+        }
+        j += m;
+    }
 
-	// Compute FFT and get magnitudes
-	fft_magnitude(q, w, n, m, magnitudes);
+    // Cooley–Tukey radix-2, in-place
+    init_twiddles(n);
+    for (int len = 2; len <= n; len <<= 1) {
+        int half = len >> 1;
+        int step = n / len;      // twiddle index step
+        for (int i = 0; i < n; i += len) {
+            int k_index = 0;
+            for (int j2 = 0; j2 < half; ++j2) {
+                float c = twiddle_cos[k_index];
+                float s = twiddle_sin[k_index];
+                float r2 = q[i + j2 + half];
+                float i2 = w[i + j2 + half];
+                // t = W * (r2 + j i2)
+                float t_r = c * r2 - s * i2;
+                float t_i = c * i2 + s * r2;
+                float r1 = q[i + j2];
+                float i1 = w[i + j2];
+                // butterfly
+                q[i + j2]        = r1 + t_r;
+                w[i + j2]        = i1 + t_i;
+                q[i + j2 + half] = r1 - t_r;
+                w[i + j2 + half] = i1 - t_i;
+                k_index += step;
+            }
+        }
+    }
+}
 
-	// Find dominant frequency
-	max=0;
-	place=1;
-	for(i=1;i<(n/2);i++) { 
-		if(max < magnitudes[i]) {
-			max=magnitudes[i];
-			place=i;
-		}
-	}
-	
-	float s=sample_f/n; //spacing of bins
-	float frequency = (sample_f/n)*place;
-	
-	//curve fitting for more accuracy
-	float y1=magnitudes[place-1],y2=magnitudes[place],y3=magnitudes[place+1];
-	float x0=s+(2*s*(y2-y1))/(2*y2-y1-y3);
-	x0=x0/s-1;
-	
-	if(x0 <0 || x0 > 2) { //error
-		return frequency;
-	}
-	if(x0 <= 1)  {
-		frequency=frequency-(1-x0)*s;
-	}
-	else {
-		frequency=frequency+(x0-1)*s;
-	}
-	
-	return frequency;
+// ----------------------------------------------------------
+// Extract magnitude spectrum (first half only, up to Nyquist)
+// ----------------------------------------------------------
+void fft_get_magnitude_spectrum(float q[], float w[], int n, float *mag_out)
+{
+    if (n > MAX_N || (n & (n - 1)) != 0) {
+        return; // n must be power of 2 and <= MAX_N
+    }
+
+    // Run FFT in-place on q (real) and w (imag)
+    fft_transform(q, w, n);
+
+    // Extract magnitudes for first half (0 to n/2)
+    int half = n / 2;
+    for (int k = 0; k < half; ++k) {
+        float re = q[k];
+        float im = w[k];
+        mag_out[k] = sqrtf(re * re + im * im);
+    }
+}
+
+// ----------------------------------------------------------
+// Public API: do FFT on q + j*w, then return peak frequency
+// ----------------------------------------------------------
+float fft(float q[], float w[], int n, int m, float sample_f)
+{
+    (void)m;  // m = log2(n), not needed in this implementation
+    if (n > MAX_N || (n & (n - 1)) != 0) {
+        // n must be power of 2 and <= MAX_N
+        return 0.0f;
+    }
+
+    // Run FFT in-place on q (real) and w (imag)
+    fft_transform(q, w, n);
+
+    // Find dominant bin and estimate frequency with parabolic interpolation.
+    // Only use positive frequencies: bins 0 .. n/2.
+    int   k_min = 1;            // skip DC at 0
+    int   k_max = (n / 2) - 2;  // avoid Nyquist and last bin for safety
+    int   best_k   = k_min;
+    float best_mag = 0.0f;
+    for (int k = k_min; k <= k_max; ++k) {
+        float re = q[k];
+        float im = w[k];
+        float mag2 = re * re + im * im;
+        if (mag2 > best_mag) {
+            best_mag = mag2;
+            best_k   = k;
+        }
+    }
+
+    // Parabolic interpolation around best_k
+    int   p = best_k;
+    float re1 = q[p - 1], im1 = w[p - 1];
+    float re2 = q[p],     im2 = w[p];
+    float re3 = q[p + 1], im3 = w[p + 1];
+    float y1 = re1 * re1 + im1 * im1;
+    float y2 = re2 * re2 + im2 * im2;
+    float y3 = re3 * re3 + im3 * im3;
+    float denom = (y1 - 2.0f * y2 + y3);
+    float delta = 0.0f;    // fractional bin offset relative to p
+    if (denom != 0.0f) {
+        delta = 0.5f * (y1 - y3) / denom;
+    }
+    float bin_est    = (float)p + delta;
+    float bin_spacing = sample_f / (float)n;   // Hz per bin
+    float frequency   = bin_est * bin_spacing;
+
+    return frequency;
 }

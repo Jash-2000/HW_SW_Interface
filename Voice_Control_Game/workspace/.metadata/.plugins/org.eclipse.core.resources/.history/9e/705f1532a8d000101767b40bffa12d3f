@@ -1,0 +1,357 @@
+#include <stdio.h>
+#include "xil_cache.h"
+#include <mb_interface.h>
+
+#include "xparameters.h"
+#include <xil_types.h>
+#include <xil_assert.h>
+
+#include <xio.h>
+#include "xtmrctr.h"
+#include "fft.h"
+#include "stream_grabber.h"
+#include "wake_word.h"
+
+// =====================================================
+// Configuration
+// =====================================================
+
+// TRAINING_MODE: Set to 1 to capture wake-word template
+//                Set to 0 for normal detection mode
+#define TRAINING_MODE 0
+
+// Audio capture parameters
+#define RAW_SAMPLES   512         // capture 512 samples per frame
+#define AVG_FACTOR    4           // 4-way averaging
+#define EFF_SAMPLES   (RAW_SAMPLES / AVG_FACTOR)   // 128 effective samples
+
+// Zero-pad from 128 -> 256 samples for FFT
+#define NFFT          256         // zero-padded FFT length
+#define MFFT          8           // log2(256)
+
+// Timer clock freq
+#define CLOCK         100000000.0 // 100 MHz
+
+// =====================================================
+// Buffers
+// =====================================================
+
+// Raw time-domain samples from grabber (single frame)
+static float q_raw[RAW_SAMPLES];
+
+// ACCUMULATOR: Sum of 100 raw frames (for averaging in time domain)
+static float q_accumulated[RAW_SAMPLES];
+
+// Averaged result after 100 frames
+static float q_averaged[RAW_SAMPLES];
+
+// After 4x averaging
+static float q_eff[EFF_SAMPLES];
+
+// Zero-padded FFT buffers
+static float q_fft[NFFT];
+static float w_fft[NFFT];
+
+// FFT magnitude spectrum (first half only)
+static float mag_spectrum[NFFT/2];
+
+unsigned seqf, seql, seq_old = 0;
+
+// =====================================================
+// Read RAW_SAMPLES from stream grabber into q_raw[]
+// This is FAST - just hardware read, no processing
+// =====================================================
+
+void read_fsl_values(float *q, int n)
+{
+    int i;
+    unsigned int x;
+    const float scale = 3.3f / 67108864.0f; // 3.3V and 2^26 bit precision
+
+    stream_grabber_start();
+    stream_grabber_wait_enough_samples(RAW_SAMPLES);
+
+    seql = stream_grabber_read_seq_counter();
+    seqf = stream_grabber_read_seq_counter_latched();
+
+    for (i = 0; i < n; i++) {
+        x    = stream_grabber_read_sample(i);
+        q[i] = scale * (float)x;
+    }
+}
+
+// =====================================================
+// Process averaged audio (FFT + Features)
+// This is done ONCE per 100 frames
+// =====================================================
+
+FeatureVector* process_averaged_audio(void)
+{
+    int i;
+
+    // 1) Remove DC offset from averaged signal
+    float mean = 0.0f;
+    for (i = 0; i < RAW_SAMPLES; i++) {
+        mean += q_averaged[i];
+    }
+    mean /= (float)RAW_SAMPLES;
+    for (i = 0; i < RAW_SAMPLES; i++) {
+        q_averaged[i] -= mean;
+    }
+
+    // 2) 4-way averaging: 512 -> 128 effective samples
+    for (i = 0; i < EFF_SAMPLES; i++) {
+        int base = i * AVG_FACTOR;
+        q_eff[i] = q_averaged[base] + q_averaged[base + 1] +
+                   q_averaged[base + 2] + q_averaged[base + 3];
+    }
+
+    // 3) Zero-pad to NFFT = 256
+    for (i = 0; i < NFFT; i++) {
+        q_fft[i] = (i < EFF_SAMPLES) ? q_eff[i] : 0.0f;
+        w_fft[i] = 0.0f;
+    }
+
+    // 4) Get FFT magnitude spectrum
+    fft_get_magnitude_spectrum(q_fft, w_fft, NFFT, mag_spectrum);
+
+    // 5) Extract features
+    return wake_word_extract_features(mag_spectrum, NFFT);
+}
+
+// =====================================================
+// Training Mode
+// =====================================================
+
+#if TRAINING_MODE
+
+void training_mode(XTmrCtr *timer)
+{
+    int frame_count = 0;
+    int i;
+    uint32_t capture_start, capture_end, capture_ms;
+    uint32_t process_start, process_end, process_ms;
+
+    xil_printf("\n\r");
+    xil_printf("========================================\n\r");
+    xil_printf("    WAKE-WORD TRAINING MODE\n\r");
+    xil_printf("========================================\n\r");
+    xil_printf("Will capture %d frames (~%d ms)\n\r",
+               CAPTURE_FRAMES, CAPTURE_FRAMES * 21);
+    xil_printf("Speak your wake word NOW!\n\r");
+    xil_printf("\n\r");
+
+    wake_word_init();
+
+    // Clear accumulator
+    for (i = 0; i < RAW_SAMPLES; i++) {
+        q_accumulated[i] = 0.0f;
+    }
+
+    capture_start = XTmrCtr_GetValue(timer, 0);
+
+    // ========================================================
+    // ULTRA-FAST CAPTURE LOOP: Just read and accumulate
+    // NO FFT, NO FEATURES, NO PROCESSING!
+    // ========================================================
+    while (frame_count < CAPTURE_FRAMES) {
+        // Read raw audio frame
+        read_fsl_values(q_raw, RAW_SAMPLES);
+
+        // Accumulate (sum up all frames)
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            q_accumulated[i] += q_raw[i];
+        }
+
+        frame_count++;
+
+        // Print progress every 20 frames
+        if ((frame_count % 20) == 0) {
+            xil_printf("Captured %d/%d frames...\r", frame_count, CAPTURE_FRAMES);
+        }
+    }
+
+    capture_end = XTmrCtr_GetValue(timer, 0);
+    capture_ms = (capture_end - capture_start) / (CLOCK / 1000.0f);
+
+    xil_printf("\n\rCapture complete in %u ms\n\r", (unsigned)capture_ms);
+    xil_printf("Processing captured data...\n\r");
+
+    // ========================================================
+    // PROCESSING: Average and extract features (done ONCE)
+    // ========================================================
+    process_start = XTmrCtr_GetValue(timer, 0);
+
+    // Average: divide accumulated sum by number of frames
+    for (i = 0; i < RAW_SAMPLES; i++) {
+        q_averaged[i] = q_accumulated[i] / (float)CAPTURE_FRAMES;
+    }
+
+    // Process the averaged audio
+    FeatureVector *features = process_averaged_audio();
+
+    // Store as template
+    wake_word_train(features);
+
+    process_end = XTmrCtr_GetValue(timer, 0);
+    process_ms = (process_end - process_start) / (CLOCK / 1000.0f);
+
+    xil_printf("Processing complete in %u ms\n\r\n\r", (unsigned)process_ms);
+    xil_printf("========================================\n\r");
+    xil_printf("    TRAINING COMPLETE!\n\r");
+    xil_printf("========================================\n\r");
+    xil_printf("Total time: %u ms\n\r", (unsigned)(capture_ms + process_ms));
+    xil_printf("  - Capture: %u ms (%.1f ms/frame)\n\r",
+               (unsigned)capture_ms,
+               (float)capture_ms / (float)CAPTURE_FRAMES);
+    xil_printf("  - Process: %u ms (one-time)\n\r\n\r", (unsigned)process_ms);
+
+    // Print template for hardcoding
+    wake_word_print_template();
+
+    xil_printf("\n\r");
+    xil_printf("INSTRUCTIONS:\n\r");
+    xil_printf("1. Copy the 8-value array above\n\r");
+    xil_printf("2. Paste it in your code\n\r");
+    xil_printf("3. Call wake_word_load_template(TEMPLATE_DATA)\n\r");
+    xil_printf("4. Set TRAINING_MODE to 0\n\r");
+    xil_printf("5. Recompile and run!\n\r");
+    xil_printf("\n\r");
+
+    // Stop here
+    while(1);
+}
+
+#endif // TRAINING_MODE
+
+// =====================================================
+// main()
+// =====================================================
+
+int main()
+{
+    float sample_f_raw;
+    float sample_f_eff;
+    uint32_t Control;
+
+    // Performance monitoring
+    uint32_t loop_counter = 0;
+    int total_detections = 0;
+
+    int i;
+
+    // Enable caches
+    Xil_ICacheInvalidate();
+    Xil_ICacheEnable();
+    Xil_DCacheInvalidate();
+    Xil_DCacheEnable();
+
+    // Timer setup
+    XTmrCtr timer;
+    XTmrCtr_Initialize(&timer, XPAR_AXI_TIMER_0_DEVICE_ID);
+    Control = XTmrCtr_GetOptions(&timer, 0) |
+              XTC_CAPTURE_MODE_OPTION |
+              XTC_INT_MODE_OPTION;
+    XTmrCtr_SetOptions(&timer, 0, Control);
+
+    print("Wake-Word Detection System\n\r");
+    print("==========================\n\r");
+
+    XTmrCtr_Start(&timer, 0);
+
+    sample_f_raw = 100000000.0f / 2048.0f;         // ≈ 48.8 kHz
+    sample_f_eff = sample_f_raw / (float)AVG_FACTOR; // ≈ 12.2 kHz
+
+#if TRAINING_MODE
+    // ===== TRAINING MODE =====
+    training_mode(&timer);
+#else
+    // ===== DETECTION MODE =====
+
+    // Initialize wake-word detector
+    wake_word_init();
+
+
+    static const float TEMPLATE_DATA[NUM_BANDS] = {
+    		// "Up" Wake Word
+    		//0.388664, 0.519777, 1.000000, 0.618839, 0.315630, 0.179956, 0.128822, 0.087466
+    		// "Left" Wake Word
+    		0.457397, 1.000000, 0.317575, 0.226123, 0.205750, 0.148439, 0.095571, 0.074764
+			// "Down" Wake Word
+			//0.849924, 0.585704, 1.000000, 0.698954, 0.426982, 0.187994, 0.194715, 0.153763
+			// "Right" Wake Word
+			//0.768097, 1.000000, 0.920516, 0.611139, 0.420076, 0.295208, 0.199626, 0.134918
+			// "MKB AAAGG" Wake Word
+			//0.769290, 0.540408, 1.000000, 0.538940, 0.278780, 0.246029, 0.137438, 0.106334
+    };
+    wake_word_load_template(TEMPLATE_DATA);
+
+    xil_printf("\n\r");
+    xil_printf("Listening for wake word...\n\r");
+    xil_printf("Capture window: %d frames (~%d ms)\n\r",
+               CAPTURE_FRAMES, CAPTURE_FRAMES * 21);
+    xil_printf("\n\r");
+
+    while (1) {
+        uint32_t capture_start, capture_end, capture_ms;
+        uint32_t process_start, process_end, process_ms;
+        int frame_count = 0;
+
+        // Clear accumulator
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            q_accumulated[i] = 0.0f;
+        }
+
+        capture_start = XTmrCtr_GetValue(&timer, 0);
+
+        // ========================================================
+        // ULTRA-FAST CAPTURE LOOP: Just read and accumulate
+        // NO FFT, NO FEATURES, NO PROCESSING AT ALL!
+        // ========================================================
+        while (frame_count < CAPTURE_FRAMES) {
+            // Read raw audio frame (FAST - just hardware read)
+            read_fsl_values(q_raw, RAW_SAMPLES);
+
+            // Accumulate (sum up all frames) - VERY FAST
+            for (i = 0; i < RAW_SAMPLES; i++) {
+                q_accumulated[i] += q_raw[i];
+            }
+
+            frame_count++;
+        }
+
+        capture_end = XTmrCtr_GetValue(&timer, 0);
+        capture_ms = (capture_end - capture_start) / (CLOCK / 1000.0f);
+
+        // ========================================================
+        // HEAVY PROCESSING: Average and detect (done ONCE)
+        // ========================================================
+        process_start = XTmrCtr_GetValue(&timer, 0);
+
+        // Average: divide accumulated sum by number of frames
+        for (i = 0; i < RAW_SAMPLES; i++) {
+            q_averaged[i] = q_accumulated[i] / (float)CAPTURE_FRAMES;
+        }
+
+        // Process the averaged audio (FFT + Features)
+        FeatureVector *features = process_averaged_audio();
+
+        // Compare with template
+        int detected = wake_word_compare(features);
+
+        process_end = XTmrCtr_GetValue(&timer, 0);
+        process_ms = (process_end - process_start) / (CLOCK / 1000.0f);
+
+        // Display results
+        loop_counter++;
+
+        if (detected) {
+            xil_printf("Up\n\r");
+
+
+        }
+    }
+#endif // TRAINING_MODE
+
+    return 0;
+}

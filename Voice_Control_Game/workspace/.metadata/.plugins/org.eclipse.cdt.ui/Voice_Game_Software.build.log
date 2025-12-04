@@ -1,54 +1,9 @@
-13:47:14 **** Incremental Build of configuration Debug for project Voice_Game_Software ****
+17:10:49 **** Incremental Build of configuration Debug for project Voice_Game_Software ****
 make all 
-Building file: ../src/fft.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/fft.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/export/Final_Project/sw/Final_Project/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/fft.d" -MT"src/fft.o" -o "src/fft.o" "../src/fft.c"
-Finished building: ../src/fft.c
- 
-Building file: ../src/main.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/main.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/export/Final_Project/sw/Final_Project/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
-../src/main.c: In function 'main':
-../src/main.c:95:15: warning: unused variable 'cooldown' [-Wunused-variable]
-   95 |    static int cooldown = 0; // Prevent multiple detections
-      |               ^~~~~~~~
-../src/main.c:94:8: warning: unused variable 'detection_result' [-Wunused-variable]
-   94 |    int detection_result;
-      |        ^~~~~~~~~~~~~~~~
-../src/main.c:93:13: warning: unused variable 'current_frame' [-Wunused-variable]
-   93 |    MelFrame current_frame;
-      |             ^~~~~~~~~~~~~
-../src/main.c:91:8: warning: unused variable 'ticks' [-Wunused-variable]
-   91 |    int ticks;
-      |        ^~~~~
-../src/main.c:90:8: warning: unused variable 'l' [-Wunused-variable]
-   90 |    int l;
-      |        ^
-../src/main.c:89:10: warning: variable 'sample_f' set but not used [-Wunused-but-set-variable]
-   89 |    float sample_f;
-      |          ^~~~~~~~
-At top level:
-../src/main.c:95:15: warning: 'cooldown' defined but not used [-Wunused-variable]
-   95 |    static int cooldown = 0; // Prevent multiple detections
-      |               ^~~~~~~~
-Finished building: ../src/main.c
- 
+make: Warning: File 'src/subdir.mk' has modification time 134 s in the future
 Building file: ../src/wake_word.c
 Invoking: MicroBlaze gcc compiler
 mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/wake_word.o" -I/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Voice_Control_Game/workspace/Final_Project/export/Final_Project/sw/Final_Project/standalone_domain/bspinclude/include -mlittle-endian -mxl-barrel-shift -mno-xl-soft-div -mcpu=v11.0 -mno-xl-soft-mul -mhard-float -Wl,--no-relax -ffunction-sections -fdata-sections -MMD -MP -MF"src/wake_word.d" -MT"src/wake_word.o" -o "src/wake_word.o" "../src/wake_word.c"
-../src/wake_word.c: In function 'extract_mel_features':
-../src/wake_word.c:32:15: warning: unused variable 'k' [-Wunused-variable]
-   32 |     int i, j, k;
-      |               ^
-../src/wake_word.c: In function 'wake_word_print_template':
-../src/wake_word.c:106:5: warning: implicit declaration of function 'xil_printf'; did you mean 'llrintf'? [-Wimplicit-function-declaration]
-  106 |     xil_printf("\n// Copy this into wake_word.c as HARDCODED_TEMPLATE:\n");
-      |     ^~~~~~~~~~
-      |     llrintf
-../src/wake_word.c: In function 'wake_word_detect':
-../src/wake_word.c:134:12: warning: unused variable 'j' [-Wunused-variable]
-  134 |     int i, j;
-      |            ^
 Finished building: ../src/wake_word.c
  
 Building target: Voice_Game_Software.elf
@@ -59,9 +14,10 @@ Finished building target: Voice_Game_Software.elf
 Invoking: MicroBlaze Print Size
 mb-size Voice_Game_Software.elf  |tee "Voice_Game_Software.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  19712	    380	  20548	  40640	   9ec0	Voice_Game_Software.elf
+  30772	    400	  14460	  45632	   b240	Voice_Game_Software.elf
 Finished building: Voice_Game_Software.elf.size
  
+make: warning:  Clock skew detected.  Your build may be incomplete.
 
-13:47:14 Build Finished (took 586ms)
+17:10:49 Build Finished (took 485ms)
 

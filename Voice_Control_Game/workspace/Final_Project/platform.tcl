@@ -16,3 +16,4 @@ platform write
 platform generate -domains 
 platform active {Final_Project}
 platform generate
+platform generate -domains standalone_domain 
