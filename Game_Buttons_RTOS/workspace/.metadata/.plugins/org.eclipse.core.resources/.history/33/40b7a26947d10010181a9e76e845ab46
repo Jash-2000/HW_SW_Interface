@@ -1,0 +1,412 @@
+/*****************************************************************************
+ lcd.c  -- Pixel-perfect 5x8 sprite renderer + Dino drawing API
+ This file draws the exact 5x8 bitmaps you provided, scaled up for the TFT,
+ and exposes a simple API used by the game logic.
+*****************************************************************************/
+
+#include "lcd.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "xil_io.h"
+#include "xparameters.h"
+
+/* Low-level LCD SPI helpers (kept compatible with your project) */
+int fch;
+int fcl;
+int bch;
+int bcl;
+struct _current_font cfont;
+
+void LCD_Write_COM(char VL) {
+	Xil_Out32(SPI_DC, 0x0);
+	Xil_Out32(SPI_DTR, VL);
+	while (0 == (Xil_In32(SPI_IISR) & XSP_INTR_TX_EMPTY_MASK)) ;
+	Xil_Out32(SPI_IISR, Xil_In32(SPI_IISR) | XSP_INTR_TX_EMPTY_MASK);
+}
+void LCD_Write_DATA(char VL) {
+	Xil_Out32(SPI_DC, 0x01);
+	Xil_Out32(SPI_DTR, VL);
+	while (0 == (Xil_In32(SPI_IISR) & XSP_INTR_TX_EMPTY_MASK)) ;
+	Xil_Out32(SPI_IISR, Xil_In32(SPI_IISR) | XSP_INTR_TX_EMPTY_MASK);
+}
+
+void initLCD(void) {
+	int i;
+	LCD_Write_COM(0x01);
+	for (i = 0; i < 500000; i++);
+	LCD_Write_COM(0xCB); LCD_Write_DATA(0x39); LCD_Write_DATA(0x2C);
+	LCD_Write_DATA(0x00); LCD_Write_DATA(0x34); LCD_Write_DATA(0x02);
+	LCD_Write_COM(0xCF); LCD_Write_DATA(0x00); LCD_Write_DATA(0XC1); LCD_Write_DATA(0X30);
+	LCD_Write_COM(0xE8); LCD_Write_DATA(0x85); LCD_Write_DATA(0x00); LCD_Write_DATA(0x78);
+	LCD_Write_COM(0xEA); LCD_Write_DATA(0x00); LCD_Write_DATA(0x00);
+	LCD_Write_COM(0xED); LCD_Write_DATA(0x64); LCD_Write_DATA(0x03); LCD_Write_DATA(0X12); LCD_Write_DATA(0X81);
+	LCD_Write_COM(0xF7); LCD_Write_DATA(0x20);
+	LCD_Write_COM(0xC0); LCD_Write_DATA(0x23);
+	LCD_Write_COM(0xC1); LCD_Write_DATA(0x10);
+	LCD_Write_COM(0xC5); LCD_Write_DATA(0x3e); LCD_Write_DATA(0x28);
+	LCD_Write_COM(0xC7); LCD_Write_DATA(0x86);
+	LCD_Write_COM(0x36); LCD_Write_DATA(0x48);
+	LCD_Write_COM(0x3A); LCD_Write_DATA(0x55);
+	LCD_Write_COM(0xB1); LCD_Write_DATA(0x00); LCD_Write_DATA(0x18);
+	LCD_Write_COM(0xB6); LCD_Write_DATA(0x08); LCD_Write_DATA(0x82); LCD_Write_DATA(0x27);
+	LCD_Write_COM(0x11);
+	for (i = 0; i < 100000; i++);
+	LCD_Write_COM(0x29);
+	LCD_Write_COM(0x2c);
+
+	fch = 0xFF; fcl = 0xFF; bch = 0x00; bcl = 0x00;
+	setFont(SmallFont);
+}
+
+void setXY(int x1, int y1, int x2, int y2) {
+	LCD_Write_COM(0x2A);
+	LCD_Write_DATA(x1 >> 8); LCD_Write_DATA(x1);
+	LCD_Write_DATA(x2 >> 8); LCD_Write_DATA(x2);
+	LCD_Write_COM(0x2B);
+	LCD_Write_DATA(y1 >> 8); LCD_Write_DATA(y1);
+	LCD_Write_DATA(y2 >> 8); LCD_Write_DATA(y2);
+	LCD_Write_COM(0x2C);
+}
+void clrXY(void) { setXY(0, 0, DISP_X_SIZE, DISP_Y_SIZE); }
+
+void setColor(u8 r, u8 g, u8 b) {
+	fch = (r & 0x0F8) | g >> 5;
+	fcl = (g & 0x1C) << 3 | b >> 3;
+}
+void setColorBg(u8 r, u8 g, u8 b) {
+	bch = (r & 0x0F8) | g >> 5;
+	bcl = (g & 0x1C) << 3 | b >> 3;
+}
+
+/* fast filled-rect primitive used a lot by bitmap renderer */
+void fillRect(int x, int y, int w, int h) {
+    for (int px = x; px < x + w; px++) {
+        for (int py = y; py < y + h; py++) {
+            // Draw pixel at (px, py)
+            setXY(px, py, px, py);
+            LCD_Write_DATA(fch);
+            setPixel(px, py);  // Track this pixel
+        }
+    }
+    clrXY();
+}
+
+void fillIsoTriRight(int x, int y, int base, int height) {
+    if (base <= 0 || height <= 0) return;
+    int cy = y + height / 2;
+    // Scan from right (apex) to left (base)
+    for (int c = 0; c < base; c++) {
+        int half = ((base - 1 - c) * height) / (2 * base);
+        int xx = x + c;
+        int yT = cy - half;
+        int yB = cy + half - 1;
+        if (yT <= yB) drawVLine(xx, yT, yB - yT + 1);
+    }
+}
+
+// Example usage scenario
+void exampleUsage() {
+    // Clear entire matrix
+    memset(pixelMatrix, 0, MATRIX_BYTES);
+
+    // Draw a triangle
+    fillIsoTriRight(50, 50, 40, 60);
+
+    // Draw a rectangle over it
+    fillRect(70, 60, 30, 20);
+
+    // Print what the overlapping region looks like
+    printMatrixRegion(50, 50, 70, 40);
+
+    // Now clear the rectangle (this would normally clear everything)
+    // But with proper layer management, you'd need to redraw from layers
+    clearRect(70, 60, 30, 20);
+
+    // After clearing rectangle, the matrix shows triangle is still there
+    printMatrixRegion(50, 50, 70, 40);
+}
+
+void clearRect(int x, int y, int w, int h) {
+    // This clears the region and updates the matrix
+    for (int px = x; px < x + w; px++) {
+        for (int py = y; py < y + h; py++) {
+            setXY(px, py, px, py);
+            LCD_Write_DATA(0x0000);  // Write background color
+            clearPixel(px, py);  // Mark as cleared in matrix
+        }
+    }
+}
+
+void drawVLine(int x, int y, int l) {
+    int i;
+    if (l < 0) {
+        l = -l;
+        y -= l;
+    }
+    // Set the drawing area from (x, y) to (x, y + l)
+    setXY(x, y, x, y + l);
+    for (i = 0; i < l + 1; i++) {
+        LCD_Write_DATA(fch);
+        setPixel(x, y + i);  // Track this pixel
+    }
+}
+
+/* simple horizontal line */
+void drawHLine(int x, int y, int l) {
+	int i;
+	if (l < 0) { l = -l; x -= l; }
+	setXY(x, y, x + l, y);
+	for (i = 0; i < l + 1; i++) { LCD_Write_DATA(fch); LCD_Write_DATA(fcl); }
+	clrXY();
+}
+
+/* -------------------------------------------------------------
+   Sprite bitmaps (exact 5x8 bitmaps you gave). We'll draw these
+   scaled to the TFT using fillRect blocks.
+   ------------------------------------------------------------- */
+static const uint8_t CACTUS_BMP[8] = {
+  0b00100,
+  0b00101,
+  0b10101,
+  0b11111,
+  0b00100,
+  0b00100,
+  0b00100,
+  0b00100
+};
+
+static const uint8_t DINO_PARTE_1[8] = {0b00000,0b00000,0b00010,0b00010,0b00011,0b00011,0b00001,0b00001};
+static const uint8_t DINO_PARTE_2[8] = {0b00111,0b00111,0b00111,0b00100,0b11100,0b11100,0b11000,0b01000};
+static const uint8_t DINO_PIE_DERE_P1[8]  = {0b00000,0b00000,0b00010,0b00010,0b00011,0b00011,0b00001,0b00001};
+static const uint8_t DINO_PIE_DERE_P2[8]  = {0b00111,0b00111,0b00111,0b00100,0b11100,0b11100,0b11000,0b00000};
+static const uint8_t DINO_PIE_IZQU_P1[8]  = {0b00000,0b00000,0b00010,0b00010,0b00011,0b00011,0b00001,0b00000};
+static const uint8_t DINO_PIE_IZQU_P2[8]  = {0b00111,0b00111,0b00111,0b00100,0b11100,0b11100,0b11000,0b01000};
+
+static const uint8_t BIRD_UP_BMP[8] = {
+  0b00000,
+  0b00001,
+  0b00011,
+  0b00111,
+  0b01111,
+  0b11111,
+  0b00000,
+  0b00000
+};
+static const uint8_t BIRD_DOWN_BMP[8] = {
+  0b00000,
+  0b10000,
+  0b11000,
+  0b11100,
+  0b11110,
+  0b11111,
+  0b00000,
+  0b00000
+};
+
+
+// Pixel tracking matrix - 240x320 display
+// Using bit-packed array to save memory (1 bit per pixel)
+#define SCREEN_WIDTH 240
+#define SCREEN_HEIGHT 320
+#define MATRIX_BYTES ((SCREEN_WIDTH * SCREEN_HEIGHT + 7) / 8)
+
+uint8_t pixelMatrix[MATRIX_BYTES] = {0};
+
+// Helper functions for bit manipulation
+void setPixel(int x, int y) {
+    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) return;
+    int index = y * SCREEN_WIDTH + x;
+    pixelMatrix[index / 8] |= (1 << (index % 8));
+}
+
+void clearPixel(int x, int y) {
+    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) return;
+    int index = y * SCREEN_WIDTH + x;
+    pixelMatrix[index / 8] &= ~(1 << (index % 8));
+}
+
+uint8_t getPixel(int x, int y) {
+    if (x < 0 || x >= SCREEN_WIDTH || y < 0 || y >= SCREEN_HEIGHT) return 0;
+    int index = y * SCREEN_WIDTH + x;
+    return (pixelMatrix[index / 8] >> (index % 8)) & 1;
+}
+
+// Clear a region in the matrix
+void clearPixelRegion(int x, int y, int w, int h) {
+    for (int py = y; py < y + h; py++) {
+        for (int px = x; px < x + w; px++) {
+            clearPixel(px, py);
+        }
+    }
+}
+
+
+/* Draw a 5x8 bitmap scaled by integer 'scale' at pixel (px,py).
+   Foreground color must be set via setColor(...) before calling. */
+void drawBitmap5x8(const uint8_t bmp[8], int px, int py, int scale) {
+	xil_printf("Su keh chodu");
+    if (scale <= 0) scale = 1;
+    for (int r = 0; r < 8; ++r) {
+        uint8_t row = bmp[r] & 0x1F;
+        for (int c = 0; c < 5; ++c) {
+            int bit = (row >> (4 - c)) & 1;
+            if (bit) {
+                int x1 = px + c * scale;
+                int y1 = py + r * scale;
+                int x2 = x1 + scale - 1;
+                int y2 = y1 + scale - 1;
+                fillRect(x1, y1, x2, y2);
+            }
+        }
+    }
+}
+
+/* Compose 2-cell Dino sprite: scale chooses how big each 5x8 cell is.
+   footSwap: selects running frame; jumping: shows idle/jump frame */
+void drawDinoSprite(int px, int py, int scale, int footSwap, int jumping) {
+    const uint8_t *leftBmp = DINO_PIE_IZQU_P1;
+    const uint8_t *rightBmp = DINO_PIE_IZQU_P2;
+
+    if (jumping) {
+        leftBmp  = DINO_PARTE_1;
+        rightBmp = DINO_PARTE_2;
+    } else {
+        if (footSwap) {
+            leftBmp  = DINO_PIE_DERE_P1;
+            rightBmp = DINO_PIE_DERE_P2;
+        } else {
+            leftBmp  = DINO_PIE_IZQU_P1;
+            rightBmp = DINO_PIE_IZQU_P2;
+        }
+    }
+
+    int gap = scale; // small gap between cells
+    drawBitmap5x8(leftBmp,  px,                 py, scale);
+    drawBitmap5x8(rightBmp, px + 5*scale + gap, py, scale);
+}
+
+/* Draw cactus or bird scaled */
+void drawCactusSprite(int px, int py, int scale)  { drawBitmap5x8(CACTUS_BMP, px, py, scale); }
+void drawBirdSprite(int px, int py, int scale, int wingUp) {
+    if (wingUp) drawBitmap5x8(BIRD_UP_BMP, px, py, scale);
+    else        drawBitmap5x8(BIRD_DOWN_BMP, px, py, scale);
+}
+
+
+void dino_clear_screen(void) {
+    setColor(0,0,0);
+    fillRect(0,0, DISP_X_SIZE, DISP_Y_SIZE);
+}
+
+void dino_draw_background(void) {
+    // sky
+    setColor(10,10,40);
+    fillRect(0,0, DISP_X_SIZE, DISP_Y_SIZE);
+    // ground strip
+    setColor(20,70,30);
+    fillRect(0, LANE_GROUND_Y + 12, DISP_X_SIZE, DISP_Y_SIZE);
+}
+
+/* show HUD: score at top-left */
+void dino_draw_hud(unsigned long score) {
+    setFont(SmallFont);
+    setColor(240,220,80);
+    char buf[32];
+    snprintf(buf, sizeof(buf), "Score: %lu", score);
+    lcdPrint(buf, 6, 6);
+}
+
+void lcdPrint(char *st, int x, int y) {
+	int i = 0;
+	while (*st != '\0')
+		printChar(*st++, x + cfont.x_size * i++, y);
+}
+
+void printChar(u8 c, int x, int y) {
+	u8 ch;
+	int i, j, pixelIndex;
+
+	setXY(x, y, x + cfont.x_size - 1, y + cfont.y_size - 1);
+
+	pixelIndex = (c - cfont.offset) * (cfont.x_size >> 3) * cfont.y_size + 4;
+	for (j = 0; j < (cfont.x_size >> 3) * cfont.y_size; j++) {
+		ch = cfont.font[pixelIndex];
+		for (i = 0; i < 8; i++) {
+			if ((ch & (1 << (7 - i))) != 0) {
+				LCD_Write_DATA(fch);
+				LCD_Write_DATA(fcl);
+			} else {
+				LCD_Write_DATA(bch);
+				LCD_Write_DATA(bcl);
+			}
+		}
+		pixelIndex++;
+	}
+	clrXY();
+}
+
+void setFont(u8* font) {
+	cfont.font = font;
+	cfont.x_size = font[0];
+	cfont.y_size = font[1];
+	cfont.offset = font[2];
+	cfont.numchars = font[3];
+}
+
+void clrScr(void) {
+	setColor(0, 0, 0);
+	fillRect(0, 0, DISP_X_SIZE, DISP_Y_SIZE);
+}
+
+/* initialize internal drawing state */
+void dino_init(void) {
+    dino_clear_screen();
+    dino_draw_background();
+    dino_draw_hud(0);
+}
+
+/* main rendering call used by game.c
+   - pass cactus_px and bird_px in pixels (offscreen right when spawning).
+   - playerRow: 0=ground, 1=air
+   - footToggle: 0/1 for running animation
+   - jumping: non-zero => use jump frame
+*/
+void dino_render_frame(unsigned long score,
+                       int playerRow,
+                       int footToggle,
+                       int jumping,
+                       int cactus_px,
+                       int bird_px)
+{
+    // background + HUD
+    dino_draw_background();
+    dino_draw_hud(score);
+
+    int scale = SCALE_DEFAULT;
+    int dino_py = (playerRow == 0) ? (LANE_GROUND_Y - (8*scale)/2) : (LANE_AIR_Y - (8*scale)/2);
+
+    // obstacles: compute their top-left px/py for 5x8 sprite scaled
+    if (cactus_px >= -50 && cactus_px <= DISP_X_SIZE + 50) {
+        setColor(160, 30, 30);
+        drawCactusSprite(cactus_px, LANE_GROUND_Y - (8*scale)/2, scale);
+    }
+    if (bird_px >= -50 && bird_px <= DISP_X_SIZE + 50) {
+        setColor(200, 120, 60);
+        drawBirdSprite(bird_px, LANE_AIR_Y - (8*scale)/2, scale, footToggle);
+    }
+
+    // player
+    setColor(65,105,225);
+    drawDinoSprite(DINO_X_PIXEL, dino_py, scale, footToggle, jumping);
+}
+
+/* draw gameover message */
+void dino_draw_gameover(unsigned long score) {
+    setColor(0,0,0); fillRect(0, 0, DISP_X_SIZE, 80);
+    setFont(BigFont); setColor(220,40,40);
+    lcdPrint("GAME OVER", 60, 30);
+    setFont(SmallFont);
+    char buf[32]; snprintf(buf, sizeof(buf), "Score: %lu", score);
+    lcdPrint(buf, 80, 70);
+}

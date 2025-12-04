@@ -1,0 +1,212 @@
+/*****************************************************************************
+ game.c  -- Dino runner state machine (QP-nano)
+ Uses the dino_* API provided by lcd.c to render pixel-perfect sprites.
+*****************************************************************************/
+
+#define AO_LAB2A
+
+#include "qpn_port.h"
+#include "bsp.h"
+#include "game.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "xparameters.h"
+#include "xil_printf.h"
+#include "lcd.h"
+
+
+typedef struct Lab2ATag {
+	QActive super;
+} Lab2A;
+Lab2A AO_Lab2A;
+
+/* function prototypes (state handlers) */
+static QState Lab2A_initial(Lab2A *me);
+static QState Title(Lab2A *me);
+static QState Run(Lab2A *me);
+static QState GameOver(Lab2A *me);
+
+volatile int encoder_twist = 0;  // kept for compatibility
+volatile int buttonPressed = 0;  // 1..4 assigned by BSP
+// NOTE: Ensure BSP posts BUTTON, ENCODER_CLICK, CUSTOM_TIMEOUT etc.
+
+void Lab2A_ctor(void) {
+    Lab2A *me = &AO_Lab2A;
+    QActive_ctor(&me->super, (QStateHandler)&Lab2A_initial);
+}
+
+/* Gameplay state variables */
+enum { LANE_GROUND = 0, LANE_AIR = 1 };
+static int playerRow = LANE_GROUND;
+static int jumping = 0;
+static unsigned long jumpStart = 0;
+static const unsigned long jumpDuration = 520; // ms
+
+static int footToggle = 0;
+static unsigned long lastTick = 0;
+static unsigned long tickInterval = 165;
+static const unsigned long tickMin = 85;
+static unsigned long score = 0;
+
+/* obstacle X positions in pixels */
+static int cactusX = -1;
+static int birdX = -1;
+static int cactusSpawnChance = 2; // out of 10
+static int birdSpawnChance = 0;
+
+/* initial */
+QState Lab2A_initial(Lab2A *me) {
+    initLCD();
+    dino_init();
+    score = 0;
+    tickInterval = 165;
+    return Q_TRAN(&Title);
+}
+
+/* Title screen */
+QState Title(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: {
+            clrScr();
+            setFont(BigFont); setColor(255,255,255);
+            lcdPrint("CHROME DINO", 40, 40);
+            setFont(SmallFont); setColor(200,200,100);
+            lcdPrint("SELECT to Start", 40, 120);
+            return Q_HANDLED();
+        }
+        case ENCODER_CLICK:
+        case BUTTON: {
+            // If BSP uses buttonPressed==1 as SELECT, accept it; otherwise accept encoder click event.
+            if (Q_SIG(me) == ENCODER_CLICK || buttonPressed == 1) {
+                // initialize run vars
+                playerRow = LANE_GROUND;
+                jumping = 0;
+                footToggle = 0;
+                score = 0;
+                cactusX = -1;
+                birdX = -1;
+                tickInterval = 165;
+                lastTick = 0;
+                dino_init();
+                return Q_TRAN(&Run);
+            }
+            return Q_HANDLED();
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}
+
+/* Run - core gameplay */
+QState Run(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: {
+            lastTick = BSP_millis();
+            return Q_HANDLED();
+        }
+        case CUSTOM_TIMEOUT: {
+            unsigned long now = BSP_millis();
+
+            /* Jump edge detection: treat buttonPressed==1 as jump (like SELECT/UP) */
+            static int prevJump = 0;
+            int jumpPressed = (buttonPressed == 1) ? 1 : 0;
+            if (jumpPressed && !prevJump && !jumping) {
+                jumping = 1;
+                jumpStart = now;
+                playerRow = LANE_AIR;
+            }
+            prevJump = jumpPressed;
+
+            if (jumping && (now - jumpStart >= jumpDuration)) {
+                jumping = 0;
+                playerRow = LANE_GROUND;
+            }
+
+            if (now - lastTick >= tickInterval) {
+                lastTick = now;
+                footToggle = !footToggle;
+
+                // scale difficulty & tickInterval with score
+                unsigned long base = 165;
+                unsigned long dec = (score * 2);
+                if (dec > (base - tickMin)) dec = (base - tickMin);
+                tickInterval = base - dec;
+
+                // spawn cactus if inactive
+                if (cactusX < 0) {
+                    int birdTooClose = (birdX > 100 && birdX >= 0);
+                    if (!birdTooClose) {
+                        int r = rand() % 10;
+                        if (r < cactusSpawnChance || score == 0) {
+                            cactusX = DISP_X_SIZE + 24; // spawn off-screen right
+                        }
+                    }
+                } else {
+                    int step = 6 + (score / 15);
+                    cactusX -= step;
+                    if (cactusX < -60) { cactusX = -1; score++; }
+                }
+
+                if (birdX < 0) {
+                    if (score > 5) {
+                        int r = rand() % 10;
+                        if (r < birdSpawnChance) birdX = DISP_X_SIZE + 24;
+                    }
+                } else {
+                    int step = 8 + (score / 12);
+                    birdX -= step;
+                    if (birdX < -60) { birdX = -1; score++; }
+                }
+
+                // collision detection: dino occupies approx pixels near DINO_X_PIXEL
+                int dinoLeft = DINO_X_PIXEL - (5 * SCALE_DEFAULT) - 2;
+                int dinoRight = DINO_X_PIXEL + 5 * SCALE_DEFAULT + 14;
+                if (playerRow == LANE_GROUND) {
+                    if (cactusX >= dinoLeft && cactusX <= dinoRight) {
+                        // collision -> GameOver
+                        clrScr();
+                        dino_draw_gameover(score);
+                        return Q_TRAN(&GameOver);
+                    }
+                } else {
+                    if (birdX >= dinoLeft && birdX <= dinoRight) {
+                        clrScr();
+                        dino_draw_gameover(score);
+                        return Q_TRAN(&GameOver);
+                    }
+                }
+
+                // Render a frame
+                clrScr();
+                dino_render_frame(score, (playerRow==LANE_GROUND?0:1), footToggle, jumping, cactusX, birdX);
+            }
+            return Q_HANDLED();
+        }
+        case ENCODER_CLICK: {
+            // treat as pause (return to Title)
+            return Q_TRAN(&Title);
+        }
+        case BUTTON: {
+            // optional: if buttonPressed==4 => reset to title
+            if (buttonPressed == 4) return Q_TRAN(&Title);
+            return Q_HANDLED();
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}
+
+/* GameOver state */
+QState GameOver(Lab2A *me) {
+    switch (Q_SIG(me)) {
+        case Q_ENTRY_SIG: return Q_HANDLED();
+        case ENCODER_CLICK:
+        case BUTTON: {
+            if (Q_SIG(me) == ENCODER_CLICK || buttonPressed == 1) {
+                // go back to Title
+                return Q_TRAN(&Title);
+            }
+            return Q_HANDLED();
+        }
+    }
+    return Q_SUPER(&QHsm_top);
+}
