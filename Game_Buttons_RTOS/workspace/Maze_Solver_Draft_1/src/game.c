@@ -306,7 +306,7 @@ QState Running(Game *me) {
 			            // Erase old positions
 			            setColor(34, 139, 34); // Field green
 			            fillCircle((int)ball.x, (int)ball.y, BALL_RADIUS + 1);
-
+						
 			            int oldPlayerX = (int)player_football.x;
 			            int oldPlayerY = (int)player_football.y;
 			            updatePlayer();
