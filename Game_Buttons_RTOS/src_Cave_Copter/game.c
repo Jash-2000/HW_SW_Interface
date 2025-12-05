@@ -65,7 +65,6 @@ QState TitleScreen(Lab2A *me) {
 			gameDistance = 0;
 			gameDifficulty = 0;
 			custom_tick = 0;
-			drawTitleScreen();
 			return Q_HANDLED();
 		}
 
@@ -90,19 +89,16 @@ QState GameRunning(Lab2A *me) {
 			running = 1;
 			gameDistance = 0;
 			gameDifficulty = 0;
-			clrScr();
 			custom_tick = 0;
 			return Q_HANDLED();
 		}
 
 		case ENCODER_TWIST: {
 			// Twist encoder changes ship angle
-			if (encoder_twist == 0) {
-				// Clockwise - angle down (more positive)
+			if (encoder_twist == 1) {
 				ship.angle += 5;
 				if(ship.angle > MAX_ANGLE) ship.angle = MAX_ANGLE;
-			} else if (encoder_twist == 1) {
-				// Counter-clockwise - angle up (more negative)
+			} else if (encoder_twist == 0) {
 				ship.angle -= 5;
 				if(ship.angle < -MAX_ANGLE) ship.angle = -MAX_ANGLE;
 			}
@@ -110,17 +106,14 @@ QState GameRunning(Lab2A *me) {
 		}
 
 		case BUTTON: {
-			// Button 1 (North) - Speed up
 			if(buttonPressed == 1) {
 				ship.speed = SHIP_SPEED_FAST;
 				gameSpeed = SHIP_SPEED_FAST;
 			}
-			// Button 3 (South) - Slow down
-			else if(buttonPressed == 3) {
+			else if(buttonPressed == 4) {
 				ship.speed = SHIP_SPEED_SLOW;
 				gameSpeed = SHIP_SPEED_SLOW;
 			}
-			// Button 2 or 4 - Return to normal speed
 			else {
 				ship.speed = SHIP_SPEED_NORMAL;
 				gameSpeed = SHIP_SPEED_NORMAL;

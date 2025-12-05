@@ -144,7 +144,7 @@ void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
 	interrupt_arrived_flag = 1;
 	custom_tick += 1;
-	if(custom_tick == 800){	// Used to Reset the Text in 1.5 seconds
+	if(custom_tick == 2000){	// Used to Reset the Text in 1.5 seconds
 		QActive_postISR((QActive *)&AO_Lab2A, GAME_TICK);
 	}
 

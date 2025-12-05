@@ -16,8 +16,7 @@
 // Configuration
 // =====================================================
 
-// TRAINING_MODE: Set to 1 to capture wake-word template
-//                Set to 0 for normal detection mode
+
 #define TRAINING_MODE 0
 #define TESTING_MODE 1
 
@@ -44,7 +43,7 @@ static const float WAKE_WORD_TEMPLATES[NUM_WAKE_WORDS][NUM_BANDS] = {
     // "Up" Wake Word
     {0.388664, 0.519777, 1.000000, 0.618839, 0.315630, 0.179956, 0.128822, 0.087466},
 
-    // "Left" Wake Word
+	// "Left" Wake Word
     {0.856259, 1.000000, 0.536564, 0.205827, 0.267722, 0.200835, 0.103232, 0.086226},
 
     // "Down" Wake Word
@@ -91,13 +90,6 @@ static float w_fft[NFFT];
 // FFT magnitude spectrum (first half only)
 static float mag_spectrum[NFFT/2];
 
-unsigned seqf, seql, seq_old = 0;
-
-// =====================================================
-// Read RAW_SAMPLES from stream grabber into q_raw[]
-// This is FAST - just hardware read, no processing
-// =====================================================
-
 void read_fsl_values(float *q, int n)
 {
     int i;
@@ -107,19 +99,11 @@ void read_fsl_values(float *q, int n)
     stream_grabber_start();
     stream_grabber_wait_enough_samples(RAW_SAMPLES);
 
-    seql = stream_grabber_read_seq_counter();
-    seqf = stream_grabber_read_seq_counter_latched();
-
     for (i = 0; i < n; i++) {
         x    = stream_grabber_read_sample(i);
         q[i] = scale * (float)x;
     }
 }
-
-// =====================================================
-// Process averaged audio (FFT + Features)
-// This is done ONCE per 100 frames
-// =====================================================
 
 FeatureVector* process_averaged_audio(void)
 {
@@ -297,19 +281,9 @@ void training_mode(XTmrCtr *timer)
     xil_printf("  - Capture: %u ms (%.1f ms/frame)\n\r",
                (unsigned)capture_ms,
                (float)capture_ms / (float)CAPTURE_FRAMES);
-    xil_printf("  - Process: %u ms (one-time)\n\r\n\r", (unsigned)process_ms);
 
     // Print template for hardcoding
     wake_word_print_template();
-
-    xil_printf("\n\r");
-    xil_printf("INSTRUCTIONS:\n\r");
-    xil_printf("1. Copy the 8-value array above\n\r");
-    xil_printf("2. Paste it in WAKE_WORD_TEMPLATES array\n\r");
-    xil_printf("3. Update WAKE_WORD_NAMES with your word\n\r");
-    xil_printf("4. Set TRAINING_MODE to 0\n\r");
-    xil_printf("5. Recompile and run!\n\r");
-    xil_printf("\n\r");
 
     // Stop here
     while(1);
@@ -434,8 +408,8 @@ int main()
             // WAKE WORD DETECTED!
             detection_counts[detected_word]++;
             total_detections++;
-            xil_printf("WAKE WORD DETECTED: %-15s \n\r", WAKE_WORD_NAMES[detected_word]);
-        }
+           	xil_printf("WAKE WORD DETECTED: %-15s \n\r", WAKE_WORD_NAMES[detected_word]);
+         }
     }
 #endif // TESTING_MODE
 

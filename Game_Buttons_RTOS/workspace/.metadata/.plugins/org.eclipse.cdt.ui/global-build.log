@@ -1,10 +1,10 @@
 Nothing to build in platform 'Maze_Solver'
 
-12:01:24 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1 ****
+17:25:52 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1 ****
 make all 
-make: Warning: File 'src/bsp.d' has modification time 85 s in the future
+make: Warning: File 'src/subdir.mk' has modification time 136 s in the future
 make: warning:  Clock skew detected.  Your build may be incomplete.
 make: Nothing to be done for 'all'.
-12:01:24 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1_system ****
+17:25:52 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1_system ****
 make all 
 Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.

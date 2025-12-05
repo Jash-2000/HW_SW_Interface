@@ -2163,3 +2163,206 @@ TRACE::2025-12-03.23:00:48::SCWMssOS::Checking the sw design at  /home/jashshah/
 TRACE::2025-12-03.23:00:48::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss|system||
 
 TRACE::2025-12-03.23:00:48::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Do not have an existing db opened. 
+TRACE::2025-12-04.15:15:32::SCWPlatform::Opened new HwDB with name bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWReader::Active system found as  Maze_Solver
+TRACE::2025-12-04.15:15:32::SCWReader::Handling sysconfig Maze_Solver
+TRACE::2025-12-04.15:15:32::SCWDomain::checking for install qemu data   : 
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:32::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:32::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2025-12-04.15:15:32::SCWMssOS::No sw design opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWMssOS::mss exists loading the mss file  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWMssOS::Opened the sw design from mss  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWMssOS::Adding the swdes entry /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss with des name system
+TRACE::2025-12-04.15:15:32::SCWMssOS::updating the scw layer about changes
+TRACE::2025-12-04.15:15:32::SCWMssOS::Opened the sw design.  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:32::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-12-04.15:15:32::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-12-04.15:15:32::SCWMssOS::Commit changes completed.
+TRACE::2025-12-04.15:15:32::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2025-12-04.15:15:32::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2025-12-04.15:15:32::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:32::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:33::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:33::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:33::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:33::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:33::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:33::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:33::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-04.15:15:33::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:33::SCWReader::No isolation master present  
+LOG::2025-12-04.15:15:46::SCWPlatform::Started generating the artifacts platform Maze_Solver
+TRACE::2025-12-04.15:15:46::SCWPlatform::Sanity checking of platform is completed
+LOG::2025-12-04.15:15:49::SCWPlatform::Started generating the artifacts for system configuration Maze_Solver
+LOG::2025-12-04.15:15:49::SCWSystem::Checking the domain standalone_domain
+LOG::2025-12-04.15:15:49::SCWSystem::Not a boot domain 
+LOG::2025-12-04.15:15:49::SCWSystem::Started Processing the domain standalone_domain
+TRACE::2025-12-04.15:15:49::SCWDomain::Generating domain artifcats
+TRACE::2025-12-04.15:15:49::SCWMssOS::Generating standalone artifcats
+TRACE::2025-12-04.15:15:49::SCWMssOS:: Copying the user libraries. 
+TRACE::2025-12-04.15:15:49::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:49::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:49::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:49::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:49::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:49::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:49::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:49::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:49::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:49::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:49::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-04.15:15:49::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:49::SCWMssOS::Completed writing the mss file at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp
+TRACE::2025-12-04.15:15:49::SCWMssOS::Mss edits present, copying mssfile into export location /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:49::SCWMssOS::bsp generated is upto date with the mss file. Skipping bsp generation.
+TRACE::2025-12-04.15:15:49::SCWMssOS::BSP is already built. skipping the bsp build ... 
+TRACE::2025-12-04.15:15:49::SCWDomain::Skipping the build for domain :  standalone_domain
+TRACE::2025-12-04.15:15:49::SCWMssOS::skipping the bsp build ... 
+TRACE::2025-12-04.15:15:49::SCWMssOS::Copying to export directory.
+TRACE::2025-12-04.15:15:55::SCWMssOS:: Checking if to create the Supporting Applications
+TRACE::2025-12-04.15:15:55::SCWMssOS:: No Linux domain exists, trying to generate FSBL 
+LOG::2025-12-04.15:15:55::SCWSystem::Completed Processing the domain standalone_domain
+LOG::2025-12-04.15:15:55::SCWSystem::Completed Processing the sysconfig Maze_Solver
+LOG::2025-12-04.15:15:55::SCWPlatform::Completed generating the artifacts for system configuration Maze_Solver
+TRACE::2025-12-04.15:15:55::SCWPlatform::Started preparing the platform 
+TRACE::2025-12-04.15:15:55::SCWSystem::Writing the bif file for system config Maze_Solver
+TRACE::2025-12-04.15:15:55::SCWSystem::dir created 
+TRACE::2025-12-04.15:15:55::SCWSystem::Writing the bif 
+TRACE::2025-12-04.15:15:55::SCWPlatform::Started writing the spfm file 
+TRACE::2025-12-04.15:15:55::SCWPlatform::Started writing the xpfm file 
+TRACE::2025-12-04.15:15:55::SCWPlatform::Completed generating the platform
+TRACE::2025-12-04.15:15:55::SCWMssOS::Saving the mss changes /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:55::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2025-12-04.15:15:55::SCWMssOS::Completed writemss as part of save.
+TRACE::2025-12-04.15:15:55::SCWMssOS::Commit changes completed.
+TRACE::2025-12-04.15:15:55::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:55::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:55::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:55::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:55::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:55::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-04.15:15:55::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:55::SCWWriter::formatted JSON is {
+	"platformName":	"Maze_Solver",
+	"sprVersion":	"2.0",
+	"mode":	"gui",
+	"dsaType":	"Fixed",
+	"platformDesc":	"Maze_Solver",
+	"platHandOff":	"/home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/bd_wrapper.xsa",
+	"platIntHandOff":	"<platformDir>/hw/bd_wrapper.xsa",
+	"deviceType":	"FPGA",
+	"platIsPrebuiltAutogen":	"false",
+	"platIsNoBootBsp":	"false",
+	"hasFsblMakeHasChanges":	"false",
+	"hasPmufwMakeHasChanges":	"false",
+	"platPreBuiltFlag":	false,
+	"platformSamplesDir":	"",
+	"platActiveSys":	"Maze_Solver",
+	"systems":	[{
+			"systemName":	"Maze_Solver",
+			"systemDesc":	"Maze_Solver",
+			"sysIsBootAutoGen":	"true",
+			"systemDispName":	"Maze_Solver",
+			"sysActiveDom":	"standalone_domain",
+			"sysDefaultDom":	"standalone_domain",
+			"domains":	[{
+					"domainName":	"standalone_domain",
+					"domainDispName":	"standalone on microblaze_0",
+					"domainDesc":	"standalone_domain",
+					"processors":	"microblaze_0",
+					"os":	"standalone",
+					"sdxOs":	"standalone",
+					"debugEnable":	"False",
+					"domRuntimes":	["cpp"],
+					"swRepo":	"",
+					"mssOsVer":	"7.7",
+					"mssFile":	"",
+					"md5Digest":	"b01652c0d3c342c74bfac30f11e4c2cb",
+					"compatibleApp":	"",
+					"domType":	"mssDomain",
+					"arch":	"32-bit",
+					"appSettings":	{
+						"appCompilerFlags":	"",
+						"appLinkerFlags":	""
+					},
+					"addedLibs":	[],
+					"libOptions":	{
+						"libsContainingOptions":	[]
+					},
+					"prebuiltLibs":	{
+						"prebuiltIncPath":	[],
+						"prebuiltLibPath":	[]
+					},
+					"isolation":	{
+					}
+				}]
+		}]
+}
+KEYINFO::2025-12-04.15:15:55::SCWPlatform::updated the xpfm file.
+TRACE::2025-12-04.15:15:55::SCWPlatform::Trying to open the hw design at /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform::DSA given /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform::DSA absoulate path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform::DSA directory /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw
+TRACE::2025-12-04.15:15:55::SCWPlatform:: Platform Path /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/hw/bd_wrapper.xsa
+TRACE::2025-12-04.15:15:55::SCWPlatform:: Unique name xilinx:::0.0
+TRACE::2025-12-04.15:15:55::SCWPlatform::Trying to set the existing hwdb with name bd_wrapper_0
+TRACE::2025-12-04.15:15:55::SCWPlatform::Opened existing hwdb bd_wrapper_0
+TRACE::2025-12-04.15:15:55::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2025-12-04.15:15:55::SCWMssOS::Checking the sw design at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss
+TRACE::2025-12-04.15:15:55::SCWMssOS::DEBUG:  swdes dump  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss|system||
+
+TRACE::2025-12-04.15:15:55::SCWMssOS::Sw design exists and opened at  /home/jashshah/Desktop/Embedded_Lab/HW_SW_Interface/Game_Buttons_RTOS/workspace/Maze_Solver/microblaze_0/standalone_domain/bsp/system.mss

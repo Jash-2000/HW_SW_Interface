@@ -5,6 +5,8 @@ Date: December 2025
 *****************************************************************************/
 
 #include "lcd.h"
+#include <stdio.h>
+#include <math.h>
 
 // Global variables
 int fch;
@@ -234,7 +236,7 @@ void drawTitleScreen(void) {
 	// Background gradient effect
 	for(int y = 0; y < SCREEN_HEIGHT; y++) {
 		int blue = 20 + (y * 40) / SCREEN_HEIGHT;
-		setColor(0, 0, blue);
+		setColor(blue, 0, 0);
 		drawHLine(0, y, SCREEN_WIDTH);
 	}
 
@@ -244,7 +246,7 @@ void drawTitleScreen(void) {
 
 	setFont(SmallFont);
 	setColor(255, 255, 255);
-	lcdPrint("Twist: Steer", 50, 140);
+	lcdPrint("Encoder Twist: Steer", 50, 140);
 	lcdPrint("Btn Up: Speed Up", 30, 165);
 	lcdPrint("Btn Down: Slow Down", 15, 190);
 	lcdPrint("Click: Start", 45, 215);
@@ -253,125 +255,204 @@ void drawTitleScreen(void) {
 	lcdPrint("Avoid the walls!", 25, 260);
 }
 
+void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
+    // Sort vertices by y-coordinate
+    if (y1 > y2) { swap(int, y1, y2); swap(int, x1, x2); }
+    if (y2 > y3) { swap(int, y2, y3); swap(int, x2, x3); }
+    if (y1 > y2) { swap(int, y1, y2); swap(int, x1, x2); }
+
+    // Draw triangle using horizontal lines
+    for (int y = y1; y <= y3; y++) {
+        int xa = x1 + (x3 - x1) * (y - y1) / (y3 - y1 + 1);
+        int xb;
+        if (y < y2) {
+            xb = x1 + (x2 - x1) * (y - y1) / (y2 - y1 + 1);
+        } else {
+            xb = x2 + (x3 - x2) * (y - y2) / (y3 - y2 + 1);
+        }
+        if (xa > xb) swap(int, xa, xb);
+        drawHLine(xa, y, xb - xa);
+    }
+}
+
 // Initialize cave walls
 void initCave(void) {
 	int initialGap = CAVE_WIDTH_INITIAL;
 	int centerY = SCREEN_HEIGHT / 2;
 
-	for(int i = 0; i < CAVE_SEGMENTS; i++) {
-		leftWall[i] = centerY - initialGap / 2;
-		rightWall[i] = centerY + initialGap / 2;
+	for(int i = 0; i < CAVE_SEGMENTS; i++) {	 // For CAVE_SEGMENTS number of columns
+		leftWall[i] = centerY - initialGap / 2;	 // y values(row values) of upper wall
+		rightWall[i] = centerY + initialGap / 2; // y values(row values) of lower wall
 	}
+
+	// Draw black background
+	setColor(100, 100, 100);
+	fillRect(0, 0, SCREEN_WIDTH, centerY - initialGap / 2);
+	setColor(0, 0, 0);
+	fillRect(0, centerY - initialGap / 2, SCREEN_WIDTH, centerY + initialGap / 2);
+	setColor(100, 100, 100);
+	fillRect(0, centerY + initialGap / 2, SCREEN_WIDTH, SCREEN_HEIGHT);
 }
 
 // Scroll cave and generate new segment
 void scrollCave(int difficulty) {
-	// Shift walls forward
-	for(int i = 0; i < CAVE_SEGMENTS - 1; i++) {
-		leftWall[i] = leftWall[i + 1];
-		rightWall[i] = rightWall[i + 1];
-	}
+    // Shift walls forward
+    for(int i = 0; i < CAVE_SEGMENTS - 1; i++) {
+        leftWall[i] = leftWall[i + 1];
+        rightWall[i] = rightWall[i + 1];
+    }
 
-	// Generate new segment at the end
-	int lastIdx = CAVE_SEGMENTS - 1;
-	int prevGap = rightWall[lastIdx - 1] - leftWall[lastIdx - 1];
+    // Generate new segment at the end
+    int lastIdx = CAVE_SEGMENTS - 1;
+    int prevGap = rightWall[lastIdx - 1] - leftWall[lastIdx - 1];
 
-	// Gradually narrow the cave based on difficulty
-	int targetGap = CAVE_WIDTH_INITIAL - (difficulty * 5);
-	if(targetGap < CAVE_WIDTH_MIN) targetGap = CAVE_WIDTH_MIN;
+    // Gradually narrow the cave based on difficulty
+    int targetGap = CAVE_WIDTH_INITIAL - 50 - (difficulty*5);
 
-	int newGap = prevGap;
-	if(prevGap > targetGap) newGap = prevGap - 1;
-	else if(prevGap < targetGap) newGap = prevGap + 1;
+    int newGap = prevGap;
+    // Try to bring the newgap closer to the target gap
+    if(prevGap > targetGap) newGap = prevGap - 5;
+    else if(prevGap < targetGap) newGap = prevGap + 5;
 
-	// Random vertical movement
-	int centerMove = (rand() % 7) - 3;  // -3 to +3
-	int prevCenter = (leftWall[lastIdx - 1] + rightWall[lastIdx - 1]) / 2;
-	int newCenter = prevCenter + centerMove;
+    // Random vertical movement
+    int centerMove = (rand() % 11) - 5;    // gives -5 to +5
+    int prevCenter = (leftWall[lastIdx - 1] + rightWall[lastIdx - 1]) / 2;
+    int newCenter = prevCenter + centerMove;
 
-	// Keep within bounds
-	if(newCenter - newGap/2 < 10) newCenter = 10 + newGap/2;
-	if(newCenter + newGap/2 > SCREEN_HEIGHT - 10) newCenter = SCREEN_HEIGHT - 10 - newGap/2;
+    // Define the overall playable area bounds
+    int centerY = SCREEN_HEIGHT / 2;
+    int maxTop = centerY - CAVE_WIDTH_INITIAL / 2;  // Top boundary
+    int maxBottom = centerY + CAVE_WIDTH_INITIAL / 2;  // Bottom boundary
 
-	leftWall[lastIdx] = newCenter - newGap / 2;
-	rightWall[lastIdx] = newCenter + newGap / 2;
+    // Keep the cave passage within the bounded area
+    // Make sure the top wall doesn't go above maxTop
+    if(newCenter - newGap/2 < maxTop) {
+        newCenter = maxTop + newGap/2;
+    }
+    // Make sure the bottom wall doesn't go below maxBottom
+    if(newCenter + newGap/2 > maxBottom) {
+        newCenter = maxBottom - newGap/2;
+    }
+
+    leftWall[lastIdx] = newCenter - newGap / 2;
+    rightWall[lastIdx] = newCenter + newGap / 2;
 }
 
 // Draw the cave walls
 void drawCave(void) {
+	int initialGap = CAVE_WIDTH_INITIAL;
+	int centerY = SCREEN_HEIGHT / 2;
+
 	// Draw black background
 	setColor(0, 0, 0);
-	fillRect(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+	fillRect(0, centerY - initialGap / 2, SCREEN_WIDTH, centerY + initialGap / 2);
 
 	// Draw cave walls (gray rock)
 	setColor(100, 100, 100);
 	for(int x = 0; x < CAVE_SEGMENTS; x++) {
 		int screenX = x * SEGMENT_WIDTH;
 		// Top wall
-		fillRect(screenX, 0, screenX + SEGMENT_WIDTH - 1, leftWall[x]);
+		fillRect(screenX, centerY - initialGap / 2, screenX + SEGMENT_WIDTH - 1, leftWall[x]);
 		// Bottom wall
-		fillRect(screenX, rightWall[x], screenX + SEGMENT_WIDTH - 1, SCREEN_HEIGHT);
+		fillRect(screenX, rightWall[x], screenX + SEGMENT_WIDTH - 1, centerY + initialGap / 2);
 	}
 
-	// Add some depth shading
-	setColor(150, 150, 150);
-	for(int x = 0; x < CAVE_SEGMENTS; x += 2) {
-		int screenX = x * SEGMENT_WIDTH;
-		if(leftWall[x] > 5) {
-			drawHLine(screenX, leftWall[x] - 2, SEGMENT_WIDTH);
-		}
-		if(rightWall[x] < SCREEN_HEIGHT - 5) {
-			drawHLine(screenX, rightWall[x] + 2, SEGMENT_WIDTH);
-		}
-	}
 }
 
-// Draw ship as a triangle
 void drawShip(void) {
-	int x = ship.x;
-	int y = ship.y;
-	int angle = ship.angle;
+    int x = ship.x;
+    int y = ship.y;
+    float angle = ship.angle;
 
-	setColor(0, 255, 255);  // Cyan ship
+    // Convert angle to radians for rotation
+    float rad = angle * 3.14159f / 180.0f;
 
-	// Simple triangle representation based on angle
-	// Angle 0 = pointing right, positive = up, negative = down
-	if(angle > -15 && angle < 15) {
-		// Pointing right
-		fillRect(x - 8, y - 4, x + 8, y + 4);
-		setColor(255, 255, 0);
-		fillRect(x + 3, y - 2, x + 8, y + 2);  // Nose
-	} else if(angle >= 15) {
-		// Pointing up-right
-		fillRect(x - 6, y - 2, x + 6, y + 6);
-		setColor(255, 255, 0);
-		fillRect(x + 1, y - 2, x + 6, y + 1);
-	} else {
-		// Pointing down-right
-		fillRect(x - 6, y - 6, x + 6, y + 2);
-		setColor(255, 255, 0);
-		fillRect(x + 1, y - 1, x + 6, y + 2);
-	}
+    // Define triangle vertices (isosceles triangle pointing right)
+    // Base triangle: pointing right with base height of 8 and length of 16
+    float v1x = 12, v1y = 0;    // Nose (front point)
+    float v2x = -4, v2y = -6;   // Bottom back corner
+    float v3x = -4, v3y = 6;    // Top back corner
+
+    // Rotate vertices
+    float cos_a = cosf(rad);
+    float sin_a = sinf(rad);
+
+    // Rotated vertex 1 (nose)
+    int rx1 = (int)(v1x * cos_a - v1y * sin_a) + x;
+    int ry1 = (int)(v1x * sin_a + v1y * cos_a) + y;
+
+    // Rotated vertex 2 (bottom back)
+    int rx2 = (int)(v2x * cos_a - v2y * sin_a) + x;
+    int ry2 = (int)(v2x * sin_a + v2y * cos_a) + y;
+
+    // Rotated vertex 3 (top back)
+    int rx3 = (int)(v3x * cos_a - v3y * sin_a) + x;
+    int ry3 = (int)(v3x * sin_a + v3y * cos_a) + y;
+
+    // Draw the triangle
+    setColor(0, 255, 255);  // Cyan ship
+    fillTriangle(rx1, ry1, rx2, ry2, rx3, ry3);
+
+    // Optional: Draw a yellow nose/cockpit
+    setColor(255, 255, 0);
+    // Small triangle at the nose
+    int nx2 = (int)(4 * cos_a - (-3) * sin_a) + x;
+    int ny2 = (int)(4 * sin_a + (-3) * cos_a) + y;
+    int nx3 = (int)(4 * cos_a - 3 * sin_a) + x;
+    int ny3 = (int)(4 * sin_a + 3 * cos_a) + y;
+    fillTriangle(rx1, ry1, nx2, ny2, nx3, ny3);
 }
 
-// Check collision
+// Check collision - updated for rotated triangle
 int checkCollision(void) {
-	int shipLeft = ship.x - SHIP_SIZE/2;
-	int shipRight = ship.x + SHIP_SIZE/2;
-	int shipTop = ship.y - SHIP_SIZE/2;
-	int shipBottom = ship.y + SHIP_SIZE/2;
+    float angle = ship.angle;
+    float rad = angle * 3.14159f / 180.0f;
 
-	// Check ship's horizontal segment
-	int segment = ship.x / SEGMENT_WIDTH;
-	if(segment < 0) segment = 0;
-	if(segment >= CAVE_SEGMENTS) segment = CAVE_SEGMENTS - 1;
+    // Define the three vertices of the triangle
+    float v1x = 12, v1y = 0;    // Nose
+    float v2x = -4, v2y = -6;   // Bottom back
+    float v3x = -4, v3y = 6;    // Top back
 
-	// Check if ship hits walls
-	if(shipTop < leftWall[segment] || shipBottom > rightWall[segment]) {
-		return 1;  // Collision
-	}
+    // Rotate and translate vertices
+    float cos_a = cosf(rad);
+    float sin_a = sinf(rad);
 
-	return 0;  // No collision
+    int rx1 = (int)(v1x * cos_a - v1y * sin_a) + ship.x;
+    int ry1 = (int)(v1x * sin_a + v1y * cos_a) + ship.y;
+    int rx2 = (int)(v2x * cos_a - v2y * sin_a) + ship.x;
+    int ry2 = (int)(v2x * sin_a + v2y * cos_a) + ship.y;
+    int rx3 = (int)(v3x * cos_a - v3y * sin_a) + ship.x;
+    int ry3 = (int)(v3x * sin_a + v3y * cos_a) + ship.y;
+
+    // Find the bounding box of the triangle
+    int minY = ry1;
+    if(ry2 < minY) minY = ry2;
+    if(ry3 < minY) minY = ry3;
+
+    int maxY = ry1;
+    if(ry2 > maxY) maxY = ry2;
+    if(ry3 > maxY) maxY = ry3;
+
+    // Check collision at the nose (most forward point)
+    int segment = rx1 / SEGMENT_WIDTH;
+    if(segment < 0) segment = 0;
+    if(segment >= CAVE_SEGMENTS) segment = CAVE_SEGMENTS - 1;
+
+    // Check if any part of the ship hits walls
+    if(minY < leftWall[segment] || maxY > rightWall[segment]) {
+        return 1;  // Collision
+    }
+
+    // Also check at ship center for better collision detection
+    segment = ship.x / SEGMENT_WIDTH;
+    if(segment < 0) segment = 0;
+    if(segment >= CAVE_SEGMENTS) segment = CAVE_SEGMENTS - 1;
+
+    if(minY < leftWall[segment] || maxY > rightWall[segment]) {
+        return 1;
+    }
+
+    return 0;  // No collision
 }
 
 // Update ship position based on angle and speed

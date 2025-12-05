@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="dino"/>
+		<item key="selection" value="triangle"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
+			<item value="Triangle"/>
+			<item value="ship"/>
 			<item value="Dino"/>
 			<item value="Rect"/>
 			<item value="drawVLine"/>
@@ -21,8 +23,6 @@
 			<item value="Lab2A"/>
 			<item value="DINO_X"/>
 			<item value="custom_tick"/>
-			<item value="sleep"/>
-			<item value="swap"/>
 		</list>
 		<list key="replacehistory">
 		</list>

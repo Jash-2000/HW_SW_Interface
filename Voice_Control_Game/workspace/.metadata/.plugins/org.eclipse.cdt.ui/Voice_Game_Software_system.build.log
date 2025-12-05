@@ -1,6 +1,6 @@
-17:10:49 **** Incremental Build of configuration Debug for project Voice_Game_Software_system ****
+12:27:18 **** Incremental Build of configuration Debug for project Voice_Game_Software_system ****
 make all 
 Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
 
-17:10:49 Build Finished (took 121ms)
+12:27:18 Build Finished (took 117ms)
 

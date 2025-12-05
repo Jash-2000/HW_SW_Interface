@@ -26,7 +26,7 @@ int main(void) {
 	Xil_DCacheInvalidate();
 	Xil_DCacheEnable();
 
-	xil_printf("\n\n Hello Pratyush the King!! \n");
+	xil_printf("\n\n Dino Game!! \n");
 	Lab2A_ctor();
 	BSP_init();
 	QF_run();

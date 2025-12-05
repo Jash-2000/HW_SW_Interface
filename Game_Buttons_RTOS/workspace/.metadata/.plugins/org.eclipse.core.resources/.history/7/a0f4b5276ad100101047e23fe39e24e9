@@ -1,0 +1,181 @@
+/*****************************************************************************
+Cave Flyer - Game Logic
+Created by: Modified for Cave Flyer Game
+Date: December 2025
+*****************************************************************************/
+
+#define AO_LAB2A
+
+#include "qpn_port.h"
+#include "bsp.h"
+#include "game.h"
+#include <stdio.h>
+#include "xparameters.h"
+#include "xil_cache.h"
+#include "xintc.h"
+#include "xtmrctr.h"
+#include "xtmrctr_l.h"
+#include "xil_printf.h"
+#include "xgpio.h"
+#include "xspi.h"
+#include "xspi_l.h"
+#include "lcd.h"
+
+typedef struct Lab2ATag {
+	QActive super;
+} Lab2A;
+
+/* State machine states */
+static QState Lab2A_initial(Lab2A *me);
+static QState TitleScreen(Lab2A *me);
+static QState GameRunning(Lab2A *me);
+static QState GameOver(Lab2A *me);
+
+Lab2A AO_Lab2A;
+
+volatile int custom_tick = 0;
+volatile int buttonPressed = 0;
+volatile int running = 0;
+volatile int counter = 0;
+volatile int encoder_twist = 0;
+
+int gameDistance = 0;
+int gameDifficulty = 0;
+int gameSpeed = SHIP_SPEED_NORMAL;
+
+void Lab2A_ctor(void) {
+	Lab2A *me = &AO_Lab2A;
+	QActive_ctor(&me->super, (QStateHandler)&Lab2A_initial);
+}
+
+QState Lab2A_initial(Lab2A *me) {
+	initLCD();
+	drawTitleScreen();
+	counter = 0;
+	running = 0;
+	gameDistance = 0;
+	return Q_TRAN(&TitleScreen);
+}
+
+QState TitleScreen(Lab2A *me) {
+	switch (Q_SIG(me)) {
+		case Q_ENTRY_SIG: {
+			running = 0;
+			counter = 0;
+			gameDistance = 0;
+			gameDifficulty = 0;
+			custom_tick = 0;
+			drawTitleScreen();
+			return Q_HANDLED();
+		}
+
+		case ENCODER_CLICK: {
+			// Start game
+			initCave();
+			ship.x = 60;
+			ship.y = SCREEN_HEIGHT / 2;
+			ship.angle = 0;
+			ship.speed = SHIP_SPEED_NORMAL;
+			gameSpeed = SHIP_SPEED_NORMAL;
+			return Q_TRAN(&GameRunning);
+		}
+	}
+	return Q_SUPER(&QHsm_top);
+}
+
+QState GameRunning(Lab2A *me) {
+	switch (Q_SIG(me)) {
+		case Q_ENTRY_SIG: {
+			counter = 0;
+			running = 1;
+			gameDistance = 0;
+			gameDifficulty = 0;
+			clrScr();
+			custom_tick = 0;
+			return Q_HANDLED();
+		}
+
+		case ENCODER_TWIST: {
+			// Twist encoder changes ship angle
+			if (encoder_twist == 1) {
+				ship.angle += 5;
+				if(ship.angle > MAX_ANGLE) ship.angle = MAX_ANGLE;
+			} else if (encoder_twist == 0) {
+				ship.angle -= 5;
+				if(ship.angle < -MAX_ANGLE) ship.angle = -MAX_ANGLE;
+			}
+			return Q_HANDLED();
+		}
+
+		case BUTTON: {
+			if(buttonPressed == 1) {
+				ship.speed = SHIP_SPEED_FAST;
+				gameSpeed = SHIP_SPEED_FAST;
+			}
+			else if(buttonPressed == 4) {
+				ship.speed = SHIP_SPEED_SLOW;
+				gameSpeed = SHIP_SPEED_SLOW;
+			}
+			else {
+				ship.speed = SHIP_SPEED_NORMAL;
+				gameSpeed = SHIP_SPEED_NORMAL;
+			}
+			return Q_HANDLED();
+		}
+
+		case GAME_TICK: {
+			custom_tick = 0;
+			// Update game state
+			scrollCave(gameDifficulty);
+			updateShip();
+
+			// Increase difficulty every 100 distance units
+			gameDistance++;
+			if(gameDistance % 100 == 0) {
+				gameDifficulty++;
+			}
+
+			// Check collision
+			if(checkCollision()) {
+				running = 0;
+				return Q_TRAN(&GameOver);
+			}
+
+			// Draw everything
+			drawCave();
+			drawShip();
+			drawHUD(gameDistance);
+
+			return Q_HANDLED();
+		}
+
+		case ENCODER_CLICK: {
+			// Pause or quit
+			running = 0;
+			return Q_TRAN(&GameOver);
+		}
+	}
+	return Q_SUPER(&QHsm_top);
+}
+
+QState GameOver(Lab2A *me) {
+	switch (Q_SIG(me)) {
+		case Q_ENTRY_SIG: {
+			running = 0;
+			custom_tick = 0;
+			drawGameOver(gameDistance);
+			return Q_HANDLED();
+		}
+
+		case ENCODER_CLICK: {
+			// Restart game
+			return Q_TRAN(&TitleScreen);
+		}
+
+		case CUSTOM_TIMEOUT: {
+			// Auto return to title after timeout
+			return Q_TRAN(&TitleScreen);
+		}
+	}
+	return Q_SUPER(&QHsm_top);
+}
