@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="triangle"/>
+		<item key="selection" value="updateScore"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
-			<item value="Triangle"/>
-			<item value="ship"/>
-			<item value="Dino"/>
-			<item value="Rect"/>
-			<item value="drawVLine"/>
-			<item value="drawv"/>
-			<item value="drawV"/>
-			<item value="draw"/>
-			<item value="Vline"/>
-			<item value="now"/>
-			<item value="counter"/>
-			<item value="BSP_millis"/>
-			<item value="Lab2A"/>
-			<item value="DINO_X"/>
-			<item value="custom_tick"/>
+			<item value="updateScore"/>
+			<item value="fillTriangle"/>
+			<item value="drawField"/>
+			<item value="fillCircle"/>
+			<item value="void drawWalls(void)"/>
+			<item value="xil_printf"/>
+			<item value="Done"/>
+			<item value="Player"/>
+			<item value="player_football"/>
+			<item value="Q_onAssert"/>
+			<item value="printDebugLog"/>
+			<item value="initialized"/>
+			<item value="HSM"/>
+			<item value="drawPlayerAtAngle"/>
+			<item value="checkBallPlayerCollision"/>
 		</list>
 		<list key="replacehistory">
+			<item value="Game"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

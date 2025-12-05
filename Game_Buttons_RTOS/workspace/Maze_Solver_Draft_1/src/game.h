@@ -1,40 +1,36 @@
-/*****************************************************************************
-Cave Flyer - Game Header
-*****************************************************************************/
+#ifndef game_h 
+#define game_h 
+ 
+enum GameSignals { 
+	ENCODER_TWIST = Q_USER_SIG,	// Used to register the Encoder Rotation Effect 
+	ENCODER_CLICK,				// Used to register the Encoder Click Effect 
+	BUTTON,						// Used to register the Buttons Press Effect 
+	CUSTOM_TIMEOUT,				// Used to register the Custom Timeout of 2secs 
+	GAME_OVER,					// Used to register that the game ended 
+	GAME_TICK					// Used to provide regular ticks for the game 
+}; 
+ 
+extern struct GameTag AO_Game; 
+ 
+extern volatile int custom_tick;	// Used for custom timeout of 2 seconds 
+extern volatile int buttonPressed;	// Used to register which button was pressed 
+extern volatile int running;		// Flag used to register if the game status 
+extern volatile int counter;		// Used to display the counter on the seven segment display 
+extern volatile int encoder_twist;	// Used to register which direction the encoder twisted 
+extern int lvl_no; 
+extern int game_no;
+extern int game_win; 
+extern int speed; 
+ 
+void initVars(void); 
+void Game_ctor(void); 
+void GpioHandler(void *CallbackRef); 
+void TwistHandler(void *CallbackRef); 
+void updateEnemyPosition(int lvl_no); 
+int checkGameStatus(int game_no); 
+void checkBallPlayerCollision(void);
+void spawnObstacle(void);
+void updateObstacles(void);
+void updatePlayer(void);
 
-#ifndef game_h
-#define game_h
-
-// QP-nano Signals for Dino Runner
-enum Lab2ASignals {
-    ENCODER_UP_SIG = Q_USER_SIG,
-    ENCODER_DOWN_SIG,
-    ENCODER_CLICK_SIG,
-    BUTTON_SIG,
-    GAME_TICK_SIG,          // New signal for game updates
-    TIMEOUT_SIG
-};
-
-// Signal aliases
-#define ENCODER_UP      ENCODER_UP_SIG
-#define ENCODER_DOWN    ENCODER_DOWN_SIG
-#define ENCODER_CLICK   ENCODER_CLICK_SIG
-#define BUTTON          BUTTON_SIG
-#define GAME_TICK       GAME_TICK_SIG     // Used for game loop updates
-
-static int tickCounter;
-// Global variables
-extern volatile int custom_tick;
-extern volatile int buttonPressed;
-extern volatile int running;
-extern volatile int counter;
-extern volatile int encoder_twist;
-
-// Functions
-void Lab2A_ctor(void);
-void printDebugLog(void);
-
-// Active object
-extern struct Lab2ATag AO_Lab2A;
-
-#endif /* game_h */
+#endif 

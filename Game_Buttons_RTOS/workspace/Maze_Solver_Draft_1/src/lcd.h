@@ -1,20 +1,78 @@
-// lcd.h - Header file for Rocket League Soccer Game
-#ifndef LCD_H
-#define LCD_H
+#ifndef LCD_H_
+#define LCD_H_
 
 #include "xparameters.h"
 #include "xil_io.h"
 #include "xil_types.h"
 #include "xspi_l.h"
 #include "xil_printf.h"
-#include "xstatus.h"
-#include "unistd.h"
-#include <stdlib.h>
 
-// Font definitions
-extern u8 SmallFont[];
-extern u8 BigFont[];
-extern u8 SevenSegNumFont[];
+#define SPI_DC          XPAR_SPI_DC_BASEADDR
+#define B_RS            0x00000001
+
+// Field dimensions
+#define FIELD_LEFT 20
+#define FIELD_RIGHT 220
+#define FIELD_TOP 40
+#define FIELD_BOTTOM 280
+#define FIELD_WIDTH (FIELD_RIGHT - FIELD_LEFT)
+#define FIELD_HEIGHT (FIELD_BOTTOM - FIELD_TOP)
+
+// Player settings
+#define PLAYER_SIZE 16
+#define PLAYER_SPEED_NORMAL 2
+#define PLAYER_SPEED_FAST 4
+#define PLAYER_SPEED_SLOW 1
+
+// Ball settings
+#define BALL_SIZE 8
+#define BALL_RADIUS 4
+#define INITIAL_BALL_X 120
+#define INITIAL_BALL_Y 160
+
+// Goal settings
+#define GOAL_WIDTH 40
+#define GOAL_HEIGHT 8
+#define TOP_GOAL_X 100
+#define TOP_GOAL_Y (FIELD_TOP - GOAL_HEIGHT)
+#define BOTTOM_GOAL_X 100
+#define BOTTOM_GOAL_Y FIELD_BOTTOM
+
+// Wall obstacle settings
+#define NUM_WALLS 3
+
+// Physics constants
+#define FRICTION 0.95f
+#define BALL_BOUNCE 0.8f
+#define PLAYER_PUSH_STRENGTH 3.0f
+#define ROTATION_SPEED 0.5f  // Radians per encoder tick (~5.7 degrees)
+#define PI 3.14159265359f
+
+// Player structure
+typedef struct {
+    float x, y;           // Position (center of player)
+    float angle;          // Angle in radians (0 = up, increases clockwise)
+    int speed;            // Current speed setting
+} Player_Football;
+
+// Ball structure
+typedef struct {
+    float x, y;          // Position (center of ball)
+    float vx, vy;        // Velocity
+} Ball;
+
+// Wall structure
+typedef struct {
+    int x1, y1, x2, y2;
+} Wall;
+
+// Global variables
+extern Player_Football player_football;
+extern Ball ball;
+extern Wall walls[NUM_WALLS];
+extern int score_top;
+extern int score_bottom;
+
 
 // Dino Runner Constants
 #define GROUND_Y 230
@@ -41,38 +99,6 @@ typedef struct {
     int active;         // Is this obstacle active?
 } Obstacle;
 
-// Function declarations for Dino Runner
-void drawGround(void);
-void drawDino(void);
-void clearDino(int oldY, int wasDucking);
-void drawObstacle(Obstacle *obs);
-void clearObstacle(Obstacle *obs);
-void initGameScreen(void);
-void drawMenuScreen(void);
-void drawGameOver(int finalScore);
-void updateScore(void);
-
-// Existing swap macro
-#define swap(type, i, j) {type t = i; i = j; j = t;}
-
-
-#define SPI_DC          XPAR_SPI_DC_BASEADDR
-#define B_RS            0x00000001
-
-#define SPI_DTR         XPAR_SPI_BASEADDR + XSP_DTR_OFFSET
-#define SPI_DRR         XPAR_SPI_BASEADDR + XSP_DRR_OFFSET
-#define SPI_IISR        XPAR_SPI_BASEADDR + XSP_IISR_OFFSET
-#define SPI_SR          XPAR_SPI_BASEADDR + XSP_SR_OFFSET
-
-#define LANE_GROUND_Y   (DISP_Y_SIZE - 60)   // dino baseline for ground lane
-#define LANE_AIR_Y      (DISP_Y_SIZE - 90)   // dino baseline for air lane
-#define DINO_X_PIXEL    40                   // fixed horizontal position of dino (left-cell px)
-#define SCALE_DEFAULT   3                    // scale factor for 5x8 glyphs
-
-
-#define cbi(reg, bitmask)       Xil_Out32(reg, Xil_In32(reg) & ~(u32)bitmask)
-#define sbi(reg, bitmask)       Xil_Out32(reg, Xil_In32(reg) |= (u32)bitmask)
-#define swap(type, i, j)        {type t = i; i = j; j = t;}
 
 // Display dimensions
 #define SCREEN_WIDTH  240
@@ -93,18 +119,6 @@ void updateScore(void);
 #define CAVE_WIDTH_INITIAL 120
 #define CAVE_WIDTH_MIN 60
 
-// Macro for swapping
-#define swap(type, i, j) {type t = i; i = j; j = t;}
-
-// Font structure
-struct _current_font {
-    u8* font;
-    u8 x_size;
-    u8 y_size;
-    u8 offset;
-    u8 numchars;
-};
-
 // Ship structure
 typedef struct {
     int x;          // X position (fixed horizontally in gameplay)
@@ -113,38 +127,148 @@ typedef struct {
     int speed;      // Current speed
 } Ship;
 
-// Global variables
-extern int fch, fcl, bch, bcl;
-extern struct _current_font cfont;
 extern Ship ship;
 extern int leftWall[CAVE_SEGMENTS];
 extern int rightWall[CAVE_SEGMENTS];
 
-// LCD Functions
-void LCD_Write_COM(char VL);
+
+#define SPI_DTR         XPAR_SPI_BASEADDR + XSP_DTR_OFFSET
+#define SPI_DRR         XPAR_SPI_BASEADDR + XSP_DRR_OFFSET
+#define SPI_IISR        XPAR_SPI_BASEADDR + XSP_IISR_OFFSET
+#define SPI_SR          XPAR_SPI_BASEADDR + XSP_SR_OFFSET
+
+#define cbi(reg, bitmask)       Xil_Out32(reg, Xil_In32(reg) & ~(u32)bitmask)
+#define sbi(reg, bitmask)       Xil_Out32(reg, Xil_In32(reg) |= (u32)bitmask)
+#define swap(type, i, j)        {type t = i; i = j; j = t;}
+
+#define DISP_X_SIZE     239
+#define DISP_Y_SIZE     319
+
+// Maze grid configuration
+#define CELL_SIZE 30    // Size of each square cell
+#define GRID_COLS 8      // Number of columns
+#define GRID_ROWS 11     // Number of rows
+#define GRID_START_X 0   // Starting X position
+#define GRID_START_Y 0   // Starting Y position
+#define NUM_LEVELS 3
+
+// Player direction constants
+#define DIR_UP 3
+#define DIR_DOWN 1
+#define DIR_LEFT 2
+#define DIR_RIGHT 0
+
+// Player position structure
+typedef struct {
+  int gridX;        // Column position (0 to GRID_COLS-1)
+  int gridY;        // Row position (0 to GRID_ROWS-1)
+  int direction;    // Current facing direction
+} Player;
+
+typedef struct {
+    int gridX;
+    int gridY;
+    int pathLength;
+    const int (*path)[2];   // pointer to list of {x,y} pairs
+    int currentIndex;
+} Opponent;
+
+// External declarations
+extern Player player;
+extern Opponent opponent;
+extern char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS];
+
+struct _current_font
+{
+    u8* font;
+    u8 x_size;
+    u8 y_size;
+    u8 offset;
+    u8 numchars;
+};
+
+extern int fch; // Foreground color upper byte
+extern int fcl; // Foreground color lower byte
+extern int bch; // Background color upper byte
+extern int bcl; // Background color lower byte
+
+extern struct _current_font cfont;
+extern u8 SmallFont[];
+extern u8 BigFont[];
+extern u8 SevenSegNumFont[];
+
+u32 LCD_Read(char VL);
+void LCD_Write_COM(char VL);  
 void LCD_Write_DATA(char VL);
+void LCD_Write_DATA16(char VH, char VL);
+//void LCD_Write_DATA_(char VH, char VL);
+
 void initLCD(void);
 void setXY(int x1, int y1, int x2, int y2);
-void clrXY(void);
 void setColor(u8 r, u8 g, u8 b);
 void setColorBg(u8 r, u8 g, u8 b);
+void clrXY(void);
 void clrScr(void);
-void drawVLine(int x, int y, int l);
+
 void drawHLine(int x, int y, int l);
+void drawVLine(int x, int y, int l);
 void fillRect(int x1, int y1, int x2, int y2);
+
 void setFont(u8* font);
 void printChar(u8 c, int x, int y);
 void lcdPrint(char *st, int x, int y);
-
-// Cave Flyer specific functions
-void drawTitleScreen(void);
+void fillIsoTri(int x, int y, int base, int height, int up);
+void fillIsoTriLeft(int x, int y, int base, int height);
+void fillIsoTriRight(int x, int y, int base, int height);
+void fillSquare(int x, int y, int size);
+void drawSquareOutline(int x, int y, int size);
+void drawPlayerTriangle(int x, int y, int size);
+void drawPlayer(void);
+void drawMazeBackground(int lvl_no);
+void updatePlayerPosition(int lvl_no, int newGridX, int newGridY);
+void setPlayerDirectionUp(void);
+void setPlayerDirectionDown(void);
+void setPlayerDirectionLeft(void);
+void setPlayerDirectionRight(void);
+void initMaze(int lvl_no);
 void initCave(void);
-void scrollCave(int difficulty);
+int checkCollisionCave(void);
+int checkCollisionDino(void);
+int checkGoalScored(void);
+void clearDino(int oldY, int wasDucking);
 void drawCave(void);
-void drawShip(void);
-int checkCollision(void);
-void updateShip(void);
-void drawGameOver(int distance);
+void clearObstacle(Obstacle *obs);
+void drawBall(void);
+void drawDino(void);
+void drawGameOverCave(int distance);
+void drawGameOverDino(int finalScore);
 void drawHUD(int distance);
-
+void drawShip(void);
+void scrollCave(int difficulty, int lvl_no);
+void updateShip(void);
+void initGoal(int lvl_no);
+void initDino();
+void drawWelcomePage(void);
+void showLevel(void);
+void ResultPrint(void);
+void drawMazeMenu(void);
+void drawDinoMenu(void);
+void drawCaveMenu(void);
+void drawGoalMenu(void);
+void Game_Home_Page(int game_no);
+void drawEnemy(void);
+void updateEnemyPosition(int lvl_no);
+void drawPlayerAtAngle(float x, float y, float angle, int size);
+void moveForward(int lvl_no);
+void drawObstacle(Obstacle *obs);
+void fillCircle(int x0, int y0, int radius);
+void drawField(void);
+void drawGoals(void);
+void drawGround(void);
+void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3);
+void initGame(void);
+void updateBall(void);
+void updateDinoPhysics(void);
+void updateScore(void);
+void drawWalls(void);
 #endif /* LCD_H_ */
