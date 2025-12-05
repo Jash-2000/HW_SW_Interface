@@ -599,7 +599,7 @@ void checkBallPlayerCollision(void) {
 void initGame(void) {
     // Initialize player
 	player_football.x = 120;
-	player_football.y = 250;
+	player_football.y = 270;
 	player_football.angle = -PI / 2.0f;  // -90 degrees = pointing up
 	player_football.speed = PLAYER_SPEED_NORMAL;
 
@@ -612,7 +612,7 @@ void initGame(void) {
     // Initialize walls (central obstacles)
     walls[0].x1 = 80;  walls[0].y1 = 120; walls[0].x2 = 100; walls[0].y2 = 140;
     walls[1].x1 = 140; walls[1].y1 = 120; walls[1].x2 = 160; walls[1].y2 = 140;
-    walls[2].x1 = 110; walls[2].y1 = 180; walls[2].x2 = 130; walls[2].y2 = 200;
+    walls[2].x1 = 110; walls[2].y1 = 210; walls[2].x2 = 130; walls[2].y2 = 230;
 }
 
 void rotatePlayerClockwise(void) {

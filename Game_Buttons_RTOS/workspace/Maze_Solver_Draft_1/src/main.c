@@ -9,7 +9,6 @@ Last Modified: 25 Nov, 2025
 #include "game.h"                               /* application interface */ 
 #include "xil_cache.h"		                /* Cache Drivers */ 
  
- 
 static QEvent l_GameQueue[30]; 
  
 QActiveCB const Q_ROM Q_ROM_VAR QF_active[] = { 
@@ -26,7 +25,7 @@ int main(void) {
 	Xil_DCacheInvalidate(); 
 	Xil_DCacheEnable(); 
  
-	xil_printf("\n\n Hello Pratyush the King!! \n"); 
+	xil_printf("\n\n Hello Elliot!! \n");
 	Game_ctor(); 
 	BSP_init(); 
 	QF_run(); 

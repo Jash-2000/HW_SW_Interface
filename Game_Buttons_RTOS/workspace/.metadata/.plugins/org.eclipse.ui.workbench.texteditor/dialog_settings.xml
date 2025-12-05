@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="cos_a"/>
+		<item key="selection" value="wall"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
+			<item value="wall"/>
+			<item value="goal"/>
+			<item value="encoder_push_update"/>
+			<item value="q_raw"/>
 			<item value="cos_a"/>
 			<item value="Player"/>
 			<item value="Cave"/>
@@ -19,10 +23,6 @@
 			<item value="319"/>
 			<item value="SIZE"/>
 			<item value="BallPlayer"/>
-			<item value="updatePlayer"/>
-			<item value="checkBallWallCollision"/>
-			<item value="Collision"/>
-			<item value="initGame"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Game"/>
