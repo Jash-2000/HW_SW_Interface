@@ -16,10 +16,6 @@ Last Modified: 4 Dec, 2025
 Player player;  // Start at top-left facing down
 Opponent opponent;
 
-const int path_lvl1[][2] = { {1,2}, {1,3}, {1,4}, {1,5}, {1,4}, {1,3} };
-const int path_lvl2[][2] = { {1,8}, {2,8}, {3,8}, {4,8}, {5,8}, {4,8}, {3,8} };
-const int path_lvl3[][2] = { {7,3}, {6,3}, {5,3}, {4,3}, {3,3}, {2,3}, {3,3}, {4,3}, {5,3} };
-
 char mazeGrid_dummy[GRID_ROWS][GRID_COLS] = {
 		    {2, 2, 2, 2, 2, 2, 2, 2},
 			{2, 0, 0, 0, 0, 0, 0, 2},
@@ -33,6 +29,10 @@ char mazeGrid_dummy[GRID_ROWS][GRID_COLS] = {
 			{2, 2, 2, 2, 2, 2, 2, 2},
 			{2, 2, 2, 2, 2, 2, 2, 2}
 };
+
+const int path_lvl1[][2] = { {1,2}, {2,2}, {3,2}, {4,2}, {4,3}, {4,4}, {3,4}, {2,4}, {1,4}, {1,3} };
+const int path_lvl2[][2] = { {1,8}, {2,8}, {3,8}, {4,8}, {5,8}, {4,8}, {3,8}, {2,8} };
+const int path_lvl3[][2] = { {7,3}, {6,3}, {5,3}, {4,3}, {3,3}, {3,2}, {3,1}, {4,1}, {5,1}, {5,2}, {6,2}, {7,2} };
 
 char mazeGrid[NUM_LEVELS][GRID_ROWS][GRID_COLS] = { // Maze layout: 0 = empty/path, 1 = wall
   {
@@ -668,7 +668,7 @@ void clearObstacle(Obstacle *obs) {
 void initGoal(int lvl_no){
 	initGame();
 	drawField();
-    drawGoals();
+    drawGoals(lvl_no);
     drawWalls();
     drawBall();
 }
@@ -1227,7 +1227,7 @@ void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3) {
     }
 }
 
-
+/*
 void checkBallWallCollision(void) {
     // Field boundaries
     if (ball.x - BALL_RADIUS <= FIELD_LEFT) {
@@ -1265,6 +1265,71 @@ void checkBallWallCollision(void) {
         }
     }
 }
+*/
+
+void checkBallWallCollision(void) {
+    // Field boundaries - clamp ball position
+    if (ball.x - BALL_RADIUS <= FIELD_LEFT) {
+        ball.x = FIELD_LEFT + BALL_RADIUS;
+        ball.vx = -ball.vx * BALL_BOUNCE;
+    }
+    if (ball.x + BALL_RADIUS >= FIELD_RIGHT) {
+        ball.x = FIELD_RIGHT - BALL_RADIUS;
+        ball.vx = -ball.vx * BALL_BOUNCE;
+    }
+    if (ball.y - BALL_RADIUS <= FIELD_TOP) {
+        ball.y = FIELD_TOP + BALL_RADIUS;
+        ball.vy = -ball.vy * BALL_BOUNCE;
+    }
+    if (ball.y + BALL_RADIUS >= FIELD_BOTTOM) {
+        ball.y = FIELD_BOTTOM - BALL_RADIUS;
+        ball.vy = -ball.vy * BALL_BOUNCE;
+    }
+
+    // Central walls (obstacles)
+    for (int i = 0; i < NUM_WALLS; i++) {
+        Wall* w = &walls[i];
+
+        // Check if ball overlaps with wall
+        if (ball.x + BALL_RADIUS > w->x1 && ball.x - BALL_RADIUS < w->x2 &&
+            ball.y + BALL_RADIUS > w->y1 && ball.y - BALL_RADIUS < w->y2) {
+
+            // Calculate wall center
+            float centerX = (w->x1 + w->x2) / 2.0f;
+            float centerY = (w->y1 + w->y2) / 2.0f;
+
+            // Calculate distances to each edge
+            float distLeft = ball.x - w->x1;
+            float distRight = w->x2 - ball.x;
+            float distTop = ball.y - w->y1;
+            float distBottom = w->y2 - ball.y;
+
+            // Find minimum distance (which edge was hit)
+            float minDist = distLeft;
+            int hitSide = 0; // 0=left, 1=right, 2=top, 3=bottom
+
+            if (distRight < minDist) { minDist = distRight; hitSide = 1; }
+            if (distTop < minDist) { minDist = distTop; hitSide = 2; }
+            if (distBottom < minDist) { minDist = distBottom; hitSide = 3; }
+
+            // Bounce based on which side was hit
+            if (hitSide == 0) {  // Left side
+                ball.x = w->x1 - BALL_RADIUS - 1;
+                ball.vx = -abs(ball.vx) * BALL_BOUNCE;
+            } else if (hitSide == 1) {  // Right side
+                ball.x = w->x2 + BALL_RADIUS + 1;
+                ball.vx = abs(ball.vx) * BALL_BOUNCE;
+            } else if (hitSide == 2) {  // Top side
+                ball.y = w->y1 - BALL_RADIUS - 1;
+                ball.vy = -abs(ball.vy) * BALL_BOUNCE;
+            } else {  // Bottom side
+                ball.y = w->y2 + BALL_RADIUS + 1;
+                ball.vy = abs(ball.vy) * BALL_BOUNCE;
+            }
+        }
+    }
+}
+
 
 int checkGoalScored(void) {
     // Top goal
@@ -1329,10 +1394,10 @@ void drawField(void) {
     }
 }
 
-void drawGoals(void) {
+void drawGoals(int lvl_no) {
     // Top goal (target)
     setColor(255, 215, 0); // Gold
-    fillRect(TOP_GOAL_X, TOP_GOAL_Y, TOP_GOAL_X + GOAL_WIDTH, TOP_GOAL_Y + GOAL_HEIGHT);
+    fillRect(TOP_GOAL_X - (6/lvl_no), TOP_GOAL_Y+GOAL_HEIGHT, TOP_GOAL_X + GOAL_WIDTH + (6/lvl_no), TOP_GOAL_Y + 2*GOAL_HEIGHT);
 
     // Bottom goal
     setColor(200, 200, 200); // Gray
@@ -1349,28 +1414,42 @@ void drawWalls(void) {
 void drawPlayerAtAngle(float x, float y, float angle, int size) {
     // Draw isosceles triangle pointing in direction of angle
     // angle = 0 points right, -PI/2 points up, PI/2 points down
-
     // Triangle vertices: apex at front, two base points at back
     float apex_dist = size * 0.6f;     // Distance from center to apex
     float base_dist = size * 0.4f;     // Distance from center to base
     float base_width = size * 0.5f;    // Half-width of base
-
     // Calculate apex point (front of triangle)
     int x1 = (int)(x + apex_dist * cosf(angle));
     int y1 = (int)(y + apex_dist * sinf(angle));
-
     // Calculate base points (back corners)
     // Perpendicular to direction
     float perp_angle = angle + PI / 2.0f;
-
     int x2 = (int)(x - base_dist * cosf(angle) + base_width * cosf(perp_angle));
     int y2 = (int)(y - base_dist * sinf(angle) + base_width * sinf(perp_angle));
-
     int x3 = (int)(x - base_dist * cosf(angle) - base_width * cosf(perp_angle));
     int y3 = (int)(y - base_dist * sinf(angle) - base_width * sinf(perp_angle));
-
     setColor(65, 105, 225); // Royal Blue
     fillTriangle(x1, y1, x2, y2, x3, y3);
+
+    // Draw a yellow nose/cockpit at the apex
+    setColor(255, 255, 0); // Yellow
+
+    // Small triangle nose - from apex pointing forward
+    float nose_length = size * 0.15f;  // Length of the nose
+    float nose_width = size * 0.15f;   // Half-width of nose base
+
+    // Nose tip (extends from apex)
+    int nose_x1 = (int)(x1 + nose_length * cosf(angle));
+    int nose_y1 = (int)(y1 + nose_length * sinf(angle));
+
+    // Nose base corners (at the apex of main triangle)
+    int nose_x2 = (int)(x1 + nose_width * cosf(perp_angle));
+    int nose_y2 = (int)(y1 + nose_width * sinf(perp_angle));
+
+    int nose_x3 = (int)(x1 - nose_width * cosf(perp_angle));
+    int nose_y3 = (int)(y1 - nose_width * sinf(perp_angle));
+
+    fillTriangle(nose_x1, nose_y1, nose_x2, nose_y2, nose_x3, nose_y3);
 }
 
 void drawBall(void) {

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="updateScore"/>
+		<item key="selection" value="cos_a"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="true"/>
 		<list key="findhistory">
-			<item value="updateScore"/>
-			<item value="fillTriangle"/>
-			<item value="drawField"/>
-			<item value="fillCircle"/>
-			<item value="void drawWalls(void)"/>
-			<item value="xil_printf"/>
-			<item value="Done"/>
+			<item value="cos_a"/>
 			<item value="Player"/>
-			<item value="player_football"/>
-			<item value="Q_onAssert"/>
-			<item value="printDebugLog"/>
-			<item value="initialized"/>
-			<item value="HSM"/>
-			<item value="drawPlayerAtAngle"/>
-			<item value="checkBallPlayerCollision"/>
+			<item value="Cave"/>
+			<item value="Obstacle"/>
+			<item value="drawGoals"/>
+			<item value="initGam"/>
+			<item value="init"/>
+			<item value="LEFT"/>
+			<item value="319"/>
+			<item value="SIZE"/>
+			<item value="BallPlayer"/>
+			<item value="updatePlayer"/>
+			<item value="checkBallWallCollision"/>
+			<item value="Collision"/>
+			<item value="initGame"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Game"/>

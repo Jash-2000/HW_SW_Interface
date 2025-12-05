@@ -11,10 +11,10 @@
 #define B_RS            0x00000001
 
 // Field dimensions
-#define FIELD_LEFT 20
-#define FIELD_RIGHT 220
-#define FIELD_TOP 40
-#define FIELD_BOTTOM 280
+#define FIELD_LEFT 5
+#define FIELD_RIGHT 235
+#define FIELD_TOP 5
+#define FIELD_BOTTOM 315
 #define FIELD_WIDTH (FIELD_RIGHT - FIELD_LEFT)
 #define FIELD_HEIGHT (FIELD_BOTTOM - FIELD_TOP)
 
@@ -263,7 +263,7 @@ void moveForward(int lvl_no);
 void drawObstacle(Obstacle *obs);
 void fillCircle(int x0, int y0, int radius);
 void drawField(void);
-void drawGoals(void);
+void drawGoals(int lvl_no);
 void drawGround(void);
 void fillTriangle(int x1, int y1, int x2, int y2, int x3, int y3);
 void initGame(void);
