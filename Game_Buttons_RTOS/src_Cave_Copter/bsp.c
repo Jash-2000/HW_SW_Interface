@@ -101,7 +101,6 @@ void ButtonsHandler(void *CallbackRef) {
     XGpio_InterruptClear(&btnGpio, status);
     int btns = XGpio_DiscreteRead(&btnGpio, 1);
 
-    // 1 for North 2 for East 3 for South 4 for South
     if (btns & 0x01) { buttonPressed = 1; }
     else if (btns & 0x02) { buttonPressed = 2; }
     else if (btns & 0x04) { buttonPressed = 3; }
@@ -144,7 +143,7 @@ void TimerCounterHandler(void *CallBackRef, u8 TmrCtrNumber)
 {
 	interrupt_arrived_flag = 1;
 	custom_tick += 1;
-	if(custom_tick == 2000){	// Used to Reset the Text in 1.5 seconds
+	if(custom_tick == 1000){	// Used to Reset the Text in 1.5 seconds
 		QActive_postISR((QActive *)&AO_Lab2A, GAME_TICK);
 	}
 
@@ -220,6 +219,21 @@ void QF_onStartup(void){
 void QF_onIdle(void) {        /* entered with interrupts locked */
     QF_INT_UNLOCK();                       /* unlock interrupts */
     interrupt_arrived_flag = 0;
+    // A Do While Loop is required as the timer is to be updated only when no interrupts are seen otherwise the timer takes up all the clock cycle.
+   do{
+            // Refresh display — 2 digits at a time using your Urbana driver
+            sevenseg_draw_digit(0, 0, digits[0], digits[4]);
+            usleep(REFRESH_DELAY_US);
+
+            sevenseg_draw_digit(1, 1, digits[1], digits[5]);
+            usleep(REFRESH_DELAY_US);
+
+            sevenseg_draw_digit(2, 2, digits[2], digits[6]);
+            usleep(REFRESH_DELAY_US);
+
+            sevenseg_draw_digit(3, 3, digits[3], digits[7]);
+            usleep(REFRESH_DELAY_US);
+        } while (interrupt_arrived_flag == 0);
 }
 
 /* Q_onAssert is called only when the program encounters an error*/
@@ -231,4 +245,5 @@ void Q_onAssert(char const Q_ROM * const Q_ROM_VAR file, int line) {
     for (;;) {
     }
 }
+
 
