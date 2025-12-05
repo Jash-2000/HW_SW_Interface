@@ -306,13 +306,22 @@ QState Running(Game *me) {
 			            // Erase old positions
 			            setColor(34, 139, 34); // Field green
 			            fillCircle((int)ball.x, (int)ball.y, BALL_RADIUS + 1);
-
+						
 			            int oldPlayerX = (int)player_football.x;
 			            int oldPlayerY = (int)player_football.y;
 			            updatePlayer();
 			            setColor(34, 139, 34);
 			            fillRect(oldPlayerX - PLAYER_SIZE - 2, oldPlayerY - PLAYER_SIZE - 2,
 			                    oldPlayerX + PLAYER_SIZE + 2, oldPlayerY + PLAYER_SIZE + 2);
+    					drawHLine(FIELD_LEFT, 160, FIELD_WIDTH); // Re-draw centre line
+						// Center circle
+					    setColor(255, 255, 255);
+					    for (int i = 0; i < 360; i += 10) {
+					        int x = 120 + 30 * cosf(i * 3.14159f / 180.0f);
+					        int y = 160 + 30 * sinf(i * 3.14159f / 180.0f);
+					        fillRect(x, y, x+1, y+1);
+					    }
+
 			            checkBallPlayerCollision();
 			            updateBall();
 			            drawWalls();
