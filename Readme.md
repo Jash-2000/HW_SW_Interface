@@ -4,3 +4,8 @@ Platform Used - AMD Microblaze Urbana Board
 Each project folder has the design "xsa" file catering for that particular project and the workspace folder contains the software drivers for the embedded implementations. The hardware driver file (required to change the hardware per project) is present as a set of verilog modules.
 
 Each Project in itself has its own Readmed to understand the implenmentation and replication process easily.
+
+
+The final project is an Arcade of 4 Games with a H_FSM as shwon below:
+
+![graphviz.png](graphviz.png)
