@@ -1,6 +1,8 @@
-13:04:58 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1 ****
+14:02:46 **** Incremental Build of configuration Debug for project Maze_Solver_Draft_1 ****
 make all 
+make: Warning: File 'src/subdir.mk' has modification time 126 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
 make: Nothing to be done for 'all'.
 
-13:04:58 Build Finished (took 197ms)
+14:02:46 Build Finished (took 133ms)
 

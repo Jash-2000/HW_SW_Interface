@@ -544,7 +544,7 @@ void QF_onIdle(void) {        /* entered with interrupts locked */
         FeatureVector *features = process_averaged_audio();
         float similarity;
         int detected_word = detect_wake_word(features, &similarity);
-        if (detected_word >= 0 && detected_word < 4) xil_printf("WAKE WORD DETECTED: %-15s \n\r", WAKE_WORD_NAMES[detected_word]);
+        if (detected_word >= 0 detected_word >= 0) xil_printf("WAKE WORD DETECTED: %-15s \n\r", WAKE_WORD_NAMES[detected_word]);
         }
 #endif // TESTING_MODE
     } while (interrupt_arrived_flag == 0);

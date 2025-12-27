@@ -84,7 +84,7 @@ static const float WAKE_WORD_TEMPLATES[NUM_WAKE_WORDS][NUM_BANDS] = {
     //{0.854797, 1.000000, 0.676569, 0.595381, 0.423270, 0.238125, 0.174244, 0.116829},
         {0.595645, 0.889135, 1.000000, 0.664565, 0.294497, 0.279587, 0.155711, 0.142331},
 
-    // "IDLE" Wake Word
+    // "MKB AAAGG" Wake Word
         {1.000000, 0.613733, 0.335311, 0.151868, 0.119840, 0.104178, 0.085738, 0.089730}
 };
 
@@ -544,7 +544,7 @@ void QF_onIdle(void) {        /* entered with interrupts locked */
         FeatureVector *features = process_averaged_audio();
         float similarity;
         int detected_word = detect_wake_word(features, &similarity);
-        if (detected_word >= 0 && detected_word < 4) xil_printf("WAKE WORD DETECTED: %-15s \n\r", WAKE_WORD_NAMES[detected_word]);
+        if (detected_word >= 0) xil_printf("WAKE WORD DETECTED: %-15s \n\r", WAKE_WORD_NAMES[detected_word]);
         }
 #endif // TESTING_MODE
     } while (interrupt_arrived_flag == 0);
